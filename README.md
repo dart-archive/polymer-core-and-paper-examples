@@ -3,7 +3,7 @@ Polymer core and paper elements examples
 
 This repo contains examples for the core and paper polymer elements.
 
-## Running demos
+## Running examples
 
 If you download or fork the repo from
 https://github.com/dart-lang/polymer-core-and-paper-examples,
