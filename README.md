@@ -14,10 +14,7 @@ them to the `entry_points` list. This will greatly reduce your build times.
 
 To run a demo:
 
-1. From the top directory, use the `pub serve` command, specifying the
-   `example` directory:
-
-        pub serve
+1. From the top directory, use the `pub serve` command.
 
 2. In a browser, visit <code>http://localhost:8080/<em>element_name</em>.html).
 
