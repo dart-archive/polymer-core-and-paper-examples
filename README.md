@@ -9,8 +9,8 @@ If you download or fork the repo from
 https://github.com/dart-lang/polymer-core-and-paper-examples,
 then you can use the `pub` command to run demos.
 
-If you only want to run a few demos, then you can edit `pubspec.yaml` to
-comment out (using `#`) all the entrypoints except the ones you need.
+If you only want to run a few examples, then you can edit `pubspec.yaml` and add
+them to the `entry_points` list. This will greatly reduce your build times.
 
 To run a demo:
 
