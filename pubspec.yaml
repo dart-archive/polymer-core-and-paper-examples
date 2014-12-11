@@ -12,3 +12,5 @@ environment:
 transformers:
 - polymer:
     entry_points:
+    inline_stylesheets:
+      lib/src/paper-shadow/paper-shadow.css: false
