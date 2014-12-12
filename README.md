@@ -37,3 +37,16 @@ To create a deployable build of one or more demos:
 
 **Note:** Building the demos might take a few minutes.
  
+## Updating demos
+
+These demos are all ports of corresponding javascript demos. To upgrade to a new
+version, follow these steps:
+
+1. Update the `bower.json` file dependencies to the new version.
+
+2. Run `bower update`, this will pull in the new versions to the `js_src` dir.
+   These files are only used as a reference for diffing between versions.
+
+3. Run `dart tool/cleanup.dart` to remove all but the `demo.html` files.
+
+4. Look at the diff, and port those changes.
