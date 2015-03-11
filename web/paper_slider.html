@@ -124,14 +124,14 @@
   <script type="application/dart">
     import 'dart:html';
     import 'package:polymer/polymer.dart';
+    export 'package:polymer/init.dart';
 
-    main() {
-      initPolymer().run(() {
-        Polymer.onReady.then((_) {
-          var ratings = querySelector('#ratings');
-          ratings.on['core-change'].listen((_) {
-            querySelector('#ratingsLabel').text = '${ratings.value}';
-          });
+    @initMethod
+    startup() {
+      Polymer.onReady.then((_) {
+        var ratings = querySelector('#ratings');
+        ratings.on['core-change'].listen((_) {
+          querySelector('#ratingsLabel').text = '${ratings.value}';
         });
       });
     }

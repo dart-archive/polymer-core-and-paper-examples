@@ -1,6 +1,7 @@
 import 'dart:html';
 import 'package:polymer/polymer.dart';
 import 'package:paper_elements/paper_shadow.dart';
+export 'package:polymer/init.dart';
 
 class MyModel {
   Expando<bool> targetExpandos = new Expando();
@@ -23,11 +24,10 @@ class MyModel {
   }
 }
 
-main() {
-  initPolymer().run(() {
-    Polymer.onReady.then((_) {
-      var template = querySelector('#myTemplate') as AutoBindingElement;
-      template.model = new MyModel();
-    });
+@initMethod
+startup() {
+  Polymer.onReady.then((_) {
+    var template = querySelector('#myTemplate') as AutoBindingElement;
+    template.model = new MyModel();
   });
 }

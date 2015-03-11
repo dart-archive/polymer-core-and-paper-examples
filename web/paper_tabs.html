@@ -210,15 +210,15 @@
     import 'dart:js';
     import 'package:polymer/polymer.dart';
     import 'package:paper_elements/paper_tabs.dart';
+    export 'package:polymer/init.dart';
 
-    main() {
-      initPolymer().run(() {
-        Polymer.onReady.then((_) {
-          querySelector('#mediaQuery').on['core-media-change'].listen( (e) {
-            var detail = new JsObject.fromBrowserObject(e)['detail'];
-            document.body.classes.toggle('core-narrow', detail['matches']);
-            (querySelector('#scrollableTabs') as PaperTabs).updateBar();
-          });
+    @initMethod
+    startup() {
+      Polymer.onReady.then((_) {
+        querySelector('#mediaQuery').on['core-media-change'].listen( (e) {
+          var detail = new JsObject.fromBrowserObject(e)['detail'];
+          document.body.classes.toggle('core-narrow', detail['matches']);
+          (querySelector('#scrollableTabs') as PaperTabs).updateBar();
         });
       });
     }

@@ -31,11 +31,10 @@ class MyModel {
   }
 }
 
-main() {
-  initPolymer().run(() {
-    Polymer.onReady.then((_) {
-      var template = querySelector('#myTemplate') as AutoBindingElement;
-      template.model = new MyModel();
-    });
+@initMethod
+startup() {
+  Polymer.onReady.then((_) {
+    var template = querySelector('#myTemplate') as AutoBindingElement;
+    template.model = new MyModel();
   });
 }

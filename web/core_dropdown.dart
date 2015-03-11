@@ -12,6 +12,7 @@ import 'dart:html';
 import 'package:polymer/polymer.dart';
 import 'package:core_elements/core_collapse.dart';
 import 'package:core_elements/core_dropdown.dart';
+export 'package:polymer/init.dart';
 
 class Country {
   final String name;
@@ -273,16 +274,15 @@ class MyModel {
   }
 }
 
-main () {
-  initPolymer().run(() {
-    Polymer.onReady.then((_) {
-      var template = querySelector('#myTemplate');
-      template.model = new MyModel();
+@initMethod
+startup () {
+  Polymer.onReady.then((_) {
+    var template = querySelector('#myTemplate');
+    template.model = new MyModel();
 
-      template.on['template-bound'].listen((_) {
-        (querySelector('#toggleCollapse') as ButtonElement).onClick.listen((_) {
-          (querySelector('#collapse') as CoreCollapse).toggle();
-        });
+    template.on['template-bound'].listen((_) {
+      (querySelector('#toggleCollapse') as ButtonElement).onClick.listen((_) {
+        (querySelector('#collapse') as CoreCollapse).toggle();
       });
     });
   });

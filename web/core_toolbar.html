@@ -94,14 +94,14 @@ license that can be found in the LICENSE file.
     import 'dart:html';
     import 'dart:js';
     import 'package:polymer/polymer.dart';
+    export 'package:polymer/init.dart';
 
-    main() {
-      initPolymer().run(() {
-        Polymer.onReady.then((_) {
-          querySelector('#mediaQuery').on['core-media-change'].listen((e) {
-            var m = new JsObject.fromBrowserObject(e)['detail']['matches'];
-            document.body.classes.toggle('core-narrow', m);
-          });
+    @initMethod
+    startup() {
+      Polymer.onReady.then((_) {
+        querySelector('#mediaQuery').on['core-media-change'].listen((e) {
+          var m = new JsObject.fromBrowserObject(e)['detail']['matches'];
+          document.body.classes.toggle('core-narrow', m);
         });
       });
     }

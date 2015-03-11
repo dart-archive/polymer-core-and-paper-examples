@@ -31,12 +31,12 @@
 
 </head>
 <body unresolved>
-  <select>
+  <select id="select">
     <option value="cross-fade-all" selected>cross-fade-all</option>
     <option value="slide-from-right">slide-from-right</option>
   </select>
 
-  <core-animated-pages transitions="cross-fade-all">
+  <core-animated-pages transitions="cross-fade-all" id="pages">
     <section>
       <div layout vertical center center-justified style="background:red;">
         <div>1</div>
@@ -66,34 +66,37 @@
 
   <script type="application/dart">
     import 'dart:html';
+    import 'package:core_elements/core_animated_pages.dart';
     import 'package:polymer/polymer.dart';
-
-    main() => initPolymer();
+    export 'package:polymer/init.dart';
 
     @initMethod
-    init() => Polymer.onReady.then((_) {
-      final pages = querySelector('core-animated-pages');
-      final select = querySelector('select');
+    init() {
+      Polymer.onReady.then((_) {
+        final pages = querySelector('#pages') as CoreAnimatedPages;
+        final select = querySelector('#select') as SelectElement;
 
-      var up = true;
-      var max = 4;
+        var up = true;
+        var max = 4;
 
-      pages.onClick.listen((_) {
-        var p = pages;
-        if (up && p.selected == max || !up && p.selected == 0) {
-          up = !up;
-        }
-        if (up) {
-          p.selected += 1;
-        } else {
-          p.selected -= 1;
-        }
+        pages.onClick.listen((_) {
+          print('clicked');
+          var p = pages;
+          if (up && p.selected == max || !up && p.selected == 0) {
+            up = !up;
+          }
+          if (up) {
+            p.selected += 1;
+          } else {
+            p.selected -= 1;
+          }
+        });
+
+        select.onChange.listen((_) {
+          pages.transitions = select.options[select.selectedIndex].value;
+        });
       });
-
-      select.onChange.listen((_) {
-        pages.transitions = select.options[select.selectedIndex].value;
-      });
-    });
+    }
   </script>
 </body>
 </html>

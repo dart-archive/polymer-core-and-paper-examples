@@ -48,13 +48,15 @@ license that can be found in the LICENSE file.
     import 'dart:html';
     import 'dart:js';
     import 'package:polymer/polymer.dart';
+    export 'package:polymer/init.dart';
 
     var _meta;
     var transition;
     var state = {'opened': false};
 
-    main() {
-      initPolymer().run(() {
+    @initMethod
+    startup() {
+      Polymer.onReady.then((_) {
         setup();
         querySelector('button').onClick.listen((_) => stuff());
         querySelector('select').onChange.listen((_) =>  setup());
@@ -71,7 +73,7 @@ license that can be found in the LICENSE file.
     setup() {
       var target = querySelector('#animate-me');
 
-      if (transition) transition.teardown(target);
+      if (transition != null) transition.teardown(target);
 
       var value =
           (querySelector('#sel') as SelectElement).selectedOptions[0].value;

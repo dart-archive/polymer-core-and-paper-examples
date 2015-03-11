@@ -158,6 +158,7 @@
     import 'package:polymer/polymer.dart';
     import 'package:paper_elements/paper_input_decorator.dart';
     import 'dart:html';
+    export 'package:polymer/init.dart';
 
     class MyModel {
       var $;
@@ -172,12 +173,11 @@
       }
     }
 
-    main() {
-      initPolymer().run(() {
-        Polymer.onReady.then((_) {
-          var t = querySelector('#myTemplate') as AutoBindingElement;
-          t.model = new MyModel(t.$);
-        });
+    @initMethod
+    startup() {
+      Polymer.onReady.then((_) {
+        var t = querySelector('#myTemplate') as AutoBindingElement;
+        t.model = new MyModel(t.$);
       });
     }
   </script>

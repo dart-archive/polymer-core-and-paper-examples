@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:html';
 import 'package:polymer/polymer.dart';
+export 'package:polymer/init.dart';
 
 class MyModel {
   var $;
@@ -25,14 +26,13 @@ class MyModel {
   }
 }
 
-main() {
-  initPolymer().run(() {
-    Polymer.onReady.then((_) {
-      var template = querySelector('#myTemplate') as AutoBindingElement;
-      template.model = new MyModel(template.$);
-      template.on['template-bound'].take(1).listen((_) {
-        template.model.initData();
-      });
+@initMethod
+startup() {
+  Polymer.onReady.then((_) {
+    var template = querySelector('#myTemplate') as AutoBindingElement;
+    template.model = new MyModel(template.$);
+    template.on['template-bound'].take(1).listen((_) {
+      template.model.initData();
     });
   });
 }

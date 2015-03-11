@@ -42,8 +42,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     import 'package:core_elements/core_meta.dart';
     import 'package:polymer/polymer.dart';
     import 'package:template_binding/template_binding.dart';
+    export 'package:polymer/init.dart';
 
-    main() => initPolymer().run(() {
+    @initMethod
+    startup() {
       Polymer.onReady.then((_) {
         CoreMeta meta = new Element.tag('core-meta');
         templateBind(querySelector('template#default')).model = meta.list;
@@ -53,7 +55,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         templateBind(document.querySelector('template#fruit')).model =
             fruitMeta.list;
       });
-    });
+    }
   </script>
 
 </body>

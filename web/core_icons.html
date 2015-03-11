@@ -96,13 +96,15 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <script type="application/dart">
   import 'dart:html';
   import 'package:polymer/polymer.dart';
+  export 'package:polymer/init.dart';
 
-  main() => initPolymer().run(() {
+  @initMethod
+  startup() {
     Polymer.onReady.then((_) {
       var template = document.querySelector('#myTemplate');
       template.model = template;
     });
-  });
+  }
 </script>
 </body>
 </html>

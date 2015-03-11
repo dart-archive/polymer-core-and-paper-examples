@@ -2,6 +2,7 @@ import 'dart:html';
 import 'dart:math';
 import 'package:polymer/polymer.dart';
 import 'package:core_elements/core_image.dart';
+export 'package:polymer/init.dart';
 
 class MyModel extends Observable {
   var $;
@@ -17,11 +18,10 @@ class MyModel extends Observable {
 
 }
 
-main() {
-  initPolymer().run(() {
-    Polymer.onReady.then((_) {
-      var template = querySelector('#myTemplate') as AutoBindingElement;
-      template.model = new MyModel(template.$);
-    });
+@initMethod
+startup() {
+  Polymer.onReady.then((_) {
+    var template = querySelector('#myTemplate') as AutoBindingElement;
+    template.model = new MyModel(template.$);
   });
 }

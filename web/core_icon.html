@@ -43,15 +43,17 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <script type="application/dart">
   import 'dart:html';
   import 'package:polymer/polymer.dart';
+  export 'package:polymer/init.dart';
 
-  main() => initPolymer().run(() {
+  @initMethod
+  startup() {
     Polymer.onReady.then((_) {
       var template = document.querySelector('#myTemplate');
       // It looks like I have to assign a model to the template, which is not
       // consistent with the JS side?
       template.model = template;
     });
-  });
+  }
 </script>
 </body>
 </html>

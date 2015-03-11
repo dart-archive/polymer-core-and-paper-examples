@@ -182,24 +182,24 @@
     import 'dart:html';
     import 'dart:js';
     import 'package:polymer/polymer.dart';
+    export 'package:polymer/init.dart';
 
-    main() {
-      initPolymer().run(() {
-        Polymer.onReady.then((_) {
+    @initMethod
+    startup() {
+      Polymer.onReady.then((_) {
 
-          querySelector('button').on['click'].listen((e) {
-            var tooltips = querySelectorAll('core-tooltip');
-            tooltips.forEach((tooltip) {
-              tooltip.show = !tooltip.show;
-            });
+        querySelector('button').on['click'].listen((e) {
+          var tooltips = querySelectorAll('core-tooltip');
+          tooltips.forEach((tooltip) {
+            tooltip.show = !tooltip.show;
           });
+        });
 
-          querySelector('#fillbutton').on['click'].listen((Event e) {
-            e.stopPropagation();
-            var el = querySelector('#dynamic');
-            el.insertAdjacentHtml(
-                'beforeend', '<div tip><b>See</b>. Told ya so!</div>');
-          });
+        querySelector('#fillbutton').on['click'].listen((Event e) {
+          e.stopPropagation();
+          var el = querySelector('#dynamic');
+          el.insertAdjacentHtml(
+              'beforeend', '<div tip><b>See</b>. Told ya so!</div>');
         });
       });
     }

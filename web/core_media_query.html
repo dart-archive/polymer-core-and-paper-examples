@@ -36,10 +36,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   <script type="application/dart">
     import 'dart:html';
     import 'dart:js';
-
+    export 'package:polymer/init.dart';
     import 'package:polymer/polymer.dart';
 
-    main() => initPolymer().run(() {
+    @initMethod
+    startup() {
       var output = document.body.querySelector('#output');
       // on-mediachange would give true or false as second param to the handler
       document.body.on['core-media-change'].listen((e) {
@@ -47,7 +48,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         output.text += '\nevent: ${e.type} query: ${detail['media']} '
             'matches: ${detail['matches']}';
       });
-    });
+    }
   </script>
 </body>
 </html>

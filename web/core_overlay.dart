@@ -35,7 +35,9 @@ class XContainer extends PolymerElement {
     }
   }
 
+  XDialog get dialog => shadowRoot.querySelector('#dialog');
+
   tapHandler() {
-    $['dialog'].toggle();
+    dialog.toggle();
   }
 }

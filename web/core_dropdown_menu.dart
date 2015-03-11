@@ -11,6 +11,7 @@ library core_elements.example.core_dropdown_menu;
 import 'dart:html';
 import 'package:polymer/polymer.dart';
 import 'package:core_elements/core_collapse.dart';
+export 'package:polymer/init.dart';
 
 class MyModel {
   static const _pastries = const [
@@ -28,16 +29,15 @@ class MyModel {
   get pastries => _pastries;
 }
 
-main() {
-  initPolymer().run(() {
-    Polymer.onReady.then((_) {
-      var template = querySelector('#myTemplate') as AutoBindingElement;
-      template.model = new MyModel();
+@initMethod
+startup() {
+  Polymer.onReady.then((_) {
+    var template = querySelector('#myTemplate') as AutoBindingElement;
+    template.model = new MyModel();
 
-      template.on['template-bound'].listen((_) {
-        (querySelector('#toggleCollapse') as ButtonElement).onClick.listen((e) {
-          (querySelector('#collapse') as CoreCollapse).toggle();
-        });
+    template.on['template-bound'].listen((_) {
+      (querySelector('#toggleCollapse') as ButtonElement).onClick.listen((e) {
+        (querySelector('#collapse') as CoreCollapse).toggle();
       });
     });
   });

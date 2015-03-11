@@ -115,8 +115,10 @@ license that can be found in the LICENSE file.
   <script type="application/dart">
     import 'dart:html';
     import 'package:polymer/polymer.dart';
+    export 'package:polymer/init.dart';
 
-    main() => initPolymer().run(() {
+    @initMethod
+    startup() {
       Polymer.onReady.then((_) {
         document.body.on['click'].listen((e) {
           var t = e.target;
@@ -130,7 +132,7 @@ license that can be found in the LICENSE file.
           }
         });
       });
-    });
+    }
 
 
   </script>

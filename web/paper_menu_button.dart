@@ -10,13 +10,13 @@ library paper_elements.example.paper_menu_button;
 
 import 'dart:html';
 import 'package:polymer/polymer.dart';
+export 'package:polymer/init.dart';
 
-main () {
-  initPolymer().run(() {
-    Polymer.onReady.then((_) {
-      var template = querySelector('#myTemplate') as AutoBindingElement;
-      template.model = new MyModel(template.$);
-    });
+@initMethod
+startup() {
+  Polymer.onReady.then((_) {
+    var template = querySelector('#myTemplate') as AutoBindingElement;
+    template.model = new MyModel(template.$);
   });
 }
 

@@ -1,6 +1,7 @@
 import 'dart:html';
 import 'package:polymer/polymer.dart';
 import 'package:template_binding/template_binding.dart';
+export 'package:polymer/init.dart';
 
 class Model extends Observable {
   @observable String value1;
@@ -9,10 +10,9 @@ class Model extends Observable {
   @observable String committedValue2;
 }
 
-main() {
-  initPolymer().run(() {
-    Polymer.onReady.then((_) {
-      (querySelector('#myTemplate') as AutoBindingElement).model = new Model();
-    });
+@initMethod
+startup() {
+  Polymer.onReady.then((_) {
+    (querySelector('#myTemplate') as AutoBindingElement).model = new Model();
   });
 }

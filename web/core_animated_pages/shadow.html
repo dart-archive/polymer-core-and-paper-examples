@@ -45,19 +45,6 @@
         </template>
       </div>
     </template>
-    <script>
-      Polymer('grid-toc', {
-        selectedChanged: function(old) {
-          this.lastSelected = old;
-        },
-        selectView: function(e) {
-          var item = e.target.templateInstance.model.item;
-          if (item !== undefined) {
-            this.fire('grid-toc-select', {item: item});
-          }
-        }
-      });
-    </script>
   </polymer-element>
 
   <polymer-element name="grid-item" attributes="item isHero">
@@ -72,60 +59,27 @@
         <span cross-fade>{{item}}</span>
       </div>
     </template>
-    <script>
-      Polymer('grid-item', {
-        isSelected: false
-      })
-    </script>
   </polymer-element>
 
 
-  <template is="auto-binding">
+  <template is="auto-binding-dart" id="myTemplate">
     <core-toolbar class="toolbar">
-      <core-icon-button icon="{{$.pages.selected != 0 ? 'arrow-back' : 'menu'}}" on-tap="{{back}}"></core-icon-button>
+      <core-icon-button icon="{{selected != 0 ? 'arrow-back' : 'menu'}}" on-tap="{{back}}"></core-icon-button>
       <div flex>Stuff</div>
       <core-icon-button icon="more-vert"></core-icon-button>
     </core-toolbar>
-    <core-animated-pages id="pages" flex selected="0" on-core-animated-pages-transition-end="{{transitionend}}" transitions="cross-fade-all hero-transition">
+    <core-animated-pages id="pages" flex selected="0" on-core-animated-pages-transition-end="{{transitionEnd}}" transitions="cross-fade-all hero-transition">
 
-      <grid-toc vertical id="toc" layout selected="{{$.pages.selected}}" items="{{items}}" hero-p on-grid-toc-select="{{selectView}}"></grid-toc>
+      <grid-toc vertical id="toc" layout selected="{{selected}}" items="{{items}}" hero-p on-grid-toc-select="{{selectView}}"></grid-toc>
 
       <template repeat="{{item in items}}">
-        <grid-item vertical layout item="{{item}}" hero-p isHero="{{$.pages.selected === item + 1 || $.pages.selected === 0}}"></grid-item>
+        <grid-item vertical layout item="{{item}}" hero-p isHero="{{selected === item + 1 || selected === 0}}"></grid-item>
       </template>
 
     </core-animated-pages>
   </template>
 
-  <script>
-
-    addEventListener('template-bound', function(e) {
-      var scope = e.target;
-      var items = [], count=50;
-      for (var i=0; i < count; i++) {
-        items.push(i);
-      }
-
-      scope.items = items;
-
-      scope.selectView = function(e, detail) {
-        var i = detail.item;
-        this.$.pages.selected = i+1;
-      }
-
-      scope.back = function() {
-        this.lastSelected = this.$.pages.selected;
-        this.$.pages.selected = 0;
-      }
-
-      scope.transitionend = function() {
-        if (this.lastSelected) {
-          this.lastSelected = null;
-        }
-      }
-    })
-
+  <script type="application/dart" src="shadow.dart">
   </script>
-  <script type="application/dart">export 'package:polymer/init.dart';</script>
 </body>
 </html>

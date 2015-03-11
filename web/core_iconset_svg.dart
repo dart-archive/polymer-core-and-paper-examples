@@ -12,6 +12,7 @@ import 'dart:html';
 import 'package:polymer/polymer.dart';
 import 'package:template_binding/template_binding.dart';
 import 'package:core_elements/core_meta.dart';
+export 'package:polymer/init.dart';
 
 class MyModel {
   List<String> icons;
@@ -19,16 +20,15 @@ class MyModel {
   MyModel(this.icons);
 }
 
-main() {
-  initPolymer().run(() {
-    Polymer.onReady.then((_) {
-      var template = querySelector('template') as TemplateElement;
-      template.on['template-bound'].listen((_) {
-        var setName = 'svg-sample-icons';
-        var meta = querySelector('#meta') as CoreMeta;
-        var icons = meta.byId(setName).iconNames;
-        template.model = new MyModel(icons.map((icon) => '$setName:$icon').toList());
-      });
+@initMethod
+startup() {
+  Polymer.onReady.then((_) {
+    var template = querySelector('template') as TemplateElement;
+    template.on['template-bound'].listen((_) {
+      var setName = 'svg-sample-icons';
+      var meta = querySelector('#meta') as CoreMeta;
+      var icons = meta.byId(setName).iconNames;
+      template.model = new MyModel(icons.map((icon) => '$setName:$icon').toList());
     });
   });
 }

@@ -11,6 +11,7 @@ library core_elements.example.core_menu_button;
 import 'dart:html';
 import 'package:polymer/polymer.dart';
 import 'package:core_elements/core_collapse.dart';
+export 'package:polymer/init.dart';
 
 class MyModel {
   final List<String> pastries = [
@@ -26,17 +27,16 @@ class MyModel {
   ];
 }
 
-main () {
-  initPolymer().run(() {
-    Polymer.onReady.then((_) {
-      var template = querySelector('#myTemplate');
-      template.model = new MyModel();
+@initMethod
+startup() {
+  Polymer.onReady.then((_) {
+    var template = querySelector('#myTemplate');
+    template.model = new MyModel();
 
-      template.on['template-bound'].listen((_) {
-        var button = querySelector('#toggleCollapse') as ButtonElement;
-        button.onClick.listen((e) {
-          (querySelector('#collapse') as CoreCollapse).toggle();
-        });
+    template.on['template-bound'].listen((_) {
+      var button = querySelector('#toggleCollapse') as ButtonElement;
+      button.onClick.listen((e) {
+        (querySelector('#collapse') as CoreCollapse).toggle();
       });
     });
   });

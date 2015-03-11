@@ -10,18 +10,18 @@ import 'dart:html';
 import 'dart:js';
 import 'package:polymer/polymer.dart';
 import 'package:core_elements/core_animation.dart';
+    export 'package:polymer/init.dart';
 
 var last;
 
-main() {
-  initPolymer().run(() {
-    Polymer.onReady.then((_) {
-      document.body.onClick.listen(clickAction);
+@initMethod
+startup() {
+  Polymer.onReady.then((_) {
+    document.body.onClick.listen(clickAction);
 
-      document.body.addEventListener('core-animation-finish', (e) {
-        print('core-animation-finish');
-        e.target.target.querySelector('span').text = 'polymer';
-      });
+    document.body.addEventListener('core-animation-finish', (e) {
+      print('core-animation-finish');
+      e.target.target.querySelector('span').text = 'polymer';
     });
   });
 }
