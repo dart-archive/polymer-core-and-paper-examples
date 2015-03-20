@@ -1,0 +1,1908 @@
+<!DOCTYPE html><html><head><script src="packages/web_components/webcomponents.min.js"></script><script src="packages/web_components/dart_support.js"></script>
+	<title>core-overlay</title>
+	<meta name="viewport" content="width=device-width, user-scalable=no">
+
+  
+
+  
+  
+  
+  
+
+</head>
+<body unresolved=""><div hidden=""><script src="packages/web_components/interop_support.js"></script>
+
+<!-- Dart note: load polymer for Dart and JS from the same place -->
+<style shim-shadowdom="">
+/*******************************
+          Flex Layout
+*******************************/
+
+html /deep/ [layout][horizontal], html /deep/ [layout][vertical] {
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+}
+
+html /deep/ [layout][horizontal][inline], html /deep/ [layout][vertical][inline] {
+  display: -ms-inline-flexbox;
+  display: -webkit-inline-flex;
+  display: inline-flex;
+}
+
+html /deep/ [layout][horizontal] {
+  -ms-flex-direction: row;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+}
+
+html /deep/ [layout][horizontal][reverse] {
+  -ms-flex-direction: row-reverse;
+  -webkit-flex-direction: row-reverse;
+  flex-direction: row-reverse;
+}
+
+html /deep/ [layout][vertical] {
+  -ms-flex-direction: column;
+  -webkit-flex-direction: column;
+  flex-direction: column;
+}
+
+html /deep/ [layout][vertical][reverse] {
+  -ms-flex-direction: column-reverse;
+  -webkit-flex-direction: column-reverse;
+  flex-direction: column-reverse;
+}
+
+html /deep/ [layout][wrap] {
+  -ms-flex-wrap: wrap;
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
+html /deep/ [layout][wrap-reverse] {
+  -ms-flex-wrap: wrap-reverse;
+  -webkit-flex-wrap: wrap-reverse;
+  flex-wrap: wrap-reverse;
+}
+
+html /deep/ [flex] {
+  -ms-flex: 1 1 0.000000001px;
+  -webkit-flex: 1;
+  flex: 1;
+  -webkit-flex-basis: 0.000000001px;
+  flex-basis: 0.000000001px;
+}
+
+html /deep/ [vertical][layout] > [flex][auto-vertical], html /deep/ [vertical][layout]::shadow [flex][auto-vertical] {
+  -ms-flex: 1 1 auto;
+  -webkit-flex-basis: auto;
+  flex-basis: auto;
+}
+
+html /deep/ [flex][auto] {
+  -ms-flex: 1 1 auto;
+  -webkit-flex-basis: auto;
+  flex-basis: auto;
+}
+
+html /deep/ [flex][none] {
+  -ms-flex: none;
+  -webkit-flex: none;
+  flex: none;
+}
+
+html /deep/ [flex][one] {
+  -ms-flex: 1;
+  -webkit-flex: 1;
+  flex: 1;
+}
+
+html /deep/ [flex][two] {
+  -ms-flex: 2;
+  -webkit-flex: 2;
+  flex: 2;
+}
+
+html /deep/ [flex][three] {
+  -ms-flex: 3;
+  -webkit-flex: 3;
+  flex: 3;
+}
+
+html /deep/ [flex][four] {
+  -ms-flex: 4;
+  -webkit-flex: 4;
+  flex: 4;
+}
+
+html /deep/ [flex][five] {
+  -ms-flex: 5;
+  -webkit-flex: 5;
+  flex: 5;
+}
+
+html /deep/ [flex][six] {
+  -ms-flex: 6;
+  -webkit-flex: 6;
+  flex: 6;
+}
+
+html /deep/ [flex][seven] {
+  -ms-flex: 7;
+  -webkit-flex: 7;
+  flex: 7;
+}
+
+html /deep/ [flex][eight] {
+  -ms-flex: 8;
+  -webkit-flex: 8;
+  flex: 8;
+}
+
+html /deep/ [flex][nine] {
+  -ms-flex: 9;
+  -webkit-flex: 9;
+  flex: 9;
+}
+
+html /deep/ [flex][ten] {
+  -ms-flex: 10;
+  -webkit-flex: 10;
+  flex: 10;
+}
+
+html /deep/ [flex][eleven] {
+  -ms-flex: 11;
+  -webkit-flex: 11;
+  flex: 11;
+}
+
+html /deep/ [flex][twelve] {
+  -ms-flex: 12;
+  -webkit-flex: 12;
+  flex: 12;
+}
+
+/* alignment in cross axis */
+
+html /deep/ [layout][start] {
+  -ms-flex-align: start;
+  -webkit-align-items: flex-start;
+  align-items: flex-start;
+}
+
+html /deep/ [layout][center], html /deep/ [layout][center-center] {
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+}
+
+html /deep/ [layout][end] {
+  -ms-flex-align: end;
+  -webkit-align-items: flex-end;
+  align-items: flex-end;
+}
+
+/* alignment in main axis */
+
+html /deep/ [layout][start-justified] {
+  -ms-flex-pack: start;
+  -webkit-justify-content: flex-start;
+  justify-content: flex-start;
+}
+
+html /deep/ [layout][center-justified], html /deep/ [layout][center-center] {
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+}
+
+html /deep/ [layout][end-justified] {
+  -ms-flex-pack: end;
+  -webkit-justify-content: flex-end;
+  justify-content: flex-end;
+}
+
+html /deep/ [layout][around-justified] {
+  -ms-flex-pack: distribute;
+  -webkit-justify-content: space-around;
+  justify-content: space-around;
+}
+
+html /deep/ [layout][justified] {
+  -ms-flex-pack: justify;
+  -webkit-justify-content: space-between;
+  justify-content: space-between;
+}
+
+/* self alignment */
+
+html /deep/ [self-start] {
+  -ms-align-self: flex-start;
+  -webkit-align-self: flex-start;
+  align-self: flex-start;
+}
+
+html /deep/ [self-center] {
+  -ms-align-self: center;
+  -webkit-align-self: center;
+  align-self: center;
+}
+
+html /deep/ [self-end] {
+  -ms-align-self: flex-end;
+  -webkit-align-self: flex-end;
+  align-self: flex-end;
+}
+
+html /deep/ [self-stretch] {
+  -ms-align-self: stretch;
+  -webkit-align-self: stretch;
+  align-self: stretch;
+}
+
+/*******************************
+          Other Layout
+*******************************/
+
+html /deep/ [block] {
+  display: block;
+}
+
+/* ie support for hidden */
+html /deep/ [hidden] {
+  display: none !important;
+}
+
+html /deep/ [relative] {
+  position: relative;
+}
+
+html /deep/ [fit] {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+body[fullbleed] {
+  margin: 0;
+  height: 100vh;
+}
+
+/*******************************
+            Other
+*******************************/
+
+html /deep/ [segment], html /deep/ segment {
+  display: block;
+  position: relative;
+  -webkit-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 1em 0.5em;
+  padding: 1em;
+  background-color: white;
+  -webkit-box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.1);
+  border-radius: 5px 5px 5px 5px;
+}
+
+</style>
+
+<script src="packages/polymer/src/js/polymer/polymer.min.js"></script>
+
+<script>
+// TODO(sigmund): remove this script tag (dartbug.com/19650). This empty
+// script tag is necessary to work around a bug in Chrome 36.
+</script>
+
+<!-- unminified for debugging:
+<link rel="import" href="src/js/polymer/layout.html">
+<script src="src/js/polymer/polymer.js"></script>
+-->
+
+<script>
+// This empty script is here to workaround issue
+// https://github.com/dart-lang/core-elements/issues/11
+</script>
+
+
+<polymer-element name="core-meta" attributes="label type" hidden="">
+<script>
+
+  (function() {
+    
+    var SKIP_ID = 'meta';
+    var metaData = {}, metaArray = {};
+
+    Polymer('core-meta', {
+      
+      /**
+       * The type of meta-data.  All meta-data with the same type with be
+       * stored together.
+       * 
+       * @attribute type
+       * @type string
+       * @default 'default'
+       */
+      type: 'default',
+      
+      alwaysPrepare: true,
+      
+      ready: function() {
+        this.register(this.id);
+      },
+      
+      get metaArray() {
+        var t = this.type;
+        if (!metaArray[t]) {
+          metaArray[t] = [];
+        }
+        return metaArray[t];
+      },
+      
+      get metaData() {
+        var t = this.type;
+        if (!metaData[t]) {
+          metaData[t] = {};
+        }
+        return metaData[t];
+      },
+      
+      register: function(id, old) {
+        if (id && id !== SKIP_ID) {
+          this.unregister(this, old);
+          this.metaData[id] = this;
+          this.metaArray.push(this);
+        }
+      },
+      
+      unregister: function(meta, id) {
+        delete this.metaData[id || meta.id];
+        var i = this.metaArray.indexOf(meta);
+        if (i >= 0) {
+          this.metaArray.splice(i, 1);
+        }
+      },
+      
+      /**
+       * Returns a list of all meta-data elements with the same type.
+       * 
+       * @property list
+       * @type array
+       * @default []
+       */
+      get list() {
+        return this.metaArray;
+      },
+      
+      /**
+       * Retrieves meta-data by ID.
+       *
+       * @method byId
+       * @param {String} id The ID of the meta-data to be returned.
+       * @returns Returns meta-data.
+       */
+      byId: function(id) {
+        return this.metaData[id];
+      }
+      
+    });
+    
+  })();
+  
+</script>
+</polymer-element>
+
+
+
+
+
+
+
+
+<polymer-element name="core-transition" extends="core-meta">
+  
+  <script>
+    Polymer('core-transition', {
+      
+      type: 'transition',
+
+      /**
+       * Run the animation.
+       *
+       * @method go
+       * @param {Node} node The node to apply the animation on
+       * @param {Object} state State info
+       */
+      go: function(node, state) {
+        this.complete(node);
+      },
+
+      /**
+       * Set up the animation. This may include injecting a stylesheet,
+       * applying styles, creating a web animations object, etc.. This
+       *
+       * @method setup
+       * @param {Node} node The animated node
+       */
+      setup: function(node) {
+      },
+
+      /**
+       * Tear down the animation.
+       *
+       * @method teardown
+       * @param {Node} node The animated node
+       */
+      teardown: function(node) {
+      },
+
+      /**
+       * Called when the animation completes. This function also fires the
+       * `core-transitionend` event.
+       *
+       * @method complete
+       * @param {Node} node The animated node
+       */
+      complete: function(node) {
+        this.fire('core-transitionend', null, node);
+      },
+
+      /**
+       * Utility function to listen to an event on a node once.
+       *
+       * @method listenOnce
+       * @param {Node} node The animated node
+       * @param {string} event Name of an event
+       * @param {Function} fn Event handler
+       * @param {Array} args Additional arguments to pass to `fn`
+       */
+      listenOnce: function(node, event, fn, args) {
+        var self = this;
+        var listener = function() {
+          fn.apply(self, args);
+          node.removeEventListener(event, listener, false);
+        }
+        node.addEventListener(event, listener, false);
+      }
+
+    });
+  </script>
+</polymer-element>
+
+
+<polymer-element name="core-transition-css" extends="core-transition" attributes="transitionType">
+<template>
+  <style no-shim="">/* Copyright (c) 2014 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt */
+
+:host(.core-transition) {
+  outline: none;
+  overflow: auto;
+  opacity: 0;
+  -webkit-transition: -webkit-transform 0.2s ease-in-out, opacity 0.2s ease-in;
+  transition: transform 0.2s ease-in-out, opacity 0.2s ease-in;
+}
+
+
+:host(.core-transition.core-opened) {
+  opacity: 1;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+}
+
+:host(.core-transition-center) {
+  -webkit-transform: scale(0.5);
+  transform: scale(0.5);
+}
+
+:host(.core-transition-top) {
+  -webkit-transform: translateY(-200%);
+  transform: translateY(-200%);
+}
+
+:host(.core-transition-bottom) {
+  -webkit-transform: translateY(200%);
+  transform: translateY(200%);
+}
+
+:host(.core-transition-left) {
+  -webkit-transform: translateX(-200%);
+  transform: translateX(-200%);
+}
+
+:host(.core-transition-right) {
+  -webkit-transform: translateX(200%);
+  transform: translateX(200%);
+}</style>
+</template>
+<script>
+
+  Polymer('core-transition-css', {
+
+    /**
+     * The class that will be applied to all animated nodes.
+     *
+     * @attribute baseClass
+     * @type string
+     * @default "core-transition"
+     */
+    baseClass: 'core-transition',
+
+    /**
+     * The class that will be applied to nodes in the opened state.
+     *
+     * @attribute openedClass
+     * @type string
+     * @default "core-opened"
+     */
+    openedClass: 'core-opened',
+
+    /**
+     * The class that will be applied to nodes in the closed state.
+     *
+     * @attribute closedClass
+     * @type string
+     * @default "core-closed"
+     */
+    closedClass: 'core-closed',
+
+    /**
+     * Event to listen to for animation completion.
+     *
+     * @attribute completeEventName
+     * @type string
+     * @default "transitionEnd"
+     */
+    completeEventName: 'transitionend',
+
+    publish: {
+      /**
+       * A secondary configuration attribute for the animation. The class
+       * `<baseClass>-<transitionType` is applied to the animated node during
+       * `setup`.
+       *
+       * @attribute transitionType
+       * @type string
+       */
+      transitionType: null
+    },
+
+    registerCallback: function(element) {
+      this.transitionStyle = element.templateContent().firstElementChild;
+    },
+
+    // template is just for loading styles, we don't need a shadowRoot
+    fetchTemplate: function() {
+      return null;
+    },
+
+    go: function(node, state) {
+      if (state.opened !== undefined) {
+        this.transitionOpened(node, state.opened);
+      }
+    },
+
+    setup: function(node) {
+      if (!node._hasTransitionStyle) {
+        if (!node.shadowRoot) {
+          node.createShadowRoot().innerHTML = '<content></content>';
+        }
+        this.installScopeStyle(this.transitionStyle, 'transition',
+            node.shadowRoot);
+        node._hasTransitionStyle = true;
+      }
+      node.classList.add(this.baseClass);
+      if (this.transitionType) {
+        node.classList.add(this.baseClass + '-' + this.transitionType);
+      }
+    },
+
+    teardown: function(node) {
+      node.classList.remove(this.baseClass);
+      if (this.transitionType) {
+        node.classList.remove(this.baseClass + '-' + this.transitionType);
+      }
+    },
+
+    transitionOpened: function(node, opened) {
+      this.listenOnce(node, this.completeEventName, function() {
+        if (!opened) {
+          node.classList.remove(this.closedClass);
+        }
+        this.complete(node);
+      });
+      node.classList.toggle(this.openedClass, opened);
+      node.classList.toggle(this.closedClass, !opened);
+    }
+
+  });
+</script>
+</polymer-element>
+
+<core-transition-css id="core-transition-fade"></core-transition-css>
+<core-transition-css id="core-transition-center" transitiontype="center"></core-transition-css>
+<core-transition-css id="core-transition-top" transitiontype="top"></core-transition-css>
+<core-transition-css id="core-transition-bottom" transitiontype="bottom"></core-transition-css>
+<core-transition-css id="core-transition-left" transitiontype="left"></core-transition-css>
+<core-transition-css id="core-transition-right" transitiontype="right"></core-transition-css>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+
+(function(scope) {
+
+/**
+  `Polymer.CoreResizable` and `Polymer.CoreResizer` are a set of mixins that can be used
+  in Polymer elements to coordinate the flow of resize events between "resizers" (elements
+  that control the size or hidden state of their children) and "resizables" (elements that
+  need to be notified when they are resized or un-hidden by their parents in order to take
+  action on their new measurements).
+
+  Elements that perform measurement should add the `Core.Resizable` mixin to their 
+  Polymer prototype definition and listen for the `core-resize` event on themselves.
+  This event will be fired when they become showing after having been hidden,
+  when they are resized explicitly by a `CoreResizer`, or when the window has been resized.
+  Note, the `core-resize` event is non-bubbling.
+
+  `CoreResizable`'s must manually call the `resizableAttachedHandler` from the element's
+  `attached` callback and `resizableDetachedHandler` from the element's `detached`
+  callback.
+
+    @element CoreResizable
+    @status beta
+    @homepage github.io
+*/
+
+  scope.CoreResizable = {
+
+    /**
+     * User must call from `attached` callback
+     *
+     * @method resizableAttachedHandler
+     */
+    resizableAttachedHandler: function(cb) {
+      cb = cb || this._notifyResizeSelf;
+      this.async(function() {
+        var detail = {callback: cb, hasParentResizer: false};
+        this.fire('core-request-resize', detail);
+        if (!detail.hasParentResizer) {
+          this._boundWindowResizeHandler = cb.bind(this);
+          // log('adding window resize handler', null, this);
+          window.addEventListener('resize', this._boundWindowResizeHandler);
+        }
+      }.bind(this));
+    },
+
+    /**
+     * User must call from `detached` callback
+     *
+     * @method resizableDetachedHandler
+     */
+    resizableDetachedHandler: function() {
+      this.fire('core-request-resize-cancel', null, this, false);
+      if (this._boundWindowResizeHandler) {
+        window.removeEventListener('resize', this._boundWindowResizeHandler);
+      }
+    },
+
+    // Private: fire non-bubbling resize event to self; returns whether
+    // preventDefault was called, indicating that children should not
+    // be resized
+    _notifyResizeSelf: function() {
+      return this.fire('core-resize', null, this, false).defaultPrevented;
+    }
+
+  };
+
+/**
+  `Polymer.CoreResizable` and `Polymer.CoreResizer` are a set of mixins that can be used
+  in Polymer elements to coordinate the flow of resize events between "resizers" (elements
+  that control the size or hidden state of their children) and "resizables" (elements that
+  need to be notified when they are resized or un-hidden by their parents in order to take
+  action on their new measurements).
+
+  Elements that cause their children to be resized (e.g. a splitter control) or hide/show
+  their children (e.g. overlay) should add the `Core.CoreResizer` mixin to their 
+  Polymer prototype definition and then call `this.notifyResize()` any time the element
+  resizes or un-hides its children.
+
+  `CoreResizer`'s must manually call the `resizerAttachedHandler` from the element's
+  `attached` callback and `resizerDetachedHandler` from the element's `detached`
+  callback.
+
+  Note: `CoreResizer` extends `CoreResizable`, and can listen for the `core-resize` event
+  on itself if it needs to perform resize work on itself before notifying children.
+  In this case, returning `false` from the `core-resize` event handler (or calling
+  `preventDefault` on the event) will prevent notification of children if required.
+
+  @element CoreResizer
+  @extends CoreResizable
+  @status beta
+  @homepage github.io
+*/
+
+  scope.CoreResizer = Polymer.mixin({
+
+    /**
+     * User must call from `attached` callback
+     *
+     * @method resizerAttachedHandler
+     */
+    resizerAttachedHandler: function() {
+      this.resizableAttachedHandler(this.notifyResize);
+      this._boundResizeRequested = this._boundResizeRequested || this._handleResizeRequested.bind(this);
+      var listener;
+      if (this.resizerIsPeer) {
+        listener = this.parentElement || (this.parentNode && this.parentNode.host);
+        listener._resizerPeers = listener._resizerPeers || [];
+        listener._resizerPeers.push(this);
+      } else {
+        listener = this;
+      }
+      listener.addEventListener('core-request-resize', this._boundResizeRequested);
+      this._resizerListener = listener;
+    },
+
+    /**
+     * User must call from `detached` callback
+     *
+     * @method resizerDetachedHandler
+     */
+    resizerDetachedHandler: function() {
+      this.resizableDetachedHandler();
+      this._resizerListener.removeEventListener('core-request-resize', this._boundResizeRequested);
+    },
+
+    /**
+     * User should call when resizing or un-hiding children
+     *
+     * @method notifyResize
+     */
+    notifyResize: function() {
+      // Notify self
+      if (!this._notifyResizeSelf()) {
+        // Notify requestors if default was not prevented
+        var r = this.resizeRequestors;
+        if (r) {
+          for (var i=0; i<r.length; i++) {
+            var ri = r[i];
+            if (!this.resizerShouldNotify || this.resizerShouldNotify(ri.target)) {
+              // log('notifying resize', null, ri.target, true);
+              ri.callback.apply(ri.target);
+              // logEnd();
+            }
+          }
+        }
+      }
+    },
+
+    /**
+     * User should implement to introduce filtering when notifying children.
+     * Generally, children that are hidden by the CoreResizer (e.g. non-active
+     * pages) need not be notified during resize, since they will be notified
+     * again when becoming un-hidden.
+     *
+     * Return `true` if CoreResizable passed as argument should be notified of
+     * resize.
+     *
+     * @method resizeerShouldNotify
+     * @param {Element} el
+     */
+     // resizeerShouldNotify: function(el) { }  // User to implement if needed
+
+    /**
+     * Set to `true` if the resizer is actually a peer to the elements it
+     * resizes (e.g. splitter); in this case it will listen for resize requests
+     * events from its peers on its parent.
+     *
+     * @property resizerIsPeer
+     * @type Boolean
+     * @default false
+     */
+
+    // Private: Handle requests for resize
+    _handleResizeRequested: function(e) {
+      var target = e.path[0];
+      if ((target == this) || 
+          (target == this._resizerListener) || 
+          (this._resizerPeers && this._resizerPeers.indexOf(target) < 0)) {
+        return;
+      }
+      // log('resize requested', target, this);
+      if (!this.resizeRequestors) {
+        this.resizeRequestors = [];
+      }
+      this.resizeRequestors.push({target: target, callback: e.detail.callback});
+      target.addEventListener('core-request-resize-cancel', this._cancelResizeRequested.bind(this));
+      e.detail.hasParentResizer = true;
+      e.stopPropagation();
+    },
+
+    // Private: Handle cancellation requests for resize
+    _cancelResizeRequested: function(e) {
+      // Exit early if we're already out of the DOM (resizeRequestors will already be null)
+      if (this.resizeRequestors) {
+        for (var i=0; i<this.resizeRequestors.length; i++) {
+          if (this.resizeRequestors[i].target == e.target) {
+            // log('resizeCanceled', e.target, this);
+            this.resizeRequestors.splice(i, 1);
+            break;
+          }
+        }
+      }
+    }
+
+  }, Polymer.CoreResizable);
+
+  // function prettyName(el) {
+  //   return el.localName + (el.id ? '#' : '') + el.id;
+  // }
+
+  // function log(what, from, to, group) {
+  //   var args = [what];
+  //   if (from) {
+  //     args.push('from ' + prettyName(from));
+  //   }
+  //   if (to) {
+  //     args.push('to ' + prettyName(to));
+  //   }
+  //   if (group) {
+  //     console.group.apply(console, args);
+  //   } else {
+  //     console.log.apply(console, args);
+  //   }
+  // }
+
+  // function logEnd() {
+  //   console.groupEnd();
+  // }
+
+})(Polymer);
+
+</script>
+
+
+<polymer-element name="core-key-helper">
+  <script>
+    Polymer('core-key-helper', {
+      ENTER_KEY: 13,
+      ESCAPE_KEY: 27
+    });
+  </script>
+</polymer-element>
+
+
+
+<polymer-element name="core-overlay-layer">
+<template>
+  <style>
+    :host {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 1000;
+      display: none;
+    }
+
+    :host(.core-opened) {
+      display: block;
+    }
+  </style>
+  <content></content>
+</template>
+<script>
+(function() {
+
+  Polymer('core-overlay-layer', {
+    publish: {
+      opened: false
+    },
+    openedChanged: function() {
+      this.classList.toggle('core-opened', this.opened);
+    },
+    /**
+     * Adds an element to the overlay layer
+     */
+    addElement: function(element) {
+      if (!this.parentNode) {
+        document.querySelector('body').appendChild(this);
+      }
+      if (element.parentNode !== this) {
+        element.__contents = [];
+        var ip$ = element.querySelectorAll('content');
+        for (var i=0, l=ip$.length, n; (i<l) && (n = ip$[i]); i++) {
+          this.moveInsertedElements(n);
+          this.cacheDomLocation(n);
+          n.parentNode.removeChild(n);
+          element.__contents.push(n);
+        }
+        this.cacheDomLocation(element);
+        this.updateEventController(element);
+        var h = this.makeHost();
+        h.shadowRoot.appendChild(element);
+        element.__host = h;
+      }
+    },
+    makeHost: function() {
+      var h = document.createElement('overlay-host');
+      h.createShadowRoot();
+      this.appendChild(h);
+      return h;
+    },
+    moveInsertedElements: function(insertionPoint) {
+      var n$ = insertionPoint.getDistributedNodes();
+      var parent = insertionPoint.parentNode;
+      insertionPoint.__contents = [];
+      for (var i=0, l=n$.length, n; (i<l) && (n=n$[i]); i++) {
+        this.cacheDomLocation(n);
+        this.updateEventController(n);
+        insertionPoint.__contents.push(n);
+        parent.appendChild(n);  
+      }
+    },
+    updateEventController: function(element) {
+      element.eventController = this.element.findController(element);
+    },
+    /**
+     * Removes an element from the overlay layer
+     */
+    removeElement: function(element) {
+      element.eventController = null;
+      this.replaceElement(element);
+      var h = element.__host;
+      if (h) {
+        h.parentNode.removeChild(h);
+      }
+    },
+    replaceElement: function(element) {
+      if (element.__contents) {
+        for (var i=0, c$=element.__contents, c; (c=c$[i]); i++) {
+          this.replaceElement(c);
+        }
+        element.__contents = null;
+      }
+      if (element.__parentNode) {
+        var n = element.__nextElementSibling && element.__nextElementSibling 
+            === element.__parentNode ? element.__nextElementSibling : null;
+        element.__parentNode.insertBefore(element, n);
+      }
+    },
+    cacheDomLocation: function(element) {
+      element.__nextElementSibling = element.nextElementSibling;
+      element.__parentNode = element.parentNode;
+    }
+  });
+  
+})();
+</script>
+</polymer-element>
+
+
+<!--
+The `core-overlay` element displays overlayed on top of other content. It starts
+out hidden and is displayed by setting its `opened` property to true.
+A `core-overlay's` opened state can be toggled by calling the `toggle`
+method.
+
+The `core-overlay` will, by default, show/hide itself when it's opened. The 
+`target` property may be set to another element to cause that element to 
+be shown when the overlay is opened.
+
+It's common to want a `core-overlay` to animate to its opened
+position. The `core-overlay` element uses a `core-transition` to handle
+animation. The default transition is `core-transition-fade` which 
+causes the overlay to fade in when displayed. See 
+<a href="../core-transition/">`core-transition`</a> for more
+information about customizing a `core-overlay's` opening animation. The
+`backdrop` property can be set to true to show a backdrop behind the overlay
+that will darken the rest of the window.
+
+An element that should close the `core-overlay` will automatically
+do so if it's given the `core-overlay-toggle` attribute. This attribute
+can be customized with the `closeAttribute` property. You can also use
+`closeSelector` if more general matching is needed.
+
+By default  `core-overlay` will close whenever the user taps outside it or
+presses the escape key. This behavior can be turned off via the
+`autoCloseDisabled` property.
+
+    <core-overlay>
+      <h2>Dialog</h2>
+      <input placeholder="say something..." autofocus>
+      <div>I agree with this wholeheartedly.</div>
+      <button core-overlay-toggle>OK</button>
+    </core-overlay>
+
+`core-overlay` will automatically size and position itself according to the 
+following rules. The overlay's size is constrained such that it does not
+overflow the screen. This is done by setting maxHeight/maxWidth on the 
+`sizingTarget`. If the `sizingTarget` already has a setting for one of these
+properties, it will not be overridden. The overlay should
+be positioned via css or imperatively using the `core-overlay-position` event.
+If the overlay is not positioned vertically via setting `top` or `bottom`, it
+will be centered vertically. The same is true horizontally via a setting to 
+`left` or `right`. In addition, css `margin` can be used to provide some space
+around the overlay. This can be used to ensure
+that, for example, a drop shadow is always visible around the overlay.
+
+@group Core Elements
+@element core-overlay
+@homepage github.io
+-->
+<!--
+Fired when the `core-overlay`'s `opened` property changes.
+
+@event core-overlay-open
+@param {Object} detail
+@param {Object} detail.opened the opened state
+-->
+<!--
+Fired when the `core-overlay` has completely opened.
+
+@event core-overlay-open-completed
+-->
+<!--
+Fired when the `core-overlay` has completely closed.
+
+@event core-overlay-close-completed
+-->
+<!--
+Fired when the `core-overlay` needs to position itself. Optionally, implement
+in order to position an overlay via code. If the overlay was not otherwise
+positioned, it's important to indicate how the overlay has been positioned by
+setting the `dimensions.position` object. For example, if the overlay has been
+positioned via setting `right` and `top`, set dimensions.position to an
+object like this: `{v: 'top', h: 'right'}`.
+
+@event core-overlay-position
+@param {Object} detail
+@param {Object} detail.target the overlay target
+@param {Object} detail.sizingTarget the overlay sizing target
+@param {Object} detail.opened the opened state
+-->
+<style>
+  .core-overlay-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: black;
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+
+  .core-overlay-backdrop.core-opened {
+    opacity: 0.6;
+  }
+</style>
+
+<polymer-element name="core-overlay">
+<script>
+(function() {
+
+  Polymer(Polymer.mixin({
+
+    publish: {
+      /**
+       * The target element that will be shown when the overlay is 
+       * opened. If unspecified, the core-overlay itself is the target.
+       *
+       * @attribute target
+       * @type Object
+       * @default the overlay element
+       */
+      target: null,
+
+
+      /**
+       * A `core-overlay`'s size is guaranteed to be 
+       * constrained to the window size. To achieve this, the sizingElement
+       * is sized with a max-height/width. By default this element is the 
+       * target element, but it can be specifically set to a specific element
+       * inside the target if that is more appropriate. This is useful, for 
+       * example, when a region inside the overlay should scroll if needed.
+       *
+       * @attribute sizingTarget
+       * @type Object
+       * @default the target element
+       */
+      sizingTarget: null,
+    
+      /**
+       * Set opened to true to show an overlay and to false to hide it.
+       * A `core-overlay` may be made initially opened by setting its
+       * `opened` attribute.
+       * @attribute opened
+       * @type boolean
+       * @default false
+       */
+      opened: false,
+
+      /**
+       * If true, the overlay has a backdrop darkening the rest of the screen.
+       * The backdrop element is attached to the document body and may be styled
+       * with the class `core-overlay-backdrop`. When opened the `core-opened`
+       * class is applied.
+       *
+       * @attribute backdrop
+       * @type boolean
+       * @default false
+       */    
+      backdrop: false,
+
+      /**
+       * If true, the overlay is guaranteed to display above page content.
+       *
+       * @attribute layered
+       * @type boolean
+       * @default false
+      */
+      layered: false,
+    
+      /**
+       * By default an overlay will close automatically if the user
+       * taps outside it or presses the escape key. Disable this
+       * behavior by setting the `autoCloseDisabled` property to true.
+       * @attribute autoCloseDisabled
+       * @type boolean
+       * @default false
+       */
+      autoCloseDisabled: false,
+
+      /**
+       * By default an overlay will focus its target or an element inside
+       * it with the `autoFocus` attribute. Disable this
+       * behavior by setting the `autoFocusDisabled` property to true.
+       * @attribute autoFocusDisabled
+       * @type boolean
+       * @default false
+       */
+      autoFocusDisabled: false,
+
+      /**
+       * This property specifies an attribute on elements that should
+       * close the overlay on tap. Should not set `closeSelector` if this
+       * is set.
+       *
+       * @attribute closeAttribute
+       * @type string
+       * @default "core-overlay-toggle"
+       */
+      closeAttribute: 'core-overlay-toggle',
+
+      /**
+       * This property specifies a selector matching elements that should
+       * close the overlay on tap. Should not set `closeAttribute` if this
+       * is set.
+       *
+       * @attribute closeSelector
+       * @type string
+       * @default ""
+       */
+      closeSelector: '',
+
+      /**
+       * The transition property specifies a string which identifies a 
+       * <a href="../core-transition/">`core-transition`</a> element that 
+       * will be used to help the overlay open and close. The default
+       * `core-transition-fade` will cause the overlay to fade in and out.
+       *
+       * @attribute transition
+       * @type string
+       * @default 'core-transition-fade'
+       */
+      transition: 'core-transition-fade'
+
+    },
+
+    captureEventName: 'tap',
+    targetListeners: {
+      'tap': 'tapHandler',
+      'keydown': 'keydownHandler',
+      'core-transitionend': 'transitionend'
+    },
+
+    attached: function() {
+      this.resizerAttachedHandler();
+    },
+
+    detached: function() {
+      this.resizerDetachedHandler();
+    },
+
+    resizerShouldNotify: function() {
+      return this.opened;
+    },
+
+    registerCallback: function(element) {
+      this.layer = document.createElement('core-overlay-layer');
+      this.keyHelper = document.createElement('core-key-helper');
+      this.meta = document.createElement('core-transition');
+      this.scrim = document.createElement('div');
+      this.scrim.className = 'core-overlay-backdrop';
+    },
+
+    ready: function() {
+      this.target = this.target || this;
+      // flush to ensure styles are installed before paint
+      Polymer.flush();
+    },
+
+    /** 
+     * Toggle the opened state of the overlay.
+     * @method toggle
+     */
+    toggle: function() {
+      this.opened = !this.opened;
+    },
+
+    /** 
+     * Open the overlay. This is equivalent to setting the `opened`
+     * property to true.
+     * @method open
+     */
+    open: function() {
+      this.opened = true;
+    },
+
+    /** 
+     * Close the overlay. This is equivalent to setting the `opened` 
+     * property to false.
+     * @method close
+     */
+    close: function() {
+      this.opened = false;
+    },
+
+    domReady: function() {
+      this.ensureTargetSetup();
+    },
+
+    targetChanged: function(old) {
+      if (this.target) {
+        // really make sure tabIndex is set
+        if (this.target.tabIndex < 0) {
+          this.target.tabIndex = -1;
+        }
+        this.addElementListenerList(this.target, this.targetListeners);
+        this.target.style.display = 'none';
+        this.target.__overlaySetup = false;
+      }
+      if (old) {
+        this.removeElementListenerList(old, this.targetListeners);
+        var transition = this.getTransition();
+        if (transition) {
+          transition.teardown(old);
+        } else {
+          old.style.position = '';
+          old.style.outline = '';
+        }
+        old.style.display = '';
+      }
+    },
+
+    transitionChanged: function(old) {
+      if (!this.target) {
+        return;
+      }
+      if (old) {
+        this.getTransition(old).teardown(this.target);
+      }
+      this.target.__overlaySetup = false;
+    },
+
+    // NOTE: wait to call this until we're as sure as possible that target
+    // is styled.
+    ensureTargetSetup: function() {
+      if (!this.target || this.target.__overlaySetup) {
+        return;
+      }
+      if (!this.sizingTarget) {
+        this.sizingTarget = this.target;
+      }
+      this.target.__overlaySetup = true;
+      this.target.style.display = '';
+      var transition = this.getTransition();
+      if (transition) {
+        transition.setup(this.target);
+      }
+      var style = this.target.style;
+      var computed = getComputedStyle(this.target);
+      if (computed.position === 'static') {
+        style.position = 'fixed';
+      }
+      style.outline = 'none';
+      style.display = 'none';
+    },
+
+    openedChanged: function() {
+      this.transitioning = true;
+      this.ensureTargetSetup();
+      this.prepareRenderOpened();
+      // async here to allow overlay layer to become visible.
+      this.async(function() {
+        this.target.style.display = '';
+        // force layout to ensure transitions will go
+        this.target.offsetWidth;
+        this.renderOpened();
+      });
+      this.fire('core-overlay-open', this.opened);
+    },
+
+    // tasks which must occur before opening; e.g. making the element visible
+    prepareRenderOpened: function() {
+      if (this.opened) {
+        addOverlay(this);
+      }
+      this.prepareBackdrop();
+      // async so we don't auto-close immediately via a click.
+      this.async(function() {
+        if (!this.autoCloseDisabled) {
+          this.enableElementListener(this.opened, document,
+              this.captureEventName, 'captureHandler', true);
+        }
+      });
+      this.enableElementListener(this.opened, window, 'resize',
+          'resizeHandler');
+
+      if (this.opened) {
+        // force layout so SD Polyfill renders
+        this.target.offsetHeight;
+        this.discoverDimensions();
+        // if we are showing, then take care when positioning
+        this.preparePositioning();
+        this.positionTarget();
+        this.updateTargetDimensions();
+        this.finishPositioning();
+        if (this.layered) {
+          this.layer.addElement(this.target);
+          this.layer.opened = this.opened;
+        }
+      }
+    },
+
+    // tasks which cause the overlay to actually open; typically play an
+    // animation
+    renderOpened: function() {
+      this.notifyResize();
+      var transition = this.getTransition();
+      if (transition) {
+        transition.go(this.target, {opened: this.opened});
+      } else {
+        this.transitionend();
+      }
+      this.renderBackdropOpened();
+    },
+
+    // finishing tasks; typically called via a transition
+    transitionend: function(e) {
+      // make sure this is our transition event.
+      if (e && e.target !== this.target) {
+        return;
+      }
+      this.transitioning = false;
+      if (!this.opened) {
+        this.resetTargetDimensions();
+        this.target.style.display = 'none';
+        this.completeBackdrop();
+        removeOverlay(this);
+        if (this.layered) {
+          if (!currentOverlay()) {
+            this.layer.opened = this.opened;
+          }
+          this.layer.removeElement(this.target);
+        }
+      }
+      this.fire('core-overlay-' + (this.opened ? 'open' : 'close') + 
+          '-completed');
+      this.applyFocus();
+    },
+
+    prepareBackdrop: function() {
+      if (this.backdrop && this.opened) {
+        if (!this.scrim.parentNode) {
+          document.body.appendChild(this.scrim);
+          this.scrim.style.zIndex = currentOverlayZ() - 1;
+        }
+        trackBackdrop(this);
+      }
+    },
+
+    renderBackdropOpened: function() {
+      if (this.backdrop && getBackdrops().length < 2) {
+        this.scrim.classList.toggle('core-opened', this.opened);
+      }
+    },
+
+    completeBackdrop: function() {
+      if (this.backdrop) {
+        trackBackdrop(this);
+        if (getBackdrops().length === 0) {
+          this.scrim.parentNode.removeChild(this.scrim);
+        }
+      }
+    },
+
+    preparePositioning: function() {
+      this.target.style.transition = this.target.style.webkitTransition = 'none';
+      this.target.style.transform = this.target.style.webkitTransform = 'none';
+      this.target.style.display = '';
+    },
+
+    discoverDimensions: function() {
+      if (this.dimensions) {
+        return;
+      }
+      var target = getComputedStyle(this.target);
+      var sizer = getComputedStyle(this.sizingTarget);
+      this.dimensions = {
+        position: {
+          v: target.top !== 'auto' ? 'top' : (target.bottom !== 'auto' ?
+            'bottom' : null),
+          h: target.left !== 'auto' ? 'left' : (target.right !== 'auto' ?
+            'right' : null),
+          css: target.position
+        },
+        size: {
+          v: sizer.maxHeight !== 'none',
+          h: sizer.maxWidth !== 'none'
+        },
+        margin: {
+          top: parseInt(target.marginTop) || 0,
+          right: parseInt(target.marginRight) || 0,
+          bottom: parseInt(target.marginBottom) || 0,
+          left: parseInt(target.marginLeft) || 0
+        }
+      };
+    },
+
+    finishPositioning: function(target) {
+      this.target.style.display = 'none';
+      this.target.style.transform = this.target.style.webkitTransform = '';
+      // force layout to avoid application of transform
+      this.target.offsetWidth;
+      this.target.style.transition = this.target.style.webkitTransition = '';
+    },
+
+    getTransition: function(name) {
+      return this.meta.byId(name || this.transition);
+    },
+
+    getFocusNode: function() {
+      return this.target.querySelector('[autofocus]') || this.target;
+    },
+
+    applyFocus: function() {
+      var focusNode = this.getFocusNode();
+      if (this.opened) {
+        if (!this.autoFocusDisabled) {
+          focusNode.focus();
+        }
+      } else {
+        focusNode.blur();
+        if (currentOverlay() == this) {
+          console.warn('Current core-overlay is attempting to focus itself as next! (bug)');
+        } else {
+          focusOverlay();
+        }
+      }
+    },
+
+    positionTarget: function() {
+      // fire positioning event
+      this.fire('core-overlay-position', {target: this.target,
+          sizingTarget: this.sizingTarget, opened: this.opened});
+      if (!this.dimensions.position.v) {
+        this.target.style.top = '0px';
+      }
+      if (!this.dimensions.position.h) {
+        this.target.style.left = '0px';
+      }
+    },
+
+    updateTargetDimensions: function() {
+      this.sizeTarget();
+      this.repositionTarget();
+    },
+
+    sizeTarget: function() {
+      this.sizingTarget.style.boxSizing = 'border-box';
+      var dims = this.dimensions;
+      var rect = this.target.getBoundingClientRect();
+      if (!dims.size.v) {
+        this.sizeDimension(rect, dims.position.v, 'top', 'bottom', 'Height');
+      }
+      if (!dims.size.h) {
+        this.sizeDimension(rect, dims.position.h, 'left', 'right', 'Width');
+      }
+    },
+
+    sizeDimension: function(rect, positionedBy, start, end, extent) {
+      var dims = this.dimensions;
+      var flip = (positionedBy === end);
+      var m = flip ? start : end;
+      var ws = window['inner' + extent];
+      var o = dims.margin[m] + (flip ? ws - rect[end] : 
+          rect[start]);
+      var offset = 'offset' + extent;
+      var o2 = this.target[offset] - this.sizingTarget[offset];
+      this.sizingTarget.style['max' + extent] = (ws - o - o2) + 'px';
+    },
+
+    // vertically and horizontally center if not positioned
+    repositionTarget: function() {
+      // only center if position fixed.      
+      if (this.dimensions.position.css !== 'fixed') {
+        return; 
+      }
+      if (!this.dimensions.position.v) {
+        var t = (window.innerHeight - this.target.offsetHeight) / 2;
+        t -= this.dimensions.margin.top;
+        this.target.style.top = t + 'px';
+      }
+
+      if (!this.dimensions.position.h) {
+        var l = (window.innerWidth - this.target.offsetWidth) / 2;
+        l -= this.dimensions.margin.left;
+        this.target.style.left = l + 'px';
+      }
+    },
+
+    resetTargetDimensions: function() {
+      if (!this.dimensions || !this.dimensions.size.v) {
+        this.sizingTarget.style.maxHeight = '';  
+        this.target.style.top = '';
+      }
+      if (!this.dimensions || !this.dimensions.size.h) {
+        this.sizingTarget.style.maxWidth = '';  
+        this.target.style.left = '';
+      }
+      this.dimensions = null;
+    },
+
+    tapHandler: function(e) {
+      // closeSelector takes precedence since closeAttribute has a default non-null value.
+      if (e.target &&
+          (this.closeSelector && e.target.matches(this.closeSelector)) ||
+          (this.closeAttribute && e.target.hasAttribute(this.closeAttribute))) {
+        this.toggle();
+      } else {
+        if (this.autoCloseJob) {
+          this.autoCloseJob.stop();
+          this.autoCloseJob = null;
+        }
+      }
+    },
+    
+    // We use the traditional approach of capturing events on document
+    // to to determine if the overlay needs to close. However, due to 
+    // ShadowDOM event retargeting, the event target is not useful. Instead
+    // of using it, we attempt to close asynchronously and prevent the close
+    // if a tap event is immediately heard on the target.
+    // TODO(sorvell): This approach will not work with modal. For
+    // this we need a scrim.
+    captureHandler: function(e) {
+      if (!this.autoCloseDisabled && (currentOverlay() == this)) {
+        this.autoCloseJob = this.job(this.autoCloseJob, function() {
+          this.close();
+        });
+      }
+    },
+
+    keydownHandler: function(e) {
+      if (!this.autoCloseDisabled && (e.keyCode == this.keyHelper.ESCAPE_KEY)) {
+        this.close();
+        e.stopPropagation();
+      }
+    },
+
+    /**
+     * Extensions of core-overlay should implement the `resizeHandler`
+     * method to adjust the size and position of the overlay when the 
+     * browser window resizes.
+     * @method resizeHandler
+     */
+    resizeHandler: function() {
+      this.updateTargetDimensions();
+    },
+
+    // TODO(sorvell): these utility methods should not be here.
+    addElementListenerList: function(node, events) {
+      for (var i in events) {
+        this.addElementListener(node, i, events[i]);
+      }
+    },
+
+    removeElementListenerList: function(node, events) {
+      for (var i in events) {
+        this.removeElementListener(node, i, events[i]);
+      }
+    },
+
+    enableElementListener: function(enable, node, event, methodName, capture) {
+      if (enable) {
+        this.addElementListener(node, event, methodName, capture);
+      } else {
+        this.removeElementListener(node, event, methodName, capture);
+      }
+    },
+
+    addElementListener: function(node, event, methodName, capture) {
+      var fn = this._makeBoundListener(methodName);
+      if (node && fn) {
+        Polymer.addEventListener(node, event, fn, capture);
+      }
+    },
+
+    removeElementListener: function(node, event, methodName, capture) {
+      var fn = this._makeBoundListener(methodName);
+      if (node && fn) {
+        Polymer.removeEventListener(node, event, fn, capture);
+      }
+    },
+
+    _makeBoundListener: function(methodName) {
+      var self = this, method = this[methodName];
+      if (!method) {
+        return;
+      }
+      var bound = '_bound' + methodName;
+      if (!this[bound]) {
+        this[bound] = function(e) {
+          method.call(self, e);
+        };
+      }
+      return this[bound];
+    }
+
+  }, Polymer.CoreResizer));
+
+  // TODO(sorvell): This should be an element with private state so it can
+  // be independent of overlay.
+  // track overlays for z-index and focus managemant
+  var overlays = [];
+  function addOverlay(overlay) {
+    var z0 = currentOverlayZ();
+    overlays.push(overlay);
+    var z1 = currentOverlayZ();
+    if (z1 <= z0) {
+      applyOverlayZ(overlay, z0);
+    }
+  }
+
+  function removeOverlay(overlay) {
+    var i = overlays.indexOf(overlay);
+    if (i >= 0) {
+      overlays.splice(i, 1);
+      setZ(overlay, '');
+    }
+  }
+  
+  function applyOverlayZ(overlay, aboveZ) {
+    setZ(overlay.target, aboveZ + 2);
+  }
+  
+  function setZ(element, z) {
+    element.style.zIndex = z;
+  }
+
+  function currentOverlay() {
+    return overlays[overlays.length-1];
+  }
+  
+  var DEFAULT_Z = 10;
+  
+  function currentOverlayZ() {
+    var z;
+    var current = currentOverlay();
+    if (current) {
+      var z1 = window.getComputedStyle(current.target).zIndex;
+      if (!isNaN(z1)) {
+        z = Number(z1);
+      }
+    }
+    return z || DEFAULT_Z;
+  }
+  
+  function focusOverlay() {
+    var current = currentOverlay();
+    // We have to be careful to focus the next overlay _after_ any current
+    // transitions are complete (due to the state being toggled prior to the
+    // transition). Otherwise, we risk infinite recursion when a transitioning
+    // (closed) overlay becomes the current overlay.
+    //
+    // NOTE: We make the assumption that any overlay that completes a transition
+    // will call into focusOverlay to kick the process back off. Currently:
+    // transitionend -> applyFocus -> focusOverlay.
+    if (current && !current.transitioning) {
+      current.applyFocus();
+    }
+  }
+
+  var backdrops = [];
+  function trackBackdrop(element) {
+    if (element.opened) {
+      backdrops.push(element);
+    } else {
+      var i = backdrops.indexOf(element);
+      if (i >= 0) {
+        backdrops.splice(i, 1);
+      }
+    }
+  }
+
+  function getBackdrops() {
+    return backdrops;
+  }
+})();
+</script>
+</polymer-element>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<style>
+      body {
+          margin: 0;
+      }
+
+      section {
+        padding: 24px;
+      }
+  </style></div>
+
+	<section>
+        <x-container></x-container>
+    </section>
+
+	<!-- a simple dialog element made with core-overlay -->
+	<polymer-element name="x-dialog" attributes="opened autoCloseDisabled">
+	<template>
+		<style>
+
+			:host {
+				box-sizing: border-box;
+				-moz-box-sizing: border-box;
+				font-family: Arial, Helvetica, sans-serif;
+				font-size: 13px;
+				-webkit-user-select: none;
+				-moz-user-select: none;
+				overflow: hidden;
+				background: white;
+				padding:30px 42px;
+				outline: 1px solid rgba(0,0,0,0.2);
+				box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+			}
+		</style>
+		<core-overlay id="overlay" layered="" backdrop="" opened="{{opened}}" autoclosedisabled="{{autoCloseDisabled}}" transition="core-transition-center"></core-overlay>
+		<content></content>
+	</template>
+
+	</polymer-element>
+
+
+	<!-- an element that uses the x-dialog element and core-overlay -->
+	<polymer-element name="x-container">
+	<template>
+		<x-dialog id="dialog" class="dialog">
+			<!-- place all overlay styles inside the overlay target -->
+			<style no-shim="">
+				.dialog {
+					box-sizing: border-box;
+					-moz-box-sizing: border-box;
+					font-family: Arial, Helvetica, sans-serif;
+					font-size: 13px;
+					-webkit-user-select: none;
+					-moz-user-select: none;
+					overflow: hidden;
+					background: white;
+					padding:30px 42px;
+					outline: 1px solid rgba(0,0,0,0.2);
+					box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+				}
+
+				#dialog {
+					width: 500px;
+				}
+			</style>
+			<h2>Dialog</h2>
+			<div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed fringilla sapien sed enim sollicitudin laoreet. Suspendisse suscipit, metus ac volutpat sodales, libero magna semper lacus, molestie fringilla massa orci ut arcu. Nullam sodales urna sit amet odio vehicula mattis.</div><br><br>
+			<div>Ut aliquam vulputate congue. Vestibulum pretium pretium nulla quis sollicitudin. Praesent lacinia congue erat nec mattis. Fusce commodo lacus est. Duis turpis eros, ultrices sed aliquet non, blandit egestas velit. Integer a augue nec lorem tristique hendrerit. Curabitur imperdiet risus id enim bibendum vestibulum. Integer id magna at arcu faucibus fermentum vel a augue. Sed fringilla venenatis dolor, in blandit magna molestie luctus. Vestibulum dignissim posuere ultrices. Aenean urna nisl, tincidunt vitae iaculis ut, pharetra nec eros.</div><br><br>
+
+			<div>
+				<input placeholder="say something..." autofocus="" on-input="{{inputHandler}}"><br>
+				I agree with this wholeheartedly.
+				<core-overlay layered="" id="confirmation" class="dialog" backdrop="" transition="core-transition-top">
+					<!-- place all overlay styles inside the overlay target -->
+					<style no-shim="">
+						.dialog {
+							box-sizing: border-box;
+							-moz-box-sizing: border-box;
+							font-family: Arial, Helvetica, sans-serif;
+							font-size: 13px;
+							-webkit-user-select: none;
+							-moz-user-select: none;
+							overflow: hidden;
+							background: white;
+							padding:30px 42px;
+							outline: 1px solid rgba(0,0,0,0.2);
+							box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+						}
+
+						#confirmation {
+							box-sizing: border-box;
+							text-align: center;
+							width: 150px;
+						}
+					</style>
+					Thank you.
+				</core-overlay>
+			</div><br><br>
+			<button core-overlay-toggle="">OK</button>
+		</x-dialog>
+
+		<button on-tap="{{tapHandler}}">Toggle Dialog</button>
+	</template>
+	</polymer-element>
+
+  <script src="core_overlay.html.polymer.bootstrap.dart.js" async=""></script>
+
+
+
+</body></html>

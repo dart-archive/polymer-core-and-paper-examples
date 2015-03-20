@@ -1,0 +1,717 @@
+<!DOCTYPE html><!--
+Copyright (c) 2014 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+--><html><head><script src="../packages/web_components/webcomponents.min.js"></script><script src="../packages/web_components/dart_support.js"></script>
+  <title>core-list grid</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  
+  
+  
+  
+</head>
+<body fit=""><div hidden=""><script src="../packages/web_components/interop_support.js"></script>
+
+<!-- Dart note: load polymer for Dart and JS from the same place -->
+<style shim-shadowdom="">
+/*******************************
+          Flex Layout
+*******************************/
+
+html /deep/ [layout][horizontal], html /deep/ [layout][vertical] {
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+}
+
+html /deep/ [layout][horizontal][inline], html /deep/ [layout][vertical][inline] {
+  display: -ms-inline-flexbox;
+  display: -webkit-inline-flex;
+  display: inline-flex;
+}
+
+html /deep/ [layout][horizontal] {
+  -ms-flex-direction: row;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+}
+
+html /deep/ [layout][horizontal][reverse] {
+  -ms-flex-direction: row-reverse;
+  -webkit-flex-direction: row-reverse;
+  flex-direction: row-reverse;
+}
+
+html /deep/ [layout][vertical] {
+  -ms-flex-direction: column;
+  -webkit-flex-direction: column;
+  flex-direction: column;
+}
+
+html /deep/ [layout][vertical][reverse] {
+  -ms-flex-direction: column-reverse;
+  -webkit-flex-direction: column-reverse;
+  flex-direction: column-reverse;
+}
+
+html /deep/ [layout][wrap] {
+  -ms-flex-wrap: wrap;
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
+html /deep/ [layout][wrap-reverse] {
+  -ms-flex-wrap: wrap-reverse;
+  -webkit-flex-wrap: wrap-reverse;
+  flex-wrap: wrap-reverse;
+}
+
+html /deep/ [flex] {
+  -ms-flex: 1 1 0.000000001px;
+  -webkit-flex: 1;
+  flex: 1;
+  -webkit-flex-basis: 0.000000001px;
+  flex-basis: 0.000000001px;
+}
+
+html /deep/ [vertical][layout] > [flex][auto-vertical], html /deep/ [vertical][layout]::shadow [flex][auto-vertical] {
+  -ms-flex: 1 1 auto;
+  -webkit-flex-basis: auto;
+  flex-basis: auto;
+}
+
+html /deep/ [flex][auto] {
+  -ms-flex: 1 1 auto;
+  -webkit-flex-basis: auto;
+  flex-basis: auto;
+}
+
+html /deep/ [flex][none] {
+  -ms-flex: none;
+  -webkit-flex: none;
+  flex: none;
+}
+
+html /deep/ [flex][one] {
+  -ms-flex: 1;
+  -webkit-flex: 1;
+  flex: 1;
+}
+
+html /deep/ [flex][two] {
+  -ms-flex: 2;
+  -webkit-flex: 2;
+  flex: 2;
+}
+
+html /deep/ [flex][three] {
+  -ms-flex: 3;
+  -webkit-flex: 3;
+  flex: 3;
+}
+
+html /deep/ [flex][four] {
+  -ms-flex: 4;
+  -webkit-flex: 4;
+  flex: 4;
+}
+
+html /deep/ [flex][five] {
+  -ms-flex: 5;
+  -webkit-flex: 5;
+  flex: 5;
+}
+
+html /deep/ [flex][six] {
+  -ms-flex: 6;
+  -webkit-flex: 6;
+  flex: 6;
+}
+
+html /deep/ [flex][seven] {
+  -ms-flex: 7;
+  -webkit-flex: 7;
+  flex: 7;
+}
+
+html /deep/ [flex][eight] {
+  -ms-flex: 8;
+  -webkit-flex: 8;
+  flex: 8;
+}
+
+html /deep/ [flex][nine] {
+  -ms-flex: 9;
+  -webkit-flex: 9;
+  flex: 9;
+}
+
+html /deep/ [flex][ten] {
+  -ms-flex: 10;
+  -webkit-flex: 10;
+  flex: 10;
+}
+
+html /deep/ [flex][eleven] {
+  -ms-flex: 11;
+  -webkit-flex: 11;
+  flex: 11;
+}
+
+html /deep/ [flex][twelve] {
+  -ms-flex: 12;
+  -webkit-flex: 12;
+  flex: 12;
+}
+
+/* alignment in cross axis */
+
+html /deep/ [layout][start] {
+  -ms-flex-align: start;
+  -webkit-align-items: flex-start;
+  align-items: flex-start;
+}
+
+html /deep/ [layout][center], html /deep/ [layout][center-center] {
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+}
+
+html /deep/ [layout][end] {
+  -ms-flex-align: end;
+  -webkit-align-items: flex-end;
+  align-items: flex-end;
+}
+
+/* alignment in main axis */
+
+html /deep/ [layout][start-justified] {
+  -ms-flex-pack: start;
+  -webkit-justify-content: flex-start;
+  justify-content: flex-start;
+}
+
+html /deep/ [layout][center-justified], html /deep/ [layout][center-center] {
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+}
+
+html /deep/ [layout][end-justified] {
+  -ms-flex-pack: end;
+  -webkit-justify-content: flex-end;
+  justify-content: flex-end;
+}
+
+html /deep/ [layout][around-justified] {
+  -ms-flex-pack: distribute;
+  -webkit-justify-content: space-around;
+  justify-content: space-around;
+}
+
+html /deep/ [layout][justified] {
+  -ms-flex-pack: justify;
+  -webkit-justify-content: space-between;
+  justify-content: space-between;
+}
+
+/* self alignment */
+
+html /deep/ [self-start] {
+  -ms-align-self: flex-start;
+  -webkit-align-self: flex-start;
+  align-self: flex-start;
+}
+
+html /deep/ [self-center] {
+  -ms-align-self: center;
+  -webkit-align-self: center;
+  align-self: center;
+}
+
+html /deep/ [self-end] {
+  -ms-align-self: flex-end;
+  -webkit-align-self: flex-end;
+  align-self: flex-end;
+}
+
+html /deep/ [self-stretch] {
+  -ms-align-self: stretch;
+  -webkit-align-self: stretch;
+  align-self: stretch;
+}
+
+/*******************************
+          Other Layout
+*******************************/
+
+html /deep/ [block] {
+  display: block;
+}
+
+/* ie support for hidden */
+html /deep/ [hidden] {
+  display: none !important;
+}
+
+html /deep/ [relative] {
+  position: relative;
+}
+
+html /deep/ [fit] {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+body[fullbleed] {
+  margin: 0;
+  height: 100vh;
+}
+
+/*******************************
+            Other
+*******************************/
+
+html /deep/ [segment], html /deep/ segment {
+  display: block;
+  position: relative;
+  -webkit-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 1em 0.5em;
+  padding: 1em;
+  background-color: white;
+  -webkit-box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.1);
+  border-radius: 5px 5px 5px 5px;
+}
+
+</style>
+
+<script src="../packages/polymer/src/js/polymer/polymer.min.js"></script>
+
+<script>
+// TODO(sigmund): remove this script tag (dartbug.com/19650). This empty
+// script tag is necessary to work around a bug in Chrome 36.
+</script>
+
+<!-- unminified for debugging:
+<link rel="import" href="src/js/polymer/layout.html">
+<script src="src/js/polymer/polymer.js"></script>
+-->
+
+<script>
+// This empty script is here to workaround issue
+// https://github.com/dart-lang/core-elements/issues/11
+</script>
+
+
+<polymer-element name="core-selection" attributes="multi" hidden="">
+  <script>
+    Polymer('core-selection', {
+      /**
+       * If true, multiple selections are allowed.
+       *
+       * @attribute multi
+       * @type boolean
+       * @default false
+       */
+      multi: false,
+      ready: function() {
+        this.clear();
+      },
+      clear: function() {
+        this.selection = [];
+      },
+      /**
+       * Retrieves the selected item(s).
+       * @method getSelection
+       * @returns Returns the selected item(s). If the multi property is true,
+       * getSelection will return an array, otherwise it will return 
+       * the selected item or undefined if there is no selection.
+      */
+      getSelection: function() {
+        return this.multi ? this.selection : this.selection[0];
+      },
+      /**
+       * Indicates if a given item is selected.
+       * @method isSelected
+       * @param {any} item The item whose selection state should be checked.
+       * @returns Returns true if `item` is selected.
+      */
+      isSelected: function(item) {
+        return this.selection.indexOf(item) >= 0;
+      },
+      setItemSelected: function(item, isSelected) {
+        if (item !== undefined && item !== null) {
+          if (isSelected) {
+            this.selection.push(item);
+          } else {
+            var i = this.selection.indexOf(item);
+            if (i >= 0) {
+              this.selection.splice(i, 1);
+            }
+          }
+          this.fire("core-select", {isSelected: isSelected, item: item});
+        }
+      },
+      /**
+       * Set the selection state for a given `item`. If the multi property
+       * is true, then the selected state of `item` will be toggled; otherwise
+       * the `item` will be selected.
+       * @method select
+       * @param {any} item: The item to select.
+      */
+      select: function(item) {
+        if (this.multi) {
+          this.toggle(item);
+        } else if (this.getSelection() !== item) {
+          this.setItemSelected(this.getSelection(), false);
+          this.setItemSelected(item, true);
+        }
+      },
+      /**
+       * Toggles the selection state for `item`.
+       * @method toggle
+       * @param {any} item: The item to toggle.
+      */
+      toggle: function(item) {
+        this.setItemSelected(item, !this.isSelected(item));
+      }
+    });
+  </script>
+</polymer-element>
+
+
+
+
+
+
+
+
+
+
+<polymer-element name="core-list-dart" on-tap="{{tapHandler}}">
+  <template>
+    <core-selection id="selection" multi="{{multi}}" on-core-select="{{selectedHandler}}"></core-selection>
+    <style>:host {
+  display: block;
+  outline: none;
+  position: relative;
+}
+
+polyfill-next-selector { content: '.core-list-viewport > *'; }
+::content > * {
+  position: absolute;
+  top: 0;
+  box-sizing: border-box;
+  opacity: 0;
+}
+
+polyfill-next-selector { content: ':host(:not([grid])) .core-list-viewport > *'; }
+:host(:not([grid])) ::content > * {
+  width: 100%;
+}
+
+.core-list-items.horizontal {
+  height: 100%;
+  white-space: nowrap;
+}
+
+.core-list-items.horizontal > * {
+  display: inline-block;
+}
+</style>
+    <div id="viewport" class="core-list-viewport"><content></content></div>
+  </template>
+</polymer-element>
+
+
+
+
+
+<polymer-element name="core-xhr-dart" hidden="">
+</polymer-element>
+
+
+
+
+
+<polymer-element name="core-ajax-dart" hidden="" attributes="url handleAs auto params response error method headers body contentType withCredentials progress loading">
+</polymer-element>
+
+
+
+
+<polymer-element name="core-image">
+<template>
+  <style>/*
+Copyright (c) 2014 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+*/
+
+:host {
+  display: inline-block;
+  overflow: hidden;
+  position: relative;
+}
+
+#placeholder {
+  background-color: inherit;
+  opacity: 1;
+}
+#placeholder.fadein {
+  transition: opacity 0.5s linear;
+  opacity: 0;
+}</style>
+  <template if="{{!sizing}}">
+    <img id="img">
+  </template>
+  <template if="{{preload &amp;&amp; fade}}">
+    <div id="placeholder" fit=""></div>
+  </template>
+  <content></content>
+</template>
+<script>
+
+  Polymer({
+    
+    publish: {
+
+      /**
+       * The URL of an image.
+       *
+       * @attribute src
+       * @type string
+       * @default null
+       */
+      src: null,
+
+      /**
+       * When false, the image is prevented from loading and any placeholder is
+       * shown.  This may be useful when a binding to the src property is known to
+       * be invalid, to prevent 404 requests.
+       *
+       * @attribute src
+       * @type string
+       * @default null
+       */
+      load: true,
+
+      /**
+       * Sets a sizing option for the image.  Valid values are `contain` (full 
+       * aspect ratio of the image is contained within the element and 
+       * letterboxed) or `cover` (image is cropped in order to fully cover the
+       * bounds of the element), or `null` (default: image takes natural size).
+       *
+       * @attribute sizing
+       * @type string
+       * @default null
+       */
+      sizing: null,
+
+      /**
+       * When a sizing option is uzed (`cover` or `contain`), this determines
+       * how the image is aligned within the element bounds.
+       *
+       * @attribute position
+       * @type string
+       * @default 'center'
+       */
+      position: 'center',
+
+      /**
+       * When `true`, any change to the `src` property will cause the `placeholder`
+       * image to be shown until the 
+       *
+       * @attribute preload
+       * @type boolean
+       * @default false
+       */
+      preload: false,
+
+      /**
+       * This image will be used as a background/placeholder until the src image has
+       * loaded.  Use of a data-URI for placeholder is encouraged for instant rendering.
+       *
+       * @attribute placeholder
+       * @type string
+       * @default null
+       */
+      placeholder: null,
+
+      /**
+       * When `preload` is true, setting `fade` to true will cause the image to
+       * fade into place.
+       *
+       * @attribute fade
+       * @type boolean
+       * @default false
+       */
+      fade: false,
+
+      /**
+       * Read-only value that tracks the loading state of the image when the `preload`
+       * option is used.
+       *
+       * @attribute loading
+       * @type boolean
+       * @default false
+       */
+      loading: false,
+
+      /**
+       * Can be used to set the width of image (e.g. via binding); size may also be
+       * set via CSS.
+       *
+       * @attribute width
+       * @type number
+       * @default null
+       */
+      width: null,
+
+      /**
+       * Can be used to set the height of image (e.g. via binding); size may also be
+       * set via CSS.
+       *
+       * @attribute height
+       * @type number
+       * @default null
+       */
+      height: null
+
+    },
+
+    observe: {
+      'preload color sizing position src fade': 'update'
+    },
+
+    widthChanged: function() {
+      this.style.width = isNaN(this.width) ? this.width : this.width + 'px';
+    },
+
+    heightChanged: function() {
+      this.style.height = isNaN(this.height) ? this.height : this.height + 'px';
+    },
+
+    update: function() {
+      this.style.backgroundSize = this.sizing;
+      this.style.backgroundPosition = this.sizing ? this.position : null;
+      this.style.backgroundRepeat = this.sizing ? 'no-repeat' : null;
+      if (this.preload) {
+        if (this.fade) {
+          if (!this._placeholderEl) {
+            this._placeholderEl = this.shadowRoot.querySelector('#placeholder');
+          }
+          this._placeholderEl.style.backgroundSize = this.sizing;
+          this._placeholderEl.style.backgroundPosition = this.sizing ? this.position : null;
+          this._placeholderEl.style.backgroundRepeat = this.sizing ? 'no-repeat' : null;
+          this._placeholderEl.classList.remove('fadein');
+          this._placeholderEl.style.backgroundImage = (this.load && this.placeholder) ? 'url(' + this.placeholder + ')': null;
+        } else {
+          this._setSrc(this.placeholder);
+        }
+        if (this.load && this.src) {
+          var img = new Image();
+          img.src = this.src;
+          this.loading = true;
+          img.onload = function() {
+            this._setSrc(this.src);
+            this.loading = false;
+            if (this.fade) {
+              this._placeholderEl.classList.add('fadein');
+            }
+          }.bind(this);
+        }
+      } else {
+        this._setSrc(this.src);
+      }
+    },
+
+    _setSrc: function(src) {
+      if (this.sizing) {
+        this.style.backgroundImage = src ? 'url(' + src + ')': '';
+      } else {
+        this.$.img.src = src || '';
+      }
+    }
+
+  });
+
+</script>
+</polymer-element>
+
+
+
+
+
+
+<style>
+    html, body {
+      margin: 0;
+      -webkit-tap-highlight-color: transparent;
+      overflow: hidden;
+      user-select: none;
+      -webkit-user-select: none;
+    }
+
+    list-test {
+      display: block;
+      height: 100%;
+      margin: 0 auto;
+    }
+  </style></div>
+
+<list-test></list-test>
+
+<polymer-element name="list-test" layout="" vertical="" center-center="" relative="">
+  <template>
+    <style>
+      .item {
+        box-sizing: border-box;
+        padding: 10px;
+        overflow: hidden;
+        color: black;
+      }
+      .item > core-image {
+        height: 150px;
+        width: 150px;
+        background-color: lightgray;
+      }
+      .item.selected {
+        background:yellow;
+      }
+      .divider {
+        padding-top: 40px;
+        font-size: 4em;
+      }
+
+    </style>
+
+    <core-list-dart id="list" data="{{data}}" fit="" grid="" width="172">
+      <template>
+        <div class="item {{selected ? 'selected' : ''}}">
+          <core-image id="image" src="{{model['image']}}" preload=""></core-image>
+          <div>{{model['caption']}}</div>
+        </div>
+      </template>
+    </core-list-dart>
+  </template>
+</polymer-element>
+
+<script src="grid.html.polymer.bootstrap.dart.js" async=""></script>
+
+
+
+</body></html>

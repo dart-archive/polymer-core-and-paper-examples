@@ -1,0 +1,638 @@
+<!DOCTYPE html><html><head><script src="packages/web_components/webcomponents.min.js"></script><script src="packages/web_components/dart_support.js"></script>
+
+  <title>core-collapse</title>
+  
+
+  
+
+</head>
+<body unresolved=""><div hidden=""><script src="packages/web_components/interop_support.js"></script>
+
+<!-- Dart note: load polymer for Dart and JS from the same place -->
+<style shim-shadowdom="">
+/*******************************
+          Flex Layout
+*******************************/
+
+html /deep/ [layout][horizontal], html /deep/ [layout][vertical] {
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+}
+
+html /deep/ [layout][horizontal][inline], html /deep/ [layout][vertical][inline] {
+  display: -ms-inline-flexbox;
+  display: -webkit-inline-flex;
+  display: inline-flex;
+}
+
+html /deep/ [layout][horizontal] {
+  -ms-flex-direction: row;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+}
+
+html /deep/ [layout][horizontal][reverse] {
+  -ms-flex-direction: row-reverse;
+  -webkit-flex-direction: row-reverse;
+  flex-direction: row-reverse;
+}
+
+html /deep/ [layout][vertical] {
+  -ms-flex-direction: column;
+  -webkit-flex-direction: column;
+  flex-direction: column;
+}
+
+html /deep/ [layout][vertical][reverse] {
+  -ms-flex-direction: column-reverse;
+  -webkit-flex-direction: column-reverse;
+  flex-direction: column-reverse;
+}
+
+html /deep/ [layout][wrap] {
+  -ms-flex-wrap: wrap;
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
+html /deep/ [layout][wrap-reverse] {
+  -ms-flex-wrap: wrap-reverse;
+  -webkit-flex-wrap: wrap-reverse;
+  flex-wrap: wrap-reverse;
+}
+
+html /deep/ [flex] {
+  -ms-flex: 1 1 0.000000001px;
+  -webkit-flex: 1;
+  flex: 1;
+  -webkit-flex-basis: 0.000000001px;
+  flex-basis: 0.000000001px;
+}
+
+html /deep/ [vertical][layout] > [flex][auto-vertical], html /deep/ [vertical][layout]::shadow [flex][auto-vertical] {
+  -ms-flex: 1 1 auto;
+  -webkit-flex-basis: auto;
+  flex-basis: auto;
+}
+
+html /deep/ [flex][auto] {
+  -ms-flex: 1 1 auto;
+  -webkit-flex-basis: auto;
+  flex-basis: auto;
+}
+
+html /deep/ [flex][none] {
+  -ms-flex: none;
+  -webkit-flex: none;
+  flex: none;
+}
+
+html /deep/ [flex][one] {
+  -ms-flex: 1;
+  -webkit-flex: 1;
+  flex: 1;
+}
+
+html /deep/ [flex][two] {
+  -ms-flex: 2;
+  -webkit-flex: 2;
+  flex: 2;
+}
+
+html /deep/ [flex][three] {
+  -ms-flex: 3;
+  -webkit-flex: 3;
+  flex: 3;
+}
+
+html /deep/ [flex][four] {
+  -ms-flex: 4;
+  -webkit-flex: 4;
+  flex: 4;
+}
+
+html /deep/ [flex][five] {
+  -ms-flex: 5;
+  -webkit-flex: 5;
+  flex: 5;
+}
+
+html /deep/ [flex][six] {
+  -ms-flex: 6;
+  -webkit-flex: 6;
+  flex: 6;
+}
+
+html /deep/ [flex][seven] {
+  -ms-flex: 7;
+  -webkit-flex: 7;
+  flex: 7;
+}
+
+html /deep/ [flex][eight] {
+  -ms-flex: 8;
+  -webkit-flex: 8;
+  flex: 8;
+}
+
+html /deep/ [flex][nine] {
+  -ms-flex: 9;
+  -webkit-flex: 9;
+  flex: 9;
+}
+
+html /deep/ [flex][ten] {
+  -ms-flex: 10;
+  -webkit-flex: 10;
+  flex: 10;
+}
+
+html /deep/ [flex][eleven] {
+  -ms-flex: 11;
+  -webkit-flex: 11;
+  flex: 11;
+}
+
+html /deep/ [flex][twelve] {
+  -ms-flex: 12;
+  -webkit-flex: 12;
+  flex: 12;
+}
+
+/* alignment in cross axis */
+
+html /deep/ [layout][start] {
+  -ms-flex-align: start;
+  -webkit-align-items: flex-start;
+  align-items: flex-start;
+}
+
+html /deep/ [layout][center], html /deep/ [layout][center-center] {
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+}
+
+html /deep/ [layout][end] {
+  -ms-flex-align: end;
+  -webkit-align-items: flex-end;
+  align-items: flex-end;
+}
+
+/* alignment in main axis */
+
+html /deep/ [layout][start-justified] {
+  -ms-flex-pack: start;
+  -webkit-justify-content: flex-start;
+  justify-content: flex-start;
+}
+
+html /deep/ [layout][center-justified], html /deep/ [layout][center-center] {
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+}
+
+html /deep/ [layout][end-justified] {
+  -ms-flex-pack: end;
+  -webkit-justify-content: flex-end;
+  justify-content: flex-end;
+}
+
+html /deep/ [layout][around-justified] {
+  -ms-flex-pack: distribute;
+  -webkit-justify-content: space-around;
+  justify-content: space-around;
+}
+
+html /deep/ [layout][justified] {
+  -ms-flex-pack: justify;
+  -webkit-justify-content: space-between;
+  justify-content: space-between;
+}
+
+/* self alignment */
+
+html /deep/ [self-start] {
+  -ms-align-self: flex-start;
+  -webkit-align-self: flex-start;
+  align-self: flex-start;
+}
+
+html /deep/ [self-center] {
+  -ms-align-self: center;
+  -webkit-align-self: center;
+  align-self: center;
+}
+
+html /deep/ [self-end] {
+  -ms-align-self: flex-end;
+  -webkit-align-self: flex-end;
+  align-self: flex-end;
+}
+
+html /deep/ [self-stretch] {
+  -ms-align-self: stretch;
+  -webkit-align-self: stretch;
+  align-self: stretch;
+}
+
+/*******************************
+          Other Layout
+*******************************/
+
+html /deep/ [block] {
+  display: block;
+}
+
+/* ie support for hidden */
+html /deep/ [hidden] {
+  display: none !important;
+}
+
+html /deep/ [relative] {
+  position: relative;
+}
+
+html /deep/ [fit] {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+body[fullbleed] {
+  margin: 0;
+  height: 100vh;
+}
+
+/*******************************
+            Other
+*******************************/
+
+html /deep/ [segment], html /deep/ segment {
+  display: block;
+  position: relative;
+  -webkit-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 1em 0.5em;
+  padding: 1em;
+  background-color: white;
+  -webkit-box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.1);
+  border-radius: 5px 5px 5px 5px;
+}
+
+</style>
+
+<script src="packages/polymer/src/js/polymer/polymer.min.js"></script>
+
+<script>
+// TODO(sigmund): remove this script tag (dartbug.com/19650). This empty
+// script tag is necessary to work around a bug in Chrome 36.
+</script>
+
+<!-- unminified for debugging:
+<link rel="import" href="src/js/polymer/layout.html">
+<script src="src/js/polymer/polymer.js"></script>
+-->
+
+<script>
+// This empty script is here to workaround issue
+// https://github.com/dart-lang/core-elements/issues/11
+</script>
+
+
+<style shim-shadowdom="">/*
+Copyright (c) 2014 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+*/
+
+html /deep/ core-collapse {
+  display: block;
+}
+
+html /deep/ .core-collapse-closed {
+  display: none;
+}
+</style>
+
+<polymer-element name="core-collapse" attributes="target horizontal opened duration fixedSize allowOverflow">
+<template>
+
+  <content></content>
+
+</template>
+<script>
+
+  Polymer('core-collapse', {
+
+    /**
+     * Fired when the `core-collapse`'s `opened` property changes.
+     * 
+     * @event core-collapse-open
+     */
+
+    /**
+     * Fired when the target element has been resized as a result of the opened
+     * state changing.
+     * 
+     * @event core-resize
+     */
+
+    /**
+     * The target element that will be opened when the `core-collapse` is 
+     * opened. If unspecified, the `core-collapse` itself is the target.
+     *
+     * @attribute target
+     * @type object
+     * @default null
+     */
+    target: null,
+
+    /**
+     * If true, the orientation is horizontal; otherwise is vertical.
+     *
+     * @attribute horizontal
+     * @type boolean
+     * @default false
+     */
+    horizontal: false,
+
+    /**
+     * Set opened to true to show the collapse element and to false to hide it.
+     *
+     * @attribute opened
+     * @type boolean
+     * @default false
+     */
+    opened: false,
+
+    /**
+     * Collapsing/expanding animation duration in second.
+     *
+     * @attribute duration
+     * @type number
+     * @default 0.33
+     */
+    duration: 0.33,
+
+    /**
+     * If true, the size of the target element is fixed and is set
+     * on the element.  Otherwise it will try to 
+     * use auto to determine the natural size to use
+     * for collapsing/expanding.
+     *
+     * @attribute fixedSize
+     * @type boolean
+     * @default false
+     */
+    fixedSize: false,
+    
+    /**
+     * By default the collapsible element is set to overflow hidden. This helps
+     * avoid element bleeding outside the region and provides consistent overflow
+     * style across opened and closed states. Set this property to true to allow 
+     * the collapsible element to overflow when it's opened.
+     *
+     * @attribute allowOverflow
+     * @type boolean
+     * @default false
+     */
+    allowOverflow: false,
+
+    created: function() {
+      this.transitionEndListener = this.transitionEnd.bind(this);
+    },
+    
+    ready: function() {
+      this.target = this.target || this;
+    },
+
+    domReady: function() {
+      this.async(function() {
+        this.afterInitialUpdate = true;
+      });
+    },
+
+    detached: function() {
+      if (this.target) {
+        this.removeListeners(this.target);
+      }
+    },
+
+    targetChanged: function(old) {
+      if (old) {
+        this.removeListeners(old);
+      }
+      if (!this.target) {
+        return;
+      }
+      this.isTargetReady = !!this.target;
+      this.classList.toggle('core-collapse-closed', this.target !== this);
+      this.toggleOpenedStyle(false);
+      this.horizontalChanged();
+      this.addListeners(this.target);
+      // set core-collapse-closed class initially to hide the target
+      this.toggleClosedClass(true);
+      this.update();
+    },
+
+    addListeners: function(node) {
+      node.addEventListener('transitionend', this.transitionEndListener);
+    },
+
+    removeListeners: function(node) {
+      node.removeEventListener('transitionend', this.transitionEndListener);
+    },
+
+    horizontalChanged: function() {
+      this.dimension = this.horizontal ? 'width' : 'height';
+    },
+
+    openedChanged: function() {
+      this.update();
+      this.fire('core-collapse-open', this.opened);
+    },
+
+    /**
+     * Toggle the opened state.
+     *
+     * @method toggle
+     */
+    toggle: function() {
+      this.opened = !this.opened;
+    },
+
+    setTransitionDuration: function(duration) {
+      var s = this.target.style;
+      s.transition = duration ? (this.dimension + ' ' + duration + 's') : null;
+      if (duration === 0) {
+        this.async('transitionEnd');
+      }
+    },
+
+    transitionEnd: function() {
+      if (this.opened && !this.fixedSize) {
+        this.updateSize('auto', null);
+      }
+      this.setTransitionDuration(null);
+      this.toggleOpenedStyle(this.opened);
+      this.toggleClosedClass(!this.opened);
+      this.asyncFire('core-resize', null, this.target);
+    },
+
+    toggleClosedClass: function(closed) {
+      this.hasClosedClass = closed;
+      this.target.classList.toggle('core-collapse-closed', closed);
+    },
+    
+    toggleOpenedStyle: function(opened) {
+      this.target.style.overflow = this.allowOverflow && opened ? '' : 'hidden';
+    },
+
+    updateSize: function(size, duration, forceEnd) {
+      this.setTransitionDuration(duration);
+      this.calcSize();
+      var s = this.target.style;
+      var nochange = s[this.dimension] === size;
+      s[this.dimension] = size;
+      // transitonEnd will not be called if the size has not changed
+      if (forceEnd && nochange) {
+        this.transitionEnd();
+      }
+    },
+
+    update: function() {
+      if (!this.target) {
+        return;
+      }
+      if (!this.isTargetReady) {
+        this.targetChanged(); 
+      }
+      this.horizontalChanged();
+      this[this.opened ? 'show' : 'hide']();
+    },
+
+    calcSize: function() {
+      return this.target.getBoundingClientRect()[this.dimension] + 'px';
+    },
+
+    getComputedSize: function() {
+      return getComputedStyle(this.target)[this.dimension];
+    },
+
+    show: function() {
+      this.toggleClosedClass(false);
+      // for initial update, skip the expanding animation to optimize
+      // performance e.g. skip calcSize
+      if (!this.afterInitialUpdate) {
+        this.transitionEnd();
+        return;
+      }
+      if (!this.fixedSize) {
+        this.updateSize('auto', null);
+        var s = this.calcSize();
+        if (s == '0px') {
+          this.transitionEnd();
+          return;
+        }
+        this.updateSize(0, null);
+      }
+      this.async(function() {
+        this.updateSize(this.size || s, this.duration, true);
+      });
+    },
+
+    hide: function() {
+      this.toggleOpenedStyle(false);
+      // don't need to do anything if it's already hidden
+      if (this.hasClosedClass && !this.fixedSize) {
+        return;
+      }
+      if (this.fixedSize) {
+        // save the size before hiding it
+        this.size = this.getComputedSize();
+      } else {
+        this.updateSize(this.calcSize(), null);
+      }
+      this.async(function() {
+        this.updateSize(0, this.duration);
+      });
+    }
+
+  });
+
+</script>
+</polymer-element>
+
+
+
+
+
+
+<style>
+
+    body {
+      font-family: sans-serif;
+      margin: 8px 24px;
+    }
+    .heading {
+      padding: 10px 15px;
+      background-color: #f3f3f3;
+      border: 1px solid #dedede;
+      border-top-left-radius: 5px;
+      border-top-right-radius: 5px;
+      font-size: 18px;
+      cursor: pointer;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      -webkit-tap-highlight-color: rgba(0,0,0,0);
+    }
+
+    .content {
+      padding: 15px;
+      border: 1px solid #dedede;
+      border-top: none;
+      border-bottom-left-radius: 5px;
+      border-bottom-right-radius: 5px;
+    }
+
+  </style></div>
+
+  <div class="heading" id="clickcollapse1">Collapse #1</div>
+  <core-collapse id="collapse1">
+    <div class="content">
+      <div>Lorem ipsum dolor sit amet, per in nusquam nominavi periculis, sit elit oportere ea, id minim maiestatis incorrupte duo. Dolorum verterem ad ius, his et nullam verterem. Eu alia debet usu, an doming tritani est. Vix ad ponderum petentium suavitate, eum eu tempor populo, graece sententiae constituam vim ex. Cu torquatos reprimique neglegentur nec, voluptua periculis has ut, at eos discere deleniti sensibus. Lorem ipsum dolor sit amet, per in nusquam nominavi periculis, sit elit oportere ea, id minim maiestatis incorrupte duo. Dolorum verterem ad ius, his et nullam verterem. Eu alia debet usu, an doming tritani est. Vix ad ponderum petentium suavitate, eum eu tempor populo, graece sententiae constituam vim ex. Cu torquatos reprimique neglegentur nec, voluptua periculis has ut, at eos discere deleniti sensibus.</div>
+    </div>
+  </core-collapse>
+
+  <br>
+
+  <div class="heading" id="clickcollapse2">Collapse #2</div>
+  <core-collapse id="collapse2">
+    <div class="content">
+      <div>Pro saepe pertinax ei, ad pri animal labores suscipiantur. Modus commodo minimum eum te, vero utinam assueverit per eu, zril oportere suscipiantur pri te. Partem percipitur deterruisset ad sea, at eam suas luptatum dissentiunt. No error alienum pro, erant senserit ex mei, pri semper alterum no. Ut habemus menandri vulputate mea. Feugiat verterem ut sed. Dolores maiestatis id per. Pro saepe pertinax ei, ad pri animal labores suscipiantur. Modus commodo minimum eum te, vero utinam assueverit per eu, zril oportere suscipiantur pri te. Partem percipitur deterruisset ad sea, at eam suas luptatum dissentiunt. No error alienum pro, erant senserit ex mei, pri semper alterum no. Ut habemus menandri vulputate mea. Feugiat verterem ut sed. Dolores maiestatis id per.</div>
+      <br>
+      <div class="heading" id="clickcollapse3">Collapse #3</div>
+      <core-collapse id="collapse3">
+        <div class="content">
+          <div>Iisque perfecto dissentiet cum et, sit ut quot mandamus, ut vim tibique splendide instructior. Id nam odio natum malorum, tibique copiosae expetenda mel ea. Mea melius malorum ut. Ut nec tollit vocent timeam. Facer nonumy numquam id his, munere salutatus consequuntur eum et, eum cotidieque definitionem signiferumque id. Ei oblique graecis patrioque vis, et probatus dignissim inciderint vel. Sed id paulo erroribus, autem semper accusamus in mel. Iisque perfecto dissentiet cum et, sit ut quot mandamus, ut vim tibique splendide instructior. Id nam odio natum malorum, tibique copiosae expetenda mel ea. Mea melius malorum ut. Ut nec tollit vocent timeam. Facer nonumy numquam id his, munere salutatus consequuntur eum et, eum cotidieque definitionem signiferumque id. Ei oblique graecis patrioque vis, et probatus dignissim inciderint vel. Sed id paulo erroribus, autem semper accusamus in mel.</div>
+        </div>
+      </core-collapse>
+    </div>
+  </core-collapse>
+
+  <script src="core_collapse.html.polymer.bootstrap.dart.js" async=""></script>
+
+
+</body></html>

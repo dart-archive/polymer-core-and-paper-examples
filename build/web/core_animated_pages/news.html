@@ -1,0 +1,4014 @@
+<!DOCTYPE html><html><head><script src="../packages/web_components/webcomponents.min.js"></script><script src="../packages/web_components/dart_support.js"></script>
+
+  
+  
+  
+   
+
+  
+
+  
+
+  
+
+</head>
+<body unresolved=""><div hidden=""><script src="../packages/web_components/interop_support.js"></script>
+
+<!-- Dart note: load polymer for Dart and JS from the same place -->
+<style shim-shadowdom="">
+/*******************************
+          Flex Layout
+*******************************/
+
+html /deep/ [layout][horizontal], html /deep/ [layout][vertical] {
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+}
+
+html /deep/ [layout][horizontal][inline], html /deep/ [layout][vertical][inline] {
+  display: -ms-inline-flexbox;
+  display: -webkit-inline-flex;
+  display: inline-flex;
+}
+
+html /deep/ [layout][horizontal] {
+  -ms-flex-direction: row;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+}
+
+html /deep/ [layout][horizontal][reverse] {
+  -ms-flex-direction: row-reverse;
+  -webkit-flex-direction: row-reverse;
+  flex-direction: row-reverse;
+}
+
+html /deep/ [layout][vertical] {
+  -ms-flex-direction: column;
+  -webkit-flex-direction: column;
+  flex-direction: column;
+}
+
+html /deep/ [layout][vertical][reverse] {
+  -ms-flex-direction: column-reverse;
+  -webkit-flex-direction: column-reverse;
+  flex-direction: column-reverse;
+}
+
+html /deep/ [layout][wrap] {
+  -ms-flex-wrap: wrap;
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
+html /deep/ [layout][wrap-reverse] {
+  -ms-flex-wrap: wrap-reverse;
+  -webkit-flex-wrap: wrap-reverse;
+  flex-wrap: wrap-reverse;
+}
+
+html /deep/ [flex] {
+  -ms-flex: 1 1 0.000000001px;
+  -webkit-flex: 1;
+  flex: 1;
+  -webkit-flex-basis: 0.000000001px;
+  flex-basis: 0.000000001px;
+}
+
+html /deep/ [vertical][layout] > [flex][auto-vertical], html /deep/ [vertical][layout]::shadow [flex][auto-vertical] {
+  -ms-flex: 1 1 auto;
+  -webkit-flex-basis: auto;
+  flex-basis: auto;
+}
+
+html /deep/ [flex][auto] {
+  -ms-flex: 1 1 auto;
+  -webkit-flex-basis: auto;
+  flex-basis: auto;
+}
+
+html /deep/ [flex][none] {
+  -ms-flex: none;
+  -webkit-flex: none;
+  flex: none;
+}
+
+html /deep/ [flex][one] {
+  -ms-flex: 1;
+  -webkit-flex: 1;
+  flex: 1;
+}
+
+html /deep/ [flex][two] {
+  -ms-flex: 2;
+  -webkit-flex: 2;
+  flex: 2;
+}
+
+html /deep/ [flex][three] {
+  -ms-flex: 3;
+  -webkit-flex: 3;
+  flex: 3;
+}
+
+html /deep/ [flex][four] {
+  -ms-flex: 4;
+  -webkit-flex: 4;
+  flex: 4;
+}
+
+html /deep/ [flex][five] {
+  -ms-flex: 5;
+  -webkit-flex: 5;
+  flex: 5;
+}
+
+html /deep/ [flex][six] {
+  -ms-flex: 6;
+  -webkit-flex: 6;
+  flex: 6;
+}
+
+html /deep/ [flex][seven] {
+  -ms-flex: 7;
+  -webkit-flex: 7;
+  flex: 7;
+}
+
+html /deep/ [flex][eight] {
+  -ms-flex: 8;
+  -webkit-flex: 8;
+  flex: 8;
+}
+
+html /deep/ [flex][nine] {
+  -ms-flex: 9;
+  -webkit-flex: 9;
+  flex: 9;
+}
+
+html /deep/ [flex][ten] {
+  -ms-flex: 10;
+  -webkit-flex: 10;
+  flex: 10;
+}
+
+html /deep/ [flex][eleven] {
+  -ms-flex: 11;
+  -webkit-flex: 11;
+  flex: 11;
+}
+
+html /deep/ [flex][twelve] {
+  -ms-flex: 12;
+  -webkit-flex: 12;
+  flex: 12;
+}
+
+/* alignment in cross axis */
+
+html /deep/ [layout][start] {
+  -ms-flex-align: start;
+  -webkit-align-items: flex-start;
+  align-items: flex-start;
+}
+
+html /deep/ [layout][center], html /deep/ [layout][center-center] {
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+}
+
+html /deep/ [layout][end] {
+  -ms-flex-align: end;
+  -webkit-align-items: flex-end;
+  align-items: flex-end;
+}
+
+/* alignment in main axis */
+
+html /deep/ [layout][start-justified] {
+  -ms-flex-pack: start;
+  -webkit-justify-content: flex-start;
+  justify-content: flex-start;
+}
+
+html /deep/ [layout][center-justified], html /deep/ [layout][center-center] {
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+}
+
+html /deep/ [layout][end-justified] {
+  -ms-flex-pack: end;
+  -webkit-justify-content: flex-end;
+  justify-content: flex-end;
+}
+
+html /deep/ [layout][around-justified] {
+  -ms-flex-pack: distribute;
+  -webkit-justify-content: space-around;
+  justify-content: space-around;
+}
+
+html /deep/ [layout][justified] {
+  -ms-flex-pack: justify;
+  -webkit-justify-content: space-between;
+  justify-content: space-between;
+}
+
+/* self alignment */
+
+html /deep/ [self-start] {
+  -ms-align-self: flex-start;
+  -webkit-align-self: flex-start;
+  align-self: flex-start;
+}
+
+html /deep/ [self-center] {
+  -ms-align-self: center;
+  -webkit-align-self: center;
+  align-self: center;
+}
+
+html /deep/ [self-end] {
+  -ms-align-self: flex-end;
+  -webkit-align-self: flex-end;
+  align-self: flex-end;
+}
+
+html /deep/ [self-stretch] {
+  -ms-align-self: stretch;
+  -webkit-align-self: stretch;
+  align-self: stretch;
+}
+
+/*******************************
+          Other Layout
+*******************************/
+
+html /deep/ [block] {
+  display: block;
+}
+
+/* ie support for hidden */
+html /deep/ [hidden] {
+  display: none !important;
+}
+
+html /deep/ [relative] {
+  position: relative;
+}
+
+html /deep/ [fit] {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+body[fullbleed] {
+  margin: 0;
+  height: 100vh;
+}
+
+/*******************************
+            Other
+*******************************/
+
+html /deep/ [segment], html /deep/ segment {
+  display: block;
+  position: relative;
+  -webkit-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 1em 0.5em;
+  padding: 1em;
+  background-color: white;
+  -webkit-box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.1);
+  border-radius: 5px 5px 5px 5px;
+}
+
+</style>
+
+<script src="../packages/polymer/src/js/polymer/polymer.min.js"></script>
+
+<script>
+// TODO(sigmund): remove this script tag (dartbug.com/19650). This empty
+// script tag is necessary to work around a bug in Chrome 36.
+</script>
+
+<!-- unminified for debugging:
+<link rel="import" href="src/js/polymer/layout.html">
+<script src="src/js/polymer/polymer.js"></script>
+-->
+
+<script>
+// This empty script is here to workaround issue
+// https://github.com/dart-lang/core-elements/issues/11
+</script>
+
+
+<polymer-element name="core-meta" attributes="label type" hidden="">
+<script>
+
+  (function() {
+    
+    var SKIP_ID = 'meta';
+    var metaData = {}, metaArray = {};
+
+    Polymer('core-meta', {
+      
+      /**
+       * The type of meta-data.  All meta-data with the same type with be
+       * stored together.
+       * 
+       * @attribute type
+       * @type string
+       * @default 'default'
+       */
+      type: 'default',
+      
+      alwaysPrepare: true,
+      
+      ready: function() {
+        this.register(this.id);
+      },
+      
+      get metaArray() {
+        var t = this.type;
+        if (!metaArray[t]) {
+          metaArray[t] = [];
+        }
+        return metaArray[t];
+      },
+      
+      get metaData() {
+        var t = this.type;
+        if (!metaData[t]) {
+          metaData[t] = {};
+        }
+        return metaData[t];
+      },
+      
+      register: function(id, old) {
+        if (id && id !== SKIP_ID) {
+          this.unregister(this, old);
+          this.metaData[id] = this;
+          this.metaArray.push(this);
+        }
+      },
+      
+      unregister: function(meta, id) {
+        delete this.metaData[id || meta.id];
+        var i = this.metaArray.indexOf(meta);
+        if (i >= 0) {
+          this.metaArray.splice(i, 1);
+        }
+      },
+      
+      /**
+       * Returns a list of all meta-data elements with the same type.
+       * 
+       * @property list
+       * @type array
+       * @default []
+       */
+      get list() {
+        return this.metaArray;
+      },
+      
+      /**
+       * Retrieves meta-data by ID.
+       *
+       * @method byId
+       * @param {String} id The ID of the meta-data to be returned.
+       * @returns Returns meta-data.
+       */
+      byId: function(id) {
+        return this.metaData[id];
+      }
+      
+    });
+    
+  })();
+  
+</script>
+</polymer-element>
+
+
+<polymer-element name="core-iconset" extends="core-meta" attributes="src width icons iconSize">
+  
+  <script>
+  
+    Polymer('core-iconset', {
+  
+      /**
+       * The URL of the iconset image.
+       *
+       * @attribute src
+       * @type string
+       * @default ''
+       */
+      src: '',
+
+      /**
+       * The width of the iconset image. This must only be specified if the
+       * icons are arranged into separate rows inside the image.
+       *
+       * @attribute width
+       * @type number
+       * @default 0
+       */
+      width: 0,
+
+      /**
+       * A space separated list of names corresponding to icons in the iconset
+       * image file. This list must be ordered the same as the icon images
+       * in the image file.
+       *
+       * @attribute icons
+       * @type string
+       * @default ''
+       */
+      icons: '',
+
+      /**
+       * The size of an individual icon. Note that icons must be square.
+       *
+       * @attribute iconSize
+       * @type number
+       * @default 24
+       */
+      iconSize: 24,
+
+      /**
+       * The horizontal offset of the icon images in the inconset src image.
+       * This is typically used if the image resource contains additional images
+       * beside those intended for the iconset.
+       *
+       * @attribute offsetX
+       * @type number
+       * @default 0
+       */
+      offsetX: 0,
+      /**
+       * The vertical offset of the icon images in the inconset src image.
+       * This is typically used if the image resource contains additional images
+       * beside those intended for the iconset.
+       *
+       * @attribute offsetY
+       * @type number
+       * @default 0
+       */
+      offsetY: 0,
+      type: 'iconset',
+
+      created: function() {
+        this.iconMap = {};
+        this.iconNames = [];
+        this.themes = {};
+      },
+  
+      ready: function() {
+        // TODO(sorvell): ensure iconset's src is always relative to the main
+        // document
+        if (this.src && (this.ownerDocument !== document)) {
+          this.src = this.resolvePath(this.src, this.ownerDocument.baseURI);
+        }
+        this.super();
+        this.updateThemes();
+      },
+
+      iconsChanged: function() {
+        var ox = this.offsetX;
+        var oy = this.offsetY;
+        this.icons && this.icons.split(/\s+/g).forEach(function(name, i) {
+          this.iconNames.push(name);
+          this.iconMap[name] = {
+            offsetX: ox,
+            offsetY: oy
+          }
+          if (ox + this.iconSize < this.width) {
+            ox += this.iconSize;
+          } else {
+            ox = this.offsetX;
+            oy += this.iconSize;
+          }
+        }, this);
+      },
+
+      updateThemes: function() {
+        var ts = this.querySelectorAll('property[theme]');
+        ts && ts.array().forEach(function(t) {
+          this.themes[t.getAttribute('theme')] = {
+            offsetX: parseInt(t.getAttribute('offsetX')) || 0,
+            offsetY: parseInt(t.getAttribute('offsetY')) || 0
+          };
+        }, this);
+      },
+
+      // TODO(ffu): support retrived by index e.g. getOffset(10);
+      /**
+       * Returns an object containing `offsetX` and `offsetY` properties which
+       * specify the pixel locaion in the iconset's src file for the given
+       * `icon` and `theme`. It's uncommon to call this method. It is useful,
+       * for example, to manually position a css backgroundImage to the proper
+       * offset. It's more common to use the `applyIcon` method.
+       *
+       * @method getOffset
+       * @param {String|Number} icon The name of the icon or the index of the
+       * icon within in the icon image.
+       * @param {String} theme The name of the theme.
+       * @returns {Object} An object specifying the offset of the given icon 
+       * within the icon resource file; `offsetX` is the horizontal offset and
+       * `offsetY` is the vertical offset. Both values are in pixel units.
+       */
+      getOffset: function(icon, theme) {
+        var i = this.iconMap[icon];
+        if (!i) {
+          var n = this.iconNames[Number(icon)];
+          i = this.iconMap[n];
+        }
+        var t = this.themes[theme];
+        if (i && t) {
+          return {
+            offsetX: i.offsetX + t.offsetX,
+            offsetY: i.offsetY + t.offsetY
+          }
+        }
+        return i;
+      },
+
+      /**
+       * Applies an icon to the given element as a css background image. This
+       * method does not size the element, and it's often necessary to set 
+       * the element's height and width so that the background image is visible.
+       *
+       * @method applyIcon
+       * @param {Element} element The element to which the background is
+       * applied.
+       * @param {String|Number} icon The name or index of the icon to apply.
+       * @param {Number} scale (optional, defaults to 1) A scaling factor 
+       * with which the icon can be magnified.
+       * @return {Element} The icon element.
+       */
+      applyIcon: function(element, icon, scale) {
+        var offset = this.getOffset(icon);
+        scale = scale || 1;
+        if (element && offset) {
+          var icon = element._icon || document.createElement('div');
+          var style = icon.style;
+          style.backgroundImage = 'url(' + this.src + ')';
+          style.backgroundPosition = (-offset.offsetX * scale + 'px') + 
+             ' ' + (-offset.offsetY * scale + 'px');
+          style.backgroundSize = scale === 1 ? 'auto' :
+             this.width * scale + 'px';
+          if (icon.parentNode !== element) {
+            element.appendChild(icon);
+          }
+          return icon;
+        }
+      }
+
+    });
+
+  </script>
+
+</polymer-element>
+
+
+<style shim-shadowdom="">/* Copyright (c) 2014 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt */
+
+html /deep/ core-icon {
+  display: inline-block;
+  vertical-align: middle;
+  background-repeat: no-repeat;
+  fill: currentcolor;
+  position: relative;
+  height: 24px;
+  width: 24px;
+}</style>
+
+<polymer-element name="core-icon" attributes="src icon alt">
+<script>
+(function() {
+  
+  // mono-state
+  var meta;
+  
+  Polymer('core-icon', {
+
+    /**
+     * The URL of an image for the icon. If the src property is specified,
+     * the icon property should not be.
+     *
+     * @attribute src
+     * @type string
+     * @default ''
+     */
+    src: '',
+
+    /**
+     * Specifies the icon name or index in the set of icons available in
+     * the icon's icon set. If the icon property is specified,
+     * the src property should not be.
+     *
+     * @attribute icon
+     * @type string
+     * @default ''
+     */
+    icon: '',
+
+    /**
+     * Alternative text content for accessibility support.
+     * If alt is present and not empty, it will set the element's role to img and add an aria-label whose content matches alt.
+     * If alt is present and is an empty string, '', it will hide the element from the accessibility layer
+     * If alt is not present, it will set the element's role to img and the element will fallback to using the icon attribute for its aria-label.
+     * 
+     * @attribute alt
+     * @type string
+     * @default ''
+     */
+    alt: null,
+
+    observe: {
+      'icon': 'updateIcon',
+      'alt': 'updateAlt'
+    },
+
+    defaultIconset: 'icons',
+
+    ready: function() {
+      if (!meta) {
+        meta = document.createElement('core-iconset');
+      }
+
+      // Allow user-provided `aria-label` in preference to any other text alternative.
+      if (this.hasAttribute('aria-label')) {
+        // Set `role` if it has not been overridden.
+        if (!this.hasAttribute('role')) {
+          this.setAttribute('role', 'img');
+        }
+        return;
+      }
+      this.updateAlt();
+    },
+
+    srcChanged: function() {
+      var icon = this._icon || document.createElement('div');
+      icon.textContent = '';
+      icon.setAttribute('fit', '');
+      icon.style.backgroundImage = 'url(' + this.src + ')';
+      icon.style.backgroundPosition = 'center';
+      icon.style.backgroundSize = '100%';
+      if (!icon.parentNode) {
+        this.appendChild(icon);
+      }
+      this._icon = icon;
+    },
+
+    getIconset: function(name) {
+      return meta.byId(name || this.defaultIconset);
+    },
+
+    updateIcon: function(oldVal, newVal) {
+      if (!this.icon) {
+        this.updateAlt();
+        return;
+      }
+      var parts = String(this.icon).split(':');
+      var icon = parts.pop();
+      if (icon) {
+        var set = this.getIconset(parts.pop());
+        if (set) {
+          this._icon = set.applyIcon(this, icon);
+          if (this._icon) {
+            this._icon.setAttribute('fit', '');
+          }
+        }
+      }
+      // Check to see if we're using the old icon's name for our a11y fallback
+      if (oldVal) {
+        if (oldVal.split(':').pop() == this.getAttribute('aria-label')) {
+          this.updateAlt();
+        }
+      }
+    },
+
+    updateAlt: function() {
+      // Respect the user's decision to remove this element from
+      // the a11y tree
+      if (this.getAttribute('aria-hidden')) {
+        return;
+      }
+
+      // Remove element from a11y tree if `alt` is empty, otherwise
+      // use `alt` as `aria-label`.
+      if (this.alt === '') {
+        this.setAttribute('aria-hidden', 'true');
+        if (this.hasAttribute('role')) {
+          this.removeAttribute('role');
+        }
+        if (this.hasAttribute('aria-label')) {
+          this.removeAttribute('aria-label');
+        }
+      } else {
+        this.setAttribute('aria-label', this.alt ||
+                                        this.icon.split(':').pop());
+        if (!this.hasAttribute('role')) {
+          this.setAttribute('role', 'img');
+        }
+        if (this.hasAttribute('aria-hidden')) {
+          this.removeAttribute('aria-hidden');
+        }
+      }
+    }
+
+  });
+  
+})();
+</script>
+
+</polymer-element>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<polymer-element name="core-iconset-svg" extends="core-meta" attributes="iconSize">
+
+  <script>
+
+    Polymer('core-iconset-svg', {
+
+
+      /**
+       * The size of an individual icon. Note that icons must be square.
+       *
+       * @attribute iconSize
+       * @type number
+       * @default 24
+       */
+      iconSize: 24,
+      type: 'iconset',
+
+      created: function() {
+        this._icons = {};
+      },
+
+      ready: function() {
+        this.super();
+        this.updateIcons();
+      },
+
+      iconById: function(id) {
+        return this._icons[id] || (this._icons[id] = this.querySelector('[id="' + id +'"]'));
+      },
+
+      cloneIcon: function(id) {
+        var icon = this.iconById(id);
+        if (icon) {
+          var content = icon.cloneNode(true);
+          content.removeAttribute('id');
+          var svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+          svg.setAttribute('viewBox', '0 0 ' + this.iconSize + ' ' +
+              this.iconSize);
+          // NOTE(dfreedm): work around https://crbug.com/370136
+          svg.style.pointerEvents = 'none';
+          svg.appendChild(content);
+          return svg;
+        }
+      },
+
+      get iconNames() {
+        if (!this._iconNames) {
+          this._iconNames = this.findIconNames();
+        }
+        return this._iconNames;
+      },
+
+      findIconNames: function() {
+        var icons = this.querySelectorAll('[id]').array();
+        if (icons.length) {
+          return icons.map(function(n){ return n.id });
+        }
+      },
+
+      /**
+       * Applies an icon to the given element. The svg icon is added to the
+       * element's shadowRoot if one exists or directly to itself.
+       *
+       * @method applyIcon
+       * @param {Element} element The element to which the icon is
+       * applied.
+       * @param {String|Number} icon The name the icon to apply.
+       * @return {Element} The icon element
+       */
+      applyIcon: function(element, icon) {
+        var root = element;
+        // remove old
+        var old = root.querySelector('svg');
+        if (old) {
+          old.remove();
+        }
+        // install new
+        var svg = this.cloneIcon(icon);
+        if (!svg) {
+          return;
+        }
+        svg.setAttribute('height', '100%');
+        svg.setAttribute('width', '100%');
+        svg.setAttribute('preserveAspectRatio', 'xMidYMid meet');
+        svg.style.display = 'block';
+        root.insertBefore(svg, root.firstElementChild);
+        return svg;
+      },
+      
+      /**
+       * Tell users of the iconset, that the set has loaded.
+       * This finds all elements matching the selector argument and calls 
+       * the method argument on them.
+       * @method updateIcons
+       * @param selector {string} css selector to identify iconset users, 
+       * defaults to '[icon]'
+       * @param method {string} method to call on found elements, 
+       * defaults to 'updateIcon'
+       */
+      updateIcons: function(selector, method) {
+        selector = selector || '[icon]';
+        method = method || 'updateIcon';
+        var deep = window.ShadowDOMPolyfill ? '' : 'html /deep/ ';
+        var i$ = document.querySelectorAll(deep + selector);
+        for (var i=0, e; e=i$[i]; i++) {
+          if (e[method]) {
+            e[method].call(e);
+          }
+        }
+      }
+      
+
+    });
+
+  </script>
+
+</polymer-element>
+
+<core-iconset-svg id="icons" iconsize="24">
+<svg><defs>
+<g id="accessibility"><path d="M12 2c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2zm9 7h-6v13h-2v-6h-2v6h-2v-13h-6v-2h18v2z"></path></g>
+<g id="account-balance"><path d="M4 10v7h3v-7h-3zm6 0v7h3v-7h-3zm-8 12h19v-3h-19v3zm14-12v7h3v-7h-3zm-4.5-9l-9.5 5v2h19v-2l-9.5-5z"></path></g>
+<g id="account-balance-wallet"><path d="M21 18v1c0 1.1-.9 2-2 2h-14c-1.11 0-2-.9-2-2v-14c0-1.1.89-2 2-2h14c1.1 0 2 .9 2 2v1h-9c-1.11 0-2 .9-2 2v8c0 1.1.89 2 2 2h9zm-9-2h10v-8h-10v8zm4-2.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"></path></g>
+<g id="account-box"><path d="M3 5v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-14c0-1.1-.9-2-2-2h-14c-1.11 0-2 .9-2 2zm12 4c0 1.66-1.34 3-3 3s-3-1.34-3-3 1.34-3 3-3 3 1.34 3 3zm-9 8c0-2 4-3.1 6-3.1s6 1.1 6 3.1v1h-12v-1z"></path></g>
+<g id="account-child"><path d="M16.5 12c1.38 0 2.49-1.12 2.49-2.5s-1.11-2.5-2.49-2.5c-1.38 0-2.5 1.12-2.5 2.5s1.12 2.5 2.5 2.5zm-7.5-1c1.66 0 2.99-1.34 2.99-3s-1.33-3-2.99-3c-1.66 0-3 1.34-3 3s1.34 3 3 3zm7.5 3c-1.83 0-5.5.92-5.5 2.75v2.25h11v-2.25c0-1.83-3.67-2.75-5.5-2.75zm-7.5-1c-2.33 0-7 1.17-7 3.5v2.5h7v-2.25c0-.85.33-2.34 2.37-3.47-.87-.18-1.71-.28-2.37-.28z"></path></g>
+<g id="account-circle"><path d="M12 2c-5.52 0-10 4.48-10 10s4.48 10 10 10 10-4.48 10-10-4.48-10-10-10zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"></path></g>
+<g id="add-box"><path d="M19 3h-14c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-14c0-1.1-.9-2-2-2zm-2 10h-4v4h-2v-4h-4v-2h4v-4h2v4h4v2z"></path></g>
+<g id="add-circle-outline"><path d="M13 7h-2v4h-4v2h4v4h2v-4h4v-2h-4v-4zm-1-5c-5.52 0-10 4.48-10 10s4.48 10 10 10 10-4.48 10-10-4.48-10-10-10zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"></path></g>
+<g id="add-circle"><path d="M12 2c-5.52 0-10 4.48-10 10s4.48 10 10 10 10-4.48 10-10-4.48-10-10-10zm5 11h-4v4h-2v-4h-4v-2h4v-4h2v4h4v2z"></path></g>
+<g id="add"><path d="M19 13h-6v6h-2v-6h-6v-2h6v-6h2v6h6v2z"></path></g>
+<g id="add-shopping-cart"><path d="M11 9h2v-3h3v-2h-3v-3h-2v3h-3v2h3v3zm-4 9c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2zm10 0c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2zm-9.83-3.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.86-7.01-1.74-.96h-.01l-1.1 2-2.76 5h-7.02l-.13-.27-2.24-4.73-.95-2-.94-2h-3.27v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2h-11.58c-.13 0-.25-.11-.25-.25z"></path></g>
+<g id="alarm-add"><path d="M7.88 3.39l-1.28-1.53-4.6 3.85 1.29 1.53 4.59-3.85zm14.12 2.33l-4.6-3.86-1.29 1.53 4.6 3.86 1.29-1.53zm-10-1.72c-4.97 0-9 4.03-9 9s4.02 9 9 9c4.97 0 9-4.03 9-9s-4.03-9-9-9zm0 16c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7zm1-11h-2v3h-3v2h3v3h2v-3h3v-2h-3v-3z"></path></g>
+<g id="alarm-off"><path d="M12 6c3.87 0 7 3.13 7 7 0 .84-.16 1.65-.43 2.4l1.52 1.52c.58-1.19.91-2.51.91-3.92 0-4.97-4.03-9-9-9-1.41 0-2.73.33-3.92.91l1.52 1.52c.75-.27 1.56-.43 2.4-.43zm10-.28l-4.6-3.86-1.29 1.53 4.6 3.86 1.29-1.53zm-19.08-3.43l-1.27 1.28 1.33 1.33-1.11.93 1.42 1.42 1.11-.94.8.8c-1.37 1.58-2.2 3.64-2.2 5.89 0 4.97 4.02 9 9 9 2.25 0 4.31-.83 5.89-2.2l2.2 2.2 1.27-1.27-17.47-17.46-.97-.98zm13.55 16.1c-1.21 1-2.77 1.61-4.47 1.61-3.87 0-7-3.13-7-7 0-1.7.61-3.26 1.61-4.47l9.86 9.86zm-8.45-15.11l-1.42-1.42-.86.71 1.42 1.42.86-.71z"></path></g>
+<g id="alarm-on"><path d="M22 5.72l-4.6-3.86-1.29 1.53 4.6 3.86 1.29-1.53zm-14.12-2.33l-1.28-1.53-4.6 3.85 1.29 1.53 4.59-3.85zm4.12.61c-4.97 0-9 4.03-9 9s4.02 9 9 9c4.97 0 9-4.03 9-9s-4.03-9-9-9zm0 16c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7zm-1.46-5.47l-2.13-2.13-1.06 1.06 3.18 3.18 6-6-1.06-1.06-4.93 4.95z"></path></g>
+<g id="alarm"><path d="M22 5.72l-4.6-3.86-1.29 1.53 4.6 3.86 1.29-1.53zm-14.12-2.33l-1.28-1.53-4.6 3.85 1.29 1.53 4.59-3.85zm4.62 4.61h-1.5v6l4.75 2.85.75-1.23-4-2.37v-5.25zm-.5-4c-4.97 0-9 4.03-9 9s4.02 9 9 9c4.97 0 9-4.03 9-9s-4.03-9-9-9zm0 16c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7z"></path></g>
+<g id="android"><path d="M6 18c0 .55.45 1 1 1h1v3.5c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5v-3.5h2v3.5c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5v-3.5h1c.55 0 1-.45 1-1v-10h-12v10zm-2.5-10c-.83 0-1.5.67-1.5 1.5v7c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5v-7c0-.83-.67-1.5-1.5-1.5zm17 0c-.83 0-1.5.67-1.5 1.5v7c0 .83.67 1.5 1.5 1.5s1.5-.67 1.5-1.5v-7c0-.83-.67-1.5-1.5-1.5zm-4.97-5.84l1.3-1.3c.2-.2.2-.51 0-.71-.2-.2-.51-.2-.71 0l-1.48 1.48c-.79-.4-1.69-.63-2.64-.63-.96 0-1.86.23-2.66.63l-1.49-1.48c-.2-.2-.51-.2-.71 0-.2.2-.2.51 0 .71l1.31 1.31c-1.48 1.09-2.45 2.84-2.45 4.83h12c0-1.99-.97-3.75-2.47-4.84zm-5.53 2.84h-1v-1h1v1zm5 0h-1v-1h1v1z"></path></g>
+<g id="announcement"><path d="M20 2h-16c-1.1 0-1.99.9-1.99 2l-.01 18 4-4h14c1.1 0 2-.9 2-2v-12c0-1.1-.9-2-2-2zm-7 9h-2v-6h2v6zm0 4h-2v-2h2v2z"></path></g>
+<g id="apps"><path d="M4 8h4v-4h-4v4zm6 12h4v-4h-4v4zm-6 0h4v-4h-4v4zm0-6h4v-4h-4v4zm6 0h4v-4h-4v4zm6-10v4h4v-4h-4zm-6 4h4v-4h-4v4zm6 6h4v-4h-4v4zm0 6h4v-4h-4v4z"></path></g>
+<g id="archive"><path d="M20.54 5.23l-1.39-1.68c-.27-.34-.68-.55-1.15-.55h-12c-.47 0-.88.21-1.16.55l-1.38 1.68c-.29.34-.46.79-.46 1.27v12.5c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-12.5c0-.48-.17-.93-.46-1.27zm-8.54 12.27l-5.5-5.5h3.5v-2h4v2h3.5l-5.5 5.5zm-6.88-12.5l.81-1h12l.94 1h-13.75z"></path></g>
+<g id="arrow-back"><path d="M20 11h-12.17l5.59-5.59-1.42-1.41-8 8 8 8 1.41-1.41-5.58-5.59h12.17v-2z"></path></g>
+<g id="arrow-drop-down-circle"><path d="M12 2c-5.52 0-10 4.48-10 10s4.48 10 10 10 10-4.48 10-10-4.48-10-10-10zm0 12l-4-4h8l-4 4z"></path></g>
+<g id="arrow-drop-down"><path d="M7 10l5 5 5-5z"></path></g>
+<g id="arrow-drop-up"><path d="M7 14l5-5 5 5z"></path></g>
+<g id="arrow-forward"><path d="M12 4l-1.41 1.41 5.58 5.59h-12.17v2h12.17l-5.58 5.59 1.41 1.41 8-8z"></path></g>
+<g id="aspect-ratio"><path d="M19 12h-2v3h-3v2h5v-5zm-12-3h3v-2h-5v5h2v-3zm14-6h-18c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2v-14c0-1.1-.9-2-2-2zm0 16.01h-18v-14.02h18v14.02z"></path></g>
+<g id="assessment"><path d="M19 3h-14c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-14c0-1.1-.9-2-2-2zm-10 14h-2v-7h2v7zm4 0h-2v-10h2v10zm4 0h-2v-4h2v4z"></path></g>
+<g id="assignment-ind"><path d="M19 3h-4.18c-.42-1.16-1.52-2-2.82-2-1.3 0-2.4.84-2.82 2h-4.18c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-14c0-1.1-.9-2-2-2zm-7 0c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm0 4c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm6 12h-12v-1.4c0-2 4-3.1 6-3.1s6 1.1 6 3.1v1.4z"></path></g>
+<g id="assignment-late"><path d="M19 3h-4.18c-.42-1.16-1.52-2-2.82-2-1.3 0-2.4.84-2.82 2h-4.18c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-14c0-1.1-.9-2-2-2zm-6 15h-2v-2h2v2zm0-4h-2v-6h2v6zm-1-9c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1z"></path></g>
+<g id="assignment"><path d="M19 3h-4.18c-.42-1.16-1.52-2-2.82-2-1.3 0-2.4.84-2.82 2h-4.18c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-14c0-1.1-.9-2-2-2zm-7 0c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm2 14h-7v-2h7v2zm3-4h-10v-2h10v2zm0-4h-10v-2h10v2z"></path></g>
+<g id="assignment-returned"><path d="M19 3h-4.18c-.42-1.16-1.52-2-2.82-2-1.3 0-2.4.84-2.82 2h-4.18c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-14c0-1.1-.9-2-2-2zm-7 0c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm0 15l-5-5h3v-4h4v4h3l-5 5z"></path></g>
+<g id="assignment-return"><path d="M19 3h-4.18c-.42-1.16-1.52-2-2.82-2-1.3 0-2.4.84-2.82 2h-4.18c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-14c0-1.1-.9-2-2-2zm-7 0c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm4 12h-4v3l-5-5 5-5v3h4v4z"></path></g>
+<g id="assignment-turned-in"><path d="M19 3h-4.18c-.42-1.16-1.52-2-2.82-2-1.3 0-2.4.84-2.82 2h-4.18c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-14c0-1.1-.9-2-2-2zm-7 0c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm-2 14l-4-4 1.41-1.41 2.59 2.58 6.59-6.59 1.41 1.42-8 8z"></path></g>
+<g id="attachment"><path d="M7.5 18c-3.04 0-5.5-2.46-5.5-5.5s2.46-5.5 5.5-5.5h10.5c2.21 0 4 1.79 4 4s-1.79 4-4 4h-8.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5h7.5v1.5h-7.5c-.55 0-1 .45-1 1s.45 1 1 1h8.5c1.38 0 2.5-1.12 2.5-2.5s-1.12-2.5-2.5-2.5h-10.5c-2.21 0-4 1.79-4 4s1.79 4 4 4h9.5v1.5h-9.5z"></path></g>
+<g id="autorenew"><path d="M12 6v3l4-4-4-4v3c-4.42 0-8 3.58-8 8 0 1.57.46 3.03 1.24 4.26l1.46-1.46c-.45-.83-.7-1.79-.7-2.8 0-3.31 2.69-6 6-6zm6.76 1.74l-1.46 1.46c.44.84.7 1.79.7 2.8 0 3.31-2.69 6-6 6v-3l-4 4 4 4v-3c4.42 0 8-3.58 8-8 0-1.57-.46-3.03-1.24-4.26z"></path></g>
+<g id="backspace"><path d="M22 3h-15c-.69 0-1.23.35-1.59.88l-5.41 8.12 5.41 8.11c.36.53.9.89 1.59.89h15c1.1 0 2-.9 2-2v-14c0-1.1-.9-2-2-2zm-3 12.59l-1.41 1.41-3.59-3.59-3.59 3.59-1.41-1.41 3.59-3.59-3.59-3.59 1.41-1.41 3.59 3.59 3.59-3.59 1.41 1.41-3.59 3.59 3.59 3.59z"></path></g>
+<g id="backup"><path d="M19.35 10.04c-.68-3.45-3.71-6.04-7.35-6.04-2.89 0-5.4 1.64-6.65 4.04-3.01.32-5.35 2.87-5.35 5.96 0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zm-5.35 2.96v4h-4v-4h-3l5-5 5 5h-3z"></path></g>
+<g id="block"><path d="M12 2c-5.52 0-10 4.48-10 10s4.48 10 10 10 10-4.48 10-10-4.48-10-10-10zm-8 10c0-4.42 3.58-8 8-8 1.85 0 3.55.63 4.9 1.69l-11.21 11.21c-1.06-1.35-1.69-3.05-1.69-4.9zm8 8c-1.85 0-3.55-.63-4.9-1.69l11.21-11.21c1.06 1.35 1.69 3.05 1.69 4.9 0 4.42-3.58 8-8 8z"></path></g>
+<g id="bookmark-outline"><path d="M17 3h-10c-1.1 0-1.99.9-1.99 2l-.01 16 7-3 7 3v-16c0-1.1-.9-2-2-2zm0 15l-5-2.18-5 2.18v-13h10v13z"></path></g>
+<g id="bookmark"><path d="M17 3h-10c-1.1 0-1.99.9-1.99 2l-.01 16 7-3 7 3v-16c0-1.1-.9-2-2-2z"></path></g>
+<g id="book"><path d="M18 2h-12c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2v-16c0-1.1-.9-2-2-2zm-12 2h5v8l-2.5-1.5-2.5 1.5v-8z"></path></g>
+<g id="bug-report"><path d="M20 8h-2.81c-.45-.78-1.07-1.45-1.82-1.96l1.63-1.63-1.41-1.41-2.17 2.17c-.46-.11-.93-.17-1.42-.17-.49 0-.96.06-1.41.17l-2.18-2.17-1.41 1.41 1.62 1.63c-.74.51-1.36 1.18-1.81 1.96h-2.81v2h2.09c-.05.33-.09.66-.09 1v1h-2v2h2v1c0 .34.04.67.09 1h-2.09v2h2.81c1.04 1.79 2.97 3 5.19 3s4.15-1.21 5.19-3h2.81v-2h-2.09c.05-.33.09-.66.09-1v-1h2v-2h-2v-1c0-.34-.04-.67-.09-1h2.09v-2zm-6 8h-4v-2h4v2zm0-4h-4v-2h4v2z"></path></g>
+<g id="cached"><path d="M19 8l-4 4h3c0 3.31-2.69 6-6 6-1.01 0-1.97-.25-2.8-.7l-1.46 1.46c1.23.78 2.69 1.24 4.26 1.24 4.42 0 8-3.58 8-8h3l-4-4zm-13 4c0-3.31 2.69-6 6-6 1.01 0 1.97.25 2.8.7l1.46-1.46c-1.23-.78-2.69-1.24-4.26-1.24-4.42 0-8 3.58-8 8h-3l4 4 4-4h-3z"></path></g>
+<g id="cancel"><path d="M12 2c-5.53 0-10 4.47-10 10s4.47 10 10 10 10-4.47 10-10-4.47-10-10-10zm5 13.59l-1.41 1.41-3.59-3.59-3.59 3.59-1.41-1.41 3.59-3.59-3.59-3.59 1.41-1.41 3.59 3.59 3.59-3.59 1.41 1.41-3.59 3.59 3.59 3.59z"></path></g>
+<g id="check-box-outline-blank"><path d="M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2z"></path></g>
+<g id="check-box"><path d="M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2V5c0-1.1-.89-2-2-2zm-9 14l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"></path></g>
+<g id="check"><path d="M9 16.17l-4.17-4.17-1.42 1.41 5.59 5.59 12-12-1.41-1.41z"></path></g>
+<g id="chevron-left"><path d="M15.41 7.41l-1.41-1.41-6 6 6 6 1.41-1.41-4.58-4.59z"></path></g>
+<g id="chevron-right"><path d="M10 6l-1.41 1.41 4.58 4.59-4.58 4.59 1.41 1.41 6-6z"></path></g>
+<g id="class"><path d="M18 2h-12c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2v-16c0-1.1-.9-2-2-2zm-12 2h5v8l-2.5-1.5-2.5 1.5v-8z"></path></g>
+<g id="clear"><path d="M19 6.41l-1.41-1.41-5.59 5.59-5.59-5.59-1.41 1.41 5.59 5.59-5.59 5.59 1.41 1.41 5.59-5.59 5.59 5.59 1.41-1.41-5.59-5.59z"></path></g>
+<g id="close"><path d="M19 6.41l-1.41-1.41-5.59 5.59-5.59-5.59-1.41 1.41 5.59 5.59-5.59 5.59 1.41 1.41 5.59-5.59 5.59 5.59 1.41-1.41-5.59-5.59z"></path></g>
+<g id="cloud-circle"><path d="M12 2c-5.52 0-10 4.48-10 10s4.48 10 10 10 10-4.48 10-10-4.48-10-10-10zm4.5 14h-8.5c-1.66 0-3-1.34-3-3s1.34-3 3-3l.14.01c.44-1.73 1.99-3.01 3.86-3.01 2.21 0 4 1.79 4 4h.5c1.38 0 2.5 1.12 2.5 2.5s-1.12 2.5-2.5 2.5z"></path></g>
+<g id="cloud-done"><path d="M19.35 10.04c-.68-3.45-3.71-6.04-7.35-6.04-2.89 0-5.4 1.64-6.65 4.04-3.01.32-5.35 2.87-5.35 5.96 0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zm-9.35 6.96l-3.5-3.5 1.41-1.41 2.09 2.08 5.18-5.17 1.41 1.41-6.59 6.59z"></path></g>
+<g id="cloud-download"><path d="M19.35 10.04c-.68-3.45-3.71-6.04-7.35-6.04-2.89 0-5.4 1.64-6.65 4.04-3.01.32-5.35 2.87-5.35 5.96 0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zm-2.35 2.96l-5 5-5-5h3v-4h4v4h3z"></path></g>
+<g id="cloud-off"><path d="M19.35 10.04c-.68-3.45-3.71-6.04-7.35-6.04-1.48 0-2.85.43-4.01 1.17l1.46 1.46c.76-.4 1.63-.63 2.55-.63 3.04 0 5.5 2.46 5.5 5.5v.5h1.5c1.66 0 3 1.34 3 3 0 1.13-.64 2.11-1.56 2.62l1.45 1.45c1.27-.91 2.11-2.39 2.11-4.07 0-2.64-2.05-4.78-4.65-4.96zm-16.35-4.77l2.75 2.74c-3.19.14-5.75 2.76-5.75 5.99 0 3.31 2.69 6 6 6h11.73l2 2 1.27-1.27-16.73-16.73-1.27 1.27zm4.73 4.73l8 8h-9.73c-2.21 0-4-1.79-4-4s1.79-4 4-4h1.73z"></path></g>
+<g id="cloud"><path d="M19.35 10.04c-.68-3.45-3.71-6.04-7.35-6.04-2.89 0-5.4 1.64-6.65 4.04-3.01.32-5.35 2.87-5.35 5.96 0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96z"></path></g>
+<g id="cloud-queue"><path d="M19.35 10.04c-.68-3.45-3.71-6.04-7.35-6.04-2.89 0-5.4 1.64-6.65 4.04-3.01.32-5.35 2.87-5.35 5.96 0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zm-.35 7.96h-13c-2.21 0-4-1.79-4-4s1.79-4 4-4h.71c.66-2.31 2.77-4 5.29-4 3.04 0 5.5 2.46 5.5 5.5v.5h1.5c1.66 0 3 1.34 3 3s-1.34 3-3 3z"></path></g>
+<g id="cloud-upload"><path d="M19.35 10.04c-.68-3.45-3.71-6.04-7.35-6.04-2.89 0-5.4 1.64-6.65 4.04-3.01.32-5.35 2.87-5.35 5.96 0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zm-5.35 2.96v4h-4v-4h-3l5-5 5 5h-3z"></path></g>
+<g id="content-copy"><path d="M16 1h-12c-1.1 0-2 .9-2 2v14h2v-14h12v-2zm3 4h-11c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2v-14c0-1.1-.9-2-2-2zm0 16h-11v-14h11v14z"></path></g>
+<g id="content-cut"><path d="M9.64 7.64c.23-.5.36-1.05.36-1.64 0-2.21-1.79-4-4-4s-4 1.79-4 4 1.79 4 4 4c.59 0 1.14-.13 1.64-.36l2.36 2.36-2.36 2.36c-.5-.23-1.05-.36-1.64-.36-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4c0-.59-.13-1.14-.36-1.64l2.36-2.36 7 7h3v-1l-12.36-12.36zm-3.64.36c-1.1 0-2-.89-2-2s.9-2 2-2 2 .89 2 2-.9 2-2 2zm0 12c-1.1 0-2-.89-2-2s.9-2 2-2 2 .89 2 2-.9 2-2 2zm6-7.5c-.28 0-.5-.22-.5-.5s.22-.5.5-.5.5.22.5.5-.22.5-.5.5zm7-9.5l-6 6 2 2 7-7v-1z"></path></g>
+<g id="content-paste"><path d="M19 2h-4.18c-.42-1.16-1.52-2-2.82-2-1.3 0-2.4.84-2.82 2h-4.18c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-16c0-1.1-.9-2-2-2zm-7 0c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm7 18h-14v-16h2v3h10v-3h2v16z"></path></g>
+<g id="create"><path d="M3 17.25v3.75h3.75l11.06-11.06-3.75-3.75-11.06 11.06zm17.71-10.21c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"></path></g>
+<g id="credit-card"><path d="M4 12h16v6h-16z"></path><path d="M20 4h-16c-1.11 0-1.99.89-1.99 2l-.01 12c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2v-12c0-1.11-.89-2-2-2zm0 14h-16v-6h16v6zm0-10h-16v-2h16v2z"></path></g>
+<g id="dashboard"><path d="M3 13h8v-10h-8v10zm0 8h8v-6h-8v6zm10 0h8v-10h-8v10zm0-18v6h8v-6h-8z"></path></g>
+<g id="delete"><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2v-12h-12v12zm13-15h-3.5l-1-1h-5l-1 1h-3.5v2h14v-2z"></path></g>
+<g id="description"><path d="M14 2h-8c-1.1 0-1.99.9-1.99 2l-.01 16c0 1.1.89 2 1.99 2h12.01c1.1 0 2-.9 2-2v-12l-6-6zm2 16h-8v-2h8v2zm0-4h-8v-2h8v2zm-3-5v-5.5l5.5 5.5h-5.5z"></path></g>
+<g id="developer-mode-tv"><path d="M4 5h16v2h2v-2c0-1.1-.9-2-2-2h-16c-1.1 0-2 .9-2 2v2h2v-2zm3.55 8.83l-2.83-2.83 2.83-2.83-1.41-1.41-4.25 4.24 4.24 4.24 1.42-1.41zm12.45 3.17h-16v-2h-2v2c0 1.1.9 2 2 2h4v2h8v-2h4c1.1 0 1.99-.9 1.99-2v-2h-1.99v2zm2-6.01l-4.24-4.24-1.41 1.41 2.82 2.84-2.83 2.83 1.41 1.41 4.25-4.23v-.02z"></path></g>
+<g id="dns"><path d="M20 13h-16c-.55 0-1 .45-1 1v6c0 .55.45 1 1 1h16c.55 0 1-.45 1-1v-6c0-.55-.45-1-1-1zm-13 6c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm13-16h-16c-.55 0-1 .45-1 1v6c0 .55.45 1 1 1h16c.55 0 1-.45 1-1v-6c0-.55-.45-1-1-1zm-13 6c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z"></path></g>
+<g id="done-all"><path d="M18 7l-1.41-1.41-6.34 6.34 1.41 1.41 6.34-6.34zm4.24-1.41l-10.58 10.58-4.18-4.17-1.41 1.41 5.59 5.59 12-12-1.42-1.41zm-21.83 7.82l5.59 5.59 1.41-1.41-5.58-5.59-1.42 1.41z"></path></g>
+<g id="done"><path d="M9 16.17l-4.17-4.17-1.42 1.41 5.59 5.59 12-12-1.41-1.41z"></path></g>
+<g id="drafts"><path d="M21.99 8c0-.72-.37-1.35-.94-1.7l-9.05-5.3-9.05 5.3c-.57.35-.95.98-.95 1.7v10c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2l-.01-10zm-9.99 5l-8.26-5.16 8.26-4.84 8.26 4.84-8.26 5.16z"></path></g>
+<g id="drawer"><path d="M20,4H4C2.8,4,2,4.8,2,6v12c0,1.2,0.8,2,2,2h16c1,0,2-0.8,2-2V6C22,4.8,21,4,20,4z M20,18h-6V6h6V18z"></path></g>
+<g id="error"><path d="M12 2c-5.52 0-10 4.48-10 10s4.48 10 10 10 10-4.48 10-10-4.48-10-10-10zm1 15h-2v-2h2v2zm0-4h-2v-6h2v6z"></path></g>
+<g id="event"><path d="M17 12h-5v5h5v-5zm-1-11v2h-8v-2h-2v2h-1c-1.11 0-1.99.9-1.99 2l-.01 14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-14c0-1.1-.9-2-2-2h-1v-2h-2zm3 18h-14v-11h14v11z"></path></g>
+<g id="exit-to-app"><path d="M10.09 15.59l1.41 1.41 5-5-5-5-1.41 1.41 2.58 2.59h-9.67v2h9.67l-2.58 2.59zm8.91-12.59h-14c-1.11 0-2 .9-2 2v4h2v-4h14v14h-14v-4h-2v4c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-14c0-1.1-.9-2-2-2z"></path></g>
+<g id="expand-less"><path d="M12 8l-6 6 1.41 1.41 4.59-4.58 4.59 4.58 1.41-1.41z"></path></g>
+<g id="expand-more"><path d="M16.59 8.59l-4.59 4.58-4.59-4.58-1.41 1.41 6 6 6-6z"></path></g>
+<g id="explore"><path d="M12 10.9c-.61 0-1.1.49-1.1 1.1s.49 1.1 1.1 1.1c.61 0 1.1-.49 1.1-1.1s-.49-1.1-1.1-1.1zm0-8.9c-5.52 0-10 4.48-10 10s4.48 10 10 10 10-4.48 10-10-4.48-10-10-10zm2.19 12.19l-8.19 3.81 3.81-8.19 8.19-3.81-3.81 8.19z"></path></g>
+<g id="extension"><path d="M20.5 11h-1.5v-4c0-1.1-.9-2-2-2h-4v-1.5c0-1.38-1.12-2.5-2.5-2.5s-2.5 1.12-2.5 2.5v1.5h-4c-1.1 0-1.99.9-1.99 2v3.8h1.49c1.49 0 2.7 1.21 2.7 2.7s-1.21 2.7-2.7 2.7h-1.5v3.8c0 1.1.9 2 2 2h3.8v-1.5c0-1.49 1.21-2.7 2.7-2.7 1.49 0 2.7 1.21 2.7 2.7v1.5h3.8c1.1 0 2-.9 2-2v-4h1.5c1.38 0 2.5-1.12 2.5-2.5s-1.12-2.5-2.5-2.5z"></path></g>
+<g id="face-unlock"><path d="M14.69 17.1c-.74.58-1.7.9-2.69.9s-1.95-.32-2.69-.9c-.22-.17-.53-.13-.7.09-.17.22-.13.53.09.7.91.72 2.09 1.11 3.3 1.11s2.39-.39 3.31-1.1c.22-.17.26-.48.09-.7-.17-.23-.49-.26-.71-.1z"></path><circle cx="8.5" cy="12.5" r="1"></circle><path d="M12 0c-6.63 0-12 5.37-12 12s5.37 12 12 12 12-5.37 12-12-5.37-12-12-12zm7.96 14.82c-1.09 3.74-4.27 6.46-8.04 6.46-3.78 0-6.96-2.72-8.04-6.47-1.19-.11-2.13-1.18-2.13-2.52 0-1.27.85-2.31 1.97-2.5 2.09-1.46 3.8-3.49 4.09-5.05v-.01c1.35 2.63 6.3 5.19 11.83 5.06l.3-.03c1.28 0 2.31 1.14 2.31 2.54 0 1.38-1.02 2.51-2.29 2.52z"></path><circle cx="15.5" cy="12.5" r="1"></circle></g>
+<g id="favorite-outline"><path d="M16.5 3c-1.74 0-3.41.81-4.5 2.09-1.09-1.28-2.76-2.09-4.5-2.09-3.08 0-5.5 2.42-5.5 5.5 0 3.78 3.4 6.86 8.55 11.54l1.45 1.31 1.45-1.32c5.15-4.67 8.55-7.75 8.55-11.53 0-3.08-2.42-5.5-5.5-5.5zm-4.4 15.55l-.1.1-.1-.1c-4.76-4.31-7.9-7.16-7.9-10.05 0-2 1.5-3.5 3.5-3.5 1.54 0 3.04.99 3.57 2.36h1.87c.52-1.37 2.02-2.36 3.56-2.36 2 0 3.5 1.5 3.5 3.5 0 2.89-3.14 5.74-7.9 10.05z"></path></g>
+<g id="favorite"><path d="M12 21.35l-1.45-1.32c-5.15-4.67-8.55-7.75-8.55-11.53 0-3.08 2.42-5.5 5.5-5.5 1.74 0 3.41.81 4.5 2.09 1.09-1.28 2.76-2.09 4.5-2.09 3.08 0 5.5 2.42 5.5 5.5 0 3.78-3.4 6.86-8.55 11.54l-1.45 1.31z"></path></g>
+<g id="file-download"><path d="M19 9h-4v-6h-6v6h-4l7 7 7-7zm-14 9v2h14v-2h-14z"></path></g>
+<g id="file-map"><path d="M12 6.5c-.83 0-1.5.67-1.5 1.5s.67 1.5 1.5 1.5 1.5-.67 1.5-1.5-.67-1.5-1.5-1.5zm7-5.5h-14c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-14c0-1.1-.9-2-2-2zm-6.5 16h-1c-.95-4.09-3.99-5.84-3.99-9 0-2.49 2-4.5 4.49-4.5s4.51 2.01 4.51 4.5c0 3.16-3.06 4.91-4.01 9z"></path></g>
+<g id="file-upload"><path d="M9 16h6v-6h4l-7-7-7 7h4zm-4 2h14v2h-14z"></path></g>
+<g id="filter-list"><path d="M10 18h4v-2h-4v2zm-7-12v2h18v-2h-18zm3 7h12v-2h-12v2z"></path></g>
+<g id="find-in-page"><path d="M20 19.59v-11.59l-6-6h-8c-1.1 0-1.99.9-1.99 2l-.01 16c0 1.1.89 2 1.99 2h12.01c.45 0 .85-.15 1.19-.4l-4.43-4.43c-.8.52-1.74.83-2.76.83-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5c0 1.02-.31 1.96-.83 2.75l3.83 3.84zm-11-6.59c0 1.66 1.34 3 3 3s3-1.34 3-3-1.34-3-3-3-3 1.34-3 3z"></path></g>
+<g id="find-replace"><path d="M11 6c1.38 0 2.63.56 3.54 1.46l-2.54 2.54h6v-6l-2.05 2.05c-1.27-1.27-3.02-2.05-4.95-2.05-3.53 0-6.43 2.61-6.92 6h2.02c.46-2.28 2.48-4 4.9-4zm5.64 9.14c.66-.9 1.12-1.97 1.28-3.14h-2.02c-.46 2.28-2.48 4-4.9 4-1.38 0-2.63-.56-3.54-1.46l2.54-2.54h-6v6l2.05-2.05c1.27 1.27 3.02 2.05 4.95 2.05 1.55 0 2.98-.51 4.14-1.36l4.86 4.85 1.49-1.49-4.85-4.86z"></path></g>
+<g id="flag"><path d="M14.4 6l-.4-2h-9v17h2v-7h5.6l.4 2h7v-10z"></path></g>
+<g id="flip-to-back"><path d="M9 7h-2v2h2v-2zm0 4h-2v2h2v-2zm0-8c-1.11 0-2 .9-2 2h2v-2zm4 12h-2v2h2v-2zm6-12v2h2c0-1.1-.9-2-2-2zm-6 0h-2v2h2v-2zm-4 14v-2h-2c0 1.1.89 2 2 2zm10-4h2v-2h-2v2zm0-4h2v-2h-2v2zm0 8c1.1 0 2-.9 2-2h-2v2zm-14-10h-2v12c0 1.1.89 2 2 2h12v-2h-12v-12zm10-2h2v-2h-2v2zm0 12h2v-2h-2v2z"></path></g>
+<g id="flip-to-front"><path d="M3 13h2v-2h-2v2zm0 4h2v-2h-2v2zm2 4v-2h-2c0 1.1.89 2 2 2zm-2-12h2v-2h-2v2zm12 12h2v-2h-2v2zm4-18h-10c-1.11 0-2 .9-2 2v10c0 1.1.89 2 2 2h10c1.1 0 2-.9 2-2v-10c0-1.1-.9-2-2-2zm0 12h-10v-10h10v10zm-8 6h2v-2h-2v2zm-4 0h2v-2h-2v2z"></path></g>
+<g id="folder-open"><path d="M20 6h-8l-2-2h-6c-1.1 0-1.99.9-1.99 2l-.01 12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2v-10c0-1.1-.9-2-2-2zm0 12h-16v-10h16v10z"></path></g>
+<g id="folder"><path d="M10 4h-6c-1.1 0-1.99.9-1.99 2l-.01 12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2v-10c0-1.1-.9-2-2-2h-8l-2-2z"></path></g>
+<g id="folder-shared"><path d="M20 6h-8l-2-2h-6c-1.1 0-1.99.9-1.99 2l-.01 12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2v-10c0-1.1-.9-2-2-2zm-5 3c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2zm4 8h-8v-1c0-1.33 2.67-2 4-2s4 .67 4 2v1z"></path></g>
+<g id="forward"><path d="M12 8v-4l8 8-8 8v-4h-8v-8z"></path></g>
+<g id="fullscreen-exit"><path d="M5 16h3v3h2v-5h-5v2zm3-8h-3v2h5v-5h-2v3zm6 11h2v-3h3v-2h-5v5zm2-11v-3h-2v5h5v-2h-3z"></path></g>
+<g id="fullscreen"><path d="M7 14h-2v5h5v-2h-3v-3zm-2-4h2v-3h3v-2h-5v5zm12 7h-3v2h5v-5h-2v3zm-3-12v2h3v3h2v-5h-5z"></path></g>
+<g id="gesture"><path d="M4.59 6.89c.7-.71 1.4-1.35 1.71-1.22.5.2 0 1.03-.3 1.52-.25.42-2.86 3.89-2.86 6.31 0 1.28.48 2.34 1.34 2.98.75.56 1.74.73 2.64.46 1.07-.31 1.95-1.4 3.06-2.77 1.21-1.49 2.83-3.44 4.08-3.44 1.63 0 1.65 1.01 1.76 1.79-3.78.64-5.38 3.67-5.38 5.37 0 1.7 1.44 3.09 3.21 3.09 1.63 0 4.29-1.33 4.69-6.1h2.46v-2.5h-2.47c-.15-1.65-1.09-4.2-4.03-4.2-2.25 0-4.18 1.91-4.94 2.84-.58.73-2.06 2.48-2.29 2.72-.25.3-.68.84-1.11.84-.45 0-.72-.83-.36-1.92.35-1.09 1.4-2.86 1.85-3.52.78-1.14 1.3-1.92 1.3-3.28 0-2.17-1.64-2.86-2.51-2.86-1.32 0-2.47 1-2.72 1.25-.36.36-.66.66-.88.93l1.75 1.71zm9.29 11.66c-.31 0-.74-.26-.74-.72 0-.6.73-2.2 2.87-2.76-.3 2.69-1.43 3.48-2.13 3.48z"></path></g>
+<g id="get-app"><path d="M19 9h-4v-6h-6v6h-4l7 7 7-7zm-14 9v2h14v-2h-14z"></path></g>
+<g id="grade"><path d="M12 17.27l6.18 3.73-1.64-7.03 5.46-4.73-7.19-.61-2.81-6.63-2.81 6.63-7.19.61 5.46 4.73-1.64 7.03z"></path></g>
+<g id="group-work"><path d="M12 2c-5.52 0-10 4.48-10 10s4.48 10 10 10 10-4.48 10-10-4.48-10-10-10zm-4 15.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5zm1.5-9.5c0-1.38 1.12-2.5 2.5-2.5s2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5-2.5-1.12-2.5-2.5zm6.5 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"></path></g>
+<g id="help"><path d="M12 2c-5.52 0-10 4.48-10 10s4.48 10 10 10 10-4.48 10-10-4.48-10-10-10zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92c-.72.73-1.17 1.33-1.17 2.83h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2h-2c0-2.21 1.79-4 4-4s4 1.79 4 4c0 .88-.36 1.68-.93 2.25z"></path></g>
+<g id="highlight-remove"><path d="M14.59 8l-2.59 2.59-2.59-2.59-1.41 1.41 2.59 2.59-2.59 2.59 1.41 1.41 2.59-2.59 2.59 2.59 1.41-1.41-2.59-2.59 2.59-2.59-1.41-1.41zm-2.59-6c-5.53 0-10 4.47-10 10s4.47 10 10 10 10-4.47 10-10-4.47-10-10-10zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"></path></g>
+<g id="history"><path opacity=".9" d="M13 3c-4.97 0-9 4.03-9 9h-3l3.89 3.89.07.14 4.04-4.03h-3c0-3.87 3.13-7 7-7s7 3.13 7 7-3.13 7-7 7c-1.93 0-3.68-.79-4.94-2.06l-1.42 1.42c1.63 1.63 3.87 2.64 6.36 2.64 4.97 0 9-4.03 9-9s-4.03-9-9-9zm-1 5v5l4.28 2.54.72-1.21-3.5-2.08v-4.25h-1.5z"></path></g>
+<g id="home"><path d="M10 20v-6h4v6h5v-8h3l-10-9-10 9h3v8z"></path></g>
+<g id="https"><path d="M18 8h-1v-2c0-2.76-2.24-5-5-5s-5 2.24-5 5v2h-1c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2v-10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9h-6.2v-2c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"></path></g>
+<g id="inbox"><path d="M19 3h-14.01c-1.1 0-1.98.9-1.98 2l-.01 14c0 1.1.89 2 1.99 2h14.01c1.1 0 2-.9 2-2v-14c0-1.1-.9-2-2-2zm0 12h-4c0 1.66-1.34 3-3 3s-3-1.34-3-3h-4.01v-10h14.01v10zm-3-5h-2v-3h-4v3h-2l4 4 4-4z"></path></g>
+<g id="info-outline"><path d="M11 17h2v-6h-2v6zm1-15c-5.52 0-10 4.48-10 10s4.48 10 10 10 10-4.48 10-10-4.48-10-10-10zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-11h2v-2h-2v2z"></path></g>
+<g id="info"><path d="M12 2c-5.52 0-10 4.48-10 10s4.48 10 10 10 10-4.48 10-10-4.48-10-10-10zm1 15h-2v-6h2v6zm0-8h-2v-2h2v2z"></path></g>
+<g id="input"><path d="M21 3.01h-18c-1.1 0-2 .9-2 2v3.99h2v-4.01h18v14.03h-18v-4.02h-2v4.01c0 1.1.9 1.98 2 1.98h18c1.1 0 2-.88 2-1.98v-14c0-1.11-.9-2-2-2zm-10 12.99l4-4-4-4v3h-10v2h10v3z"></path></g>
+<g id="invert-colors"><path d="M17.66 7.93l-5.66-5.66-5.66 5.66c-3.12 3.12-3.12 8.19 0 11.31 1.56 1.56 3.61 2.34 5.66 2.34 2.05 0 4.1-.78 5.66-2.34 3.12-3.12 3.12-8.19 0-11.31zm-5.66 11.66c-1.6 0-3.11-.62-4.24-1.76-1.14-1.14-1.76-2.64-1.76-4.24s.62-3.11 1.76-4.24l4.24-4.25v14.49z"></path></g>
+<g id="label-outline"><path d="M17.63 5.84c-.36-.51-.96-.84-1.63-.84l-11 .01c-1.1 0-2 .89-2 1.99v10c0 1.1.9 1.99 2 1.99l11 .01c.67 0 1.27-.33 1.63-.84l4.37-6.16-4.37-6.16zm-1.63 11.16h-11v-10h11l3.55 5-3.55 5z"></path></g>
+<g id="label"><path d="M17.63 5.84c-.36-.51-.96-.84-1.63-.84l-11 .01c-1.1 0-2 .89-2 1.99v10c0 1.1.9 1.99 2 1.99l11 .01c.67 0 1.27-.33 1.63-.84l4.37-6.16-4.37-6.16z"></path></g>
+<g id="language"><path d="M11.99 2c-5.52 0-9.99 4.48-9.99 10s4.47 10 9.99 10c5.53 0 10.01-4.48 10.01-10s-4.48-10-10.01-10zm6.93 6h-2.95c-.32-1.25-.78-2.45-1.38-3.56 1.84.63 3.37 1.91 4.33 3.56zm-6.92-3.96c.83 1.2 1.48 2.53 1.91 3.96h-3.82c.43-1.43 1.08-2.76 1.91-3.96zm-7.74 9.96c-.16-.64-.26-1.31-.26-2s.1-1.36.26-2h3.38c-.08.66-.14 1.32-.14 2 0 .68.06 1.34.14 2h-3.38zm.82 2h2.95c.32 1.25.78 2.45 1.38 3.56-1.84-.63-3.37-1.9-4.33-3.56zm2.95-8h-2.95c.96-1.66 2.49-2.93 4.33-3.56-.6 1.11-1.06 2.31-1.38 3.56zm3.97 11.96c-.83-1.2-1.48-2.53-1.91-3.96h3.82c-.43 1.43-1.08 2.76-1.91 3.96zm2.34-5.96h-4.68c-.09-.66-.16-1.32-.16-2 0-.68.07-1.35.16-2h4.68c.09.65.16 1.32.16 2 0 .68-.07 1.34-.16 2zm.25 5.56c.6-1.11 1.06-2.31 1.38-3.56h2.95c-.96 1.65-2.49 2.93-4.33 3.56zm1.77-5.56c.08-.66.14-1.32.14-2 0-.68-.06-1.34-.14-2h3.38c.16.64.26 1.31.26 2s-.1 1.36-.26 2h-3.38z"></path></g>
+<g id="launch"><path d="M19 19h-14v-14h7v-2h-7c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zm-5-16v2h3.59l-9.83 9.83 1.41 1.41 9.83-9.83v3.59h2v-7h-7z"></path></g>
+<g id="link"><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4v-1.9h-4c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9h-4c-1.71 0-3.1-1.39-3.1-3.1zm4.1 1h8v-2h-8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4v1.9h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z"></path></g>
+<g id="list"><path d="M3 13h2v-2h-2v2zm0 4h2v-2h-2v2zm0-8h2v-2h-2v2zm4 4h14v-2h-14v2zm0 4h14v-2h-14v2zm0-10v2h14v-2h-14z"></path></g>
+<g id="lock-open"><path d="M12 17c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm6-9h-1v-2c0-2.76-2.24-5-5-5s-5 2.24-5 5h1.9c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2h-9.1c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2v-10c0-1.1-.9-2-2-2zm0 12h-12v-10h12v10z"></path></g>
+<g id="lock-outline"><path d="M18 8h-1v-2c0-2.76-2.24-5-5-5s-5 2.24-5 5v2h-1c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2v-10c0-1.1-.9-2-2-2zm-6-5.1c1.71 0 3.1 1.39 3.1 3.1v2h-6.1v-2h-.1c0-1.71 1.39-3.1 3.1-3.1zm6 17.1h-12v-10h12v10zm-6-3c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2z"></path></g>
+<g id="lock"><path d="M18 8h-1v-2c0-2.76-2.24-5-5-5s-5 2.24-5 5v2h-1c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2v-10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9h-6.2v-2c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"></path></g>
+<g id="loyalty"><path d="M21.41 11.58l-9-9c-.36-.36-.86-.58-1.41-.58h-7c-1.1 0-2 .9-2 2v7c0 .55.22 1.05.59 1.42l9 9c.36.36.86.58 1.41.58.55 0 1.05-.22 1.41-.59l7-7c.37-.36.59-.86.59-1.41 0-.55-.23-1.06-.59-1.42zm-15.91-4.58c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm11.77 8.27l-4.27 4.27-4.27-4.27c-.45-.46-.73-1.08-.73-1.77 0-1.38 1.12-2.5 2.5-2.5.69 0 1.32.28 1.77.74l.73.72.73-.73c.45-.45 1.08-.73 1.77-.73 1.38 0 2.5 1.12 2.5 2.5 0 .69-.28 1.32-.73 1.77z"></path></g>
+<g id="mail"><path d="M20 4h-16c-1.1 0-1.99.9-1.99 2l-.01 12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2v-12c0-1.1-.9-2-2-2zm0 4l-8 5-8-5v-2l8 5 8-5v2z"></path></g>
+<g id="markunread-mailbox"><path d="M20 6h-10v6h-2v-8h6v-4h-8v6h-2c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2v-12c0-1.1-.9-2-2-2z"></path></g>
+<g id="markunread"><path d="M20 4h-16c-1.1 0-1.99.9-1.99 2l-.01 12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2v-12c0-1.1-.9-2-2-2zm0 4l-8 5-8-5v-2l8 5 8-5v2z"></path></g>
+<g id="menu"><path d="M3 18h18v-2h-18v2zm0-5h18v-2h-18v2zm0-7v2h18v-2h-18z"></path></g>
+<g id="more-horiz"><path d="M6 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm12 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm-6 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"></path></g>
+<g id="more-vert"><path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"></path></g>
+<g id="note-add"><path d="M14 2h-8c-1.1 0-1.99.9-1.99 2l-.01 16c0 1.1.89 2 1.99 2h12.01c1.1 0 2-.9 2-2v-12l-6-6zm2 14h-3v3h-2v-3h-3v-2h3v-3h2v3h3v2zm-3-7v-5.5l5.5 5.5h-5.5z"></path></g>
+<g id="open-in-browser"><path d="M19 4h-14c-1.11 0-2 .9-2 2v12c0 1.1.89 2 2 2h4v-2h-4v-10h14v10h-4v2h4c1.1 0 2-.9 2-2v-12c0-1.1-.89-2-2-2zm-7 6l-4 4h3v6h2v-6h3l-4-4z"></path></g>
+<g id="open-in-new"><path d="M19 19h-14v-14h7v-2h-7c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zm-5-16v2h3.59l-9.83 9.83 1.41 1.41 9.83-9.83v3.59h2v-7h-7z"></path></g>
+<g id="open-with"><path d="M10 9h4v-3h3l-5-5-5 5h3v3zm-1 1h-3v-3l-5 5 5 5v-3h3v-4zm14 2l-5-5v3h-3v4h3v3l5-5zm-9 3h-4v3h-3l5 5 5-5h-3v-3z"></path></g>
+<g id="pageview"><path d="M11 8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3zm8-5h-14c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-14c0-1.1-.9-2-2-2zm-1.41 16l-3.83-3.83c-.8.52-1.74.83-2.76.83-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5c0 1.02-.31 1.96-.83 2.75l3.83 3.84-1.41 1.41z"></path></g>
+<g id="payment"><path d="M20 4h-16c-1.11 0-1.99.89-1.99 2l-.01 12c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2v-12c0-1.11-.89-2-2-2zm0 14h-16v-6h16v6zm0-10h-16v-2h16v2z"></path></g>
+<g id="perm-camera-mic"><path d="M20 5h-3.17l-1.83-2h-6l-1.83 2h-3.17c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h7v-2.09c-2.83-.48-5-2.94-5-5.91h2c0 2.21 1.79 4 4 4s4-1.79 4-4h2c0 2.97-2.17 5.43-5 5.91v2.09h7c1.1 0 2-.9 2-2v-12c0-1.1-.9-2-2-2zm-6 8c0 1.1-.9 2-2 2s-2-.9-2-2v-4c0-1.1.9-2 2-2s2 .9 2 2v4z"></path></g>
+<g id="perm-contact-cal"><path d="M19 3h-1v-2h-2v2h-8v-2h-2v2h-1c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-14c0-1.1-.9-2-2-2zm-7 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm6 12h-12v-1c0-2 4-3.1 6-3.1s6 1.1 6 3.1v1z"></path></g>
+<g id="perm-data-setting"><path d="M18.99 11.5c.34 0 .67.03 1 .07l.01-11.57-20 20h11.56c-.04-.33-.07-.66-.07-1 0-4.14 3.36-7.5 7.5-7.5zm3.71 7.99c.02-.16.04-.32.04-.49 0-.17-.01-.33-.04-.49l1.06-.83c.09-.08.12-.21.06-.32l-1-1.73c-.06-.11-.19-.15-.31-.11l-1.24.5c-.26-.2-.54-.37-.85-.49l-.19-1.32c-.01-.12-.12-.21-.24-.21h-2c-.12 0-.23.09-.25.21l-.19 1.32c-.3.13-.59.29-.85.49l-1.24-.5c-.11-.04-.24 0-.31.11l-1 1.73c-.06.11-.04.24.06.32l1.06.83c-.02.16-.03.32-.03.49 0 .17.01.33.03.49l-1.06.83c-.09.08-.12.21-.06.32l1 1.73c.06.11.19.15.31.11l1.24-.5c.26.2.54.37.85.49l.19 1.32c.02.12.12.21.25.21h2c.12 0 .23-.09.25-.21l.19-1.32c.3-.13.59-.29.84-.49l1.25.5c.11.04.24 0 .31-.11l1-1.73c.06-.11.03-.24-.06-.32l-1.07-.83zm-3.71 1.01c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"></path></g>
+<g id="perm-device-info"><path d="M13 7h-2v2h2v-2zm0 4h-2v6h2v-6zm4-9.99l-10-.01c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2v-18c0-1.1-.9-1.99-2-1.99zm0 17.99h-10v-14h10v14z"></path></g>
+<g id="perm-identity"><path d="M12 5.9c1.16 0 2.1.94 2.1 2.1s-.94 2.1-2.1 2.1-2.1-.94-2.1-2.1.94-2.1 2.1-2.1m0 9c2.97 0 6.1 1.46 6.1 2.1v1.1h-12.2v-1.1c0-.64 3.13-2.1 6.1-2.1m0-10.9c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm0 9c-2.67 0-8 1.34-8 4v3h16v-3c0-2.66-5.33-4-8-4z"></path></g>
+<g id="perm-media"><path d="M2 6h-2v5h.01l-.01 9c0 1.1.9 2 2 2h18v-2h-18v-14zm20-2h-8l-2-2h-6c-1.1 0-1.99.9-1.99 2l-.01 12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2v-10c0-1.1-.9-2-2-2zm-15 11l4.5-6 3.5 4.51 2.5-3.01 3.5 4.5h-14z"></path></g>
+<g id="perm-phone-msg"><path d="M20 15.5c-1.25 0-2.45-.2-3.57-.57-.35-.11-.74-.03-1.02.24l-2.2 2.2c-2.83-1.44-5.15-3.75-6.59-6.58l2.2-2.21c.28-.27.36-.66.25-1.01-.37-1.12-.57-2.32-.57-3.57 0-.55-.45-1-1-1h-3.5c-.55 0-1 .45-1 1 0 9.39 7.61 17 17 17 .55 0 1-.45 1-1v-3.5c0-.55-.45-1-1-1zm-8-12.5v10l3-3h6v-7h-9z"></path></g>
+<g id="perm-scan-wifi"><path d="M12 3c-5.05 0-8.85 1.85-12 4.23l12 14.77 12-14.75c-3.15-2.38-6.95-4.25-12-4.25zm1 13h-2v-6h2v6zm-2-8v-2h2v2h-2z"></path></g>
+<g id="picture-in-picture"><path d="M19 7h-8v6h8v-6zm2-4h-18c-1.1 0-2 .9-2 2v14c0 1.1.9 1.98 2 1.98h18c1.1 0 2-.88 2-1.98v-14c0-1.1-.9-2-2-2zm0 16.01h-18v-14.03h18v14.03z"></path></g>
+<g id="polymer"><path d="M19 4h-4l-7.89 12.63-2.61-4.63 4.5-8h-4l-4.5 8 4.5 8h4l7.89-12.63 2.61 4.63-4.5 8h4l4.5-8z"></path></g>
+<g id="print"><path d="M19 8h-14c-1.66 0-3 1.34-3 3v6h4v4h12v-4h4v-6c0-1.66-1.34-3-3-3zm-3 11h-8v-5h8v5zm3-7c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1zm-1-9h-12v4h12v-4z"></path></g>
+<g id="query-builder"><path d="M11.99 2c-5.52 0-9.99 4.48-9.99 10s4.47 10 9.99 10c5.53 0 10.01-4.48 10.01-10s-4.48-10-10.01-10zm.01 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"></path><path d="M12.5 7h-1.5v6l5.25 3.15.75-1.23-4.5-2.67z"></path></g>
+<g id="question-answer"><path d="M21 6h-2v9h-13v2c0 .55.45 1 1 1h11l4 4v-15c0-.55-.45-1-1-1zm-4 6v-9c0-.55-.45-1-1-1h-13c-.55 0-1 .45-1 1v14l4-4h10c.55 0 1-.45 1-1z"></path></g>
+<g id="radio-button-off"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"></path></g>
+<g id="radio-button-on"><path d="M12 7c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm0-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"></path></g>
+<g id="receipt"><path d="M18 17h-12v-2h12v2zm0-4h-12v-2h12v2zm0-4h-12v-2h12v2zm-15 13l1.5-1.5 1.5 1.5 1.5-1.5 1.5 1.5 1.5-1.5 1.5 1.5 1.5-1.5 1.5 1.5 1.5-1.5 1.5 1.5 1.5-1.5 1.5 1.5v-20l-1.5 1.5-1.5-1.5-1.5 1.5-1.5-1.5-1.5 1.5-1.5-1.5-1.5 1.5-1.5-1.5-1.5 1.5-1.5-1.5-1.5 1.5-1.5-1.5v20z"></path></g>
+<g id="redeem"><path d="M20 6h-2.18c.11-.31.18-.65.18-1 0-1.66-1.34-3-3-3-1.05 0-1.96.54-2.5 1.35l-.5.67-.5-.68c-.54-.8-1.45-1.34-2.5-1.34-1.66 0-3 1.34-3 3 0 .35.07.69.18 1h-2.18c-1.11 0-1.99.89-1.99 2l-.01 11c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2v-11c0-1.11-.89-2-2-2zm-5-2c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm-6 0c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm11 15h-16v-2h16v2zm0-5h-16v-6h5.08l-2.08 2.83 1.62 1.17 2.38-3.24 1-1.36 1 1.36 2.38 3.24 1.62-1.17-2.08-2.83h5.08v6z"></path></g>
+<g id="redo"><path d="M18.4 10.6c-1.85-1.61-4.25-2.6-6.9-2.6-4.65 0-8.58 3.03-9.96 7.22l2.36.78c1.05-3.19 4.05-5.5 7.6-5.5 1.95 0 3.73.72 5.12 1.88l-3.62 3.62h9v-9l-3.6 3.6z"></path></g>
+<g id="refresh"><path d="M17.65 6.35c-1.45-1.45-3.44-2.35-5.65-2.35-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78l-3.22 3.22h7v-7l-2.35 2.35z"></path></g>
+<g id="remove-circle-outline"><path d="M7 11v2h10v-2h-10zm5-9c-5.52 0-10 4.48-10 10s4.48 10 10 10 10-4.48 10-10-4.48-10-10-10zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"></path></g>
+<g id="remove-circle"><path d="M12 2c-5.52 0-10 4.48-10 10s4.48 10 10 10 10-4.48 10-10-4.48-10-10-10zm5 11h-10v-2h10v2z"></path></g>
+<g id="remove"><path d="M19 13h-14v-2h14v2z"></path></g>
+<g id="reorder"><path d="M3,15h18v-2H3V15z M3,19h18v-2H3V19z M3,11h18V9H3V11z M3,5v2h18V5H3z"></path></g>
+<g id="reply-all"><path d="M7 8v-3l-7 7 7 7v-3l-4-4 4-4zm6 1v-4l-7 7 7 7v-4.1c5 0 8.5 1.6 11 5.1-1-5-4-10-11-11z"></path></g>
+<g id="reply"><path d="M10 9v-4l-7 7 7 7v-4.1c5 0 8.5 1.6 11 5.1-1-5-4-10-11-11z"></path></g>
+<g id="report"><path d="M15.73 3h-7.46l-5.27 5.27v7.46l5.27 5.27h7.46l5.27-5.27v-7.46l-5.27-5.27zm-3.73 14.3c-.72 0-1.3-.58-1.3-1.3 0-.72.58-1.3 1.3-1.3.72 0 1.3.58 1.3 1.3 0 .72-.58 1.3-1.3 1.3zm1-4.3h-2v-6h2v6z"></path></g>
+<g id="report-problem"><path d="M1 21h22l-11-19-11 19zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"></path></g>
+<g id="restore"><path d="M13 3c-4.97 0-9 4.03-9 9h-3l3.89 3.89.07.14 4.04-4.03h-3c0-3.87 3.13-7 7-7s7 3.13 7 7-3.13 7-7 7c-1.93 0-3.68-.79-4.94-2.06l-1.42 1.42c1.63 1.63 3.87 2.64 6.36 2.64 4.97 0 9-4.03 9-9s-4.03-9-9-9zm-1 5v5l4.28 2.54.72-1.21-3.5-2.08v-4.25h-1.5z"></path></g>
+<g id="room"><path d="M12 2c-3.87 0-7 3.13-7 7 0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"></path></g>
+<g id="rotation-3d"><path d="M7.52 21.48c-3.27-1.54-5.61-4.72-5.97-8.48h-1.5c.51 6.16 5.66 11 11.95 11l.66-.03-3.81-3.81-1.33 1.32zm.89-6.52c-.19 0-.37-.03-.52-.08-.16-.06-.29-.13-.4-.24-.11-.1-.2-.22-.26-.37-.06-.14-.09-.3-.09-.47h-1.3c0 .36.07.68.21.95.14.27.33.5.56.69.24.18.51.32.82.41.3.1.62.15.96.15.37 0 .72-.05 1.03-.15.32-.1.6-.25.83-.44s.42-.43.55-.72c.13-.29.2-.61.2-.97 0-.19-.02-.38-.07-.56-.05-.18-.12-.35-.23-.51-.1-.16-.24-.3-.4-.43-.17-.13-.37-.23-.61-.31.2-.09.37-.2.52-.33.15-.13.27-.27.37-.42.1-.15.17-.3.22-.46.05-.16.07-.32.07-.48 0-.36-.06-.68-.18-.96-.12-.28-.29-.51-.51-.69-.2-.19-.47-.33-.77-.43-.31-.09-.65-.14-1.02-.14-.36 0-.69.05-1 .16-.3.11-.57.26-.79.45-.21.19-.38.41-.51.67-.12.26-.18.54-.18.85h1.3c0-.17.03-.32.09-.45s.14-.25.25-.34c.11-.09.23-.17.38-.22.15-.05.3-.08.48-.08.4 0 .7.1.89.31.19.2.29.49.29.86 0 .18-.03.34-.08.49-.05.15-.14.27-.25.37-.11.1-.25.18-.41.24-.16.06-.36.09-.58.09h-.77v1.03h.77c.22 0 .42.02.6.07s.33.13.45.23c.12.11.22.24.29.4.07.16.1.35.1.57 0 .41-.12.72-.35.93-.23.23-.55.33-.95.33zm8.55-5.92c-.32-.33-.7-.59-1.14-.77-.43-.18-.92-.27-1.46-.27h-2.36v8h2.3c.55 0 1.06-.09 1.51-.27.45-.18.84-.43 1.16-.76.32-.33.57-.73.74-1.19.17-.47.26-.99.26-1.57v-.4c0-.58-.09-1.1-.26-1.57-.18-.47-.43-.87-.75-1.2zm-.39 3.16c0 .42-.05.79-.14 1.13-.1.33-.24.62-.43.85-.19.23-.43.41-.71.53-.29.12-.62.18-.99.18h-.91v-5.77h.97c.72 0 1.27.23 1.64.69.38.46.57 1.12.57 1.99v.4zm-4.57-12.2l-.66.03 3.81 3.81 1.33-1.33c3.27 1.55 5.61 4.72 5.96 8.48h1.5c-.5-6.15-5.65-10.99-11.94-10.99z"></path></g>
+<g id="save"><path d="M17 3h-12c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-12l-4-4zm-5 16c-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3-1.34 3-3 3zm3-10h-10v-4h10v4z"></path></g>
+<g id="schedule"><path fill-opacity=".9" d="M11.99 2c-5.52 0-9.99 4.48-9.99 10s4.47 10 9.99 10c5.53 0 10.01-4.48 10.01-10s-4.48-10-10.01-10zm.01 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"></path><path fill-opacity=".9" d="M12.5 7h-1.5v6l5.25 3.15.75-1.23-4.5-2.67z"></path></g>
+<g id="search"><path d="M15.5 14h-.79l-.28-.27c.98-1.14 1.57-2.62 1.57-4.23 0-3.59-2.91-6.5-6.5-6.5s-6.5 2.91-6.5 6.5 2.91 6.5 6.5 6.5c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99 1.49-1.49-4.99-5zm-6 0c-2.49 0-4.5-2.01-4.5-4.5s2.01-4.5 4.5-4.5 4.5 2.01 4.5 4.5-2.01 4.5-4.5 4.5z"></path></g>
+<g id="select-all"><path d="M3 5h2v-2c-1.1 0-2 .9-2 2zm0 8h2v-2h-2v2zm4 8h2v-2h-2v2zm-4-12h2v-2h-2v2zm10-6h-2v2h2v-2zm6 0v2h2c0-1.1-.9-2-2-2zm-14 18v-2h-2c0 1.1.9 2 2 2zm-2-4h2v-2h-2v2zm6-14h-2v2h2v-2zm2 18h2v-2h-2v2zm8-8h2v-2h-2v2zm0 8c1.1 0 2-.9 2-2h-2v2zm0-12h2v-2h-2v2zm0 8h2v-2h-2v2zm-4 4h2v-2h-2v2zm0-16h2v-2h-2v2zm-8 12h10v-10h-10v10zm2-8h6v6h-6v-6z"></path></g>
+<g id="send-money"><path d="M2 12c0-2.61 1.67-4.83 4-5.65v-2.09c-3.45.89-6 4.01-6 7.74s2.55 6.85 6 7.74v-2.09c-2.33-.82-4-3.04-4-5.65zm22 0l-4-4v3h-7v2h7v3l4-4zm-10 6c-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.16.67 4.24 1.76l1.42-1.41c-1.45-1.45-3.45-2.35-5.66-2.35-4.42 0-8 3.58-8 8s3.58 8 8 8c2.21 0 4.21-.9 5.66-2.34l-1.42-1.41c-1.08 1.08-2.58 1.75-4.24 1.75z"></path></g>
+<g id="send"><path d="M2.01 21l20.99-9-20.99-9-.01 7 15 2-15 2z"></path></g>
+<g id="settings-applications"><path d="M12 10c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm7-7h-14c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.11 0 2-.9 2-2v-14c0-1.1-.89-2-2-2zm-1.75 9c0 .23-.02.46-.05.68l1.48 1.16c.13.11.17.3.08.45l-1.4 2.42c-.09.15-.27.21-.43.15l-1.74-.7c-.36.28-.76.51-1.18.69l-.26 1.85c-.03.17-.18.3-.35.3h-2.8c-.17 0-.32-.13-.35-.29l-.26-1.85c-.43-.18-.82-.41-1.18-.69l-1.74.7c-.16.06-.34 0-.43-.15l-1.4-2.42c-.09-.15-.05-.34.08-.45l1.48-1.16c-.03-.23-.05-.46-.05-.69 0-.23.02-.46.05-.68l-1.48-1.16c-.13-.11-.17-.3-.08-.45l1.4-2.42c.09-.15.27-.21.43-.15l1.74.7c.36-.28.76-.51 1.18-.69l.26-1.85c.03-.17.18-.3.35-.3h2.8c.17 0 .32.13.35.29l.26 1.85c.43.18.82.41 1.18.69l1.74-.7c.16-.06.34 0 .43.15l1.4 2.42c.09.15.05.34-.08.45l-1.48 1.16c.03.23.05.46.05.69z"></path></g>
+<g id="settings-backup-restore"><path d="M14 12c0-1.1-.9-2-2-2s-2 .9-2 2 .9 2 2 2 2-.9 2-2zm-2-9c-4.97 0-9 4.03-9 9h-3l4 4 4-4h-3c0-3.87 3.13-7 7-7s7 3.13 7 7-3.13 7-7 7c-1.51 0-2.91-.49-4.06-1.3l-1.42 1.44c1.52 1.16 3.42 1.86 5.48 1.86 4.97 0 9-4.03 9-9s-4.03-9-9-9z"></path></g>
+<g id="settings-bluetooth"><path d="M11 24h2v-2h-2v2zm-4 0h2v-2h-2v2zm8 0h2v-2h-2v2zm2.71-18.29l-5.71-5.71h-1v7.59l-4.59-4.59-1.41 1.41 5.59 5.59-5.59 5.59 1.41 1.41 4.59-4.59v7.59h1l5.71-5.71-4.3-4.29 4.3-4.29zm-4.71-1.88l1.88 1.88-1.88 1.88v-3.76zm1.88 10.46l-1.88 1.88v-3.76l1.88 1.88z"></path></g>
+<g id="settings-cell"><path d="M7 24h2v-2h-2v2zm4 0h2v-2h-2v2zm4 0h2v-2h-2v2zm1-23.99l-8-.01c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2v-16c0-1.1-.9-1.99-2-1.99zm0 15.99h-8v-12h8v12z"></path></g>
+<g id="settings-display"><path d="M21 3h-18c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2v-14c0-1.1-.9-2-2-2zm0 16.01h-18v-14.02h18v14.02zm-13-3.01h2.5l1.5 1.5 1.5-1.5h2.5v-2.5l1.5-1.5-1.5-1.5v-2.5h-2.5l-1.5-1.5-1.5 1.5h-2.5v2.5l-1.5 1.5 1.5 1.5v2.5zm4-7c1.66 0 3 1.34 3 3s-1.34 3-3 3v-6z"></path></g>
+<g id="settings-ethernet"><path d="M7.77 6.76l-1.54-1.28-5.41 6.52 5.41 6.52 1.54-1.28-4.35-5.24 4.35-5.24zm-.77 6.24h2v-2h-2v2zm10-2h-2v2h2v-2zm-6 2h2v-2h-2v2zm6.77-7.52l-1.54 1.28 4.35 5.24-4.35 5.24 1.54 1.28 5.41-6.52-5.41-6.52z"></path></g>
+<g id="settings-input-antenna"><path d="M12 5c-3.87 0-7 3.13-7 7h2c0-2.76 2.24-5 5-5s5 2.24 5 5h2c0-3.87-3.13-7-7-7zm1 9.29c.88-.39 1.5-1.26 1.5-2.29 0-1.38-1.12-2.5-2.5-2.5s-2.5 1.12-2.5 2.5c0 1.02.62 1.9 1.5 2.29v3.3l-3.41 3.41 1.41 1.41 3-3 3 3 1.41-1.41-3.41-3.41v-3.3zm-1-13.29c-6.07 0-11 4.93-11 11h2c0-4.97 4.03-9 9-9s9 4.03 9 9h2c0-6.07-4.93-11-11-11z"></path></g>
+<g id="settings-input-component"><path d="M5 2c0-.55-.45-1-1-1s-1 .45-1 1v4h-2v6h6v-6h-2v-4zm4 14c0 1.3.84 2.4 2 2.82v4.18h2v-4.18c1.16-.41 2-1.51 2-2.82v-2h-6v2zm-8 0c0 1.3.84 2.4 2 2.82v4.18h2v-4.18c1.16-.42 2-1.52 2-2.82v-2h-6v2zm20-10v-4c0-.55-.45-1-1-1s-1 .45-1 1v4h-2v6h6v-6h-2zm-8-4c0-.55-.45-1-1-1s-1 .45-1 1v4h-2v6h6v-6h-2v-4zm4 14c0 1.3.84 2.4 2 2.82v4.18h2v-4.18c1.16-.41 2-1.51 2-2.82v-2h-6v2z"></path></g>
+<g id="settings-input-composite"><path d="M5 2c0-.55-.45-1-1-1s-1 .45-1 1v4h-2v6h6v-6h-2v-4zm4 14c0 1.3.84 2.4 2 2.82v4.18h2v-4.18c1.16-.41 2-1.51 2-2.82v-2h-6v2zm-8 0c0 1.3.84 2.4 2 2.82v4.18h2v-4.18c1.16-.42 2-1.52 2-2.82v-2h-6v2zm20-10v-4c0-.55-.45-1-1-1s-1 .45-1 1v4h-2v6h6v-6h-2zm-8-4c0-.55-.45-1-1-1s-1 .45-1 1v4h-2v6h6v-6h-2v-4zm4 14c0 1.3.84 2.4 2 2.82v4.18h2v-4.18c1.16-.41 2-1.51 2-2.82v-2h-6v2z"></path></g>
+<g id="settings-input-hdmi"><path d="M18 7v-3c0-1.1-.9-2-2-2h-8c-1.1 0-2 .9-2 2v3h-1v6l3 6v3h8v-3l3-6v-6h-1zm-10-3h8v3h-2v-2h-1v2h-2v-2h-1v2h-2v-3z"></path></g>
+<g id="settings-input-svideo"><path d="M8 11.5c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5.67 1.5 1.5 1.5 1.5-.67 1.5-1.5zm7-5c0-.83-.67-1.5-1.5-1.5h-3c-.83 0-1.5.67-1.5 1.5s.67 1.5 1.5 1.5h3c.83 0 1.5-.67 1.5-1.5zm-6.5 8.5c-.83 0-1.5.67-1.5 1.5s.67 1.5 1.5 1.5 1.5-.67 1.5-1.5-.67-1.5-1.5-1.5zm3.5-14c-6.07 0-11 4.93-11 11s4.93 11 11 11 11-4.93 11-11-4.93-11-11-11zm0 20c-4.96 0-9-4.04-9-9s4.04-9 9-9 9 4.04 9 9-4.04 9-9 9zm5.5-11c-.83 0-1.5.67-1.5 1.5s.67 1.5 1.5 1.5 1.5-.67 1.5-1.5-.67-1.5-1.5-1.5zm-2 5c-.83 0-1.5.67-1.5 1.5s.67 1.5 1.5 1.5 1.5-.67 1.5-1.5-.67-1.5-1.5-1.5z"></path></g>
+<g id="settings-overscan"><path d="M12.01 5.5l-2.01 2.5h4l-1.99-2.5zm5.99 4.5v4l2.5-1.99-2.5-2.01zm-12 0l-2.5 2.01 2.5 1.99v-4zm8 6h-4l2.01 2.5 1.99-2.5zm7-13h-18c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2v-14c0-1.1-.9-2-2-2zm0 16.01h-18v-14.02h18v14.02z"></path></g>
+<g id="settings"><path d="M19.43 12.98c.04-.32.07-.64.07-.98s-.03-.66-.07-.98l2.11-1.65c.19-.15.24-.42.12-.64l-2-3.46c-.12-.22-.39-.3-.61-.22l-2.49 1c-.52-.4-1.08-.73-1.69-.98l-.38-2.65c-.03-.24-.24-.42-.49-.42h-4c-.25 0-.46.18-.49.42l-.38 2.65c-.61.25-1.17.59-1.69.98l-2.49-1c-.23-.09-.49 0-.61.22l-2 3.46c-.13.22-.07.49.12.64l2.11 1.65c-.04.32-.07.65-.07.98s.03.66.07.98l-2.11 1.65c-.19.15-.24.42-.12.64l2 3.46c.12.22.39.3.61.22l2.49-1c.52.4 1.08.73 1.69.98l.38 2.65c.03.24.24.42.49.42h4c.25 0 .46-.18.49-.42l.38-2.65c.61-.25 1.17-.59 1.69-.98l2.49 1c.23.09.49 0 .61-.22l2-3.46c.12-.22.07-.49-.12-.64l-2.11-1.65zm-7.43 2.52c-1.93 0-3.5-1.57-3.5-3.5s1.57-3.5 3.5-3.5 3.5 1.57 3.5 3.5-1.57 3.5-3.5 3.5z"></path></g>
+<g id="settings-phone"><path d="M13 9h-2v2h2v-2zm4 0h-2v2h2v-2zm3 6.5c-1.25 0-2.45-.2-3.57-.57-.35-.11-.74-.03-1.02.24l-2.2 2.2c-2.83-1.44-5.15-3.75-6.59-6.58l2.2-2.21c.28-.27.36-.66.25-1.01-.37-1.12-.57-2.32-.57-3.57 0-.55-.45-1-1-1h-3.5c-.55 0-1 .45-1 1 0 9.39 7.61 17 17 17 .55 0 1-.45 1-1v-3.5c0-.55-.45-1-1-1zm-1-6.5v2h2v-2h-2z"></path></g>
+<g id="settings-power"><path d="M7 24h2v-2h-2v2zm4 0h2v-2h-2v2zm2-22h-2v10h2v-10zm3.56 2.44l-1.45 1.45c1.73 1.05 2.89 2.94 2.89 5.11 0 3.31-2.69 6-6 6s-6-2.69-6-6c0-2.17 1.16-4.06 2.88-5.12l-1.44-1.44c-2.08 1.44-3.44 3.84-3.44 6.56 0 4.42 3.58 8 8 8s8-3.58 8-8c0-2.72-1.36-5.12-3.44-6.56zm-1.56 19.56h2v-2h-2v2z"></path></g>
+<g id="settings-remote"><path d="M15 9h-6c-.55 0-1 .45-1 1v12c0 .55.45 1 1 1h6c.55 0 1-.45 1-1v-12c0-.55-.45-1-1-1zm-3 6c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm-4.95-8.95l1.41 1.41c.91-.9 2.16-1.46 3.54-1.46s2.63.56 3.54 1.46l1.41-1.41c-1.27-1.27-3.02-2.05-4.95-2.05s-3.68.78-4.95 2.05zm4.95-6.05c-3.04 0-5.79 1.23-7.78 3.22l1.41 1.41c1.63-1.62 3.88-2.63 6.37-2.63s4.74 1.01 6.36 2.64l1.41-1.41c-1.98-2-4.73-3.23-7.77-3.23z"></path></g>
+<g id="settings-voice"><path d="M7 24h2v-2h-2v2zm5-11c1.66 0 2.99-1.34 2.99-3l.01-6c0-1.66-1.34-3-3-3s-3 1.34-3 3v6c0 1.66 1.34 3 3 3zm-1 11h2v-2h-2v2zm4 0h2v-2h-2v2zm4-14h-1.7c0 3-2.54 5.1-5.3 5.1s-5.3-2.1-5.3-5.1h-1.7c0 3.41 2.72 6.23 6 6.72v3.28h2v-3.28c3.28-.49 6-3.31 6-6.72z"></path></g>
+<g id="shop"><path d="M16 6v-2c0-1.11-.89-2-2-2h-4c-1.11 0-2 .89-2 2v2h-6v13c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2v-13h-6zm-6-2h4v2h-4v-2zm-1 14v-9l7.5 4-7.5 5z"></path></g>
+<g id="shopping-basket"><path d="M17.21 9l-4.38-6.56c-.19-.28-.51-.42-.83-.42-.32 0-.64.14-.83.43l-4.38 6.55h-4.79c-.55 0-1 .45-1 1 0 .09.01.18.04.27l2.54 9.27c.23.84 1 1.46 1.92 1.46h13c.92 0 1.69-.62 1.93-1.46l2.54-9.27.03-.27c0-.55-.45-1-1-1h-4.79zm-8.21 0l3-4.4 3 4.4h-6zm3 8c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z"></path></g>
+<g id="shopping-cart"><path d="M7 18c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2zm-6-16v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2h-11.58c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1h-14.79l-.94-2h-3.27zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"></path></g>
+<g id="shop-two"><path d="M3 9h-2v11c0 1.11.89 2 2 2h14c1.11 0 2-.89 2-2h-16v-11zm15-4v-2c0-1.11-.89-2-2-2h-4c-1.11 0-2 .89-2 2v2h-5v11c0 1.11.89 2 2 2h14c1.11 0 2-.89 2-2v-11h-5zm-6-2h4v2h-4v-2zm0 12v-7l5.5 3-5.5 4z"></path></g>
+<g id="sort"><path d="M3 18h6v-2h-6v2zm0-12v2h18v-2h-18zm0 7h12v-2h-12v2z"></path></g>
+<g id="speaker-notes"><path d="M20 2h-16c-1.1 0-1.99.9-1.99 2l-.01 18 4-4h14c1.1 0 2-.9 2-2v-12c0-1.1-.9-2-2-2zm-12 12h-2v-2h2v2zm0-3h-2v-2h2v2zm0-3h-2v-2h2v2zm7 6h-5v-2h5v2zm3-3h-8v-2h8v2zm0-3h-8v-2h8v2z"></path></g>
+<g id="spellcheck"><path d="M12.45 16h2.09l-5.11-13h-1.86l-5.11 13h2.09l1.12-3h5.64l1.14 3zm-6.02-5l2.07-5.52 2.07 5.52h-4.14zm15.16.59l-8.09 8.09-3.67-3.68-1.41 1.41 5.09 5.09 9.49-9.5-1.41-1.41z"></path></g>
+<g id="star-half"><path d="M22 9.74l-7.19-.62L12 2.5 9.19 9.13 2 9.74l5.46 4.73-1.64 7.03L12 17.77l6.18 3.73-1.63-7.03L22 9.74zM12 15.9V6.6l1.71 4.04 4.38.38-3.32 2.88 1 4.28L12 15.9z"></path></g>
+<g id="star-outline"><path d="M22 9.24l-7.19-.62L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21 12 17.27 18.18 21l-1.63-7.03L22 9.24zM12 15.4l-3.76 2.27 1-4.28-3.32-2.88 4.38-.38L12 6.1l1.71 4.04 4.38.38-3.32 2.88 1 4.28L12 15.4z"></path></g>
+<g id="star"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path></g>
+<g id="star-rate"><path d="M12 14.3l3.71 2.7-1.42-4.36 3.71-2.64h-4.55l-1.45-4.5-1.45 4.5h-4.55l3.71 2.64-1.42 4.36z"></path></g>
+<g id="stars"><path d="M11.99 2c-5.52 0-9.99 4.48-9.99 10s4.47 10 9.99 10c5.53 0 10.01-4.48 10.01-10s-4.48-10-10.01-10zm4.24 16l-4.23-2.55-4.23 2.55 1.12-4.81-3.73-3.23 4.92-.42 1.92-4.54 1.92 4.53 4.92.42-3.73 3.23 1.12 4.82z"></path></g>
+<g id="store"><path d="M20 4h-16v2h16v-2zm1 10v-2l-1-5h-16l-1 5v2h1v6h10v-6h4v6h2v-6h1zm-9 4h-6v-4h6v4z"></path></g>
+<g id="subject"><path d="M14 17h-10v2h10v-2zm6-8h-16v2h16v-2zm-16 6h16v-2h-16v2zm0-10v2h16v-2h-16z"></path></g>
+<g id="supervisor-account"><circle cx="12" cy="13.49" r="1.5"></circle><path d="M12 2c-5.52 0-10 4.48-10 10s4.48 10 10 10 10-4.48 10-10-4.48-10-10-10zm0 2.5c1.24 0 2.25 1.01 2.25 2.25s-1.01 2.25-2.25 2.25-2.25-1.01-2.25-2.25 1.01-2.25 2.25-2.25zm5 10.56v2.5c-.45.41-.96.77-1.5 1.05v-.68c0-.34-.17-.65-.46-.92-.65-.62-1.89-1.02-3.04-1.02-.96 0-1.96.28-2.65.73l-.17.12-.21.17c.78.47 1.63.72 2.54.82l1.33.15c.37.04.66.36.66.75 0 .29-.16.53-.4.66-.28.15-.64.09-.95.09-.35 0-.69-.01-1.03-.05-.5-.06-.99-.17-1.46-.33-.49-.16-.97-.38-1.42-.64-.22-.13-.44-.27-.65-.43l-.31-.24c-.04-.02-.28-.18-.28-.23v-4.28c0-1.58 2.63-2.78 5-2.78s5 1.2 5 2.78v1.78z"></path></g>
+<g id="swap-horiz"><path d="M6.99 11l-3.99 4 3.99 4v-3h7.01v-2h-7.01v-3zm14.01-2l-3.99-4v3h-7.01v2h7.01v3l3.99-4z"></path></g>
+<g id="swap-vert-circle"><path d="M12 2c-5.52 0-10 4.48-10 10s4.48 10 10 10 10-4.48 10-10-4.48-10-10-10zm-5.5 7l3.5-3.5 3.5 3.5h-2.5v4h-2v-4h-2.5zm11 6l-3.5 3.5-3.5-3.5h2.5v-4h2v4h2.5z"></path></g>
+<g id="swap-vert"><path d="M16 17.01v-7.01h-2v7.01h-3l4 3.99 4-3.99h-3zm-7-14.01l-4 3.99h3v7.01h2v-7.01h3l-4-3.99z"></path></g>
+<g id="system-update-tv"><path d="M12 16.5l4-4h-3v-9h-2v9h-3l4 4zm9-13h-6v1.99h6v14.03h-18v-14.03h6v-1.99h-6c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2v-14c0-1.1-.9-2-2-2z"></path></g>
+<g id="tab"><path d="M21 3h-18c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2v-14c0-1.1-.9-2-2-2zm0 16h-18v-14h10v4h8v10z"></path></g>
+<g id="tab-unselected"><path d="M1 9h2v-2h-2v2zm0 4h2v-2h-2v2zm0-8h2v-2c-1.1 0-2 .9-2 2zm8 16h2v-2h-2v2zm-8-4h2v-2h-2v2zm2 4v-2h-2c0 1.1.9 2 2 2zm18-18h-8v6h10v-4c0-1.1-.9-2-2-2zm0 14h2v-2h-2v2zm-12-12h2v-2h-2v2zm-4 16h2v-2h-2v2zm0-16h2v-2h-2v2zm16 16c1.1 0 2-.9 2-2h-2v2zm0-8h2v-2h-2v2zm-8 8h2v-2h-2v2zm4 0h2v-2h-2v2z"></path></g>
+<g id="text-format"><path d="M5 17v2h14v-2h-14zm4.5-4.2h5l.9 2.2h2.1l-4.75-11h-1.5l-4.75 11h2.1l.9-2.2zm2.5-6.82l1.87 5.02h-3.74l1.87-5.02z"></path></g>
+<g id="theaters"><path d="M18 3v2h-2v-2h-8v2h-2v-2h-2v18h2v-2h2v2h8v-2h2v2h2v-18h-2zm-10 14h-2v-2h2v2zm0-4h-2v-2h2v2zm0-4h-2v-2h2v2zm10 8h-2v-2h2v2zm0-4h-2v-2h2v2zm0-4h-2v-2h2v2z"></path></g>
+<g id="thumb-down"><path d="M15 3h-9c-.83 0-1.54.5-1.84 1.22l-3.02 7.05c-.09.23-.14.47-.14.73v1.91l.01.01-.01.08c0 1.1.9 2 2 2h6.31l-.95 4.57-.03.32c0 .41.17.79.44 1.06l1.06 1.05 6.59-6.59c.36-.36.58-.86.58-1.41v-10c0-1.1-.9-2-2-2zm4 0v12h4v-12h-4z"></path></g>
+<g id="thumbs-up-down"><path d="M12 6c0-.55-.45-1-1-1h-5.18l.66-3.18.02-.23c0-.31-.13-.59-.33-.8l-.79-.79-4.94 4.94c-.27.27-.44.65-.44 1.06v6.5c0 .83.67 1.5 1.5 1.5h6.75c.62 0 1.15-.38 1.38-.91l2.26-5.29c.07-.17.11-.36.11-.55v-1.25zm10.5 4h-6.75c-.62 0-1.15.38-1.38.91l-2.26 5.29c-.07.17-.11.36-.11.55v1.25c0 .55.45 1 1 1h5.18l-.66 3.18-.02.24c0 .31.13.59.33.8l.79.78 4.94-4.94c.27-.27.44-.65.44-1.06v-6.5c0-.83-.67-1.5-1.5-1.5z"></path></g>
+<g id="thumb-up"><path d="M1 21h4v-12h-4v12zm22-11c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06l-1.06-1.05-6.58 6.59c-.37.36-.59.86-.59 1.41v10c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-1.91l-.01-.01.01-.08z"></path></g>
+<g id="toc"><path d="M3 9h14v-2h-14v2zm0 4h14v-2h-14v2zm0 4h14v-2h-14v2zm16 0h2v-2h-2v2zm0-10v2h2v-2h-2zm0 6h2v-2h-2v2z"></path></g>
+<g id="today"><path d="M19 3h-1v-2h-2v2h-8v-2h-2v2h-1c-1.11 0-1.99.9-1.99 2l-.01 14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-14c0-1.1-.9-2-2-2zm0 16h-14v-11h14v11zm-12-9h5v5h-5z"></path></g>
+<g id="track-changes"><path d="M19.07 4.93l-1.41 1.41c1.44 1.45 2.34 3.45 2.34 5.66 0 4.42-3.58 8-8 8s-8-3.58-8-8c0-4.08 3.05-7.44 7-7.93v2.02c-2.84.48-5 2.94-5 5.91 0 3.31 2.69 6 6 6s6-2.69 6-6c0-1.66-.67-3.16-1.76-4.24l-1.41 1.41c.72.73 1.17 1.73 1.17 2.83 0 2.21-1.79 4-4 4s-4-1.79-4-4c0-1.86 1.28-3.41 3-3.86v2.14c-.6.35-1 .98-1 1.72 0 1.1.9 2 2 2s2-.9 2-2c0-.74-.4-1.38-1-1.72v-8.28h-1c-5.52 0-10 4.48-10 10s4.48 10 10 10 10-4.48 10-10c0-2.76-1.12-5.26-2.93-7.07z"></path></g>
+<g id="translate"><path d="M12.87 15.07l-2.54-2.51.03-.03c1.74-1.94 2.98-4.17 3.71-6.53h2.93v-2h-7v-2h-2v2h-7v1.99h11.17c-.67 1.93-1.73 3.76-3.17 5.36-.93-1.03-1.7-2.16-2.31-3.35h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02 1.42 1.42 5-5 3.11 3.11.76-2.04zm5.63-5.07h-2l-4.5 12h2l1.12-3h4.75l1.13 3h2l-4.5-12zm-2.62 7l1.62-4.33 1.62 4.33h-3.24z"></path></g>
+<g id="trending-down"><path d="M16 18l2.29-2.29-4.88-4.88-4 4-7.41-7.42 1.41-1.41 6 6 4-4 6.3 6.29 2.29-2.29v6z"></path></g>
+<g id="trending-neutral"><path d="M22 12l-4-4v3h-15v2h15v3z"></path></g>
+<g id="trending-up"><path d="M16 6l2.29 2.29-4.88 4.88-4-4-7.41 7.42 1.41 1.41 6-6 4 4 6.3-6.29 2.29 2.29v-6z"></path></g>
+<g id="turned-in-not"><path d="M17 3h-10c-1.1 0-1.99.9-1.99 2l-.01 16 7-3 7 3v-16c0-1.1-.9-2-2-2zm0 15l-5-2.18-5 2.18v-13h10v13z"></path></g>
+<g id="turned-in"><path d="M17 3h-10c-1.1 0-1.99.9-1.99 2l-.01 16 7-3 7 3v-16c0-1.1-.9-2-2-2z"></path></g>
+<g id="undo"><path d="M12.5 8c-2.65 0-5.05.99-6.9 2.6l-3.6-3.6v9h9l-3.62-3.62c1.39-1.16 3.16-1.88 5.12-1.88 3.54 0 6.55 2.31 7.6 5.5l2.37-.78c-1.39-4.19-5.32-7.22-9.97-7.22z"></path></g>
+<g id="unfold-less"><path d="M7.41 18.59l1.42 1.41 3.17-3.17 3.17 3.17 1.41-1.41-4.58-4.59-4.59 4.59zm9.18-13.18l-1.42-1.41-3.17 3.17-3.17-3.17-1.42 1.41 4.59 4.59 4.59-4.59z"></path></g>
+<g id="unfold-more"><path d="M12 5.83l3.17 3.17 1.41-1.41-4.58-4.59-4.59 4.59 1.42 1.41 3.17-3.17zm0 12.34l-3.17-3.17-1.41 1.41 4.58 4.59 4.59-4.59-1.42-1.41-3.17 3.17z"></path></g>
+<g id="verified-user"><path d="M12 1l-9 4v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12v-6l-9-4zm-2 16l-4-4 1.41-1.41 2.59 2.58 6.59-6.59 1.41 1.42-8 8z"></path></g>
+<g id="view-agenda"><path d="M20 13h-17c-.55 0-1 .45-1 1v6c0 .55.45 1 1 1h17c.55 0 1-.45 1-1v-6c0-.55-.45-1-1-1zm0-10h-17c-.55 0-1 .45-1 1v6c0 .55.45 1 1 1h17c.55 0 1-.45 1-1v-6c0-.55-.45-1-1-1z"></path></g>
+<g id="view-array"><path d="M4 18h3v-13h-3v13zm14-13v13h3v-13h-3zm-10 13h9v-13h-9v13z"></path></g>
+<g id="view-carousel"><path d="M7 19h10v-15h-10v15zm-5-2h4v-11h-4v11zm16-11v11h4v-11h-4z"></path></g>
+<g id="view-column"><path d="M10 18h5v-13h-5v13zm-6 0h5v-13h-5v13zm12-13v13h5v-13h-5z"></path></g>
+<g id="view-day"><path d="M2 21h19v-3h-19v3zm18-13h-17c-.55 0-1 .45-1 1v6c0 .55.45 1 1 1h17c.55 0 1-.45 1-1v-6c0-.55-.45-1-1-1zm-18-5v3h19v-3h-19z"></path></g>
+<g id="view-headline"><path d="M4 15h17v-2h-17v2zm0 4h17v-2h-17v2zm0-8h17v-2h-17v2zm0-6v2h17v-2h-17z"></path></g>
+<g id="view-list"><path d="M4 14h4v-4h-4v4zm0 5h4v-4h-4v4zm0-10h4v-4h-4v4zm5 5h12v-4h-12v4zm0 5h12v-4h-12v4zm0-14v4h12v-4h-12z"></path></g>
+<g id="view-module"><path d="M4 11h5v-6h-5v6zm0 7h5v-6h-5v6zm6 0h5v-6h-5v6zm6 0h5v-6h-5v6zm-6-7h5v-6h-5v6zm6-6v6h5v-6h-5z"></path></g>
+<g id="view-quilt"><path d="M10 18h5v-6h-5v6zm-6 0h5v-13h-5v13zm12 0h5v-6h-5v6zm-6-13v6h11v-6h-11z"></path></g>
+<g id="view-stream"><path d="M4 18h17v-6h-17v6zm0-13v6h17v-6h-17z"></path></g>
+<g id="view-week"><path d="M6 5h-3c-.55 0-1 .45-1 1v12c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-12c0-.55-.45-1-1-1zm14 0h-3c-.55 0-1 .45-1 1v12c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-12c0-.55-.45-1-1-1zm-7 0h-3c-.55 0-1 .45-1 1v12c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-12c0-.55-.45-1-1-1z"></path></g>
+<g id="visibility-off"><path d="M12 7c2.76 0 5 2.24 5 5 0 .65-.13 1.26-.36 1.83l2.92 2.92c1.51-1.26 2.7-2.89 3.43-4.75-1.73-4.39-6-7.5-11-7.5-1.4 0-2.74.25-3.98.7l2.16 2.16c.57-.23 1.18-.36 1.83-.36zm-10-2.73l2.28 2.28.46.46c-1.66 1.29-2.96 3.01-3.74 4.99 1.73 4.39 6 7.5 11 7.5 1.55 0 3.03-.3 4.38-.84l.42.42 2.93 2.92 1.27-1.27-17.73-17.73-1.27 1.27zm5.53 5.53l1.55 1.55c-.05.21-.08.43-.08.65 0 1.66 1.34 3 3 3 .22 0 .44-.03.65-.08l1.55 1.55c-.67.33-1.41.53-2.2.53-2.76 0-5-2.24-5-5 0-.79.2-1.53.53-2.2zm4.31-.78l3.15 3.15.02-.16c0-1.66-1.34-3-3-3l-.17.01z"></path></g>
+<g id="visibility"><path d="M12 4.5c-5 0-9.27 3.11-11 7.5 1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zm0 12.5c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"></path></g>
+<g id="wallet-giftcard"><path d="M20 6h-2.18c.11-.31.18-.65.18-1 0-1.66-1.34-3-3-3-1.05 0-1.96.54-2.5 1.35l-.5.67-.5-.68c-.54-.8-1.45-1.34-2.5-1.34-1.66 0-3 1.34-3 3 0 .35.07.69.18 1h-2.18c-1.11 0-1.99.89-1.99 2l-.01 11c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2v-11c0-1.11-.89-2-2-2zm-5-2c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm-6 0c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm11 15h-16v-2h16v2zm0-5h-16v-6h5.08l-2.08 2.83 1.62 1.17 2.38-3.24 1-1.36 1 1.36 2.38 3.24 1.62-1.17-2.08-2.83h5.08v6z"></path></g>
+<g id="wallet-membership"><path d="M20 2h-16c-1.11 0-2 .89-2 2v11c0 1.11.89 2 2 2h4v5l4-2 4 2v-5h4c1.11 0 2-.89 2-2v-11c0-1.11-.89-2-2-2zm0 13h-16v-2h16v2zm0-5h-16v-6h16v6z"></path></g>
+<g id="wallet-travel"><path d="M20 6h-3v-2c0-1.11-.89-2-2-2h-6c-1.11 0-2 .89-2 2v2h-3c-1.11 0-2 .89-2 2v11c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2v-11c0-1.11-.89-2-2-2zm-11-2h6v2h-6v-2zm11 15h-16v-2h16v2zm0-5h-16v-6h3v2h2v-2h6v2h2v-2h3v6z"></path></g>
+<g id="warning"><path d="M1 21h22l-11-19-11 19zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"></path></g>
+<g id="work"><path d="M24 0v24h-24v-24h24m1-1h-26v26h26v-26z"></path><path d="M20 6h-4v-2c0-1.11-.89-2-2-2h-4c-1.11 0-2 .89-2 2v2h-4c-1.11 0-1.99.89-1.99 2l-.01 11c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2v-11c0-1.11-.89-2-2-2zm-6 0h-4v-2h4v2z"></path></g>
+</defs></svg>
+</core-iconset-svg>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<core-iconset-svg id="social" iconsize="24">
+<svg><defs>
+<g id="cake"><path d="M12 7c1.1 0 2-.9 2-2 0-.38-.1-.73-.29-1.03l-1.71-2.97-1.71 2.97c-.19.3-.29.65-.29 1.03 0 1.1.9 2 2 2zm9 14v-4c0-1.1-.9-2-2-2h-1v-3c0-1.1-.9-2-2-2h-3v-2h-2v2h-3c-1.1 0-2 .9-2 2v3h-1c-1.1 0-2 .9-2 2v4h-2v2h22v-2h-2z"></path></g>
+<g id="circles"><path d="M16.66 14.98c-.82 2.34-3.04 4.02-5.66 4.02-3.31 0-6-2.69-6-6 0-2.62 1.68-4.84 4.02-5.66l-.02-.34c0-1.01.2-1.98.54-2.87-4.27.7-7.54 4.4-7.54 8.87 0 4.97 4.03 9 9 9 4.47 0 8.17-3.27 8.87-7.54-.89.34-1.86.54-2.87.54l-.34-.02zm.34-13.98c-3.31 0-6 2.69-6 6s2.69 6 6 6 6-2.69 6-6-2.69-6-6-6zm0 9c-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3-1.34 3-3 3z"></path></g>
+<g id="circles-add"><path d="M12 2c-5.52 0-10 4.48-10 10s4.48 10 10 10 10-4.48 10-10-4.48-10-10-10zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"></path><path d="M13 11v-3h-2v3h-3v2h3v3h2v-3h3v-2h-3z"></path></g>
+<g id="circles-extended"><path d="M12 10c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0-6c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2zm-6 9c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm0 6c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm6-7.9c-1.05 0-1.9.85-1.9 1.9s.85 1.9 1.9 1.9c1.05 0 1.9-.85 1.9-1.9s-.85-1.9-1.9-1.9zm6 1.9c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm0 6c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z"></path></g>
+<g id="communities"><path d="M9 12c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm5-3c0-1.1-.9-2-2-2s-2 .9-2 2 .9 2 2 2 2-.9 2-2zm-2-7c-5.52 0-10 4.48-10 10s4.48 10 10 10 10-4.48 10-10-4.48-10-10-10zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm3-8c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"></path></g>
+<g id="domain"><path d="M12 7v-4h-10v18h20v-14h-10zm-6 12h-2v-2h2v2zm0-4h-2v-2h2v2zm0-4h-2v-2h2v2zm0-4h-2v-2h2v2zm4 12h-2v-2h2v2zm0-4h-2v-2h2v2zm0-4h-2v-2h2v2zm0-4h-2v-2h2v2zm10 12h-8v-2h2v-2h-2v-2h2v-2h-2v-2h8v10zm-2-8h-2v2h2v-2zm0 4h-2v2h2v-2z"></path></g>
+<g id="group"><path d="M16 11c1.66 0 2.99-1.34 2.99-3s-1.33-3-2.99-3c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3s-1.33-3-2.99-3c-1.66 0-3 1.34-3 3s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5v2.5h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45v2.5h6v-2.5c0-2.33-4.67-3.5-7-3.5z"></path></g>
+<g id="group-add"><path d="M8 10h-3v-3h-2v3h-3v2h3v3h2v-3h3v-2zm10 1c1.66 0 2.99-1.34 2.99-3s-1.33-3-2.99-3c-.32 0-.63.05-.91.14.57.81.9 1.79.9 2.86s-.34 2.04-.9 2.86c.28.09.59.14.91.14zm-5 0c1.66 0 2.99-1.34 2.99-3s-1.33-3-2.99-3c-1.66 0-3 1.34-3 3s1.34 3 3 3zm6.62 2.16c.83.73 1.38 1.66 1.38 2.84v2h3v-2c0-1.54-2.37-2.49-4.38-2.84zm-6.62-.16c-2 0-6 1-6 3v2h12v-2c0-2-4-3-6-3z"></path></g>
+<g id="location-city"><path d="M15 11v-6l-3-3-3 3v2h-6v14h18v-10h-6zm-8 8h-2v-2h2v2zm0-4h-2v-2h2v2zm0-4h-2v-2h2v2zm6 8h-2v-2h2v2zm0-4h-2v-2h2v2zm0-4h-2v-2h2v2zm0-4h-2v-2h2v2zm6 12h-2v-2h2v2zm0-4h-2v-2h2v2z"></path></g>
+<g id="mood"><path d="M11.99 2c-5.52 0-9.99 4.48-9.99 10s4.47 10 9.99 10c5.53 0 10.01-4.48 10.01-10s-4.48-10-10.01-10zm.01 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm3.5-9c.83 0 1.5-.67 1.5-1.5s-.67-1.5-1.5-1.5-1.5.67-1.5 1.5.67 1.5 1.5 1.5zm-7 0c.83 0 1.5-.67 1.5-1.5s-.67-1.5-1.5-1.5-1.5.67-1.5 1.5.67 1.5 1.5 1.5zm3.5 6.5c2.33 0 4.31-1.46 5.11-3.5h-10.22c.8 2.04 2.78 3.5 5.11 3.5z"></path></g>
+<g id="notifications"><path d="M11.5 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm6.5-6v-5.5c0-3.07-2.13-5.64-5-6.32v-.68c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68c-2.87.68-5 3.25-5 6.32v5.5l-2 2v1h17v-1l-2-2z"></path></g>
+<g id="notifications-none"><path d="M11.5 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm6.5-6v-5.5c0-3.07-2.13-5.64-5-6.32v-.68c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68c-2.87.68-5 3.25-5 6.32v5.5l-2 2v1h17v-1l-2-2zm-2 1h-9v-6.5c0-2.49 2.01-4.5 4.5-4.5s4.5 2.01 4.5 4.5v6.5z"></path></g>
+<g id="notifications-off"><path d="M11.5 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm6.5-11.5c0-3.07-2.13-5.64-5-6.32v-.68c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68c-.51.12-.99.32-1.45.56l9.45 9.44v-3.68zm-.27 8.5l2 2 1.27-1.27-16.73-16.73-1.27 1.27 2.92 2.92c-.58.97-.92 2.1-.92 3.31v5.5l-2 2v1h14.73z"></path></g>
+<g id="notifications-on"><path d="M6.58 3.58l-1.43-1.43c-2.39 1.82-3.97 4.65-4.12 7.85h2c.15-2.65 1.51-4.97 3.55-6.42zm13.39 6.42h2c-.15-3.2-1.73-6.03-4.13-7.85l-1.43 1.43c2.05 1.45 3.41 3.77 3.56 6.42zm-1.97.5c0-3.07-2.13-5.64-5-6.32v-.68c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68c-2.87.68-5 3.25-5 6.32v5.5l-2 2v1h17v-1l-2-2v-5.5zm-6.5 11.5c.14 0 .27-.01.4-.04.65-.13 1.19-.58 1.44-1.18.1-.24.16-.5.16-.78h-4c0 1.1.9 2 2 2z"></path></g>
+<g id="notifications-paused"><path d="M11.5 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2zm6.5-6v-5.5c0-3.07-2.13-5.64-5-6.32v-.68c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v.68c-2.87.68-5 3.25-5 6.32v5.5l-2 2v1h17v-1l-2-2zm-4-6.2l-2.8 3.4h2.8v1.8h-5v-1.8l2.8-3.4h-2.8v-1.8h5v1.8z"></path></g>
+<g id="pages"><path d="M3 5v6h5l-1-4 4 1v-5h-6c-1.1 0-2 .9-2 2zm5 8h-5v6c0 1.1.9 2 2 2h6v-5l-4 1 1-4zm9 4l-4-1v5h6c1.1 0 2-.9 2-2v-6h-5l1 4zm2-14h-6v5l4-1-1 4h5v-6c0-1.1-.9-2-2-2z"></path></g>
+<g id="party-mode"><path d="M20 4h-3.17l-1.83-2h-6l-1.83 2h-3.17c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2v-12c0-1.1-.9-2-2-2zm-8 3c1.63 0 3.06.79 3.98 2h-3.98c-1.66 0-3 1.34-3 3 0 .35.07.69.18 1h-2.08c-.06-.32-.1-.66-.1-1 0-2.76 2.24-5 5-5zm0 10c-1.63 0-3.06-.79-3.98-2h3.98c1.66 0 3-1.34 3-3 0-.35-.07-.69-.18-1h2.08c.07.32.1.66.1 1 0 2.76-2.24 5-5 5z"></path></g>
+<g id="people"><path d="M16 11c1.66 0 2.99-1.34 2.99-3s-1.33-3-2.99-3c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3s-1.33-3-2.99-3c-1.66 0-3 1.34-3 3s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5v2.5h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45v2.5h6v-2.5c0-2.33-4.67-3.5-7-3.5z"></path></g>
+<g id="people-outline"><path d="M16.5 13c-1.2 0-3.07.34-4.5 1-1.43-.67-3.3-1-4.5-1-2.17 0-6.5 1.08-6.5 3.25v2.75h22v-2.75c0-2.17-4.33-3.25-6.5-3.25zm-4 4.5h-10v-1.25c0-.54 2.56-1.75 5-1.75s5 1.21 5 1.75v1.25zm9 0h-7.5v-1.25c0-.46-.2-.86-.52-1.22.88-.3 1.96-.53 3.02-.53 2.44 0 5 1.21 5 1.75v1.25zm-14-5.5c1.93 0 3.5-1.57 3.5-3.5s-1.57-3.5-3.5-3.5-3.5 1.57-3.5 3.5 1.57 3.5 3.5 3.5zm0-5.5c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2zm9 5.5c1.93 0 3.5-1.57 3.5-3.5s-1.57-3.5-3.5-3.5-3.5 1.57-3.5 3.5 1.57 3.5 3.5 3.5zm0-5.5c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2z"></path></g>
+<g id="person"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"></path></g>
+<g id="person-add"><path d="M15 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm-9-2v-3h-2v3h-3v2h3v3h2v-3h3v-2h-3zm9 4c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"></path></g>
+<g id="person-outline"><path d="M12 5.9c1.16 0 2.1.94 2.1 2.1s-.94 2.1-2.1 2.1-2.1-.94-2.1-2.1.94-2.1 2.1-2.1m0 9c2.97 0 6.1 1.46 6.1 2.1v1.1h-12.2v-1.1c0-.64 3.13-2.1 6.1-2.1m0-10.9c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm0 9c-2.67 0-8 1.34-8 4v3h16v-3c0-2.66-5.33-4-8-4z"></path></g>
+<g id="plus-one"><path d="M10 8h-2v4h-4v2h4v4h2v-4h4v-2h-4zm4.5-1.92v1.82l2.5-.5v10.6h2v-13z"></path></g>
+<g id="poll"><path d="M19 3h-14c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-14c0-1.1-.9-2-2-2zm-10 14h-2v-7h2v7zm4 0h-2v-10h2v10zm4 0h-2v-4h2v4z"></path></g>
+<g id="post-blogger"><path d="M20 2h-16c-1.1 0-1.99.9-1.99 2l-.01 16c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2v-16c0-1.1-.9-2-2-2zm-4 7v1c0 .55.45 1 1 1s1 .45 1 1v3c0 1.66-1.34 3-3 3h-6c-1.66 0-3-1.34-3-3v-7c0-1.66 1.34-3 3-3h4c1.66 0 3 1.34 3 3v1zm-6.05 1h2.6c.55 0 1-.45 1-1s-.45-1-1-1h-2.6c-.55 0-1 .45-1 1s.45 1 1 1zm4.05 3h-4.05c-.55 0-1 .45-1 1s.45 1 1 1h4.05c.55 0 1-.45 1-1s-.45-1-1-1z"></path></g>
+<g id="post-facebook"><path d="M20 2h-16c-1.1 0-1.99.9-1.99 2l-.01 16c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2v-16c0-1.1-.9-2-2-2zm-1 2v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v7h-3v-7h-2v-3h2v-2.5c0-1.93 1.57-3.5 3.5-3.5h2.5z"></path></g>
++<g id="post-github"><path d="M7.2 6.6h-.1c-.5 1.4-.2 2.3-.1 2.6-.6.7-1 1.6-1 2.6 0 3.8 2.4 4.6 4.6 4.9-.2 0-.6.2-.8.8-.4.2-1.8.7-2.6-.7 0 0-.5-.8-1.3-.9 0 0-.8 0-.1.5 0 0 .6.3.9 1.3 0 0 .5 1.7 3 1.1v3.1h5v-3.5c0-1-.4-1.5-.8-1.8 2.2-.2 4.6-1 4.6-4.8 0-1.1-.4-2-1-2.6.1-.3.4-1.2-.1-2.6 0 0-.8-.3-2.7 1-.8-.2-1.6-.3-2.5-.3-.8 0-1.7.1-2.5.3-1.4-1-2.2-1-2.6-1zm12.8 15.4h-16c-1.1 0-2-.9-2-2v-16c0-1.1.9-2 2-2h16c1.1 0 2 .9 2 2v16c0 1.1-.9 2-2 2z"></path></g>
+<g id="post-gplus"><path d="M11.2 8.87c0-1.02-.63-3.02-2.08-3.02-.64 0-1.32.44-1.32 1.67 0 1.18.63 2.93 1.97 2.93.06.01 1.43-.01 1.43-1.58zm-.63 4.94l-.31-.01h-.02c-.26 0-1.15.05-1.82.27-.65.24-1.42.72-1.42 1.7 0 1.08 1.04 2.23 2.96 2.23 1.52 0 2.44-1 2.44-1.97 0-.77-.46-1.24-1.83-2.22zm9.43-11.81h-16c-1.1 0-1.99.9-1.99 2l-.01 16c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2v-16c0-1.1-.9-2-2-2zm-10.93 17.2c-2.8 0-4.07-1.56-4.07-3.01 0-.45.14-1.59 1.48-2.39.77-.47 1.85-.78 3.14-.91-.19-.25-.34-.55-.34-.99 0-.16.02-.31.05-.46h-.38c-1.97 0-3.15-1.55-3.15-3.04 0-1.73 1.29-3.6 4.11-3.6h4.21l-.34.34-.71.71-.06.06h-.71c.41.42.9 1.12.9 2.16 0 1.4-.74 2.09-1.56 2.73-.16.12-.42.38-.42.72 0 .3.24.5.39.62.13.11.3.22.47.34.81.57 1.92 1.34 1.92 2.88 0 1.77-1.29 3.84-4.93 3.84zm9.93-7.2h-2v2h-1v-2h-2v-1h2v-2h1v2h2v1z"></path></g>
+<g id="post-instagram"><path d="M20 2h-16c-1.1 0-1.99.9-1.99 2l-.01 16c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2v-16c0-1.1-.9-2-2-2zm-8 6c2.21 0 4 1.79 4 4s-1.79 4-4 4-4-1.79-4-4 1.79-4 4-4zm-7.5 12c-.28 0-.5-.22-.5-.5v-8.5h2.09c-.05.33-.09.66-.09 1 0 3.31 2.69 6 6 6s6-2.69 6-6c0-.34-.04-.67-.09-1h2.09v8.5c0 .28-.22.5-.5.5h-15zm15.5-13.5c0 .28-.22.5-.5.5h-2c-.28 0-.5-.22-.5-.5v-2c0-.28.22-.5.5-.5h2c.28 0 .5.22.5.5v2z"></path></g>
+<g id="post-linkedin"><path d="M20 2h-16c-1.1 0-1.99.9-1.99 2l-.01 16c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2v-16c0-1.1-.9-2-2-2zm-12 17h-3v-9h3v9zm-1.5-10.69c-1 0-1.81-.81-1.81-1.81s.81-1.81 1.81-1.81 1.81.81 1.81 1.81-.81 1.81-1.81 1.81zm12.5 10.69h-3v-5.3c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5v5.3h-3v-9h3v1.2c.52-.84 1.59-1.4 2.5-1.4 1.93 0 3.5 1.57 3.5 3.5v5.7z"></path></g>
+<g id="post-pinterest"><path d="M20 2h-16c-1.1 0-1.99.9-1.99 2l-.01 16c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2v-16c0-1.1-.9-2-2-2zm-7 14.2c-.8 0-1.57-.34-2.12-.92l-.95 3.2-.07.21-.03-.01c-.19.32-.54.52-.93.52-.61 0-1.1-.49-1.1-1.1l.01-.15h-.01l.05-.18 1.85-5.56s-.2-.61-.2-1.47c0-1.72.92-2.23 1.66-2.23.74 0 1.42.27 1.42 1.31 0 1.34-.89 2.03-.89 3 0 .74.6 1.34 1.34 1.34 2.33 0 3.16-1.76 3.16-3.41 0-2.18-1.88-3.95-4.2-3.95-2.32 0-4.2 1.77-4.2 3.95 0 .67.19 1.34.54 1.94.09.16.14.33.14.51 0 .55-.45 1-1 1-.36 0-.69-.19-.87-.5-.53-.9-.82-1.92-.82-2.96.02-3.27 2.8-5.94 6.22-5.94s6.2 2.67 6.2 5.95c0 2.63-1.63 5.45-5.2 5.45z"></path></g>
+<g id="post-tumblr"><path d="M20 2h-16c-1.1 0-1.99.9-1.99 2l-.01 16c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2v-16c0-1.1-.9-2-2-2zm-4 9h-3v3.9c0 .73.14 1.1 1.1 1.1h1.9v3s-1.03.1-2.1.1c-2.65 0-3.9-1.62-3.9-3.4v-4.7h-2v-2.8c2.41-.2 2.62-2.04 2.8-3.2h2.2v3h3v3z"></path></g>
+<g id="post-twitter"><path d="M20 2h-16c-1.1 0-1.99.9-1.99 2l-.01 16c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2v-16c0-1.1-.9-2-2-2zm-2.29 7.33c-.06 4.62-3.02 7.78-7.42 7.98-1.82.08-3.14-.5-4.28-1.23 1.34.21 3.01-.32 3.9-1.09-1.32-.13-2.1-.8-2.46-1.88.38.07.78.05 1.14-.03-1.19-.4-2.04-1.13-2.08-2.67.33.15.68.29 1.14.32-.9-.5-1.55-2.35-.8-3.57 1.32 1.45 2.91 2.63 5.52 2.79-.65-2.8 3.06-4.32 4.61-2.44.66-.13 1.19-.38 1.7-.65-.21.65-.62 1.1-1.12 1.47.54-.07 1.03-.21 1.44-.41-.25.53-.81 1.01-1.29 1.41z"></path></g>
+<g id="post-youtube"><path d="M20 2h-16c-1.1 0-1.99.9-1.99 2l-.01 16c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2v-16c0-1.1-.9-2-2-2zm-1.49 15.5c-.45.15-3.73.5-6.51.5-2.77 0-6.05-.35-6.5-.5-1.17-.39-1.5-2.8-1.5-5.5s.33-5.11 1.5-5.5c.45-.15 3.73-.5 6.5-.5 2.78 0 6.06.36 6.51.51 1.17.39 1.49 2.79 1.49 5.49s-.32 5.11-1.49 5.5zm-8.51-2l5.5-3.5-5.5-3.5v7z"></path></g>
+<g id="public"><path d="M12 2c-5.52 0-10 4.48-10 10s4.48 10 10 10 10-4.48 10-10-4.48-10-10-10zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79l4.79 4.79v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1h-6v-2h2c.55 0 1-.45 1-1v-2h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"></path></g>
+<g id="school"><path d="M5 13.18v4l7 3.82 7-3.82v-4l-7 3.82-7-3.82zm7-10.18l-11 6 11 6 9-4.91v6.91h2v-8l-11-6z"></path></g>
+<g id="share"><path d="M18 16.08c-.76 0-1.44.3-1.96.77l-7.13-4.15c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7l-7.05 4.11c-.54-.5-1.25-.81-2.04-.81-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z"></path></g>
+<g id="whatshot"><path d="M13.5.67s.74 2.65.74 4.8c0 2.06-1.35 3.73-3.41 3.73-2.07 0-3.63-1.67-3.63-3.73l.03-.36c-2.02 2.4-3.23 5.51-3.23 8.89 0 4.42 3.58 8 8 8s8-3.58 8-8c0-5.39-2.59-10.2-6.5-13.33zm-1.79 18.33c-1.78 0-3.22-1.4-3.22-3.14 0-1.62 1.05-2.76 2.81-3.12 1.77-.36 3.6-1.21 4.62-2.58.39 1.29.59 2.65.59 4.04 0 2.65-2.15 4.8-4.8 4.8z"></path></g>
+</defs></svg>
+</core-iconset-svg>
+
+
+
+
+
+
+
+
+
+
+
+
+<polymer-element name="core-toolbar" attributes="justify middleJustify bottomJustify">
+<template>
+
+  <style>/*
+Copyright (c) 2014 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+*/
+
+:host {
+  /* technical */
+  display: block;
+  position: relative;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  /* size */
+  height: 64px;
+  /* typography */
+  font-size: 1.3em;
+  /* background */
+  background-color: #CFD8DC;
+}
+
+:host(.animate) {
+  /* transition */
+  transition: height 0.18s ease-in;
+}
+
+:host(.medium-tall) {
+  height: 128px;
+}
+
+:host(.tall) {
+  height: 192px;
+}
+
+.toolbar-tools {
+  position: relative;
+  height: 64px;
+  padding: 0 8px;
+  pointer-events: none;
+}
+
+/* narrow layout */
+:host(.core-narrow),
+:host-context(.core-narrow) {
+  height: 56px;
+}
+
+polyfill-next-selector { content: ':host.core-narrow.medium-tall, .core-narrow :host.medium-tall'; }
+:host(.core-narrow.medium-tall),
+:host-context(.core-narrow):host(.medium-tall) {
+  height: 112px;
+}
+
+polyfill-next-selector { content: ':host.core-narrow.tall, .core-narrow :host.tall'; }
+:host(.core-narrow.tall),
+:host-context(.core-narrow):host(.tall) {
+  height: 168px;
+}
+
+polyfill-next-selector { content: ':host.core-narrow .toolbar-tools, .core-narrow :host .toolbar-tools'; }
+:host(.core-narrow) .toolbar-tools,
+:host-context(.core-narrow) .toolbar-tools {
+  height: 56px;
+  padding: 0;
+}
+
+/* middle bar */
+#middleBar {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+}
+
+:host(.tall, .medium-tall) #middleBar {
+  -webkit-transform: translateY(100%);
+  transform: translateY(100%);
+}
+
+/* bottom bar */
+#bottomBar {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+/* make elements (e.g. buttons) respond to mouse/touch events */
+polyfill-next-selector { content: '.toolbar-tools > *:not([disabled])'; }
+::content > *:not([disabled]) {
+  pointer-events: auto;
+}
+
+/* elements spacing */
+polyfill-next-selector { content: '.toolbar-tools > *'; }
+::content > * {
+  margin: 0 8px;
+}
+
+/* misc helpers */
+polyfill-next-selector { content: '.toolbar-tools > .fit'; }
+::content > .fit {
+  position: absolute;
+  top: auto;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: auto;
+  margin: 0;
+}
+
+polyfill-next-selector { content: ':host .indent'; }
+::content > .indent {
+  margin-left: 60px;
+}
+</style>
+
+  <div id="bottomBar" class="toolbar-tools" center="" horizontal="" layout="">
+    <content select=".bottom"></content>
+  </div>
+
+  <div id="middleBar" class="toolbar-tools" center="" horizontal="" layout="">
+    <content select=".middle"></content>
+  </div>
+
+  <div id="topBar" class="toolbar-tools" center="" horizontal="" layout="">
+    <content></content>
+  </div>
+
+</template>
+<script>
+
+(function() {
+
+  Polymer('core-toolbar', {
+    
+    /**
+     * Controls how the items are aligned horizontally.
+     * Options are `start`, `center`, `end`, `between` and `around`.
+     *
+     * @attribute justify
+     * @type string
+     * @default ''
+     */
+    justify: '',
+    
+    /**
+     * Controls how the items are aligned horizontally when they are placed
+     * in the middle.
+     * Options are `start`, `center`, `end`, `between` and `around`.
+     *
+     * @attribute middleJustify
+     * @type string
+     * @default ''
+     */
+    middleJustify: '',
+    
+    /**
+     * Controls how the items are aligned horizontally when they are placed
+     * at the bottom.
+     * Options are `start`, `center`, `end`, `between` and `around`.
+     *
+     * @attribute bottomJustify
+     * @type string
+     * @default ''
+     */
+    bottomJustify: '',
+    
+    justifyChanged: function(old) {
+      this.updateBarJustify(this.$.topBar, this.justify, old);
+    },
+    
+    middleJustifyChanged: function(old) {
+      this.updateBarJustify(this.$.middleBar, this.middleJustify, old);
+    },
+    
+    bottomJustifyChanged: function(old) {
+      this.updateBarJustify(this.$.bottomBar, this.bottomJustify, old);
+    },
+    
+    updateBarJustify: function(bar, justify, old) {
+      if (old) {
+        bar.removeAttribute(this.toLayoutAttrName(old));
+      }
+      if (justify) {
+        bar.setAttribute(this.toLayoutAttrName(justify), '');
+      }
+    },
+    
+    toLayoutAttrName: function(value) {
+      return value === 'between' ? 'justified' : value + '-justified';
+    }
+    
+  });
+
+})();
+
+</script>
+</polymer-element>
+
+
+
+
+
+
+
+<!-- Dart note: load polymer for Dart and JS from the same place -->
+
+<script>
+// This empty script is here to workaround issue
+// https://github.com/dart-lang/core-elements/issues/11
+</script>
+
+
+<link href="../packages/paper_elements/src/paper-shadow/paper-shadow.css" rel="stylesheet" shim-shadowdom="">
+
+<polymer-element name="paper-shadow">
+
+<template>
+
+  <div id="shadow-bottom" fit="" animated?="[[animated]]" class="paper-shadow-bottom-z-[[z]]"></div>
+  <div id="shadow-top" fit="" animated?="[[animated]]" class="paper-shadow-top-z-[[z]]"></div>
+
+  <content></content>
+
+</template>
+
+<script>
+  Polymer({
+
+    publish: {
+
+      /**
+       * The z-depth of this shadow, from 0-5. Setting this property
+       * after element creation has no effect. Use `setZ()` instead.
+       *
+       * @attribute z
+       * @type number
+       * @default 1
+       */
+      z: 1,
+
+      /**
+       * Set this to true to animate the shadow when setting a new
+       * `z` value.
+       *
+       * @attribute animated
+       * @type boolean
+       * @default false
+       */
+      animated: false
+
+    },
+
+    /**
+     * Set the z-depth of the shadow. This should be used after element
+     * creation instead of setting the z property directly.
+     *
+     * @method setZ
+     * @param {Number} newZ
+     */
+    setZ: function(newZ) {
+      if (this.z !== newZ) {
+        this.$['shadow-bottom'].classList.remove('paper-shadow-bottom-z-' + this.z);
+        this.$['shadow-bottom'].classList.add('paper-shadow-bottom-z-' + newZ);
+        this.$['shadow-top'].classList.remove('paper-shadow-top-z-' + this.z);
+        this.$['shadow-top'].classList.add('paper-shadow-top-z-' + newZ);
+        this.z = newZ;
+      }
+    }
+
+  });
+</script>
+</polymer-element>
+
+
+
+
+
+
+
+
+
+<polymer-element name="core-selection" attributes="multi" hidden="">
+  <script>
+    Polymer('core-selection', {
+      /**
+       * If true, multiple selections are allowed.
+       *
+       * @attribute multi
+       * @type boolean
+       * @default false
+       */
+      multi: false,
+      ready: function() {
+        this.clear();
+      },
+      clear: function() {
+        this.selection = [];
+      },
+      /**
+       * Retrieves the selected item(s).
+       * @method getSelection
+       * @returns Returns the selected item(s). If the multi property is true,
+       * getSelection will return an array, otherwise it will return 
+       * the selected item or undefined if there is no selection.
+      */
+      getSelection: function() {
+        return this.multi ? this.selection : this.selection[0];
+      },
+      /**
+       * Indicates if a given item is selected.
+       * @method isSelected
+       * @param {any} item The item whose selection state should be checked.
+       * @returns Returns true if `item` is selected.
+      */
+      isSelected: function(item) {
+        return this.selection.indexOf(item) >= 0;
+      },
+      setItemSelected: function(item, isSelected) {
+        if (item !== undefined && item !== null) {
+          if (isSelected) {
+            this.selection.push(item);
+          } else {
+            var i = this.selection.indexOf(item);
+            if (i >= 0) {
+              this.selection.splice(i, 1);
+            }
+          }
+          this.fire("core-select", {isSelected: isSelected, item: item});
+        }
+      },
+      /**
+       * Set the selection state for a given `item`. If the multi property
+       * is true, then the selected state of `item` will be toggled; otherwise
+       * the `item` will be selected.
+       * @method select
+       * @param {any} item: The item to select.
+      */
+      select: function(item) {
+        if (this.multi) {
+          this.toggle(item);
+        } else if (this.getSelection() !== item) {
+          this.setItemSelected(this.getSelection(), false);
+          this.setItemSelected(item, true);
+        }
+      },
+      /**
+       * Toggles the selection state for `item`.
+       * @method toggle
+       * @param {any} item: The item to toggle.
+      */
+      toggle: function(item) {
+        this.setItemSelected(item, !this.isSelected(item));
+      }
+    });
+  </script>
+</polymer-element>
+
+
+<polymer-element name="core-selector" attributes="selected multi valueattr selectedClass selectedProperty selectedAttribute selectedItem selectedModel selectedIndex notap excludedLocalNames target itemsSelector activateEvent">
+
+  <template>
+    <core-selection id="selection" multi="{{multi}}" on-core-select="{{selectionSelect}}"></core-selection>
+    <content id="items" select="*"></content>
+  </template>
+
+  <script>
+
+    Polymer('core-selector', {
+
+      /**
+       * Gets or sets the selected element.  Default to use the index
+       * of the item element.
+       *
+       * If you want a specific attribute value of the element to be
+       * used instead of index, set "valueattr" to that attribute name.
+       *
+       * Example:
+       *
+       *     <core-selector valueattr="label" selected="foo">
+       *       <div label="foo"></div>
+       *       <div label="bar"></div>
+       *       <div label="zot"></div>
+       *     </core-selector>
+       *
+       * In multi-selection this should be an array of values.
+       *
+       * Example:
+       *
+       *     <core-selector id="selector" valueattr="label" multi>
+       *       <div label="foo"></div>
+       *       <div label="bar"></div>
+       *       <div label="zot"></div>
+       *     </core-selector>
+       *
+       *     this.$.selector.selected = ['foo', 'zot'];
+       *
+       * @attribute selected
+       * @type Object
+       * @default null
+       */
+      selected: null,
+
+      /**
+       * If true, multiple selections are allowed.
+       *
+       * @attribute multi
+       * @type boolean
+       * @default false
+       */
+      multi: false,
+
+      /**
+       * Specifies the attribute to be used for "selected" attribute.
+       *
+       * @attribute valueattr
+       * @type string
+       * @default 'name'
+       */
+      valueattr: 'name',
+
+      /**
+       * Specifies the CSS class to be used to add to the selected element.
+       * 
+       * @attribute selectedClass
+       * @type string
+       * @default 'core-selected'
+       */
+      selectedClass: 'core-selected',
+
+      /**
+       * Specifies the property to be used to set on the selected element
+       * to indicate its active state.
+       *
+       * @attribute selectedProperty
+       * @type string
+       * @default ''
+       */
+      selectedProperty: '',
+
+      /**
+       * Specifies the attribute to set on the selected element to indicate
+       * its active state.
+       *
+       * @attribute selectedAttribute
+       * @type string
+       * @default 'active'
+       */
+      selectedAttribute: 'active',
+
+      /**
+       * Returns the currently selected element. In multi-selection this returns
+       * an array of selected elements.
+       * Note that you should not use this to set the selection. Instead use
+       * `selected`.
+       * 
+       * @attribute selectedItem
+       * @type Object
+       * @default null
+       */
+      selectedItem: null,
+
+      /**
+       * In single selection, this returns the model associated with the
+       * selected element.
+       * Note that you should not use this to set the selection. Instead use 
+       * `selected`.
+       * 
+       * @attribute selectedModel
+       * @type Object
+       * @default null
+       */
+      selectedModel: null,
+
+      /**
+       * In single selection, this returns the selected index.
+       * Note that you should not use this to set the selection. Instead use
+       * `selected`.
+       *
+       * @attribute selectedIndex
+       * @type number
+       * @default -1
+       */
+      selectedIndex: -1,
+
+      /**
+       * Nodes with local name that are in the list will not be included 
+       * in the selection items.  In the following example, `items` returns four
+       * `core-item`'s and doesn't include `h3` and `hr`.
+       *
+       *     <core-selector excludedLocalNames="h3 hr">
+       *       <h3>Header</h3>
+       *       <core-item>Item1</core-item>
+       *       <core-item>Item2</core-item>
+       *       <hr>
+       *       <core-item>Item3</core-item>
+       *       <core-item>Item4</core-item>
+       *     </core-selector>
+       *
+       * @attribute excludedLocalNames
+       * @type string
+       * @default ''
+       */
+      excludedLocalNames: '',
+
+      /**
+       * The target element that contains items.  If this is not set 
+       * core-selector is the container.
+       * 
+       * @attribute target
+       * @type Object
+       * @default null
+       */
+      target: null,
+
+      /**
+       * This can be used to query nodes from the target node to be used for 
+       * selection items.  Note this only works if `target` is set
+       * and is not `core-selector` itself.
+       *
+       * Example:
+       *
+       *     <core-selector target="{{$.myForm}}" itemsSelector="input[type=radio]"></core-selector>
+       *     <form id="myForm">
+       *       <label><input type="radio" name="color" value="red"> Red</label> <br>
+       *       <label><input type="radio" name="color" value="green"> Green</label> <br>
+       *       <label><input type="radio" name="color" value="blue"> Blue</label> <br>
+       *       <p>color = {{color}}</p>
+       *     </form>
+       * 
+       * @attribute itemsSelector
+       * @type string
+       * @default ''
+       */
+      itemsSelector: '',
+
+      /**
+       * The event that would be fired from the item element to indicate
+       * it is being selected.
+       *
+       * @attribute activateEvent
+       * @type string
+       * @default 'tap'
+       */
+      activateEvent: 'tap',
+
+      /**
+       * Set this to true to disallow changing the selection via the
+       * `activateEvent`.
+       *
+       * @attribute notap
+       * @type boolean
+       * @default false
+       */
+      notap: false,
+
+      defaultExcludedLocalNames: 'template',
+      
+      observe: {
+        'selected multi': 'selectedChanged'
+      },
+
+      ready: function() {
+        this.activateListener = this.activateHandler.bind(this);
+        this.itemFilter = this.filterItem.bind(this);
+        this.excludedLocalNamesChanged();
+        this.observer = new MutationObserver(this.updateSelected.bind(this));
+        if (!this.target) {
+          this.target = this;
+        }
+      },
+
+      /**
+       * Returns an array of all items.
+       *
+       * @property items
+       */
+      get items() {
+        if (!this.target) {
+          return [];
+        }
+        var nodes = this.target !== this ? (this.itemsSelector ? 
+            this.target.querySelectorAll(this.itemsSelector) : 
+                this.target.children) : this.$.items.getDistributedNodes();
+        return Array.prototype.filter.call(nodes, this.itemFilter);
+      },
+
+      filterItem: function(node) {
+        return !this._excludedNames[node.localName];
+      },
+
+      excludedLocalNamesChanged: function() {
+        this._excludedNames = {};
+        var s = this.defaultExcludedLocalNames;
+        if (this.excludedLocalNames) {
+          s += ' ' + this.excludedLocalNames;
+        }
+        s.split(/\s+/g).forEach(function(n) {
+          this._excludedNames[n] = 1;
+        }, this);
+      },
+
+      targetChanged: function(old) {
+        if (old) {
+          this.removeListener(old);
+          this.observer.disconnect();
+          this.clearSelection();
+        }
+        if (this.target) {
+          this.addListener(this.target);
+          this.observer.observe(this.target, {childList: true});
+          this.updateSelected();
+        }
+      },
+
+      addListener: function(node) {
+        Polymer.addEventListener(node, this.activateEvent, this.activateListener);
+      },
+
+      removeListener: function(node) {
+        Polymer.removeEventListener(node, this.activateEvent, this.activateListener);
+      },
+
+      /**
+       * Returns the selected item(s). If the `multi` property is true,
+       * this will return an array, otherwise it will return 
+       * the selected item or undefined if there is no selection.
+       */
+      get selection() {
+        return this.$.selection.getSelection();
+      },
+
+      selectedChanged: function() {
+        // TODO(ffu): Right now this is the only way to know that the `selected`
+        // is an array and was mutated, as opposed to newly assigned.
+        if (arguments.length === 1) {
+          this.processSplices(arguments[0]);
+        } else {
+          this.updateSelected();
+        }
+      },
+      
+      updateSelected: function() {
+        this.validateSelected();
+        if (this.multi) {
+          this.clearSelection(this.selected)
+          this.selected && this.selected.forEach(function(s) {
+            this.setValueSelected(s, true)
+          }, this);
+        } else {
+          this.valueToSelection(this.selected);
+        }
+      },
+
+      validateSelected: function() {
+        // convert to an array for multi-selection
+        if (this.multi && !Array.isArray(this.selected) && 
+            this.selected != null) {
+          this.selected = [this.selected];
+        // use the first selected in the array for single-selection
+        } else if (!this.multi && Array.isArray(this.selected)) {
+          var s = this.selected[0];
+          this.clearSelection([s]);
+          this.selected = s;
+        }
+      },
+      
+      processSplices: function(splices) {
+        for (var i = 0, splice; splice = splices[i]; i++) {
+          for (var j = 0; j < splice.removed.length; j++) {
+            this.setValueSelected(splice.removed[j], false);
+          }
+          for (var j = 0; j < splice.addedCount; j++) {
+            this.setValueSelected(this.selected[splice.index + j], true);
+          }
+        }
+      },
+
+      clearSelection: function(excludes) {
+        this.$.selection.selection.slice().forEach(function(item) {
+          var v = this.valueForNode(item) || this.items.indexOf(item);
+          if (!excludes || excludes.indexOf(v) < 0) {
+            this.$.selection.setItemSelected(item, false);
+          }
+        }, this);
+      },
+
+      valueToSelection: function(value) {
+        var item = this.valueToItem(value);
+        this.$.selection.select(item);
+      },
+      
+      setValueSelected: function(value, isSelected) {
+        var item = this.valueToItem(value);
+        if (isSelected ^ this.$.selection.isSelected(item)) {
+          this.$.selection.setItemSelected(item, isSelected);
+        }
+      },
+
+      updateSelectedItem: function() {
+        this.selectedItem = this.selection;
+      },
+
+      selectedItemChanged: function() {
+        if (this.selectedItem) {
+          var t = this.selectedItem.templateInstance;
+          this.selectedModel = t ? t.model : undefined;
+        } else {
+          this.selectedModel = null;
+        }
+        this.selectedIndex = this.selectedItem ? 
+            parseInt(this.valueToIndex(this.selected)) : -1;
+      },
+      
+      valueToItem: function(value) {
+        return (value === null || value === undefined) ? 
+            null : this.items[this.valueToIndex(value)];
+      },
+
+      valueToIndex: function(value) {
+        // find an item with value == value and return it's index
+        for (var i=0, items=this.items, c; (c=items[i]); i++) {
+          if (this.valueForNode(c) == value) {
+            return i;
+          }
+        }
+        // if no item found, the value itself is probably the index
+        return value;
+      },
+
+      valueForNode: function(node) {
+        return node[this.valueattr] || node.getAttribute(this.valueattr);
+      },
+
+      // events fired from <core-selection> object
+      selectionSelect: function(e, detail) {
+        this.updateSelectedItem();
+        if (detail.item) {
+          this.applySelection(detail.item, detail.isSelected);
+        }
+      },
+
+      applySelection: function(item, isSelected) {
+        if (this.selectedClass) {
+          item.classList.toggle(this.selectedClass, isSelected);
+        }
+        if (this.selectedProperty) {
+          item[this.selectedProperty] = isSelected;
+        }
+        if (this.selectedAttribute && item.setAttribute) {
+          if (isSelected) {
+            item.setAttribute(this.selectedAttribute, '');
+          } else {
+            item.removeAttribute(this.selectedAttribute);
+          }
+        }
+      },
+
+      // event fired from host
+      activateHandler: function(e) {
+        if (!this.notap) {
+          var i = this.findDistributedTarget(e.target, this.items);
+          if (i >= 0) {
+            var item = this.items[i];
+            var s = this.valueForNode(item) || i;
+            if (this.multi) {
+              if (this.selected) {
+                this.addRemoveSelected(s);
+              } else {
+                this.selected = [s];
+              }
+            } else {
+              this.selected = s;
+            }
+            this.asyncFire('core-activate', {item: item});
+          }
+        }
+      },
+
+      addRemoveSelected: function(value) {
+        var i = this.selected.indexOf(value);
+        if (i >= 0) {
+          this.selected.splice(i, 1);
+        } else {
+          this.selected.push(value);
+        }
+      },
+
+      findDistributedTarget: function(target, nodes) {
+        // find first ancestor of target (including itself) that
+        // is in nodes, if any
+        while (target && target != this) {
+          var i = Array.prototype.indexOf.call(nodes, target);
+          if (i >= 0) {
+            return i;
+          }
+          target = target.parentNode;
+        }
+      },
+      
+      selectIndex: function(index) {
+        var item = this.items[index];
+        if (item) {
+          this.selected = this.valueForNode(item) || index;
+          return item;
+        }
+      },
+      
+      /**
+       * Selects the previous item. This should be used in single selection only.
+       *
+       * @method selectPrevious
+       * @param {boolean} wrapped if true and it is already at the first item,
+       *                  wrap to the end
+       * @returns the previous item or undefined if there is none
+       */
+      selectPrevious: function(wrapped) {
+        var i = wrapped && !this.selectedIndex ? 
+            this.items.length - 1 : this.selectedIndex - 1;
+        return this.selectIndex(i);
+      },
+      
+      /**
+       * Selects the next item.  This should be used in single selection only.
+       *
+       * @method selectNext
+       * @param {boolean} wrapped if true and it is already at the last item,
+       *                  wrap to the front
+       * @returns the next item or undefined if there is none
+       */
+      selectNext: function(wrapped) {
+        var i = wrapped && this.selectedIndex >= this.items.length - 1 ? 
+            0 : this.selectedIndex + 1;
+        return this.selectIndex(i);
+      }
+      
+    });
+  </script>
+</polymer-element>
+
+
+
+<script>
+
+(function(scope) {
+
+/**
+  `Polymer.CoreResizable` and `Polymer.CoreResizer` are a set of mixins that can be used
+  in Polymer elements to coordinate the flow of resize events between "resizers" (elements
+  that control the size or hidden state of their children) and "resizables" (elements that
+  need to be notified when they are resized or un-hidden by their parents in order to take
+  action on their new measurements).
+
+  Elements that perform measurement should add the `Core.Resizable` mixin to their 
+  Polymer prototype definition and listen for the `core-resize` event on themselves.
+  This event will be fired when they become showing after having been hidden,
+  when they are resized explicitly by a `CoreResizer`, or when the window has been resized.
+  Note, the `core-resize` event is non-bubbling.
+
+  `CoreResizable`'s must manually call the `resizableAttachedHandler` from the element's
+  `attached` callback and `resizableDetachedHandler` from the element's `detached`
+  callback.
+
+    @element CoreResizable
+    @status beta
+    @homepage github.io
+*/
+
+  scope.CoreResizable = {
+
+    /**
+     * User must call from `attached` callback
+     *
+     * @method resizableAttachedHandler
+     */
+    resizableAttachedHandler: function(cb) {
+      cb = cb || this._notifyResizeSelf;
+      this.async(function() {
+        var detail = {callback: cb, hasParentResizer: false};
+        this.fire('core-request-resize', detail);
+        if (!detail.hasParentResizer) {
+          this._boundWindowResizeHandler = cb.bind(this);
+          // log('adding window resize handler', null, this);
+          window.addEventListener('resize', this._boundWindowResizeHandler);
+        }
+      }.bind(this));
+    },
+
+    /**
+     * User must call from `detached` callback
+     *
+     * @method resizableDetachedHandler
+     */
+    resizableDetachedHandler: function() {
+      this.fire('core-request-resize-cancel', null, this, false);
+      if (this._boundWindowResizeHandler) {
+        window.removeEventListener('resize', this._boundWindowResizeHandler);
+      }
+    },
+
+    // Private: fire non-bubbling resize event to self; returns whether
+    // preventDefault was called, indicating that children should not
+    // be resized
+    _notifyResizeSelf: function() {
+      return this.fire('core-resize', null, this, false).defaultPrevented;
+    }
+
+  };
+
+/**
+  `Polymer.CoreResizable` and `Polymer.CoreResizer` are a set of mixins that can be used
+  in Polymer elements to coordinate the flow of resize events between "resizers" (elements
+  that control the size or hidden state of their children) and "resizables" (elements that
+  need to be notified when they are resized or un-hidden by their parents in order to take
+  action on their new measurements).
+
+  Elements that cause their children to be resized (e.g. a splitter control) or hide/show
+  their children (e.g. overlay) should add the `Core.CoreResizer` mixin to their 
+  Polymer prototype definition and then call `this.notifyResize()` any time the element
+  resizes or un-hides its children.
+
+  `CoreResizer`'s must manually call the `resizerAttachedHandler` from the element's
+  `attached` callback and `resizerDetachedHandler` from the element's `detached`
+  callback.
+
+  Note: `CoreResizer` extends `CoreResizable`, and can listen for the `core-resize` event
+  on itself if it needs to perform resize work on itself before notifying children.
+  In this case, returning `false` from the `core-resize` event handler (or calling
+  `preventDefault` on the event) will prevent notification of children if required.
+
+  @element CoreResizer
+  @extends CoreResizable
+  @status beta
+  @homepage github.io
+*/
+
+  scope.CoreResizer = Polymer.mixin({
+
+    /**
+     * User must call from `attached` callback
+     *
+     * @method resizerAttachedHandler
+     */
+    resizerAttachedHandler: function() {
+      this.resizableAttachedHandler(this.notifyResize);
+      this._boundResizeRequested = this._boundResizeRequested || this._handleResizeRequested.bind(this);
+      var listener;
+      if (this.resizerIsPeer) {
+        listener = this.parentElement || (this.parentNode && this.parentNode.host);
+        listener._resizerPeers = listener._resizerPeers || [];
+        listener._resizerPeers.push(this);
+      } else {
+        listener = this;
+      }
+      listener.addEventListener('core-request-resize', this._boundResizeRequested);
+      this._resizerListener = listener;
+    },
+
+    /**
+     * User must call from `detached` callback
+     *
+     * @method resizerDetachedHandler
+     */
+    resizerDetachedHandler: function() {
+      this.resizableDetachedHandler();
+      this._resizerListener.removeEventListener('core-request-resize', this._boundResizeRequested);
+    },
+
+    /**
+     * User should call when resizing or un-hiding children
+     *
+     * @method notifyResize
+     */
+    notifyResize: function() {
+      // Notify self
+      if (!this._notifyResizeSelf()) {
+        // Notify requestors if default was not prevented
+        var r = this.resizeRequestors;
+        if (r) {
+          for (var i=0; i<r.length; i++) {
+            var ri = r[i];
+            if (!this.resizerShouldNotify || this.resizerShouldNotify(ri.target)) {
+              // log('notifying resize', null, ri.target, true);
+              ri.callback.apply(ri.target);
+              // logEnd();
+            }
+          }
+        }
+      }
+    },
+
+    /**
+     * User should implement to introduce filtering when notifying children.
+     * Generally, children that are hidden by the CoreResizer (e.g. non-active
+     * pages) need not be notified during resize, since they will be notified
+     * again when becoming un-hidden.
+     *
+     * Return `true` if CoreResizable passed as argument should be notified of
+     * resize.
+     *
+     * @method resizeerShouldNotify
+     * @param {Element} el
+     */
+     // resizeerShouldNotify: function(el) { }  // User to implement if needed
+
+    /**
+     * Set to `true` if the resizer is actually a peer to the elements it
+     * resizes (e.g. splitter); in this case it will listen for resize requests
+     * events from its peers on its parent.
+     *
+     * @property resizerIsPeer
+     * @type Boolean
+     * @default false
+     */
+
+    // Private: Handle requests for resize
+    _handleResizeRequested: function(e) {
+      var target = e.path[0];
+      if ((target == this) || 
+          (target == this._resizerListener) || 
+          (this._resizerPeers && this._resizerPeers.indexOf(target) < 0)) {
+        return;
+      }
+      // log('resize requested', target, this);
+      if (!this.resizeRequestors) {
+        this.resizeRequestors = [];
+      }
+      this.resizeRequestors.push({target: target, callback: e.detail.callback});
+      target.addEventListener('core-request-resize-cancel', this._cancelResizeRequested.bind(this));
+      e.detail.hasParentResizer = true;
+      e.stopPropagation();
+    },
+
+    // Private: Handle cancellation requests for resize
+    _cancelResizeRequested: function(e) {
+      // Exit early if we're already out of the DOM (resizeRequestors will already be null)
+      if (this.resizeRequestors) {
+        for (var i=0; i<this.resizeRequestors.length; i++) {
+          if (this.resizeRequestors[i].target == e.target) {
+            // log('resizeCanceled', e.target, this);
+            this.resizeRequestors.splice(i, 1);
+            break;
+          }
+        }
+      }
+    }
+
+  }, Polymer.CoreResizable);
+
+  // function prettyName(el) {
+  //   return el.localName + (el.id ? '#' : '') + el.id;
+  // }
+
+  // function log(what, from, to, group) {
+  //   var args = [what];
+  //   if (from) {
+  //     args.push('from ' + prettyName(from));
+  //   }
+  //   if (to) {
+  //     args.push('to ' + prettyName(to));
+  //   }
+  //   if (group) {
+  //     console.group.apply(console, args);
+  //   } else {
+  //     console.log.apply(console, args);
+  //   }
+  // }
+
+  // function logEnd() {
+  //   console.groupEnd();
+  // }
+
+})(Polymer);
+
+</script>
+
+
+
+
+<polymer-element name="core-style" hidden="">
+<script>
+(function() {
+
+window.CoreStyle = window.CoreStyle || {
+  g: {},
+  list: {},
+  refMap: {}
+};
+
+Polymer('core-style', {
+  /**
+   * The `id` property should be set if the `core-style` is a producer
+   * of styles. In this case, the `core-style` should have text content
+   * that is cssText.
+   *
+   * @attribute id
+   * @type string
+   * @default ''
+   */
+
+
+  publish: {
+    /**
+     * The `ref` property should be set if the `core-style` element is a 
+     * consumer of styles. Set it to the `id` of the desired `core-style`
+     * element.
+     *
+     * @attribute ref
+     * @type string
+     * @default ''
+     */
+    ref: ''
+  },
+
+  // static
+  g: CoreStyle.g,
+  refMap: CoreStyle.refMap,
+
+  /**
+   * The `list` is a map of all `core-style` producers stored by `id`. It 
+   * should be considered readonly. It's useful for nesting one `core-style`
+   * inside another.
+   *
+   * @attribute list
+   * @type object (readonly)
+   * @default {map of all `core-style` producers}
+   */
+  list: CoreStyle.list,
+
+  // if we have an id, we provide style
+  // if we have a ref, we consume/require style
+  ready: function() {
+    if (this.id) {
+      this.provide();
+    } else {
+      this.registerRef(this.ref);
+      if (!window.ShadowDOMPolyfill) {
+        this.require();
+      }  
+    }
+  },
+
+  // can't shim until attached if using SD polyfill because need to find host
+  attached: function() {
+    if (!this.id && window.ShadowDOMPolyfill) {
+      this.require();
+    }
+  },
+
+  /****** producer stuff *******/
+
+  provide: function() {
+    this.register();
+    // we want to do this asap, especially so we can do so before definitions
+    // that use this core-style are registered.
+    if (this.textContent) {
+      this._completeProvide();
+    } else {
+      this.async(this._completeProvide);
+    }
+  },
+
+  register: function() {
+    var i = this.list[this.id];
+    if (i) {
+      if (!Array.isArray(i)) {
+        this.list[this.id] = [i];
+      }
+      this.list[this.id].push(this);
+    } else {
+      this.list[this.id] = this;  
+    }
+  },
+
+  // stamp into a shadowRoot so we can monitor dom of the bound output
+  _completeProvide: function() {
+    this.createShadowRoot();
+    this.domObserver = new MutationObserver(this.domModified.bind(this))
+        .observe(this.shadowRoot, {subtree: true, 
+        characterData: true, childList: true});
+    this.provideContent();
+  },
+
+  provideContent: function() {
+    this.ensureTemplate();
+    this.shadowRoot.textContent = '';
+    this.shadowRoot.appendChild(this.instanceTemplate(this.template));
+    this.cssText = this.shadowRoot.textContent;
+  },
+
+  ensureTemplate: function() {
+    if (!this.template) {
+      this.template = this.querySelector('template:not([repeat]):not([bind])');
+      // move content into the template
+      if (!this.template) {
+        this.template = document.createElement('template');
+        var n = this.firstChild;
+        while (n) {
+          this.template.content.appendChild(n.cloneNode(true));
+          n = n.nextSibling;
+        }
+      }
+    }
+  },
+
+  domModified: function() {
+    this.cssText = this.shadowRoot.textContent;
+    this.notify();
+  },
+
+  // notify instances that reference this element
+  notify: function() {
+    var s$ = this.refMap[this.id];
+    if (s$) {
+      for (var i=0, s; (s=s$[i]); i++) {
+        s.require();
+      }
+    }
+  },
+
+  /****** consumer stuff *******/
+
+  registerRef: function(ref) {
+    //console.log('register', ref);
+    this.refMap[this.ref] = this.refMap[this.ref] || [];
+    this.refMap[this.ref].push(this);
+  },
+
+  applyRef: function(ref) {
+    this.ref = ref;
+    this.registerRef(this.ref);
+    this.require();
+  },
+
+  require: function() {
+    var cssText = this.cssTextForRef(this.ref);
+    //console.log('require', this.ref, cssText);
+    if (cssText) {
+      this.ensureStyleElement();
+      // do nothing if cssText has not changed
+      if (this.styleElement._cssText === cssText) {
+        return;
+      }
+      this.styleElement._cssText = cssText;
+      if (window.ShadowDOMPolyfill) {
+        this.styleElement.textContent = cssText;
+        cssText = WebComponents.ShadowCSS.shimStyle(this.styleElement,
+            this.getScopeSelector());
+      }
+      this.styleElement.textContent = cssText;
+    }
+  },
+
+  cssTextForRef: function(ref) {
+    var s$ = this.byId(ref);
+    var cssText = '';
+    if (s$) {
+      if (Array.isArray(s$)) {
+        var p = [];
+        for (var i=0, l=s$.length, s; (i<l) && (s=s$[i]); i++) {
+          p.push(s.cssText);
+        }
+        cssText = p.join('\n\n');
+      } else {
+        cssText = s$.cssText;
+      }
+    }
+    if (s$ && !cssText) {
+      console.warn('No styles provided for ref:', ref);
+    }
+    return cssText;
+  },
+
+  byId: function(id) {
+    return this.list[id];
+  },
+
+  ensureStyleElement: function() {
+    if (!this.styleElement) {
+      this.styleElement = window.ShadowDOMPolyfill ? 
+          this.makeShimStyle() :
+          this.makeRootStyle();
+    }
+    if (!this.styleElement) {
+      console.warn(this.localName, 'could not setup style.');
+    }
+  },
+
+  makeRootStyle: function() {
+    var style = document.createElement('style');
+    this.appendChild(style);
+    return style;
+  },
+
+  makeShimStyle: function() {
+    var host = this.findHost(this);
+    if (host) {
+      var name = host.localName;
+      var style = document.querySelector('style[' + name + '=' + this.ref +']');
+      if (!style) {
+        style = document.createElement('style');
+        style.setAttribute(name, this.ref);
+        document.head.appendChild(style);
+      }
+      return style;
+    }
+  },
+
+  getScopeSelector: function() {
+    if (!this._scopeSelector) {
+      var selector = '', host = this.findHost(this);
+      if (host) {
+        var typeExtension = host.hasAttribute('is');
+        var name = typeExtension ? host.getAttribute('is') : host.localName;
+        selector = WebComponents.ShadowCSS.makeScopeSelector(name, 
+            typeExtension);
+      }
+      this._scopeSelector = selector;
+    }
+    return this._scopeSelector;
+  },
+
+  findHost: function(node) {
+    while (node.parentNode) {
+      node = node.parentNode;
+    }
+    return node.host || wrap(document.documentElement);
+  },
+
+  /* filters! */
+  // TODO(dfreedm): add more filters!
+
+  cycle: function(rgb, amount) {
+    if (rgb.match('#')) {
+      var o = this.hexToRgb(rgb);
+      if (!o) {
+        return rgb;
+      }
+      rgb = 'rgb(' + o.r + ',' + o.b + ',' + o.g + ')';
+    }
+
+    function cycleChannel(v) {
+      return Math.abs((Number(v) - amount) % 255);
+    }
+
+    return rgb.replace(/rgb\(([^,]*),([^,]*),([^,]*)\)/, function(m, a, b, c) {
+      return 'rgb(' + cycleChannel(a) + ',' + cycleChannel(b) + ', ' 
+          + cycleChannel(c) + ')';
+    });
+  },
+
+  hexToRgb: function(hex) {
+    var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+    return result ? {
+        r: parseInt(result[1], 16),
+        g: parseInt(result[2], 16),
+        b: parseInt(result[3], 16)
+    } : null;
+  }
+
+});
+
+
+})();
+</script>
+</polymer-element>
+
+
+
+<polymer-element name="core-transition" extends="core-meta">
+  
+  <script>
+    Polymer('core-transition', {
+      
+      type: 'transition',
+
+      /**
+       * Run the animation.
+       *
+       * @method go
+       * @param {Node} node The node to apply the animation on
+       * @param {Object} state State info
+       */
+      go: function(node, state) {
+        this.complete(node);
+      },
+
+      /**
+       * Set up the animation. This may include injecting a stylesheet,
+       * applying styles, creating a web animations object, etc.. This
+       *
+       * @method setup
+       * @param {Node} node The animated node
+       */
+      setup: function(node) {
+      },
+
+      /**
+       * Tear down the animation.
+       *
+       * @method teardown
+       * @param {Node} node The animated node
+       */
+      teardown: function(node) {
+      },
+
+      /**
+       * Called when the animation completes. This function also fires the
+       * `core-transitionend` event.
+       *
+       * @method complete
+       * @param {Node} node The animated node
+       */
+      complete: function(node) {
+        this.fire('core-transitionend', null, node);
+      },
+
+      /**
+       * Utility function to listen to an event on a node once.
+       *
+       * @method listenOnce
+       * @param {Node} node The animated node
+       * @param {string} event Name of an event
+       * @param {Function} fn Event handler
+       * @param {Array} args Additional arguments to pass to `fn`
+       */
+      listenOnce: function(node, event, fn, args) {
+        var self = this;
+        var listener = function() {
+          fn.apply(self, args);
+          node.removeEventListener(event, listener, false);
+        }
+        node.addEventListener(event, listener, false);
+      }
+
+    });
+  </script>
+</polymer-element>
+
+
+<!--
+
+`core-transition-pages` represents a page transition, which may include CSS and/or
+script. It will look for a `core-style` element with the same `id` to install in the
+scope of the `core-animated-pages` that's using the transition.
+
+Example:
+
+    <core-style id="fooTransition">
+        // some CSS here
+    </core-style>
+    <core-transition-pages id="fooTransition"></core-transition-pages>
+
+There are three stages to a page transition:
+
+1. `prepare`: Called to set up the incoming and outgoing pages to the "before" state,
+  e.g. setting the incoming page to `opacity: 0` for `cross-fade` or find and
+  measure hero elements for `hero-transition`.
+
+2. `go`: Called to run the transition. For CSS-based transitions, this generally
+  applies a CSS `transition` property.
+
+3. `complete`: Called when the elements are finished transitioning.
+
+See the individual transition documentation for specific details.
+
+@element core-transition-pages
+@extends core-transition
+@status beta
+@homepage github.io
+-->
+<!--
+Fired when the transition completes.
+
+@event core-transitionend
+-->
+<polymer-element name="core-transition-pages" extends="core-transition">
+<script>
+
+(function () {
+
+// create some basic transition styling data.
+var transitions = CoreStyle.g.transitions = CoreStyle.g.transitions || {};
+transitions.duration = '500ms';
+transitions.heroDelay = '50ms';
+transitions.scaleDelay = '500ms';
+transitions.cascadeFadeDuration = '250ms';
+
+Polymer({
+
+  publish: {
+    /**
+     * This class will be applied to the scope element in the `prepare` function.
+     * It is removed in the `complete` function. Used to activate a set of CSS
+     * rules that need to apply before the transition runs, e.g. a default opacity
+     * or transform for the non-active pages.
+     *
+     * @attribute scopeClass
+     * @type string
+     * @default ''
+     */
+    scopeClass: '',
+
+    /**
+     * This class will be applied to the scope element in the `go` function. It is
+     * remoived in the `complete' function. Generally used to apply a CSS transition
+     * rule only during the transition.
+     *
+     * @attribute activeClass
+     * @type string
+     * @default ''
+     */
+    activeClass: '',
+
+    /**
+     * Specifies which CSS property to look for when it receives a `transitionEnd` event
+     * to determine whether the transition is complete. If not specified, the first
+     * transitionEnd event received will complete the transition.
+     *
+     * @attribute transitionProperty
+     * @type string
+     * @default ''
+     */
+    transitionProperty: ''
+  },
+
+  /**
+   * True if this transition is complete.
+   *
+   * @attribute completed
+   * @type boolean
+   * @default false
+   */
+  completed: false,
+
+  prepare: function(scope, options) {
+    this.boundCompleteFn = this.complete.bind(this, scope);
+    if (this.scopeClass) {
+      scope.classList.add(this.scopeClass);
+    }
+  },
+
+  go: function(scope, options) {
+    this.completed = false;
+    if (this.activeClass) {
+      scope.classList.add(this.activeClass);
+    }
+    scope.addEventListener('transitionend', this.boundCompleteFn, false);
+  },
+
+  setup: function(scope) {
+    if (!scope._pageTransitionStyles) {
+      scope._pageTransitionStyles = {};
+    }
+
+    var name = this.calcStyleName();
+    
+    if (!scope._pageTransitionStyles[name]) {
+      this.installStyleInScope(scope, name);
+      scope._pageTransitionStyles[name] = true;
+    }
+  },
+
+  calcStyleName: function() {
+    return this.id || this.localName;
+  },
+
+  installStyleInScope: function(scope, id) {
+    if (!scope.shadowRoot) {
+      scope.createShadowRoot().innerHTML = '<content></content>';
+    }
+    var root = scope.shadowRoot;
+    var scopeStyle = document.createElement('core-style');
+    root.insertBefore(scopeStyle, root.firstChild);
+    scopeStyle.applyRef(id);
+  },
+
+  complete: function(scope, e) {
+    // TODO(yvonne): hack, need to manage completion better
+    if (e.propertyName !== 'box-shadow' && (!this.transitionProperty || e.propertyName.indexOf(this.transitionProperty) !== -1)) {
+      this.completed = true;
+      this.fire('core-transitionend', this, scope);
+    }
+  },
+
+  // TODO(sorvell): ideally we do this in complete.
+  ensureComplete: function(scope) {
+    scope.removeEventListener('transitionend', this.boundCompleteFn, false);
+    if (this.scopeClass) {
+      scope.classList.remove(this.scopeClass);
+    }
+    if (this.activeClass) {
+      scope.classList.remove(this.activeClass);
+    }
+  }
+
+});
+
+})();
+
+</script>
+</polymer-element>
+
+
+<core-style id="hero-transition">
+  /* Hide heroes that are not currently transitioning */
+  polyfill-next-selector { content: ':host &gt; [animate]:not(.core-selected) [hero]'; }
+  ::content &gt; [animate]:not(.core-selected) /deep/ [hero] {
+    opacity: 0;
+  }
+
+  polyfill-next-selector { content: ':host &gt; .core-selected[animate] [hero]'; }
+  ::content &gt; .core-selected[animate] /deep/ [hero] {
+    opacity: 1;
+    z-index: 10000;
+  }
+
+  polyfill-next-selector { content: ':host &gt; * [hero-p]'; }
+  ::content &gt; * /deep/ [hero-p] {
+    -webkit-transition: box-shadow 100ms ease-out;
+    transition: box-shadow 100ms ease-out;
+  }
+
+  polyfill-next-selector { content: ':host &gt; [animate] [hero-p]'; }
+  ::content &gt; [animate] /deep/ [hero-p] {
+    box-shadow: none !important;
+  }
+</core-style>
+
+
+<!--
+
+`hero-transition` transforms two elements in different pages such that they appear
+to be shared across the pages.
+
+Example:
+
+    <core-animated-pages transition="hero-transition">
+      <section layout horizontal>
+        <div id="div1" flex></div>
+        <div id="div2" flex hero-id="shared" hero></div>
+      </section>
+      <section>
+      <section layout horizontal>
+        <div id="div3" flex hero-id="shared" hero></div>
+        <div id="div4" flex></div>
+      </section>
+      </section>
+    </core-animated-pages>
+
+In the above example, the elements `#div2` and `#div3` shares the same `hero-id`
+attribute and a single element appears to translate and scale smoothly between
+the two positions during a page transition.
+
+Both elements from the source and destination pages must share the same `hero-id`
+and must both contain the `hero` attribute to trigger the transition. The separate
+`hero` attribute allows you to use binding to configure the transition:
+
+Example:
+
+    <core-animated-pages transition="hero-transition">
+      <section layout horizontal>
+        <div id="div1" flex hero-id="shared" hero?="{{selected == 0}}"></div>
+        <div id="div2" flex hero-id="shared" hero?="{{selected == 1}}"></div>
+      </section>
+      <section>
+      <section layout horizontal>
+        <div id="div3" flex hero-id="shared" hero></div>
+      </section>
+      </section>
+    </core-animated-pages>
+
+In the above example, either `#div1` or `#div2` scales to `#div3` during a page transition,
+depending on the value of `selected`.
+
+Because it is common to share elements with different `border-radius` values, by default
+this transition will also animate the `border-radius` property.
+
+You can configure the duration of the hero transition with the global variable
+`CoreStyle.g.transitions.heroDuration`.
+
+@class hero-transition
+@extends core-transition-pages
+@status beta
+@homepage github.io
+-->
+<polymer-element name="hero-transition" extends="core-transition-pages">
+<script>
+(function() {
+
+  var webkitStyles = '-webkit-transition' in document.documentElement.style
+  var TRANSITION_CSSNAME = webkitStyles ? '-webkit-transition' : 'transition';
+  var TRANSFORM_CSSNAME = webkitStyles ? '-webkit-transform' : 'transform';
+  var TRANSITION_NAME = webkitStyles ? 'webkitTransition' : 'transition';
+  var TRANSFORM_NAME = webkitStyles ? 'webkitTransform' : 'transform';
+
+  var hasShadowDOMPolyfill = window.ShadowDOMPolyfill;
+
+  Polymer({
+
+    go: function(scope, options) {
+      var props = [
+        'border-radius',
+        'width',
+        'height',
+        TRANSFORM_CSSNAME
+      ];
+
+      var duration = options && options.duration || 
+          (CoreStyle.g.transitions.heroDuration || 
+          CoreStyle.g.transitions.duration);
+
+      scope._heroes.forEach(function(h) {
+        var d = h.h0.hasAttribute('hero-delayed') ? CoreStyle.g.transitions.heroDelay : '';
+        var wt = [];
+        props.forEach(function(p) {
+          wt.push(p + ' ' + duration + ' ' + options.easing + ' ' + d);
+        });
+
+        h.h1.style[TRANSITION_NAME] = wt.join(', ');
+        h.h1.style.borderRadius = h.r1;
+        h.h1.style[TRANSFORM_NAME] = '';
+      });
+
+      this.super(arguments);
+
+      if (!scope._heroes.length) {
+        this.completed = true;
+      }
+    },
+
+    prepare: function(scope, options) {
+      this.super(arguments);
+      var src = options.src, dst = options.dst;
+
+      if (scope._heroes && scope._heroes.length) {
+        this.ensureComplete(scope);
+      } else {
+        scope._heroes = [];
+      }
+
+      // FIXME(yvonne): basic support for nested pages.
+      // Look for heroes in the light DOM and one level of shadow DOM of the src and dst,
+      // and also in src.selectedItem or dst.selectedItem, then transform the dst hero to src
+      var ss = '[hero]';
+      var h$ = this.findAllInShadows(src, ss);
+      if (src.selectedItem) {
+        hs$ = this.findAllInShadows(src.selectedItem, ss);
+        hsa$ = [];
+        // De-duplicate items
+        Array.prototype.forEach.call(hs$, function(hs) {
+          if (h$.indexOf(hs) === -1) {
+            hsa$.push(hs);
+          }
+        })
+        h$ = h$.concat(hsa$);
+      }
+
+      for (var i=0, h0; h0=h$[i]; i++) {
+        var v = h0.getAttribute('hero-id');
+        var ds = '[hero][hero-id="' + v + '"]';
+        var h1 = this.findInShadows(dst, ds);
+
+        if (!h1 && dst.selectedItem) {
+          h1 = this.findInShadows(dst.selectedItem, ds);
+        }
+
+        // console.log('src', src);
+        // console.log('dst', dst, dst.selectedItem);
+        // console.log(v, h0, h1);
+        if (v && h1) {
+          var c0 = getComputedStyle(h0);
+          var c1 = getComputedStyle(h1);
+          var h = {
+            h0: h0,
+            b0: h0.getBoundingClientRect(),
+            r0: c0.borderRadius,
+            h1: h1,
+            b1: h1.getBoundingClientRect(),
+            r1: c1.borderRadius
+          };
+
+          var dl = h.b0.left - h.b1.left;
+          var dt = h.b0.top - h.b1.top;
+          var sw = h.b0.width / h.b1.width;
+          var sh = h.b0.height / h.b1.height;
+
+          // h.scaley = h.h0.hasAttribute('scaley');
+          // if (!h.scaley && (sw !== 1 || sh !== 1)) {
+          //   sw = sh = 1;
+          //   h.h1.style.width = h.b0.width + 'px';
+          //   h.h1.style.height = h.b0.height + 'px';
+          // }
+
+          // Also animate the border-radius for the circle-to-square transition
+          if (h.r0 !== h.r1) {
+            h.h1.style.borderRadius = h.r0;
+          }
+
+          // console.log(h);
+
+          h.h1.style[TRANSFORM_NAME] = 'translate(' + dl + 'px,' + dt + 'px)' + ' scale(' + sw + ',' + sh + ')';
+          h.h1.style[TRANSFORM_NAME + 'Origin'] = '0 0';
+
+          scope._heroes.push(h);
+        }
+      }
+
+    },
+
+    // carefully look into ::shadow with polyfill specific hack
+    findInShadows: function(node, selector) {
+      return node.querySelector(selector) || (hasShadowDOMPolyfill ? 
+          queryAllShadows(node, selector) :
+          node.querySelector('::shadow ' + selector));
+    },
+
+    findAllInShadows: function(node, selector) {
+      if (hasShadowDOMPolyfill) {
+        var nodes = node.querySelectorAll(selector).array();
+        var shadowNodes = queryAllShadows(node, selector, true);
+        return nodes.concat(shadowNodes);
+      } else {
+        return node.querySelectorAll(selector).array().concat(node.shadowRoot ? node.shadowRoot.querySelectorAll(selector).array() : []);
+      }
+    },
+
+    ensureComplete: function(scope) {
+      this.super(arguments);
+      if (scope._heroes) {
+        scope._heroes.forEach(function(h) {
+          h.h1.style[TRANSITION_NAME] = '';
+          h.h1.style[TRANSFORM_NAME] = '';
+        });
+        scope._heroes = [];
+      }
+    },
+
+    complete: function(scope, e) {
+      // if (e.propertyName === TRANSFORM_CSSNAME) {
+        var done = false;
+        scope._heroes.forEach(function(h) {
+          if (h.h1 === e.path[0]) {
+            done = true;
+          }
+        });
+
+        if (done) {
+          this.super(arguments);
+        }
+      // }
+    }
+
+  });
+
+  
+  // utility method for searching through shadowRoots.
+  function queryShadow(node, selector) {
+    var m, el = node.firstElementChild;
+    var shadows, sr, i;
+    shadows = [];
+    sr = node.shadowRoot;
+    while(sr) {
+      shadows.push(sr);
+      sr = sr.olderShadowRoot;
+    }
+    for(i = shadows.length - 1; i >= 0; i--) {
+      m = shadows[i].querySelector(selector);
+      if (m) {
+        return m;
+      }
+    }
+    while(el) {
+      m = queryShadow(el, selector);
+      if (m) {
+        return m;
+      }
+      el = el.nextElementSibling;
+    }
+    return null;
+  }
+
+  function _queryAllShadows(node, selector, results) {
+    var el = node.firstElementChild;
+    var temp, sr, shadows, i, j;
+    shadows = [];
+    sr = node.shadowRoot;
+    while(sr) {
+      shadows.push(sr);
+      sr = sr.olderShadowRoot;
+    }
+    for (i = shadows.length - 1; i >= 0; i--) {
+      temp = shadows[i].querySelectorAll(selector);
+      for(j = 0; j < temp.length; j++) {
+        results.push(temp[j]);
+      }
+    }
+    while (el) {
+      _queryAllShadows(el, selector, results);
+      el = el.nextElementSibling;
+    }
+    return results;
+  }
+
+  queryAllShadows = function(node, selector, all) {
+    if (all) {
+      return _queryAllShadows(node, selector, []);
+    } else {
+      return queryShadow(node, selector);
+    }
+  };
+
+})();
+</script>
+</polymer-element>
+
+<hero-transition id="hero-transition"></hero-transition>
+
+
+
+<core-style id="cross-fade">
+  polyfill-next-selector { content: ':host &gt; * [cross-fade]'; }
+  ::content &gt; * /deep/ [cross-fade] {
+    -webkit-transition: opacity {{g.transitions.xfadeDuration || g.transitions.duration}} cubic-bezier(0.4, 0, 0.2, 1);
+    transition: opacity {{g.transitions.xfadeDuration || g.transitions.duration}} cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  polyfill-next-selector { content: ':host &gt; * [cross-fade][bg]'; }
+  ::content &gt; * /deep/ [cross-fade][bg] {
+    -webkit-transition: background-color {{g.transitions.xfadeDuration || g.transitions.duration}} cubic-bezier(0.4, 0, 0.2, 1);
+    transition: background-color {{g.transitions.xfadeDuration || g.transitions.duration}} cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  polyfill-next-selector { content: ':host &gt; * [cross-fade][hero-p]'; }
+  ::content &gt; * /deep/ [cross-fade][hero-p] {
+    -webkit-transition: background-color {{g.transitions.xfadeDuration || g.transitions.duration}} cubic-bezier(0.4, 0, 0.2, 1);
+    transition: background-color {{g.transitions.xfadeDuration || g.transitions.duration}} cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  polyfill-next-selector { content: ':host &gt; .core-selected [cross-fade]'; }
+  ::content &gt; .core-selected /deep/ [cross-fade] {
+    opacity: 1;
+  }
+
+  polyfill-next-selector { content: ':host &gt; [animate]:not(.core-selected) [cross-fade]:not([hero-p]):not([bg])'; }
+  ::content &gt; [animate]:not(.core-selected) /deep/ [cross-fade]:not([hero-p]):not([bg]) {
+    opacity: 0;
+  }
+
+  polyfill-next-selector { content: ':host &gt; [animate]:not(.core-selected) [cross-fade][bg]'; }
+  ::content &gt; [animate]:not(.core-selected) /deep/ [cross-fade][bg] {
+    background-color: rgba(0, 0, 0, 0);
+  }
+
+  polyfill-next-selector { content: ':host &gt; [animate]:not(.core-selected) [cross-fade][hero-p]'; }
+  ::content &gt; [animate]:not(.core-selected) /deep/ [cross-fade][hero-p] {
+    background-color: rgba(0, 0, 0, 0);
+  }
+</core-style>
+
+<core-style id="cross-fade-delayed">
+  polyfill-next-selector { content: ':host &gt; * [cross-fade-delayed]'; }
+  ::content &gt; * /deep/ [cross-fade-delayed] {
+    -webkit-transition: opacity {{g.transitions.xfadeDuration || g.transitions.duration}} ease-out;
+    transition: opacity {{g.transitions.xfadeDuration || g.transitions.duration}} ease-out;
+  }
+
+  polyfill-next-selector { content: ':host &gt; .core-selected [cross-fade-delayed]'; }
+  ::content &gt; .core-selected /deep/ [cross-fade-delayed] {
+    -webkit-transition: opacity {{g.transitions.xfadeDuration || g.transitions.duration}} ease-out {{g.transitions.xfadeDelay || g.transitions.xfadeDuration || g.transitions.duration}};
+    transition: opacity {{g.transitions.xfadeDuration || g.transitions.duration}} ease-out {{g.transitions.xfadeDelay || g.transitions.xfadeDuration || g.transitions.duration}};
+  }
+
+  polyfill-next-selector { content: ':host &gt; [animate]:not(.core-selected) [cross-fade-delayed]'; }
+  ::content &gt; [animate]:not(.core-selected) /deep/ [cross-fade-delayed] {
+    opacity: 0;
+  }
+
+  polyfill-next-selector { content: ':host &gt; .core-selected [cross-fade-delayed]'; }
+  ::content &gt; .core-selected /deep/ [cross-fade-delayed] {
+    opacity: 1;
+  }
+
+</core-style>
+
+<core-style id="cross-fade-all">
+  /* cross-fade-all: cross fade everything except for heroes and their parents */
+  polyfill-next-selector { content: ':host(.cross-fade-all) &gt; * *:not([hero]):not([hero-p]):not([cross-fade])'; }
+  :host(.cross-fade-all) ::content &gt; * /deep/ *:not([hero]):not([hero-p]):not([cross-fade]) {
+    -webkit-transition: opacity {{g.transitions.xfadeDuration || g.transitions.duration}} ease-out;
+    transition: opacity {{g.transitions.xfadeDuration || g.transitions.duration}} ease-out;
+  }
+
+  polyfill-next-selector { content: ':host(.cross-fade-all) &gt; [animate]:not(.core-selected) *:not([hero]):not([hero-p]):not([cross-fade])'; }
+  :host(.cross-fade-all) ::content &gt; [animate]:not(.core-selected) /deep/ *:not([hero]):not([hero-p]):not([cross-fade]) {
+    opacity: 0;
+  }
+
+  polyfill-next-selector { content: ':host(.cross-fade-all) &gt; .core-selected *:not([hero])'; }
+  .host(.cross-fade-all) ::content &gt; .core-selected /deep/ * {
+    opacity: 1;
+  }
+
+  /* Only background-color is allowed for the hero's parents, no opacity transitions */
+  polyfill-next-selector { content: ':host(.cross-fade-all) &gt; * [hero-p]'; }
+  :host(.cross-fade-all) ::content &gt; * /deep/ [hero-p] {
+    -webkit-transition: background-color {{g.transitions.xfadeDuration || g.transitions.duration}} ease-out;
+    transition: background-color {{g.transitions.xfadeDuration || g.transitions.duration}} ease-out;
+    opacity: 1;
+  }
+
+  polyfill-next-selector { content: ':host(.cross-fade-all) &gt; [animate]:not(.core-selected) [hero-p]'; }
+  :host(.cross-fade-all) ::content &gt; [animate]:not(.core-selected) /deep/ [hero-p] {
+    background-color: rgba(0, 0, 0, 0);
+  }
+</core-style>
+
+<!--
+
+`cross-fade` fades out elements in the outgoing page and fades in elements in the
+incoming page during a page transition. You can configure the duration of the
+transition with the global variable `CoreStyle.g.transitions.xfadeDuration`.
+
+Example:
+
+    <core-animated-pages transition="cross-fade">
+      <section>
+        <div id="div1" cross-fade></div>
+      </section>
+      <section>
+        <div id="div2" cross-fade bg>
+          <div id="div3" cross-fade></div>
+          <div id="div4"></div>
+        </div>
+      </section>
+    </core-animated-pages>
+
+In the above example, `#div1` and `#div3` has the `cross-fade` attribute. `#div1`
+will fade out and `#div3` will fade in with opacity transitions when the page switches
+from 0 to 1. Sometimes, you may want to only fade the background color of an element
+but not its children, and you can use the `bg` attribute along with the `#div1`
+attribute as in `#div2`.
+
+@status beta
+@homepage github.io
+
+-->
+
+<!--
+
+`cross-fade-delayed` performs a cross-fade after some delay, either specified in
+the global variable `CoreStyle.g.transitions.xfadeDelay` or the duration of the
+transition.
+
+Example:
+
+    <core-animated-pages transition="hero-transition cross-fade-delayed">
+      <section>
+        <div id="div1" hero-id hero></div>
+      </section>
+      <section>
+        <div id="div2" hero-id hero>
+          <div id="div3" cross-fade-delayed></div>
+        </div>
+      </section>
+    </core-animated-pages>
+
+In the above example, `#div3` fades in after the hero transition from `#div1` to
+`#div2` completes.
+
+@status beta
+@homepage github.io
+
+-->
+
+<core-transition-pages id="cross-fade"></core-transition-pages>
+<core-transition-pages id="cross-fade-delayed"></core-transition-pages>
+<core-transition-pages id="cross-fade-all" scopeclass="cross-fade-all"></core-transition-pages>
+
+
+<!--
+
+`core-animated-pages` selects one of its children "pages" to show and runs a transition
+when switching between them. The transitions are designed to be pluggable, and can
+accept any object that is an instance of a `core-transition-pages`. Transitions to run
+are specified in the `transitions` attribute as a space-delimited string of `id`s of
+transition elements. Several transitions are available with `core-animated-pages` by
+default, including `hero-transition`, `cross-fade`, and `tile-cascade`.
+
+Example:
+
+    <style>
+      #hero1 {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 300px;
+        height: 300px;
+        background-color: orange;
+      }
+      #hero2 {
+        position: absolute;
+        top: 200px;
+        left: 300px;
+        width: 300px;
+        height: 300px;
+        background-color: orange;
+      }
+      #bottom1, #bottom2 {
+        position: absolute;
+        bottom: 0;
+        top: 0;
+        left: 0;
+        height: 50px;
+      }
+      #bottom1 {
+        background-color: blue;
+      }
+      #bottom2 {
+        background-color: green;
+      }
+    </style>
+    // hero-transition and cross-fade are declared elsewhere
+    <core-animated-pages transitions="hero-transition cross-fade">
+      <section id="page1">
+        <div id="hero1" hero-id="hero" hero></div>
+        <div id="bottom1" cross-fade></div>
+      </section>
+      <section id="page2">
+        <div id="hero2" hero-id="hero" hero></div>
+        <div id="bottom2" cross-fade></div>
+      </section>
+    </core-animated-pages>
+
+In the above example, two transitions (`hero-transition` and `cross-fade`) are run when switching
+between `page1` and `page2`. `hero-transition` transforms elements with the same `hero-id` such
+that they appear to be shared across different pages. `cross-fade` fades out the elements marked
+`cross-fade` in the outgoing page, and fades in those in the incoming page. See the individual
+transition's documentation for specific details.
+
+Finding elements to transition
+------------------------------
+
+In general, a transition is applied to elements marked with a certain attribute. For example,
+`hero-transition` applies the transition on elements with the `hero` and `hero-id` attribute.
+Among the transitions included with `core-animated-pages`, script-based transitions such as
+`hero-transition` generally look for elements up to one level of shadowRoot from the
+`core-animated-pages` element, and CSS-based transitions such as `cross-fade` look for elements
+within any shadowRoot within the `core-animated-pages` element. This means you can use 
+custom elements as pages and mark elements in their shadowRoots as heroes, or mark 
+elements in deeper shadowRoots with other transitions.
+
+Example:
+
+    <polymer-element name="x-el" noscript>
+    <template>
+      <style>
+        #hero {
+          position: absolute;
+          top: 0;
+          right: 0;
+          width: 50px;
+          height: 300px;
+          background-color: blue;
+        }
+      </style>
+      <div id="hero" hero-id="bar" hero></div>
+    </template>
+    </polymer-element>
+
+    <polymer-element name="x-page-1" noscript>
+    <template>
+      <style>
+        #hero1 {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 300px;
+          height: 300px;
+          background-color: orange;
+        }
+      </style>
+      <div id="hero1" hero-id="foo" hero></div>
+      <div id="hero2" hero-id="bar" hero></div>
+    </template>
+    </polymer-element>
+
+    <polymer-element name="x-page-2" noscript>
+    <template>
+      <style>
+        #hero1 {
+          position: absolute;
+          top: 200px;
+          left: 300px;
+          width: 300px;
+          height: 300px;
+          background-color: orange;
+        }
+        #hero2 {
+          background-color: blue;
+          height: 150px;
+          width: 400px;
+        }
+      </style>
+      // The below element is one level of shadow from the core-animated-pages and will
+      // be transitioned.
+      <div id="hero1" hero-id="foo" hero></div>
+      // The below element contains a hero inside its shadowRoot making it two levels away
+      // from the core-animated-pages, and will not be transitioned.
+      <x-el></x-el>
+    </template>
+    </polymer-element>
+
+    <core-animated-pages transitions="hero-transition">
+      <x-page-1></x-page-1>
+      <x-page-2></x-page-2>
+    </core-animated-pages>
+
+Note that the container element of the page does not participate in the transition.
+
+    // This does not work
+    <core-animated-pages transitions="cross-fade">
+      <section cross-fade></section>
+      <section cross-fade></section>
+    </core-animated-pages>
+
+    // This works
+    <core-animated-pages transitions="cross-fade">
+      <section>
+        <div cross-fade></div>
+      </section>
+      <section>
+        <div cross-fade></div>
+      </section>
+    </core-animated-pages>
+
+Dynamically setting up transitions
+----------------------------------
+
+An easy way to set up transitions dynamically is to use property binding on
+the transition attributes. 
+
+Example:
+
+    <core-animated-pages selected="{{selected}}">
+      <section id="page1">
+        <div hero-id="hero" hero></div>
+      </section>
+      <section id="page2">
+        <div id="foo" hero-id="hero" hero?="{{selected === 1 || selected === 0}}" cross-fade="{{selected === 2}}"></div>
+      </section>
+      <section id="page3">
+      </section>
+    </core-animated-pages>
+
+In the above example, the "foo" element only behaves as a hero element if transitioning between
+`#page1` and `#page2`. It gets cross-faded when transition to or from `#page3`.
+
+Nesting pages
+-------------
+
+It is possible to nest core-animated-pages elements for organization. Excessive nesting is
+not encouraged, however, since it makes setting up the transition more complex.
+
+To nest core-animated-pages, the page containing the nested core-animated-pages element should
+have a `selectedItem` property bound to the `selectedItem` property of the nested element. This
+will allow the outer core-animated-pages to know which nested page it is actually transitioning
+to.
+
+Example:
+
+    <polymer-element name="nested-page" attributes="selectedItem">
+    <template>
+      <core-animated-pages selectedItem="{{selectedItem}}">
+        ...
+      </core-animated-pages>
+    </template>
+    </polymer-element>
+
+    <core-animated-pages>
+      <section id="page1"></section>
+      <nested-page id="page2"></nested-page>
+    </core-animated-pages>
+
+@element core-animated-pages
+@extends core-selector
+@status beta
+@homepage github.io
+-->
+<!--
+Fired before a page transition occurs. Both pages involved in the transition are visible when
+this event fires. This is useful if there is something the client needs to do when a page becomes
+visible.
+
+@event core-animated-pages-transition-prepare
+-->
+<!--
+Fired when a page transition completes.
+
+@event core-animated-pages-transition-end
+-->
+<polymer-element name="core-animated-pages" extends="core-selector" notap="" attributes="transitions">
+
+<template>
+
+  <style>/*
+ * @license
+ * Copyright (c) 2014 The Polymer Project Authors. All rights reserved.
+ * This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+ * The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+ * The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+ * Code distributed by Google as part of the polymer project is also
+ * subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+ */
+
+:host {
+  display: block;
+  position: relative;
+}
+
+polyfill-next-selector { content: ':host > *'; }
+::content > * {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+polyfill-next-selector { content: ':host > *:not(.core-selected):not([animate])'; }
+::content > *:not(.core-selected):not([animate]) {
+  display: none !important;
+}
+</style>
+
+  <shadow></shadow>
+
+</template>
+
+<script>
+
+  Polymer(Polymer.mixin({
+
+    eventDelegates: {
+      'core-transitionend': 'transitionEnd'
+    },
+
+    /**
+     * A space-delimited string of transitions to use when switching between pages in this element.
+     * The strings are `id`s of `core-transition-pages` elements included elsewhere. See the
+     * individual transition's document for specific details.
+     *
+     * @attribute transitions
+     * @type string
+     * @default ''
+     */
+    transitions: '',
+
+    selected: 0,
+
+    /**
+     * The last page selected. This property is useful to dynamically set transitions based
+     * on incoming and outgoing pages.
+     *
+     * @attribute lastSelected
+     * @type Object
+     * @default null
+     */
+    lastSelected: null,
+
+    registerCallback: function() {
+      this.tmeta = document.createElement('core-transition');
+    },
+
+    created: function() {
+      this._transitions = [];
+      this.transitioning = [];
+    },
+
+    attached: function() {
+      this.resizerAttachedHandler();
+    },
+
+    detached: function() {
+      this.resizerDetachedHandler();
+    },
+
+    transitionsChanged: function() {
+      this._transitions = this.transitions.split(' ');
+    },
+
+    _transitionsChanged: function(old) {
+      if (this._transitionElements) {
+        this._transitionElements.forEach(function(t) {
+          t.teardown(this);
+        }, this);
+      }
+      this._transitionElements = [];
+      this._transitions.forEach(function(transitionId) {
+        var t = this.getTransition(transitionId);
+        if (t) {
+          this._transitionElements.push(t);
+          t.setup(this);
+        }
+      }, this);
+    },
+
+    getTransition: function(transitionId) {
+      return this.tmeta.byId(transitionId);
+    },
+
+    selectionSelect: function(e, detail) {
+      this.updateSelectedItem();
+      // Wait to call applySelection when we run the transition
+    },
+
+    applyTransition: function(src, dst) {
+      if (this.animating) {
+        this.cancelAsync(this.animating);
+        this.animating = null;
+      }
+
+      Polymer.flush();
+
+      if (this.transitioning.indexOf(src) === -1) {
+        this.transitioning.push(src);
+      }
+      if (this.transitioning.indexOf(dst) === -1) {
+        this.transitioning.push(dst);
+      }
+      // force src, dst to display 
+      src.setAttribute('animate', '');
+      dst.setAttribute('animate', '');
+      //
+      var options = {
+        src: src,
+        dst: dst,
+        easing: 'cubic-bezier(0.4, 0, 0.2, 1)'
+      };
+
+      // fire an event so clients have a chance to do something when the
+      // new page becomes visible but before it draws.
+      this.fire('core-animated-pages-transition-prepare');
+
+      //
+      // prepare transition
+      this._transitionElements.forEach(function(transition) {
+        transition.prepare(this, options);
+      }, this);
+      //
+      // force layout!
+      src.offsetTop;
+
+      //
+      // apply selection
+      this.applySelection(dst, true);
+      this.applySelection(src, false);
+      //
+      // start transition
+      this._transitionElements.forEach(function(transition) {
+        transition.go(this, options);
+      }, this);
+
+      if (!this._transitionElements.length) {
+        this.complete();
+      } else {
+        this.animating = this.async(this.complete.bind(this), null, 5000);
+      }
+    },
+
+    complete: function() {
+      if (this.animating) {
+        this.cancelAsync(this.animating);
+        this.animating = null;
+      }
+
+      this.transitioning.forEach(function(t) {
+        t.removeAttribute('animate');
+      });
+      this.transitioning = [];
+
+      this._transitionElements.forEach(function(transition) {
+        transition.ensureComplete(this);
+      }, this);
+
+      this.fire('core-animated-pages-transition-end');
+    },
+    
+    transitionEnd: function(e) {
+      if (this.transitioning.length) {
+        var completed = true;
+        this._transitionElements.forEach(function(transition) {
+          if (!transition.completed) {
+            completed = false;
+          }
+        });
+        if (completed) {
+          this.job('transitionWatch', function() {
+            this.complete();
+          }, 100);
+        }
+      }
+    },
+
+    selectedChanged: function(old) {
+      this.lastSelected = old;
+      this.super(arguments);
+    },
+
+    selectedItemChanged: function(oldItem) {
+      this.super(arguments);
+
+      if (!oldItem) {
+        this.applySelection(this.selectedItem, true);
+        return;
+      }
+
+      if (this.hasAttribute('no-transition') || !this._transitionElements || !this._transitionElements.length) {
+        this.applySelection(oldItem, false);
+        this.applySelection(this.selectedItem, true);
+        this.notifyResize();
+        return;
+      }
+
+      if (oldItem && this.selectedItem) {
+        // TODO(sorvell): allow bindings to update first?
+        var self = this;
+        Polymer.flush();
+        Polymer.endOfMicrotask(function() {
+          self.applyTransition(oldItem, self.selectedItem);
+          self.notifyResize();
+        });
+      }
+    },
+
+    resizerShouldNotify: function(el) {
+      // Only notify descendents of selected item
+      while (el && (el != this)) {
+        if (el == this.selectedItem) {
+          return true;
+        }
+        el = el.parentElement || (el.parentNode && el.parentNode.host);
+      }
+    }
+
+  }, Polymer.CoreResizer));
+
+</script>
+
+</polymer-element>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<style shim-shadowdom="">
+    body {
+      font-family: Roboto, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      margin: 0;
+    }
+
+    .fit {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      width: 420px;
+    }
+
+    .toolbar {
+      background: #8d3efc;
+      /* FIXME */
+      color: #fff !important;
+      fill: #fff;
+    }
+
+    .toolbar-2 {
+      position: absolute;
+      top: 0;
+      left: 0;
+      background: #000;
+      color: #fff;
+      text-align: center;
+      font-size: 48px;
+    }
+
+    body /deep/ .toolbar-2 {
+      position: absolute;
+      top: 0;
+      left: 0;
+      margin: 0;
+      width: 420px;
+      background: #000;
+      color: #fff;
+      text-align: center;
+      font-size: 48px;
+    }
+
+    .container {
+      background-color: #e7e7e7;
+      padding: 16px;
+    }
+
+    .card {
+      position: relative;
+      background-color: #fff;
+      border-radius: 2px;
+    }
+
+    .card-top {
+      background: #f2da2f;
+      height: 240px;
+    }
+
+    .card-top-2 {
+      background: #99f8b7;
+      height: 240px;
+    }
+
+    .card-bottom {
+      padding: 24px;
+    }
+
+    .headline {
+      font-size: 24px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .icon {
+      position: relative;
+      background: #000;
+      color: #fff;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+    }
+
+    .icon::after {
+      content: 'T';
+      font-size: 24px;
+      position: absolute;
+      top: 7px;
+      left: 13px;
+    }
+
+    .source-container {
+      margin-top: 16px;
+    }
+
+    .two-lines {
+      margin-left: 16px;
+    }
+
+    .source {
+      font-size: 14px;
+    }
+
+    .time {
+      color: rgba(0, 0, 0, 0.54);
+      font-size: 12px;
+    }
+
+    .tiles-container {
+      margin-top: 16px;
+    }
+
+    .tile {
+      position: relative;
+      display: inline-block;
+      width: 85px;
+      height: 85px;
+      background: #fff;
+      border-radius: 2px;
+    }
+
+  </style></div>
+
+  <polymer-element name="shadow-div" noscript="">
+    <template>
+      <style>
+        :host {
+          display: block;
+        }
+      </style>
+      <paper-shadow target="{{}}" z="1"></paper-shadow>
+      <content></content>
+    </template>
+  </polymer-element>
+
+  <core-animated-pages class="fit" selected="0" transitions="cross-fade-all hero-transition">
+
+    <section id="first">
+
+      <core-toolbar class="tall toolbar">
+        <core-icon icon="menu"></core-icon>
+        <div flex="">Highlights</div>
+        <core-icon icon="social:share"></core-icon>
+        <core-icon icon="bookmark"></core-icon>
+        <core-icon icon="more-vert"></core-icon>
+      </core-toolbar>
+
+      <div class="container" hero-p="">
+
+        <shadow-div class="card" hero-p="">
+          <div class="card-top"></div>
+          <div class="card-bottom" hero-p="">
+            <div class="headline">Google's Craziest Offices</div>
+            <div class="source-container" hero-p="" layout="" horizontal="" center="">
+              <div class="icon" hero-id="icon-header" hero=""></div>
+              <div class="two-lines">
+                <div class="source">The New York Times</div>
+                <div class="time">36 minutes ago</div>
+              </div>
+            </div>
+          </div>
+        </shadow-div>
+
+        <div class="tiles-container" layout="" horizontal="" justified="">
+
+          <shadow-div class="tile"></shadow-div>
+          <shadow-div class="tile"></shadow-div>
+          <shadow-div class="tile"></shadow-div>
+          <shadow-div class="tile"></shadow-div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <section id="second">
+
+      <core-toolbar class="tall" hero-p="">
+
+        <core-toolbar class="tall toolbar-2" hero-id="icon-header" hero="">
+          <div flex="" class="middle">T</div>
+        </core-toolbar>
+      </core-toolbar>
+
+      <div class="container">
+
+        <shadow-div class="card">
+          <div class="card-top-2"></div>
+          <div class="card-bottom">
+            <div class="headline">Some long overflowing headline</div>
+            <div class="source-container" layout="" horizontal="" center="">
+              <div class="icon" style="background:red;"></div>
+              <div class="two-lines">
+                <div class="source">The New York Times</div>
+                <div class="time">36 minutes ago</div>
+              </div>
+            </div>
+          </div>
+        </shadow-div>
+
+        <div class="tiles-container" layout="" horizontal="" justified="">
+
+          <shadow-div class="tile"></shadow-div>
+          <shadow-div class="tile"></shadow-div>
+          <shadow-div class="tile"></shadow-div>
+          <shadow-div class="tile"></shadow-div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </core-animated-pages>
+
+  <script src="news.html.polymer.bootstrap.dart.js" async=""></script>
+
+
+
+</body></html>

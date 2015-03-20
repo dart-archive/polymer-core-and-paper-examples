@@ -1,0 +1,688 @@
+<!DOCTYPE html><!--
+Copyright (c) 2014 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+--><html><head><script src="packages/web_components/webcomponents.min.js"></script><script src="packages/web_components/dart_support.js"></script>
+  <title>core-header-panel</title>
+
+  
+
+  
+
+</head>
+
+<body unresolved=""><div hidden=""><script src="packages/web_components/interop_support.js"></script>
+
+<!-- Dart note: load polymer for Dart and JS from the same place -->
+<style shim-shadowdom="">
+/*******************************
+          Flex Layout
+*******************************/
+
+html /deep/ [layout][horizontal], html /deep/ [layout][vertical] {
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+}
+
+html /deep/ [layout][horizontal][inline], html /deep/ [layout][vertical][inline] {
+  display: -ms-inline-flexbox;
+  display: -webkit-inline-flex;
+  display: inline-flex;
+}
+
+html /deep/ [layout][horizontal] {
+  -ms-flex-direction: row;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+}
+
+html /deep/ [layout][horizontal][reverse] {
+  -ms-flex-direction: row-reverse;
+  -webkit-flex-direction: row-reverse;
+  flex-direction: row-reverse;
+}
+
+html /deep/ [layout][vertical] {
+  -ms-flex-direction: column;
+  -webkit-flex-direction: column;
+  flex-direction: column;
+}
+
+html /deep/ [layout][vertical][reverse] {
+  -ms-flex-direction: column-reverse;
+  -webkit-flex-direction: column-reverse;
+  flex-direction: column-reverse;
+}
+
+html /deep/ [layout][wrap] {
+  -ms-flex-wrap: wrap;
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
+html /deep/ [layout][wrap-reverse] {
+  -ms-flex-wrap: wrap-reverse;
+  -webkit-flex-wrap: wrap-reverse;
+  flex-wrap: wrap-reverse;
+}
+
+html /deep/ [flex] {
+  -ms-flex: 1 1 0.000000001px;
+  -webkit-flex: 1;
+  flex: 1;
+  -webkit-flex-basis: 0.000000001px;
+  flex-basis: 0.000000001px;
+}
+
+html /deep/ [vertical][layout] > [flex][auto-vertical], html /deep/ [vertical][layout]::shadow [flex][auto-vertical] {
+  -ms-flex: 1 1 auto;
+  -webkit-flex-basis: auto;
+  flex-basis: auto;
+}
+
+html /deep/ [flex][auto] {
+  -ms-flex: 1 1 auto;
+  -webkit-flex-basis: auto;
+  flex-basis: auto;
+}
+
+html /deep/ [flex][none] {
+  -ms-flex: none;
+  -webkit-flex: none;
+  flex: none;
+}
+
+html /deep/ [flex][one] {
+  -ms-flex: 1;
+  -webkit-flex: 1;
+  flex: 1;
+}
+
+html /deep/ [flex][two] {
+  -ms-flex: 2;
+  -webkit-flex: 2;
+  flex: 2;
+}
+
+html /deep/ [flex][three] {
+  -ms-flex: 3;
+  -webkit-flex: 3;
+  flex: 3;
+}
+
+html /deep/ [flex][four] {
+  -ms-flex: 4;
+  -webkit-flex: 4;
+  flex: 4;
+}
+
+html /deep/ [flex][five] {
+  -ms-flex: 5;
+  -webkit-flex: 5;
+  flex: 5;
+}
+
+html /deep/ [flex][six] {
+  -ms-flex: 6;
+  -webkit-flex: 6;
+  flex: 6;
+}
+
+html /deep/ [flex][seven] {
+  -ms-flex: 7;
+  -webkit-flex: 7;
+  flex: 7;
+}
+
+html /deep/ [flex][eight] {
+  -ms-flex: 8;
+  -webkit-flex: 8;
+  flex: 8;
+}
+
+html /deep/ [flex][nine] {
+  -ms-flex: 9;
+  -webkit-flex: 9;
+  flex: 9;
+}
+
+html /deep/ [flex][ten] {
+  -ms-flex: 10;
+  -webkit-flex: 10;
+  flex: 10;
+}
+
+html /deep/ [flex][eleven] {
+  -ms-flex: 11;
+  -webkit-flex: 11;
+  flex: 11;
+}
+
+html /deep/ [flex][twelve] {
+  -ms-flex: 12;
+  -webkit-flex: 12;
+  flex: 12;
+}
+
+/* alignment in cross axis */
+
+html /deep/ [layout][start] {
+  -ms-flex-align: start;
+  -webkit-align-items: flex-start;
+  align-items: flex-start;
+}
+
+html /deep/ [layout][center], html /deep/ [layout][center-center] {
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+}
+
+html /deep/ [layout][end] {
+  -ms-flex-align: end;
+  -webkit-align-items: flex-end;
+  align-items: flex-end;
+}
+
+/* alignment in main axis */
+
+html /deep/ [layout][start-justified] {
+  -ms-flex-pack: start;
+  -webkit-justify-content: flex-start;
+  justify-content: flex-start;
+}
+
+html /deep/ [layout][center-justified], html /deep/ [layout][center-center] {
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+}
+
+html /deep/ [layout][end-justified] {
+  -ms-flex-pack: end;
+  -webkit-justify-content: flex-end;
+  justify-content: flex-end;
+}
+
+html /deep/ [layout][around-justified] {
+  -ms-flex-pack: distribute;
+  -webkit-justify-content: space-around;
+  justify-content: space-around;
+}
+
+html /deep/ [layout][justified] {
+  -ms-flex-pack: justify;
+  -webkit-justify-content: space-between;
+  justify-content: space-between;
+}
+
+/* self alignment */
+
+html /deep/ [self-start] {
+  -ms-align-self: flex-start;
+  -webkit-align-self: flex-start;
+  align-self: flex-start;
+}
+
+html /deep/ [self-center] {
+  -ms-align-self: center;
+  -webkit-align-self: center;
+  align-self: center;
+}
+
+html /deep/ [self-end] {
+  -ms-align-self: flex-end;
+  -webkit-align-self: flex-end;
+  align-self: flex-end;
+}
+
+html /deep/ [self-stretch] {
+  -ms-align-self: stretch;
+  -webkit-align-self: stretch;
+  align-self: stretch;
+}
+
+/*******************************
+          Other Layout
+*******************************/
+
+html /deep/ [block] {
+  display: block;
+}
+
+/* ie support for hidden */
+html /deep/ [hidden] {
+  display: none !important;
+}
+
+html /deep/ [relative] {
+  position: relative;
+}
+
+html /deep/ [fit] {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+body[fullbleed] {
+  margin: 0;
+  height: 100vh;
+}
+
+/*******************************
+            Other
+*******************************/
+
+html /deep/ [segment], html /deep/ segment {
+  display: block;
+  position: relative;
+  -webkit-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 1em 0.5em;
+  padding: 1em;
+  background-color: white;
+  -webkit-box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.1);
+  border-radius: 5px 5px 5px 5px;
+}
+
+</style>
+
+<script src="packages/polymer/src/js/polymer/polymer.min.js"></script>
+
+<script>
+// TODO(sigmund): remove this script tag (dartbug.com/19650). This empty
+// script tag is necessary to work around a bug in Chrome 36.
+</script>
+
+<!-- unminified for debugging:
+<link rel="import" href="src/js/polymer/layout.html">
+<script src="src/js/polymer/polymer.js"></script>
+-->
+
+<script>
+// This empty script is here to workaround issue
+// https://github.com/dart-lang/core-elements/issues/11
+</script>
+
+
+<polymer-element name="core-header-panel">
+<template>
+
+  <style>/*
+Copyright (c) 2014 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+*/
+
+:host {
+  display: block;
+  position: relative;
+}
+
+#outerContainer {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+#mainPanel {
+  position: relative;
+}
+
+#mainContainer {
+  position: relative;
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+}
+
+#dropShadow {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 6px;
+  box-shadow: inset 0px 5px 6px -3px rgba(0, 0, 0, 0.4);
+}
+
+#dropShadow.hidden {
+  display: none;
+}
+
+/* 
+mode: scroll 
+*/
+:host([mode=scroll]) #mainContainer {
+  overflow: visible;
+}
+
+:host([mode=scroll]) #outerContainer {
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+}
+
+/*
+mode: cover
+*/
+:host([mode=cover]) #mainPanel {
+  position: static;
+}
+
+:host([mode=cover]) #mainContainer {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+:host([mode=cover]) #dropShadow {
+  position: static;
+  width: 100%;
+}
+</style>
+
+  <div id="outerContainer" vertical="" layout="">
+
+    <content id="headerContent" select="core-toolbar, .core-header"></content>
+
+    <div id="mainPanel" flex="" vertical="" layout="">
+
+      <div id="mainContainer" flex?="{{mode !== 'cover'}}">
+        <content id="mainContent" select="*"></content>
+      </div>
+
+      <div id="dropShadow"></div>
+
+    </div>
+
+  </div>
+
+</template>
+<script>
+
+  Polymer({
+
+    /**
+     * Fired when the content has been scrolled.  `event.detail.target` returns
+     * the scrollable element which you can use to access scroll info such as
+     * `scrollTop`.
+     *
+     *     <core-header-panel on-scroll="{{scrollHandler}}">
+     *       ...
+     *     </core-header-panel>
+     *
+     *
+     *     scrollHandler: function(event) {
+     *       var scroller = event.detail.target;
+     *       console.log(scroller.scrollTop);
+     *     }
+     *
+     * @event scroll
+     */
+
+    publish: {
+      /**
+       * Controls header and scrolling behavior. Options are
+       * `standard`, `seamed`, `waterfall`, `waterfall-tall`, `scroll` and 
+       * `cover`. Default is `standard`.
+       *
+       * `standard`: The header is a step above the panel. The header will consume the
+       * panel at the point of entry, preventing it from passing through to the
+       * opposite side.
+       *
+       * `seamed`: The header is presented as seamed with the panel.
+       *
+       * `waterfall`: Similar to standard mode, but header is initially presented as
+       * seamed with panel, but then separates to form the step.
+       *
+       * `waterfall-tall`: The header is initially taller (`tall` class is added to
+       * the header).  As the user scrolls, the header separates (forming an edge)
+       * while condensing (`tall` class is removed from the header).
+       *
+       * `scroll`: The header keeps its seam with the panel, and is pushed off screen.
+       *
+       * `cover`: The panel covers the whole `core-header-panel` including the
+       * header. This allows user to style the panel in such a way that the panel is
+       * partially covering the header.
+       *
+       *     <style>
+       *       core-header-panel[mode=cover]::shadow #mainContainer {
+       *         left: 80px;
+       *       }
+       *       .content {
+       *         margin: 60px 60px 60px 0;
+       *       }
+       *     </style>
+       *
+       *     <core-header-panel mode="cover">
+       *       <core-toolbar class="tall">
+       *         <core-icon-button icon="menu"></core-icon-button>
+       *       </core-toolbar>
+       *       <div class="content"></div>
+       *     </core-header-panel>
+       *
+       * @attribute mode
+       * @type string
+       * @default ''
+       */
+      mode: {value: '', reflect: true},
+
+      /**
+       * The class used in waterfall-tall mode.  Change this if the header
+       * accepts a different class for toggling height, e.g. "medium-tall"
+       *
+       * @attribute tallClass
+       * @type string
+       * @default 'tall'
+       */
+      tallClass: 'tall',
+
+      /**
+       * If true, the drop-shadow is always shown no matter what mode is set to.
+       *
+       * @attribute shadow
+       * @type boolean
+       * @default false
+       */
+      shadow: false
+    },
+
+    animateDuration: 200,
+
+    modeConfigs: {
+      shadowMode: {'waterfall': 1, 'waterfall-tall': 1},
+      noShadow: {'seamed': 1, 'cover': 1, 'scroll': 1},
+      tallMode: {'waterfall-tall': 1},
+      outerScroll: {'scroll': 1}
+    },
+    
+    ready: function() {
+      this.scrollHandler = this.scroll.bind(this);
+      this.addListener();
+    },
+    
+    detached: function() {
+      this.removeListener(this.mode);
+    },
+    
+    addListener: function() {
+      this.scroller.addEventListener('scroll', this.scrollHandler);
+    },
+    
+    removeListener: function(mode) {
+      var s = this.getScrollerForMode(mode);
+      s.removeEventListener('scroll', this.scrollHandler);
+    },
+
+    domReady: function() {
+      this.async('scroll');
+    },
+
+    modeChanged: function(old) {
+      var configs = this.modeConfigs;
+      var header = this.header;
+      if (header) {
+        // in tallMode it may add tallClass to the header; so do the cleanup
+        // when mode is changed from tallMode to not tallMode
+        if (configs.tallMode[old] && !configs.tallMode[this.mode]) {
+          header.classList.remove(this.tallClass);
+          this.async(function() {
+            header.classList.remove('animate');
+          }, null, this.animateDuration);
+        } else {
+          header.classList.toggle('animate', configs.tallMode[this.mode]);
+        }
+      }
+      if (configs && (configs.outerScroll[this.mode] || configs.outerScroll[old])) {
+        this.removeListener(old);
+        this.addListener();
+      }
+      this.scroll();
+    },
+
+    get header() {
+      return this.$.headerContent.getDistributedNodes()[0];
+    },
+    
+    getScrollerForMode: function(mode) {
+      return this.modeConfigs.outerScroll[mode] ?
+          this.$.outerContainer : this.$.mainContainer;
+    },
+
+    /**
+     * Returns the scrollable element.
+     *
+     * @property scroller
+     * @type Object
+     */
+    get scroller() {
+      return this.getScrollerForMode(this.mode);
+    },
+
+    scroll: function() {
+      var configs = this.modeConfigs;
+      var main = this.$.mainContainer;
+      var header = this.header;
+
+      var sTop = main.scrollTop;
+      var atTop = sTop === 0;
+
+      this.$.dropShadow.classList.toggle('hidden', !this.shadow &&
+          (atTop && configs.shadowMode[this.mode] || configs.noShadow[this.mode]));
+
+      if (header && configs.tallMode[this.mode]) {
+        header.classList.toggle(this.tallClass, atTop ||
+            header.classList.contains(this.tallClass) &&
+            main.scrollHeight < this.$.outerContainer.offsetHeight);
+      }
+
+      this.fire('scroll', {target: this.scroller}, this, false);
+    }
+
+  });
+
+</script>
+</polymer-element>
+
+
+
+
+
+
+<style shim-shadowdom="">
+
+    body {
+      font-family: sans-serif;
+    }
+
+    core-header-panel {
+      float: left;
+      width: 360px;
+      height: 400px;
+      margin: 5px;
+    }
+
+    core-header-panel[mode=cover]::shadow #mainContainer {
+      left: 70px;
+    }
+
+    .core-header {
+      height: 60px;
+      line-height: 60px;
+      font-size: 18px;
+      padding: 0 10px;
+      background-color: #4F7DC9;
+      color: #FFF;
+      transition: height 0.2s;
+    }
+
+    .core-header.tall {
+      height: 180px;
+    }
+
+    .core-header.medium-tall {
+      height: 120px;
+    }
+
+    .content {
+      height: 2000px;
+      background: linear-gradient(rgb(214, 227, 231), lightblue);
+    }
+
+  </style></div>
+
+  <core-header-panel>
+    <div class="core-header">standard</div>
+    <div class="content"></div>
+  </core-header-panel>
+
+  <core-header-panel mode="seamed">
+    <div class="core-header">seamed</div>
+    <div class="content"></div>
+  </core-header-panel>
+
+  <core-header-panel mode="waterfall">
+    <div class="core-header">waterfall</div>
+    <div class="content"></div>
+  </core-header-panel>
+
+  <core-header-panel mode="waterfall-tall">
+    <div class="core-header">waterfall-tall</div>
+    <div class="content"></div>
+  </core-header-panel>
+
+  <core-header-panel mode="waterfall-tall" tallclass="medium-tall">
+    <div class="core-header">waterfall-tall (tallClass: medium-tall)</div>
+    <div class="content"></div>
+  </core-header-panel>
+
+  <core-header-panel mode="scroll">
+    <div class="core-header">scroll</div>
+    <div class="content"></div>
+  </core-header-panel>
+
+  <core-header-panel mode="cover">
+    <div class="core-header tall">cover</div>
+    <div class="content" style="margin: 60px 60px 60px 0;"></div>
+  </core-header-panel>
+
+  <script src="core_header_panel.html.polymer.bootstrap.dart.js" async=""></script>
+
+
+</body></html>

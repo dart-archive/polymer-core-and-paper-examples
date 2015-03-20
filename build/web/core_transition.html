@@ -1,0 +1,687 @@
+<!DOCTYPE html><!--
+Copyright 2013 The Polymer Authors. All rights reserved.
+Use of this source code is governed by a BSD-style
+license that can be found in the LICENSE file.
+--><html><head><script src="packages/web_components/webcomponents.min.js"></script><script src="packages/web_components/dart_support.js"></script>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+  <title>core-transition</title>
+
+  
+  
+
+  
+
+</head>
+<body unresolved=""><div hidden=""><script src="packages/web_components/interop_support.js"></script>
+
+<!-- Dart note: load polymer for Dart and JS from the same place -->
+<style shim-shadowdom="">
+/*******************************
+          Flex Layout
+*******************************/
+
+html /deep/ [layout][horizontal], html /deep/ [layout][vertical] {
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+}
+
+html /deep/ [layout][horizontal][inline], html /deep/ [layout][vertical][inline] {
+  display: -ms-inline-flexbox;
+  display: -webkit-inline-flex;
+  display: inline-flex;
+}
+
+html /deep/ [layout][horizontal] {
+  -ms-flex-direction: row;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+}
+
+html /deep/ [layout][horizontal][reverse] {
+  -ms-flex-direction: row-reverse;
+  -webkit-flex-direction: row-reverse;
+  flex-direction: row-reverse;
+}
+
+html /deep/ [layout][vertical] {
+  -ms-flex-direction: column;
+  -webkit-flex-direction: column;
+  flex-direction: column;
+}
+
+html /deep/ [layout][vertical][reverse] {
+  -ms-flex-direction: column-reverse;
+  -webkit-flex-direction: column-reverse;
+  flex-direction: column-reverse;
+}
+
+html /deep/ [layout][wrap] {
+  -ms-flex-wrap: wrap;
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
+html /deep/ [layout][wrap-reverse] {
+  -ms-flex-wrap: wrap-reverse;
+  -webkit-flex-wrap: wrap-reverse;
+  flex-wrap: wrap-reverse;
+}
+
+html /deep/ [flex] {
+  -ms-flex: 1 1 0.000000001px;
+  -webkit-flex: 1;
+  flex: 1;
+  -webkit-flex-basis: 0.000000001px;
+  flex-basis: 0.000000001px;
+}
+
+html /deep/ [vertical][layout] > [flex][auto-vertical], html /deep/ [vertical][layout]::shadow [flex][auto-vertical] {
+  -ms-flex: 1 1 auto;
+  -webkit-flex-basis: auto;
+  flex-basis: auto;
+}
+
+html /deep/ [flex][auto] {
+  -ms-flex: 1 1 auto;
+  -webkit-flex-basis: auto;
+  flex-basis: auto;
+}
+
+html /deep/ [flex][none] {
+  -ms-flex: none;
+  -webkit-flex: none;
+  flex: none;
+}
+
+html /deep/ [flex][one] {
+  -ms-flex: 1;
+  -webkit-flex: 1;
+  flex: 1;
+}
+
+html /deep/ [flex][two] {
+  -ms-flex: 2;
+  -webkit-flex: 2;
+  flex: 2;
+}
+
+html /deep/ [flex][three] {
+  -ms-flex: 3;
+  -webkit-flex: 3;
+  flex: 3;
+}
+
+html /deep/ [flex][four] {
+  -ms-flex: 4;
+  -webkit-flex: 4;
+  flex: 4;
+}
+
+html /deep/ [flex][five] {
+  -ms-flex: 5;
+  -webkit-flex: 5;
+  flex: 5;
+}
+
+html /deep/ [flex][six] {
+  -ms-flex: 6;
+  -webkit-flex: 6;
+  flex: 6;
+}
+
+html /deep/ [flex][seven] {
+  -ms-flex: 7;
+  -webkit-flex: 7;
+  flex: 7;
+}
+
+html /deep/ [flex][eight] {
+  -ms-flex: 8;
+  -webkit-flex: 8;
+  flex: 8;
+}
+
+html /deep/ [flex][nine] {
+  -ms-flex: 9;
+  -webkit-flex: 9;
+  flex: 9;
+}
+
+html /deep/ [flex][ten] {
+  -ms-flex: 10;
+  -webkit-flex: 10;
+  flex: 10;
+}
+
+html /deep/ [flex][eleven] {
+  -ms-flex: 11;
+  -webkit-flex: 11;
+  flex: 11;
+}
+
+html /deep/ [flex][twelve] {
+  -ms-flex: 12;
+  -webkit-flex: 12;
+  flex: 12;
+}
+
+/* alignment in cross axis */
+
+html /deep/ [layout][start] {
+  -ms-flex-align: start;
+  -webkit-align-items: flex-start;
+  align-items: flex-start;
+}
+
+html /deep/ [layout][center], html /deep/ [layout][center-center] {
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+}
+
+html /deep/ [layout][end] {
+  -ms-flex-align: end;
+  -webkit-align-items: flex-end;
+  align-items: flex-end;
+}
+
+/* alignment in main axis */
+
+html /deep/ [layout][start-justified] {
+  -ms-flex-pack: start;
+  -webkit-justify-content: flex-start;
+  justify-content: flex-start;
+}
+
+html /deep/ [layout][center-justified], html /deep/ [layout][center-center] {
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+}
+
+html /deep/ [layout][end-justified] {
+  -ms-flex-pack: end;
+  -webkit-justify-content: flex-end;
+  justify-content: flex-end;
+}
+
+html /deep/ [layout][around-justified] {
+  -ms-flex-pack: distribute;
+  -webkit-justify-content: space-around;
+  justify-content: space-around;
+}
+
+html /deep/ [layout][justified] {
+  -ms-flex-pack: justify;
+  -webkit-justify-content: space-between;
+  justify-content: space-between;
+}
+
+/* self alignment */
+
+html /deep/ [self-start] {
+  -ms-align-self: flex-start;
+  -webkit-align-self: flex-start;
+  align-self: flex-start;
+}
+
+html /deep/ [self-center] {
+  -ms-align-self: center;
+  -webkit-align-self: center;
+  align-self: center;
+}
+
+html /deep/ [self-end] {
+  -ms-align-self: flex-end;
+  -webkit-align-self: flex-end;
+  align-self: flex-end;
+}
+
+html /deep/ [self-stretch] {
+  -ms-align-self: stretch;
+  -webkit-align-self: stretch;
+  align-self: stretch;
+}
+
+/*******************************
+          Other Layout
+*******************************/
+
+html /deep/ [block] {
+  display: block;
+}
+
+/* ie support for hidden */
+html /deep/ [hidden] {
+  display: none !important;
+}
+
+html /deep/ [relative] {
+  position: relative;
+}
+
+html /deep/ [fit] {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+body[fullbleed] {
+  margin: 0;
+  height: 100vh;
+}
+
+/*******************************
+            Other
+*******************************/
+
+html /deep/ [segment], html /deep/ segment {
+  display: block;
+  position: relative;
+  -webkit-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 1em 0.5em;
+  padding: 1em;
+  background-color: white;
+  -webkit-box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.1);
+  border-radius: 5px 5px 5px 5px;
+}
+
+</style>
+
+<script src="packages/polymer/src/js/polymer/polymer.min.js"></script>
+
+<script>
+// TODO(sigmund): remove this script tag (dartbug.com/19650). This empty
+// script tag is necessary to work around a bug in Chrome 36.
+</script>
+
+<!-- unminified for debugging:
+<link rel="import" href="src/js/polymer/layout.html">
+<script src="src/js/polymer/polymer.js"></script>
+-->
+
+<script>
+// This empty script is here to workaround issue
+// https://github.com/dart-lang/core-elements/issues/11
+</script>
+
+
+<polymer-element name="core-meta" attributes="label type" hidden="">
+<script>
+
+  (function() {
+    
+    var SKIP_ID = 'meta';
+    var metaData = {}, metaArray = {};
+
+    Polymer('core-meta', {
+      
+      /**
+       * The type of meta-data.  All meta-data with the same type with be
+       * stored together.
+       * 
+       * @attribute type
+       * @type string
+       * @default 'default'
+       */
+      type: 'default',
+      
+      alwaysPrepare: true,
+      
+      ready: function() {
+        this.register(this.id);
+      },
+      
+      get metaArray() {
+        var t = this.type;
+        if (!metaArray[t]) {
+          metaArray[t] = [];
+        }
+        return metaArray[t];
+      },
+      
+      get metaData() {
+        var t = this.type;
+        if (!metaData[t]) {
+          metaData[t] = {};
+        }
+        return metaData[t];
+      },
+      
+      register: function(id, old) {
+        if (id && id !== SKIP_ID) {
+          this.unregister(this, old);
+          this.metaData[id] = this;
+          this.metaArray.push(this);
+        }
+      },
+      
+      unregister: function(meta, id) {
+        delete this.metaData[id || meta.id];
+        var i = this.metaArray.indexOf(meta);
+        if (i >= 0) {
+          this.metaArray.splice(i, 1);
+        }
+      },
+      
+      /**
+       * Returns a list of all meta-data elements with the same type.
+       * 
+       * @property list
+       * @type array
+       * @default []
+       */
+      get list() {
+        return this.metaArray;
+      },
+      
+      /**
+       * Retrieves meta-data by ID.
+       *
+       * @method byId
+       * @param {String} id The ID of the meta-data to be returned.
+       * @returns Returns meta-data.
+       */
+      byId: function(id) {
+        return this.metaData[id];
+      }
+      
+    });
+    
+  })();
+  
+</script>
+</polymer-element>
+
+
+<polymer-element name="core-transition" extends="core-meta">
+  
+  <script>
+    Polymer('core-transition', {
+      
+      type: 'transition',
+
+      /**
+       * Run the animation.
+       *
+       * @method go
+       * @param {Node} node The node to apply the animation on
+       * @param {Object} state State info
+       */
+      go: function(node, state) {
+        this.complete(node);
+      },
+
+      /**
+       * Set up the animation. This may include injecting a stylesheet,
+       * applying styles, creating a web animations object, etc.. This
+       *
+       * @method setup
+       * @param {Node} node The animated node
+       */
+      setup: function(node) {
+      },
+
+      /**
+       * Tear down the animation.
+       *
+       * @method teardown
+       * @param {Node} node The animated node
+       */
+      teardown: function(node) {
+      },
+
+      /**
+       * Called when the animation completes. This function also fires the
+       * `core-transitionend` event.
+       *
+       * @method complete
+       * @param {Node} node The animated node
+       */
+      complete: function(node) {
+        this.fire('core-transitionend', null, node);
+      },
+
+      /**
+       * Utility function to listen to an event on a node once.
+       *
+       * @method listenOnce
+       * @param {Node} node The animated node
+       * @param {string} event Name of an event
+       * @param {Function} fn Event handler
+       * @param {Array} args Additional arguments to pass to `fn`
+       */
+      listenOnce: function(node, event, fn, args) {
+        var self = this;
+        var listener = function() {
+          fn.apply(self, args);
+          node.removeEventListener(event, listener, false);
+        }
+        node.addEventListener(event, listener, false);
+      }
+
+    });
+  </script>
+</polymer-element>
+
+
+<polymer-element name="core-transition-css" extends="core-transition" attributes="transitionType">
+<template>
+  <style no-shim="">/* Copyright (c) 2014 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt */
+
+:host(.core-transition) {
+  outline: none;
+  overflow: auto;
+  opacity: 0;
+  -webkit-transition: -webkit-transform 0.2s ease-in-out, opacity 0.2s ease-in;
+  transition: transform 0.2s ease-in-out, opacity 0.2s ease-in;
+}
+
+
+:host(.core-transition.core-opened) {
+  opacity: 1;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+}
+
+:host(.core-transition-center) {
+  -webkit-transform: scale(0.5);
+  transform: scale(0.5);
+}
+
+:host(.core-transition-top) {
+  -webkit-transform: translateY(-200%);
+  transform: translateY(-200%);
+}
+
+:host(.core-transition-bottom) {
+  -webkit-transform: translateY(200%);
+  transform: translateY(200%);
+}
+
+:host(.core-transition-left) {
+  -webkit-transform: translateX(-200%);
+  transform: translateX(-200%);
+}
+
+:host(.core-transition-right) {
+  -webkit-transform: translateX(200%);
+  transform: translateX(200%);
+}</style>
+</template>
+<script>
+
+  Polymer('core-transition-css', {
+
+    /**
+     * The class that will be applied to all animated nodes.
+     *
+     * @attribute baseClass
+     * @type string
+     * @default "core-transition"
+     */
+    baseClass: 'core-transition',
+
+    /**
+     * The class that will be applied to nodes in the opened state.
+     *
+     * @attribute openedClass
+     * @type string
+     * @default "core-opened"
+     */
+    openedClass: 'core-opened',
+
+    /**
+     * The class that will be applied to nodes in the closed state.
+     *
+     * @attribute closedClass
+     * @type string
+     * @default "core-closed"
+     */
+    closedClass: 'core-closed',
+
+    /**
+     * Event to listen to for animation completion.
+     *
+     * @attribute completeEventName
+     * @type string
+     * @default "transitionEnd"
+     */
+    completeEventName: 'transitionend',
+
+    publish: {
+      /**
+       * A secondary configuration attribute for the animation. The class
+       * `<baseClass>-<transitionType` is applied to the animated node during
+       * `setup`.
+       *
+       * @attribute transitionType
+       * @type string
+       */
+      transitionType: null
+    },
+
+    registerCallback: function(element) {
+      this.transitionStyle = element.templateContent().firstElementChild;
+    },
+
+    // template is just for loading styles, we don't need a shadowRoot
+    fetchTemplate: function() {
+      return null;
+    },
+
+    go: function(node, state) {
+      if (state.opened !== undefined) {
+        this.transitionOpened(node, state.opened);
+      }
+    },
+
+    setup: function(node) {
+      if (!node._hasTransitionStyle) {
+        if (!node.shadowRoot) {
+          node.createShadowRoot().innerHTML = '<content></content>';
+        }
+        this.installScopeStyle(this.transitionStyle, 'transition',
+            node.shadowRoot);
+        node._hasTransitionStyle = true;
+      }
+      node.classList.add(this.baseClass);
+      if (this.transitionType) {
+        node.classList.add(this.baseClass + '-' + this.transitionType);
+      }
+    },
+
+    teardown: function(node) {
+      node.classList.remove(this.baseClass);
+      if (this.transitionType) {
+        node.classList.remove(this.baseClass + '-' + this.transitionType);
+      }
+    },
+
+    transitionOpened: function(node, opened) {
+      this.listenOnce(node, this.completeEventName, function() {
+        if (!opened) {
+          node.classList.remove(this.closedClass);
+        }
+        this.complete(node);
+      });
+      node.classList.toggle(this.openedClass, opened);
+      node.classList.toggle(this.closedClass, !opened);
+    }
+
+  });
+</script>
+</polymer-element>
+
+<core-transition-css id="core-transition-fade"></core-transition-css>
+<core-transition-css id="core-transition-center" transitiontype="center"></core-transition-css>
+<core-transition-css id="core-transition-top" transitiontype="top"></core-transition-css>
+<core-transition-css id="core-transition-bottom" transitiontype="bottom"></core-transition-css>
+<core-transition-css id="core-transition-left" transitiontype="left"></core-transition-css>
+<core-transition-css id="core-transition-right" transitiontype="right"></core-transition-css>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<style>
+    #animate-me {
+      background-color: lime;
+      position: fixed;
+      top: 100px;
+      width: 100%;
+      height: 100%;
+    }
+  </style></div>
+
+  <div id="animate-me"></div>
+
+  <select id="sel">
+    <option value="core-transition-fade" selected="">core-transition-fade</option>
+    <option value="core-transition-center">core-transition-center</option>
+    <option value="core-transition-top">core-transition-top</option>
+    <option value="core-transition-bottom">core-transition-bottom</option>
+    <option value="core-transition-left">core-transition-left</option>
+    <option value="core-transition-right">core-transition-right</option>
+  </select>
+
+  <button>toggle</button>
+
+  <core-meta type="transition"></core-meta>
+
+  <script src="core_transition.html.polymer.bootstrap.dart.js" async=""></script>
+
+
+</body></html>

@@ -1,0 +1,666 @@
+<!--
+    @license
+    Copyright (c) 2014 The Polymer Project Authors. All rights reserved.
+    This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+    The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+    The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+    Code distributed by Google as part of the polymer project is also
+    subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+--><!DOCTYPE html><html><head><script src="packages/web_components/webcomponents.min.js"></script><script src="packages/web_components/dart_support.js"></script>
+
+  <title>core-image</title>
+
+  
+
+  
+
+</head>
+<body unresolved=""><div hidden=""><script src="packages/web_components/interop_support.js"></script>
+
+<!-- Dart note: load polymer for Dart and JS from the same place -->
+<style shim-shadowdom="">
+/*******************************
+          Flex Layout
+*******************************/
+
+html /deep/ [layout][horizontal], html /deep/ [layout][vertical] {
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+}
+
+html /deep/ [layout][horizontal][inline], html /deep/ [layout][vertical][inline] {
+  display: -ms-inline-flexbox;
+  display: -webkit-inline-flex;
+  display: inline-flex;
+}
+
+html /deep/ [layout][horizontal] {
+  -ms-flex-direction: row;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+}
+
+html /deep/ [layout][horizontal][reverse] {
+  -ms-flex-direction: row-reverse;
+  -webkit-flex-direction: row-reverse;
+  flex-direction: row-reverse;
+}
+
+html /deep/ [layout][vertical] {
+  -ms-flex-direction: column;
+  -webkit-flex-direction: column;
+  flex-direction: column;
+}
+
+html /deep/ [layout][vertical][reverse] {
+  -ms-flex-direction: column-reverse;
+  -webkit-flex-direction: column-reverse;
+  flex-direction: column-reverse;
+}
+
+html /deep/ [layout][wrap] {
+  -ms-flex-wrap: wrap;
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
+html /deep/ [layout][wrap-reverse] {
+  -ms-flex-wrap: wrap-reverse;
+  -webkit-flex-wrap: wrap-reverse;
+  flex-wrap: wrap-reverse;
+}
+
+html /deep/ [flex] {
+  -ms-flex: 1 1 0.000000001px;
+  -webkit-flex: 1;
+  flex: 1;
+  -webkit-flex-basis: 0.000000001px;
+  flex-basis: 0.000000001px;
+}
+
+html /deep/ [vertical][layout] > [flex][auto-vertical], html /deep/ [vertical][layout]::shadow [flex][auto-vertical] {
+  -ms-flex: 1 1 auto;
+  -webkit-flex-basis: auto;
+  flex-basis: auto;
+}
+
+html /deep/ [flex][auto] {
+  -ms-flex: 1 1 auto;
+  -webkit-flex-basis: auto;
+  flex-basis: auto;
+}
+
+html /deep/ [flex][none] {
+  -ms-flex: none;
+  -webkit-flex: none;
+  flex: none;
+}
+
+html /deep/ [flex][one] {
+  -ms-flex: 1;
+  -webkit-flex: 1;
+  flex: 1;
+}
+
+html /deep/ [flex][two] {
+  -ms-flex: 2;
+  -webkit-flex: 2;
+  flex: 2;
+}
+
+html /deep/ [flex][three] {
+  -ms-flex: 3;
+  -webkit-flex: 3;
+  flex: 3;
+}
+
+html /deep/ [flex][four] {
+  -ms-flex: 4;
+  -webkit-flex: 4;
+  flex: 4;
+}
+
+html /deep/ [flex][five] {
+  -ms-flex: 5;
+  -webkit-flex: 5;
+  flex: 5;
+}
+
+html /deep/ [flex][six] {
+  -ms-flex: 6;
+  -webkit-flex: 6;
+  flex: 6;
+}
+
+html /deep/ [flex][seven] {
+  -ms-flex: 7;
+  -webkit-flex: 7;
+  flex: 7;
+}
+
+html /deep/ [flex][eight] {
+  -ms-flex: 8;
+  -webkit-flex: 8;
+  flex: 8;
+}
+
+html /deep/ [flex][nine] {
+  -ms-flex: 9;
+  -webkit-flex: 9;
+  flex: 9;
+}
+
+html /deep/ [flex][ten] {
+  -ms-flex: 10;
+  -webkit-flex: 10;
+  flex: 10;
+}
+
+html /deep/ [flex][eleven] {
+  -ms-flex: 11;
+  -webkit-flex: 11;
+  flex: 11;
+}
+
+html /deep/ [flex][twelve] {
+  -ms-flex: 12;
+  -webkit-flex: 12;
+  flex: 12;
+}
+
+/* alignment in cross axis */
+
+html /deep/ [layout][start] {
+  -ms-flex-align: start;
+  -webkit-align-items: flex-start;
+  align-items: flex-start;
+}
+
+html /deep/ [layout][center], html /deep/ [layout][center-center] {
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+}
+
+html /deep/ [layout][end] {
+  -ms-flex-align: end;
+  -webkit-align-items: flex-end;
+  align-items: flex-end;
+}
+
+/* alignment in main axis */
+
+html /deep/ [layout][start-justified] {
+  -ms-flex-pack: start;
+  -webkit-justify-content: flex-start;
+  justify-content: flex-start;
+}
+
+html /deep/ [layout][center-justified], html /deep/ [layout][center-center] {
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+}
+
+html /deep/ [layout][end-justified] {
+  -ms-flex-pack: end;
+  -webkit-justify-content: flex-end;
+  justify-content: flex-end;
+}
+
+html /deep/ [layout][around-justified] {
+  -ms-flex-pack: distribute;
+  -webkit-justify-content: space-around;
+  justify-content: space-around;
+}
+
+html /deep/ [layout][justified] {
+  -ms-flex-pack: justify;
+  -webkit-justify-content: space-between;
+  justify-content: space-between;
+}
+
+/* self alignment */
+
+html /deep/ [self-start] {
+  -ms-align-self: flex-start;
+  -webkit-align-self: flex-start;
+  align-self: flex-start;
+}
+
+html /deep/ [self-center] {
+  -ms-align-self: center;
+  -webkit-align-self: center;
+  align-self: center;
+}
+
+html /deep/ [self-end] {
+  -ms-align-self: flex-end;
+  -webkit-align-self: flex-end;
+  align-self: flex-end;
+}
+
+html /deep/ [self-stretch] {
+  -ms-align-self: stretch;
+  -webkit-align-self: stretch;
+  align-self: stretch;
+}
+
+/*******************************
+          Other Layout
+*******************************/
+
+html /deep/ [block] {
+  display: block;
+}
+
+/* ie support for hidden */
+html /deep/ [hidden] {
+  display: none !important;
+}
+
+html /deep/ [relative] {
+  position: relative;
+}
+
+html /deep/ [fit] {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+body[fullbleed] {
+  margin: 0;
+  height: 100vh;
+}
+
+/*******************************
+            Other
+*******************************/
+
+html /deep/ [segment], html /deep/ segment {
+  display: block;
+  position: relative;
+  -webkit-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 1em 0.5em;
+  padding: 1em;
+  background-color: white;
+  -webkit-box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.1);
+  border-radius: 5px 5px 5px 5px;
+}
+
+</style>
+
+<script src="packages/polymer/src/js/polymer/polymer.min.js"></script>
+
+<script>
+// TODO(sigmund): remove this script tag (dartbug.com/19650). This empty
+// script tag is necessary to work around a bug in Chrome 36.
+</script>
+
+<!-- unminified for debugging:
+<link rel="import" href="src/js/polymer/layout.html">
+<script src="src/js/polymer/polymer.js"></script>
+-->
+
+<script>
+// This empty script is here to workaround issue
+// https://github.com/dart-lang/core-elements/issues/11
+</script>
+
+
+<polymer-element name="core-image">
+<template>
+  <style>/*
+Copyright (c) 2014 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+*/
+
+:host {
+  display: inline-block;
+  overflow: hidden;
+  position: relative;
+}
+
+#placeholder {
+  background-color: inherit;
+  opacity: 1;
+}
+#placeholder.fadein {
+  transition: opacity 0.5s linear;
+  opacity: 0;
+}</style>
+  <template if="{{!sizing}}">
+    <img id="img">
+  </template>
+  <template if="{{preload &amp;&amp; fade}}">
+    <div id="placeholder" fit=""></div>
+  </template>
+  <content></content>
+</template>
+<script>
+
+  Polymer({
+    
+    publish: {
+
+      /**
+       * The URL of an image.
+       *
+       * @attribute src
+       * @type string
+       * @default null
+       */
+      src: null,
+
+      /**
+       * When false, the image is prevented from loading and any placeholder is
+       * shown.  This may be useful when a binding to the src property is known to
+       * be invalid, to prevent 404 requests.
+       *
+       * @attribute src
+       * @type string
+       * @default null
+       */
+      load: true,
+
+      /**
+       * Sets a sizing option for the image.  Valid values are `contain` (full 
+       * aspect ratio of the image is contained within the element and 
+       * letterboxed) or `cover` (image is cropped in order to fully cover the
+       * bounds of the element), or `null` (default: image takes natural size).
+       *
+       * @attribute sizing
+       * @type string
+       * @default null
+       */
+      sizing: null,
+
+      /**
+       * When a sizing option is uzed (`cover` or `contain`), this determines
+       * how the image is aligned within the element bounds.
+       *
+       * @attribute position
+       * @type string
+       * @default 'center'
+       */
+      position: 'center',
+
+      /**
+       * When `true`, any change to the `src` property will cause the `placeholder`
+       * image to be shown until the 
+       *
+       * @attribute preload
+       * @type boolean
+       * @default false
+       */
+      preload: false,
+
+      /**
+       * This image will be used as a background/placeholder until the src image has
+       * loaded.  Use of a data-URI for placeholder is encouraged for instant rendering.
+       *
+       * @attribute placeholder
+       * @type string
+       * @default null
+       */
+      placeholder: null,
+
+      /**
+       * When `preload` is true, setting `fade` to true will cause the image to
+       * fade into place.
+       *
+       * @attribute fade
+       * @type boolean
+       * @default false
+       */
+      fade: false,
+
+      /**
+       * Read-only value that tracks the loading state of the image when the `preload`
+       * option is used.
+       *
+       * @attribute loading
+       * @type boolean
+       * @default false
+       */
+      loading: false,
+
+      /**
+       * Can be used to set the width of image (e.g. via binding); size may also be
+       * set via CSS.
+       *
+       * @attribute width
+       * @type number
+       * @default null
+       */
+      width: null,
+
+      /**
+       * Can be used to set the height of image (e.g. via binding); size may also be
+       * set via CSS.
+       *
+       * @attribute height
+       * @type number
+       * @default null
+       */
+      height: null
+
+    },
+
+    observe: {
+      'preload color sizing position src fade': 'update'
+    },
+
+    widthChanged: function() {
+      this.style.width = isNaN(this.width) ? this.width : this.width + 'px';
+    },
+
+    heightChanged: function() {
+      this.style.height = isNaN(this.height) ? this.height : this.height + 'px';
+    },
+
+    update: function() {
+      this.style.backgroundSize = this.sizing;
+      this.style.backgroundPosition = this.sizing ? this.position : null;
+      this.style.backgroundRepeat = this.sizing ? 'no-repeat' : null;
+      if (this.preload) {
+        if (this.fade) {
+          if (!this._placeholderEl) {
+            this._placeholderEl = this.shadowRoot.querySelector('#placeholder');
+          }
+          this._placeholderEl.style.backgroundSize = this.sizing;
+          this._placeholderEl.style.backgroundPosition = this.sizing ? this.position : null;
+          this._placeholderEl.style.backgroundRepeat = this.sizing ? 'no-repeat' : null;
+          this._placeholderEl.classList.remove('fadein');
+          this._placeholderEl.style.backgroundImage = (this.load && this.placeholder) ? 'url(' + this.placeholder + ')': null;
+        } else {
+          this._setSrc(this.placeholder);
+        }
+        if (this.load && this.src) {
+          var img = new Image();
+          img.src = this.src;
+          this.loading = true;
+          img.onload = function() {
+            this._setSrc(this.src);
+            this.loading = false;
+            if (this.fade) {
+              this._placeholderEl.classList.add('fadein');
+            }
+          }.bind(this);
+        }
+      } else {
+        this._setSrc(this.src);
+      }
+    },
+
+    _setSrc: function(src) {
+      if (this.sizing) {
+        this.style.backgroundImage = src ? 'url(' + src + ')': '';
+      } else {
+        this.$.img.src = src || '';
+      }
+    }
+
+  });
+
+</script>
+</polymer-element>
+
+
+
+
+
+
+<style>
+    .sized {
+      width: 200px;
+      height: 200px;
+    }
+    .gray {
+      background-color: lightgray;
+    }
+    .group {
+      display: inline-block;
+      vertical-align: top;
+    }
+  </style></div>
+
+<template is="auto-binding-dart" id="myTemplate">
+  <h3>Sizing: none (naturally sized)</h3>
+  <core-image src="http://lorempixel.com/400/200/sports/1"></core-image>
+
+  <h3>Sizing: cover</h3>
+  <core-image class="sized" sizing="cover" src="http://lorempixel.com/400/200/sports/2"></core-image>
+  <core-image class="sized" sizing="cover" src="http://lorempixel.com/200/400/sports/3"></core-image>
+
+  <h3>Sizing: contain</h3>
+  <core-image class="sized gray" sizing="contain" src="http://lorempixel.com/400/200/sports/2"></core-image>
+  <core-image class="sized gray" sizing="contain" src="http://lorempixel.com/200/400/sports/3"></core-image>
+
+  <h3>Preload: none</h3>
+  <div class="group">
+    <div>No sizing</div>
+    <button on-tap="{{preload}}" target="preload1a">Load image</button><br><br>
+    <core-image id="preload1a" class="sized gray"></core-image>
+  </div>
+  <div class="group">
+    <div>Cover</div>
+    <button on-tap="{{preload}}" target="preload1b">Load image</button><br><br>
+    <core-image id="preload1b" class="sized gray" sizing="cover"></core-image>
+  </div>
+  <div class="group">
+    <div>Contain</div>
+    <button on-tap="{{preload}}" target="preload1c">Load image</button><br><br>
+    <core-image id="preload1c" class="sized gray" sizing="contain"></core-image>
+  </div>
+
+  <h3>Preload: color as placeholder</h3>
+  <div class="group">
+    <div>No sizing</div>
+    <button on-tap="{{preload}}" target="preload2a">Load image</button>
+    <span hidden?="{{!$['preload2a'].loading}}">Loading...</span>
+    <br><br>
+    <core-image id="preload2a" class="sized gray" preload=""></core-image>
+  </div>
+  <div class="group">
+    <div>Cover</div>
+    <button on-tap="{{preload}}" target="preload2b">Load image</button>
+    <span hidden?="{{!$['preload2b'].loading}}">Loading...</span>
+    <br><br>
+    <core-image id="preload2b" class="sized gray" sizing="cover" preload=""></core-image>
+  </div>
+  <div class="group">
+    <div>Contain</div>
+    <button on-tap="{{preload}}" target="preload2c">Load image</button>
+    <span hidden?="{{!$['preload2c'].loading}}">Loading...</span>
+    <br><br>
+    <core-image id="preload2c" class="sized gray" sizing="contain" preload=""></core-image>
+  </div>
+
+  <h3>Preload: image as placeholder</h3>
+  <div class="group">
+    <div>No sizing</div>
+    <button on-tap="{{preload}}" target="preload3a">Load image</button>
+    <span hidden?="{{!$['preload3a'].loading}}">Loading...</span>
+    <br><br>
+    <core-image id="preload3a" class="sized gray" preload="" placeholder="data:image/gif;base64,R0lGODdhyADIAOMAAO7u/5aWlqGho9jY5OPj8cLCyqyssLe3vc3N1wAAAAAAAAAAAAAAAAAAAAAAAAAAACwAAAAAyADIAAAE/hDISau9OOvNu/9gKI5kaZ5oqq5s675wLM90bd94ru987//AoHBILBqPyKRyyWw6n9CodEqtWq/YrHbL7Xq/4LB4TC6bz+i0es1uu9/wuHxOr9vv+Lx+z+/7/4CBgoOEhYaHiImKi4yNjo+QkZKTlJWWl5iZmpucnZ6foKGio6SlpqeoqaqrrK2ur7CxsrO0tba3uLm6u7y9vr/AwcLDxMXGx8jJysvMzc7P0NHS06kB1tYqA9cUBQEFrgLWAgIqBOEBFNuu1gMs2ugT3d/rAe0r77bsFwMGAQLzEggc8AcQAIJwA+EBuKbQmgF+3iocDHBAXiZ9Fd6dAxhuo4R3/gwnGDgnkqE1BBM0XrN3CSOFgQYM+ouHEsFMAP1i2lQIAN8EhwS6kZPQ74BMnpZcTgiHkoA1AhKxAWDaU+pHqwvrVVVI1ScmpRIwYjxwTqo+r1vTafV6FmtSrRXEak0ooB+8tjzR4v251m0llwSgUnUaAOrJtFMDoESrty9XxYi/wk0sMEBMoRKo7iRK8SiFxu285vQMoIDR0qdNN+rmbxxJlRFLi7u22OG1mDjP4bYb2uFVf+r0CZ+cyOS1oRD/cUM4cN5EA3bDhszqWOHEhBLIZh+qHdnmaFABwIwm9BxLZxAtn6fGvr379/Djy59Pv779+/jz69/Pv7///wAGQyjggAQWaOCBCCao4IIMNujggxBGKOGEFFZo4YUYZqjhhhx26OGHIIYo4ogklmjiiSimqOKKLLbo4oswxijjjDRKEQEAOw=="></core-image>
+  </div>
+  <div class="group">
+    <div>Cover</div>
+    <button on-tap="{{preload}}" target="preload3b">Load image</button>
+    <span hidden?="{{!$['preload3b'].loading}}">Loading...</span>
+    <br><br>
+    <core-image id="preload3b" class="sized gray" sizing="cover" preload="" placeholder="data:image/gif;base64,R0lGODdhyADIAOMAAO7u/5aWlqGho9jY5OPj8cLCyqyssLe3vc3N1wAAAAAAAAAAAAAAAAAAAAAAAAAAACwAAAAAyADIAAAE/hDISau9OOvNu/9gKI5kaZ5oqq5s675wLM90bd94ru987//AoHBILBqPyKRyyWw6n9CodEqtWq/YrHbL7Xq/4LB4TC6bz+i0es1uu9/wuHxOr9vv+Lx+z+/7/4CBgoOEhYaHiImKi4yNjo+QkZKTlJWWl5iZmpucnZ6foKGio6SlpqeoqaqrrK2ur7CxsrO0tba3uLm6u7y9vr/AwcLDxMXGx8jJysvMzc7P0NHS06kB1tYqA9cUBQEFrgLWAgIqBOEBFNuu1gMs2ugT3d/rAe0r77bsFwMGAQLzEggc8AcQAIJwA+EBuKbQmgF+3iocDHBAXiZ9Fd6dAxhuo4R3/gwnGDgnkqE1BBM0XrN3CSOFgQYM+ouHEsFMAP1i2lQIAN8EhwS6kZPQ74BMnpZcTgiHkoA1AhKxAWDaU+pHqwvrVVVI1ScmpRIwYjxwTqo+r1vTafV6FmtSrRXEak0ooB+8tjzR4v251m0llwSgUnUaAOrJtFMDoESrty9XxYi/wk0sMEBMoRKo7iRK8SiFxu285vQMoIDR0qdNN+rmbxxJlRFLi7u22OG1mDjP4bYb2uFVf+r0CZ+cyOS1oRD/cUM4cN5EA3bDhszqWOHEhBLIZh+qHdnmaFABwIwm9BxLZxAtn6fGvr379/Djy59Pv779+/jz69/Pv7///wAGQyjggAQWaOCBCCao4IIMNujggxBGKOGEFFZo4YUYZqjhhhx26OGHIIYo4ogklmjiiSimqOKKLLbo4oswxijjjDRKEQEAOw=="></core-image>
+  </div>
+  <div class="group">
+    <div>Contain</div>
+    <button on-tap="{{preload}}" target="preload3c">Load image</button>
+    <span hidden?="{{!$['preload3c'].loading}}">Loading...</span>
+    <br><br>
+    <core-image id="preload3c" class="sized gray" sizing="contain" preload="" placeholder="data:image/gif;base64,R0lGODdhyADIAOMAAO7u/5aWlqGho9jY5OPj8cLCyqyssLe3vc3N1wAAAAAAAAAAAAAAAAAAAAAAAAAAACwAAAAAyADIAAAE/hDISau9OOvNu/9gKI5kaZ5oqq5s675wLM90bd94ru987//AoHBILBqPyKRyyWw6n9CodEqtWq/YrHbL7Xq/4LB4TC6bz+i0es1uu9/wuHxOr9vv+Lx+z+/7/4CBgoOEhYaHiImKi4yNjo+QkZKTlJWWl5iZmpucnZ6foKGio6SlpqeoqaqrrK2ur7CxsrO0tba3uLm6u7y9vr/AwcLDxMXGx8jJysvMzc7P0NHS06kB1tYqA9cUBQEFrgLWAgIqBOEBFNuu1gMs2ugT3d/rAe0r77bsFwMGAQLzEggc8AcQAIJwA+EBuKbQmgF+3iocDHBAXiZ9Fd6dAxhuo4R3/gwnGDgnkqE1BBM0XrN3CSOFgQYM+ouHEsFMAP1i2lQIAN8EhwS6kZPQ74BMnpZcTgiHkoA1AhKxAWDaU+pHqwvrVVVI1ScmpRIwYjxwTqo+r1vTafV6FmtSrRXEak0ooB+8tjzR4v251m0llwSgUnUaAOrJtFMDoESrty9XxYi/wk0sMEBMoRKo7iRK8SiFxu285vQMoIDR0qdNN+rmbxxJlRFLi7u22OG1mDjP4bYb2uFVf+r0CZ+cyOS1oRD/cUM4cN5EA3bDhszqWOHEhBLIZh+qHdnmaFABwIwm9BxLZxAtn6fGvr379/Djy59Pv779+/jz69/Pv7///wAGQyjggAQWaOCBCCao4IIMNujggxBGKOGEFFZo4YUYZqjhhhx26OGHIIYo4ogklmjiiSimqOKKLLbo4oswxijjjDRKEQEAOw=="></core-image>
+  </div>
+
+  <h3>Preload: color as placeholder, with Fade-in</h3>
+  <div class="group">
+    <div>No sizing</div>
+    <button on-tap="{{preload}}" target="preload2afade">Load image</button>
+    <span hidden?="{{!$['preload2afade'].loading}}">Loading...</span>
+    <br><br>
+    <core-image id="preload2afade" class="sized gray" preload="" fade=""></core-image>
+  </div>
+  <div class="group">
+    <div>Cover</div>
+    <button on-tap="{{preload}}" target="preload2bfade">Load image</button>
+    <span hidden?="{{!$['preload2bfade'].loading}}">Loading...</span>
+    <br><br>
+    <core-image id="preload2bfade" class="sized gray" sizing="cover" preload="" fade=""></core-image>
+  </div>
+  <div class="group">
+    <div>Contain</div>
+    <button on-tap="{{preload}}" target="preload2cfade">Load image</button>
+    <span hidden?="{{!$['preload2cfade'].loading}}">Loading...</span>
+    <br><br>
+    <core-image id="preload2cfade" class="sized gray" sizing="contain" preload="" fade=""></core-image>
+  </div>
+
+  <h3>Preload: image as placeholder, with Fade-in</h3>
+  <div class="group">
+    <div>No sizing</div>
+    <button on-tap="{{preload}}" target="preload3afade">Load image</button>
+    <span hidden?="{{!$['preload3afade'].loading}}">Loading...</span>
+    <br><br>
+    <core-image id="preload3afade" class="sized gray" preload="" placeholder="data:image/gif;base64,R0lGODdhyADIAOMAAO7u/5aWlqGho9jY5OPj8cLCyqyssLe3vc3N1wAAAAAAAAAAAAAAAAAAAAAAAAAAACwAAAAAyADIAAAE/hDISau9OOvNu/9gKI5kaZ5oqq5s675wLM90bd94ru987//AoHBILBqPyKRyyWw6n9CodEqtWq/YrHbL7Xq/4LB4TC6bz+i0es1uu9/wuHxOr9vv+Lx+z+/7/4CBgoOEhYaHiImKi4yNjo+QkZKTlJWWl5iZmpucnZ6foKGio6SlpqeoqaqrrK2ur7CxsrO0tba3uLm6u7y9vr/AwcLDxMXGx8jJysvMzc7P0NHS06kB1tYqA9cUBQEFrgLWAgIqBOEBFNuu1gMs2ugT3d/rAe0r77bsFwMGAQLzEggc8AcQAIJwA+EBuKbQmgF+3iocDHBAXiZ9Fd6dAxhuo4R3/gwnGDgnkqE1BBM0XrN3CSOFgQYM+ouHEsFMAP1i2lQIAN8EhwS6kZPQ74BMnpZcTgiHkoA1AhKxAWDaU+pHqwvrVVVI1ScmpRIwYjxwTqo+r1vTafV6FmtSrRXEak0ooB+8tjzR4v251m0llwSgUnUaAOrJtFMDoESrty9XxYi/wk0sMEBMoRKo7iRK8SiFxu285vQMoIDR0qdNN+rmbxxJlRFLi7u22OG1mDjP4bYb2uFVf+r0CZ+cyOS1oRD/cUM4cN5EA3bDhszqWOHEhBLIZh+qHdnmaFABwIwm9BxLZxAtn6fGvr379/Djy59Pv779+/jz69/Pv7///wAGQyjggAQWaOCBCCao4IIMNujggxBGKOGEFFZo4YUYZqjhhhx26OGHIIYo4ogklmjiiSimqOKKLLbo4oswxijjjDRKEQEAOw==" fade=""></core-image>
+  </div>
+  <div class="group">
+    <div>Cover</div>
+    <button on-tap="{{preload}}" target="preload3bfade">Load image</button>
+    <span hidden?="{{!$['preload3bfade'].loading}}">Loading...</span>
+    <br><br>
+    <core-image id="preload3bfade" class="sized gray" sizing="cover" preload="" placeholder="data:image/gif;base64,R0lGODdhyADIAOMAAO7u/5aWlqGho9jY5OPj8cLCyqyssLe3vc3N1wAAAAAAAAAAAAAAAAAAAAAAAAAAACwAAAAAyADIAAAE/hDISau9OOvNu/9gKI5kaZ5oqq5s675wLM90bd94ru987//AoHBILBqPyKRyyWw6n9CodEqtWq/YrHbL7Xq/4LB4TC6bz+i0es1uu9/wuHxOr9vv+Lx+z+/7/4CBgoOEhYaHiImKi4yNjo+QkZKTlJWWl5iZmpucnZ6foKGio6SlpqeoqaqrrK2ur7CxsrO0tba3uLm6u7y9vr/AwcLDxMXGx8jJysvMzc7P0NHS06kB1tYqA9cUBQEFrgLWAgIqBOEBFNuu1gMs2ugT3d/rAe0r77bsFwMGAQLzEggc8AcQAIJwA+EBuKbQmgF+3iocDHBAXiZ9Fd6dAxhuo4R3/gwnGDgnkqE1BBM0XrN3CSOFgQYM+ouHEsFMAP1i2lQIAN8EhwS6kZPQ74BMnpZcTgiHkoA1AhKxAWDaU+pHqwvrVVVI1ScmpRIwYjxwTqo+r1vTafV6FmtSrRXEak0ooB+8tjzR4v251m0llwSgUnUaAOrJtFMDoESrty9XxYi/wk0sMEBMoRKo7iRK8SiFxu285vQMoIDR0qdNN+rmbxxJlRFLi7u22OG1mDjP4bYb2uFVf+r0CZ+cyOS1oRD/cUM4cN5EA3bDhszqWOHEhBLIZh+qHdnmaFABwIwm9BxLZxAtn6fGvr379/Djy59Pv779+/jz69/Pv7///wAGQyjggAQWaOCBCCao4IIMNujggxBGKOGEFFZo4YUYZqjhhhx26OGHIIYo4ogklmjiiSimqOKKLLbo4oswxijjjDRKEQEAOw==" fade=""></core-image>
+  </div>
+  <div class="group">
+    <div>Contain</div>
+    <button on-tap="{{preload}}" target="preload3cfade">Load image</button>
+    <span hidden?="{{!$['preload3cfade'].loading}}">Loading...</span>
+    <br><br>
+    <core-image id="preload3cfade" class="sized gray" sizing="contain" preload="" placeholder="data:image/gif;base64,R0lGODdhyADIAOMAAO7u/5aWlqGho9jY5OPj8cLCyqyssLe3vc3N1wAAAAAAAAAAAAAAAAAAAAAAAAAAACwAAAAAyADIAAAE/hDISau9OOvNu/9gKI5kaZ5oqq5s675wLM90bd94ru987//AoHBILBqPyKRyyWw6n9CodEqtWq/YrHbL7Xq/4LB4TC6bz+i0es1uu9/wuHxOr9vv+Lx+z+/7/4CBgoOEhYaHiImKi4yNjo+QkZKTlJWWl5iZmpucnZ6foKGio6SlpqeoqaqrrK2ur7CxsrO0tba3uLm6u7y9vr/AwcLDxMXGx8jJysvMzc7P0NHS06kB1tYqA9cUBQEFrgLWAgIqBOEBFNuu1gMs2ugT3d/rAe0r77bsFwMGAQLzEggc8AcQAIJwA+EBuKbQmgF+3iocDHBAXiZ9Fd6dAxhuo4R3/gwnGDgnkqE1BBM0XrN3CSOFgQYM+ouHEsFMAP1i2lQIAN8EhwS6kZPQ74BMnpZcTgiHkoA1AhKxAWDaU+pHqwvrVVVI1ScmpRIwYjxwTqo+r1vTafV6FmtSrRXEak0ooB+8tjzR4v251m0llwSgUnUaAOrJtFMDoESrty9XxYi/wk0sMEBMoRKo7iRK8SiFxu285vQMoIDR0qdNN+rmbxxJlRFLi7u22OG1mDjP4bYb2uFVf+r0CZ+cyOS1oRD/cUM4cN5EA3bDhszqWOHEhBLIZh+qHdnmaFABwIwm9BxLZxAtn6fGvr379/Djy59Pv779+/jz69/Pv7///wAGQyjggAQWaOCBCCao4IIMNujggxBGKOGEFFZo4YUYZqjhhhx26OGHIIYo4ogklmjiiSimqOKKLLbo4oswxijjjDRKEQEAOw==" fade=""></core-image>
+  </div>
+
+</template>
+
+<script src="core_image.html.polymer.bootstrap.dart.js" async=""></script>
+
+
+
+</body></html>

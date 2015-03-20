@@ -1,0 +1,740 @@
+<!DOCTYPE html><!--
+Copyright 2013 The Polymer Authors. All rights reserved.
+Use of this source code is governed by a BSD-style
+license that can be found in the LICENSE file.
+--><html><head><script src="packages/web_components/webcomponents.min.js"></script><script src="packages/web_components/dart_support.js"></script>
+  <title>core-style</title>
+
+  
+  
+  
+
+</head>
+<body unresolved="" fullbleed="" vertical="" layout=""><div hidden=""><style shim-shadowdom="">
+/*******************************
+          Flex Layout
+*******************************/
+
+html /deep/ [layout][horizontal], html /deep/ [layout][vertical] {
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+}
+
+html /deep/ [layout][horizontal][inline], html /deep/ [layout][vertical][inline] {
+  display: -ms-inline-flexbox;
+  display: -webkit-inline-flex;
+  display: inline-flex;
+}
+
+html /deep/ [layout][horizontal] {
+  -ms-flex-direction: row;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+}
+
+html /deep/ [layout][horizontal][reverse] {
+  -ms-flex-direction: row-reverse;
+  -webkit-flex-direction: row-reverse;
+  flex-direction: row-reverse;
+}
+
+html /deep/ [layout][vertical] {
+  -ms-flex-direction: column;
+  -webkit-flex-direction: column;
+  flex-direction: column;
+}
+
+html /deep/ [layout][vertical][reverse] {
+  -ms-flex-direction: column-reverse;
+  -webkit-flex-direction: column-reverse;
+  flex-direction: column-reverse;
+}
+
+html /deep/ [layout][wrap] {
+  -ms-flex-wrap: wrap;
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
+html /deep/ [layout][wrap-reverse] {
+  -ms-flex-wrap: wrap-reverse;
+  -webkit-flex-wrap: wrap-reverse;
+  flex-wrap: wrap-reverse;
+}
+
+html /deep/ [flex] {
+  -ms-flex: 1 1 0.000000001px;
+  -webkit-flex: 1;
+  flex: 1;
+  -webkit-flex-basis: 0.000000001px;
+  flex-basis: 0.000000001px;
+}
+
+html /deep/ [vertical][layout] > [flex][auto-vertical], html /deep/ [vertical][layout]::shadow [flex][auto-vertical] {
+  -ms-flex: 1 1 auto;
+  -webkit-flex-basis: auto;
+  flex-basis: auto;
+}
+
+html /deep/ [flex][auto] {
+  -ms-flex: 1 1 auto;
+  -webkit-flex-basis: auto;
+  flex-basis: auto;
+}
+
+html /deep/ [flex][none] {
+  -ms-flex: none;
+  -webkit-flex: none;
+  flex: none;
+}
+
+html /deep/ [flex][one] {
+  -ms-flex: 1;
+  -webkit-flex: 1;
+  flex: 1;
+}
+
+html /deep/ [flex][two] {
+  -ms-flex: 2;
+  -webkit-flex: 2;
+  flex: 2;
+}
+
+html /deep/ [flex][three] {
+  -ms-flex: 3;
+  -webkit-flex: 3;
+  flex: 3;
+}
+
+html /deep/ [flex][four] {
+  -ms-flex: 4;
+  -webkit-flex: 4;
+  flex: 4;
+}
+
+html /deep/ [flex][five] {
+  -ms-flex: 5;
+  -webkit-flex: 5;
+  flex: 5;
+}
+
+html /deep/ [flex][six] {
+  -ms-flex: 6;
+  -webkit-flex: 6;
+  flex: 6;
+}
+
+html /deep/ [flex][seven] {
+  -ms-flex: 7;
+  -webkit-flex: 7;
+  flex: 7;
+}
+
+html /deep/ [flex][eight] {
+  -ms-flex: 8;
+  -webkit-flex: 8;
+  flex: 8;
+}
+
+html /deep/ [flex][nine] {
+  -ms-flex: 9;
+  -webkit-flex: 9;
+  flex: 9;
+}
+
+html /deep/ [flex][ten] {
+  -ms-flex: 10;
+  -webkit-flex: 10;
+  flex: 10;
+}
+
+html /deep/ [flex][eleven] {
+  -ms-flex: 11;
+  -webkit-flex: 11;
+  flex: 11;
+}
+
+html /deep/ [flex][twelve] {
+  -ms-flex: 12;
+  -webkit-flex: 12;
+  flex: 12;
+}
+
+/* alignment in cross axis */
+
+html /deep/ [layout][start] {
+  -ms-flex-align: start;
+  -webkit-align-items: flex-start;
+  align-items: flex-start;
+}
+
+html /deep/ [layout][center], html /deep/ [layout][center-center] {
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+}
+
+html /deep/ [layout][end] {
+  -ms-flex-align: end;
+  -webkit-align-items: flex-end;
+  align-items: flex-end;
+}
+
+/* alignment in main axis */
+
+html /deep/ [layout][start-justified] {
+  -ms-flex-pack: start;
+  -webkit-justify-content: flex-start;
+  justify-content: flex-start;
+}
+
+html /deep/ [layout][center-justified], html /deep/ [layout][center-center] {
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+}
+
+html /deep/ [layout][end-justified] {
+  -ms-flex-pack: end;
+  -webkit-justify-content: flex-end;
+  justify-content: flex-end;
+}
+
+html /deep/ [layout][around-justified] {
+  -ms-flex-pack: distribute;
+  -webkit-justify-content: space-around;
+  justify-content: space-around;
+}
+
+html /deep/ [layout][justified] {
+  -ms-flex-pack: justify;
+  -webkit-justify-content: space-between;
+  justify-content: space-between;
+}
+
+/* self alignment */
+
+html /deep/ [self-start] {
+  -ms-align-self: flex-start;
+  -webkit-align-self: flex-start;
+  align-self: flex-start;
+}
+
+html /deep/ [self-center] {
+  -ms-align-self: center;
+  -webkit-align-self: center;
+  align-self: center;
+}
+
+html /deep/ [self-end] {
+  -ms-align-self: flex-end;
+  -webkit-align-self: flex-end;
+  align-self: flex-end;
+}
+
+html /deep/ [self-stretch] {
+  -ms-align-self: stretch;
+  -webkit-align-self: stretch;
+  align-self: stretch;
+}
+
+/*******************************
+          Other Layout
+*******************************/
+
+html /deep/ [block] {
+  display: block;
+}
+
+/* ie support for hidden */
+html /deep/ [hidden] {
+  display: none !important;
+}
+
+html /deep/ [relative] {
+  position: relative;
+}
+
+html /deep/ [fit] {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+body[fullbleed] {
+  margin: 0;
+  height: 100vh;
+}
+
+/*******************************
+            Other
+*******************************/
+
+html /deep/ [segment], html /deep/ segment {
+  display: block;
+  position: relative;
+  -webkit-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 1em 0.5em;
+  padding: 1em;
+  background-color: white;
+  -webkit-box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.1);
+  border-radius: 5px 5px 5px 5px;
+}
+
+</style>
+
+<script src="packages/polymer/src/js/polymer/polymer.min.js"></script>
+
+<script>
+// TODO(sigmund): remove this script tag (dartbug.com/19650). This empty
+// script tag is necessary to work around a bug in Chrome 36.
+</script>
+
+<!-- unminified for debugging:
+<link rel="import" href="src/js/polymer/layout.html">
+<script src="src/js/polymer/polymer.js"></script>
+-->
+
+<script src="packages/web_components/interop_support.js"></script>
+
+<!-- Dart note: load polymer for Dart and JS from the same place -->
+
+<script>
+// This empty script is here to workaround issue
+// https://github.com/dart-lang/core-elements/issues/11
+</script>
+
+
+<polymer-element name="core-style" hidden="">
+<script>
+(function() {
+
+window.CoreStyle = window.CoreStyle || {
+  g: {},
+  list: {},
+  refMap: {}
+};
+
+Polymer('core-style', {
+  /**
+   * The `id` property should be set if the `core-style` is a producer
+   * of styles. In this case, the `core-style` should have text content
+   * that is cssText.
+   *
+   * @attribute id
+   * @type string
+   * @default ''
+   */
+
+
+  publish: {
+    /**
+     * The `ref` property should be set if the `core-style` element is a 
+     * consumer of styles. Set it to the `id` of the desired `core-style`
+     * element.
+     *
+     * @attribute ref
+     * @type string
+     * @default ''
+     */
+    ref: ''
+  },
+
+  // static
+  g: CoreStyle.g,
+  refMap: CoreStyle.refMap,
+
+  /**
+   * The `list` is a map of all `core-style` producers stored by `id`. It 
+   * should be considered readonly. It's useful for nesting one `core-style`
+   * inside another.
+   *
+   * @attribute list
+   * @type object (readonly)
+   * @default {map of all `core-style` producers}
+   */
+  list: CoreStyle.list,
+
+  // if we have an id, we provide style
+  // if we have a ref, we consume/require style
+  ready: function() {
+    if (this.id) {
+      this.provide();
+    } else {
+      this.registerRef(this.ref);
+      if (!window.ShadowDOMPolyfill) {
+        this.require();
+      }  
+    }
+  },
+
+  // can't shim until attached if using SD polyfill because need to find host
+  attached: function() {
+    if (!this.id && window.ShadowDOMPolyfill) {
+      this.require();
+    }
+  },
+
+  /****** producer stuff *******/
+
+  provide: function() {
+    this.register();
+    // we want to do this asap, especially so we can do so before definitions
+    // that use this core-style are registered.
+    if (this.textContent) {
+      this._completeProvide();
+    } else {
+      this.async(this._completeProvide);
+    }
+  },
+
+  register: function() {
+    var i = this.list[this.id];
+    if (i) {
+      if (!Array.isArray(i)) {
+        this.list[this.id] = [i];
+      }
+      this.list[this.id].push(this);
+    } else {
+      this.list[this.id] = this;  
+    }
+  },
+
+  // stamp into a shadowRoot so we can monitor dom of the bound output
+  _completeProvide: function() {
+    this.createShadowRoot();
+    this.domObserver = new MutationObserver(this.domModified.bind(this))
+        .observe(this.shadowRoot, {subtree: true, 
+        characterData: true, childList: true});
+    this.provideContent();
+  },
+
+  provideContent: function() {
+    this.ensureTemplate();
+    this.shadowRoot.textContent = '';
+    this.shadowRoot.appendChild(this.instanceTemplate(this.template));
+    this.cssText = this.shadowRoot.textContent;
+  },
+
+  ensureTemplate: function() {
+    if (!this.template) {
+      this.template = this.querySelector('template:not([repeat]):not([bind])');
+      // move content into the template
+      if (!this.template) {
+        this.template = document.createElement('template');
+        var n = this.firstChild;
+        while (n) {
+          this.template.content.appendChild(n.cloneNode(true));
+          n = n.nextSibling;
+        }
+      }
+    }
+  },
+
+  domModified: function() {
+    this.cssText = this.shadowRoot.textContent;
+    this.notify();
+  },
+
+  // notify instances that reference this element
+  notify: function() {
+    var s$ = this.refMap[this.id];
+    if (s$) {
+      for (var i=0, s; (s=s$[i]); i++) {
+        s.require();
+      }
+    }
+  },
+
+  /****** consumer stuff *******/
+
+  registerRef: function(ref) {
+    //console.log('register', ref);
+    this.refMap[this.ref] = this.refMap[this.ref] || [];
+    this.refMap[this.ref].push(this);
+  },
+
+  applyRef: function(ref) {
+    this.ref = ref;
+    this.registerRef(this.ref);
+    this.require();
+  },
+
+  require: function() {
+    var cssText = this.cssTextForRef(this.ref);
+    //console.log('require', this.ref, cssText);
+    if (cssText) {
+      this.ensureStyleElement();
+      // do nothing if cssText has not changed
+      if (this.styleElement._cssText === cssText) {
+        return;
+      }
+      this.styleElement._cssText = cssText;
+      if (window.ShadowDOMPolyfill) {
+        this.styleElement.textContent = cssText;
+        cssText = WebComponents.ShadowCSS.shimStyle(this.styleElement,
+            this.getScopeSelector());
+      }
+      this.styleElement.textContent = cssText;
+    }
+  },
+
+  cssTextForRef: function(ref) {
+    var s$ = this.byId(ref);
+    var cssText = '';
+    if (s$) {
+      if (Array.isArray(s$)) {
+        var p = [];
+        for (var i=0, l=s$.length, s; (i<l) && (s=s$[i]); i++) {
+          p.push(s.cssText);
+        }
+        cssText = p.join('\n\n');
+      } else {
+        cssText = s$.cssText;
+      }
+    }
+    if (s$ && !cssText) {
+      console.warn('No styles provided for ref:', ref);
+    }
+    return cssText;
+  },
+
+  byId: function(id) {
+    return this.list[id];
+  },
+
+  ensureStyleElement: function() {
+    if (!this.styleElement) {
+      this.styleElement = window.ShadowDOMPolyfill ? 
+          this.makeShimStyle() :
+          this.makeRootStyle();
+    }
+    if (!this.styleElement) {
+      console.warn(this.localName, 'could not setup style.');
+    }
+  },
+
+  makeRootStyle: function() {
+    var style = document.createElement('style');
+    this.appendChild(style);
+    return style;
+  },
+
+  makeShimStyle: function() {
+    var host = this.findHost(this);
+    if (host) {
+      var name = host.localName;
+      var style = document.querySelector('style[' + name + '=' + this.ref +']');
+      if (!style) {
+        style = document.createElement('style');
+        style.setAttribute(name, this.ref);
+        document.head.appendChild(style);
+      }
+      return style;
+    }
+  },
+
+  getScopeSelector: function() {
+    if (!this._scopeSelector) {
+      var selector = '', host = this.findHost(this);
+      if (host) {
+        var typeExtension = host.hasAttribute('is');
+        var name = typeExtension ? host.getAttribute('is') : host.localName;
+        selector = WebComponents.ShadowCSS.makeScopeSelector(name, 
+            typeExtension);
+      }
+      this._scopeSelector = selector;
+    }
+    return this._scopeSelector;
+  },
+
+  findHost: function(node) {
+    while (node.parentNode) {
+      node = node.parentNode;
+    }
+    return node.host || wrap(document.documentElement);
+  },
+
+  /* filters! */
+  // TODO(dfreedm): add more filters!
+
+  cycle: function(rgb, amount) {
+    if (rgb.match('#')) {
+      var o = this.hexToRgb(rgb);
+      if (!o) {
+        return rgb;
+      }
+      rgb = 'rgb(' + o.r + ',' + o.b + ',' + o.g + ')';
+    }
+
+    function cycleChannel(v) {
+      return Math.abs((Number(v) - amount) % 255);
+    }
+
+    return rgb.replace(/rgb\(([^,]*),([^,]*),([^,]*)\)/, function(m, a, b, c) {
+      return 'rgb(' + cycleChannel(a) + ',' + cycleChannel(b) + ', ' 
+          + cycleChannel(c) + ')';
+    });
+  },
+
+  hexToRgb: function(hex) {
+    var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+    return result ? {
+        r: parseInt(result[1], 16),
+        g: parseInt(result[2], 16),
+        b: parseInt(result[3], 16)
+    } : null;
+  }
+
+});
+
+
+})();
+</script>
+</polymer-element>
+
+
+
+
+
+
+
+
+<core-style id="my-toolbar">
+  :host {
+    height: 54px;
+    font-size: 1.3rem;
+    background-color: steelblue;
+    color: white;
+  }
+
+  polyfill-next-selector {
+    content: ':host &gt; *';
+  }
+  ::content &gt; * {
+    margin: 8px;
+  }
+</core-style>
+
+<polymer-element name="my-toolbar" horizontal="" center="" layout="" noscript="">
+  <template>
+    <core-style ref="my-toolbar"></core-style>
+    <content></content>
+  </template>
+</polymer-element>
+
+<core-style id="my-panel">
+  :host {
+    display: inline-block;
+    height: 200px;
+    width: calc({{ 100 / g.columns }}% - 16px);
+    font-size: 50px;
+    background: gray;
+    margin: 8px;
+  }
+</core-style>
+
+
+
+<polymer-element name="my-panel" vertical="" center="" center-justified="" layout="" noscript="">
+  <template>
+    <core-style ref="my-panel"></core-style>
+    <content></content>
+  </template>
+</polymer-element>
+
+
+<script>
+
+  CoreStyle.g.theme = {
+    colorOne: '#abcdef',
+    colorTwo: '#123456',
+    colorThree: '#224433'
+  }
+</script>
+
+<core-style id="main">
+  body {
+    font-family: sans-serif;
+  }
+
+  section {
+    overflow: auto;
+  }
+
+  button {
+    border: 1px solid {{g.theme.colorOne | cycle(-50)}};
+    border-radius: 4px;
+    background-color: {{g.theme.colorOne}};
+    color: {{g.theme.colorTwo}};
+  }
+
+  button:active {
+    border: 1px solid {{g.theme.colorTwo | cycle(50)}};
+    border-radius: 4px;
+    background-color: {{g.theme.colorTwo}};
+    color: {{g.theme.colorOne}};
+  }
+
+  <template repeat="{{item in g.items}}">
+    my-panel:nth-of-type({{item+1}}) {
+      background-color: {{ g.theme.colorThree | cycle(item * -1) }};
+    }
+  </template>
+</core-style>
+
+<core-style id="my-toolbar">
+  :host {
+    border-bottom: 8px solid {{g.theme.colorOne}};
+    color: {{g.theme.colorOne | cycle(100)}};
+    background-color: {{g.theme.colorTwo}};
+  }
+</core-style>
+
+<core-style id="my-panel">
+  :host {
+    box-sizing: border-box;
+    background-color: {{g.theme.colorOne}};
+    border: 8px solid {{g.theme.colorOne | cycle(50)}};
+    color: {{g.theme.colorOne | cycle(-100)}};
+  }
+
+  :host(:nth-of-type(2n + 1)) {
+    background-color: {{g.theme.colorTwo}};
+    border: 8px solid {{g.theme.colorTwo | cycle(-50)}};
+    color: {{g.theme.colorTwo | cycle(100)}}
+  }
+
+</core-style>
+</div>
+  <core-style ref="main"></core-style>
+
+  <template is="auto-binding-dart" id="myTemplate">
+    <my-toolbar>
+      <span flex="">core-style</span>
+      <input type="color" value="{{g['theme']['colorOne']}}">
+      <input type="color" value="{{g['theme']['colorTwo']}}">
+      <input type="color" value="{{g['theme']['colorThree']}}">
+      <input type="range" min="1" max="8" value="{{g['columns']}}">
+      <button>A button</button>
+    </my-toolbar>
+    <section flex="" horizontal="" wrap="" layout="">
+      <template repeat="{{item in g['items']}}">
+        <my-panel>{{item}}</my-panel>
+      </template>
+    </section>
+  </template>
+
+  <script src="core_style.html.polymer.bootstrap.dart.js" async=""></script>
+
+
+
+
+
+</body></html>
