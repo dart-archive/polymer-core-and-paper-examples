@@ -5,6 +5,10 @@ This repo contains examples for the core and paper polymer elements.
 
 ## Running examples
 
+The core examples are available  [here](http://dart-lang.github.io/polymer-core-and-paper-examples/build/web/core_demos.html) and the paper examples are available [here](http://dart-lang.github.io/polymer-core-and-paper-examples/build/web/paper_demos.html).
+
+## Building examples
+
 If you download or fork the repo from
 https://github.com/dart-lang/polymer-core-and-paper-examples,
 then you can use the `pub` command to run demos.
