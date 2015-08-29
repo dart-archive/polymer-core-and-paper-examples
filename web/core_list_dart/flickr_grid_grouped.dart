@@ -3,7 +3,6 @@ import 'package:polymer/polymer.dart';
 import 'package:core_elements/core_ajax_dart.dart';
 import 'package:core_elements/core_list_dart.dart';
 import 'dart:html';
-import 'dart:async';
 import 'dart:math';
 import 'dart:convert';
 

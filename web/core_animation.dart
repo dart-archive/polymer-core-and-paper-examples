@@ -7,10 +7,8 @@
  * subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
  */
 import 'dart:html';
-import 'dart:js';
 import 'package:polymer/polymer.dart';
-import 'package:core_elements/core_animation.dart';
-    export 'package:polymer/init.dart';
+export 'package:polymer/init.dart';
 
 var last;
 
@@ -31,11 +29,10 @@ void clickAction(MouseEvent e) {
   if ((e.target as HtmlElement).localName != 'button') return;
   var a = t.querySelector('core-animation, core-animation-group');
 
-  if (last != null ) {
+  if (last != null) {
     last.cancel();
     last = null;
   }
-
 
   if (a.id == 'custom-animation') a.customEffect = customAnimationFn;
 
