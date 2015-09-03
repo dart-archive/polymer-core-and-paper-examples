@@ -8,6 +8,7 @@
  */
 import 'dart:html';
 import 'package:polymer/polymer.dart';
+import 'package:core_elements/core_animation.dart'; // Required for the html import it provides.
 export 'package:polymer/init.dart';
 
 var last;
