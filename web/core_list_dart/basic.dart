@@ -8,14 +8,13 @@
  */
 library core_elements.example.core_list_dart;
 
-import 'dart:html';
 import 'dart:math' as math;
 import 'package:polymer/polymer.dart';
 
 var strings = [
   "PARKOUR!",
   "Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur,"
-    " adipisci velit...",
+      " adipisci velit...",
   "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
 ];
 
@@ -23,7 +22,7 @@ final _random = new math.Random();
 
 _generateString(inLength) {
   var s = '';
-  for (var i=0; i<inLength; i++) {
+  for (var i = 0; i < inLength; i++) {
     s += new String.fromCharCode(_random.nextInt(26) + 97);
   }
   return s;
@@ -32,7 +31,6 @@ _generateString(inLength) {
 _generateName(inMin, inMax) {
   return _generateString(_random.nextInt(inMax - inMin + 1) + inMin);
 }
-
 
 @CustomTag('list-test')
 class ListTest extends PolymerElement {
@@ -60,14 +58,13 @@ class ListTest extends PolymerElement {
     names.sort();
     for (var i = 0; i < this.count; i++) {
       data.add(new TestItem(
-        id: i,
-        name: names[i],
-        details: strings[i % 3],
-        image: i % 4,
-        value: 0,
-        type: 0,
-        checked: false
-      ));
+          id: i,
+          name: names[i],
+          details: strings[i % 3],
+          image: i % 4,
+          value: 0,
+          type: 0,
+          checked: false));
     }
     return data;
   }
@@ -99,7 +96,7 @@ class ListTest extends PolymerElement {
         }
       }
     } else {
-      var x = data.remove(this.selection);
+      data.remove(this.selection);
     }
   }
 

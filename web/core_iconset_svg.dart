@@ -10,7 +10,6 @@ library core_elements.example.core_iconset_svg;
 
 import 'dart:html';
 import 'package:polymer/polymer.dart';
-import 'package:template_binding/template_binding.dart';
 import 'package:core_elements/core_meta.dart';
 export 'package:polymer/init.dart';
 
@@ -28,7 +27,8 @@ startup() {
       var setName = 'svg-sample-icons';
       var meta = querySelector('#meta') as CoreMeta;
       var icons = meta.byId(setName).iconNames;
-      template.model = new MyModel(icons.map((icon) => '$setName:$icon').toList());
+      template.model =
+          new MyModel(icons.map((icon) => '$setName:$icon').toList());
     });
   });
 }

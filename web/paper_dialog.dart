@@ -1,7 +1,6 @@
 import 'dart:html';
 import 'package:polymer/polymer.dart';
 import 'package:paper_elements/paper_dialog.dart';
-import 'package:paper_elements/paper_dialog_base.dart';
 export 'package:polymer/init.dart';
 
 class MyModel extends Observable {

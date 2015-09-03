@@ -1,6 +1,5 @@
 import 'dart:html';
 import 'package:polymer/polymer.dart';
-import 'package:template_binding/template_binding.dart';
 export 'package:polymer/init.dart';
 
 class Model extends Observable {
